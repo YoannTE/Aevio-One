@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aevio One — Solutions digitales sur mesure</title>
+<meta name="description" content="Aevio One conçoit des sites vitrines, plateformes SaaS, CRM, applications web et mobile sur mesure pour les entreprises ambitieuses." />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3EEE4;
+    --bg-soft: #ECE5D7;
+    --bg-card: #FFFFFF;
+    --ink: #141414;
+    --ink-2: #2A2A2A;
+    --ink-3: #5A564E;
+    --ink-4: #8A8578;
+    --line: #D8D0BE;
+    --line-2: #E8E1D0;
+    --primary: #1E1B4B;
+    --primary-2: #3730A3;
+    --primary-3: #6366F1;
+    --accent: #EA580C;
+    --accent-2: #F59E0B;
+    --mint: #0D9488;
+    --rose: #E11D48;
+    --sky:  #0EA5E9;
+    --green: #10B981;
+    --radius: 28px;
+    --radius-lg: 40px;
+    --radius-xl: 56px;
+    --max: 1240px;
+    --pad: clamp(20px, 4vw, 40px);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Geist', system-ui, sans-serif;
+    font-weight:400;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,h5{
+    font-family:'Bricolage Grotesque', serif;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  .container{
+    max-width:var(--max);
+    margin:0 auto;
+    padding-left:var(--pad);
+    padding-right:var(--pad);
+  }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+    background:rgba(243,238,228,0.78);
+    border-bottom:1px solid rgba(216,208,190,0.45);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .logo{
+    font-family:'Bricolage Grotesque', serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-0.04em;
+    display:flex;align-items:center;gap:10px;
+    color:var(--ink);
+  }
+  .logo-mark{
+    height:34px;width:auto;
+    flex-shrink:0;
+    transition:transform .3s;
+  }
+  .logo:hover .logo-mark{transform:scale(1.05)}
+  .nav-links{display:flex;gap:34px;align-items:center;font-size:15px;color:var(--ink-2);font-weight:500}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-cta{
+    background:var(--ink);color:#fff;
+    padding:10px 18px;border-radius:999px;
+    font-size:14px;font-weight:500;
+    transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{background:var(--primary);transform:translateY(-1px)}
+  @media(max-width:840px){
+    .nav-links{display:none}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:clamp(60px,10vw,120px) 0 clamp(40px,7vw,80px);
+    text-align:center;
+    position:relative;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 16px;border-radius:999px;
+    background:rgba(30,27,75,0.06);
+    color:var(--primary);
+    font-size:13px;font-weight:500;
+    letter-spacing:0.01em;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.5;transform:scale(1.3)}
+  }
+  .hero h1{
+    font-size:clamp(44px, 8vw, 96px);
+    font-weight:500;
+    max-width:18ch;
+    margin:0 auto;
+  }
+  .hero h1 em{
+    font-style:normal;
+    font-family:'Bricolage Grotesque', serif;
+    background:linear-gradient(105deg, var(--primary) 0%, var(--accent) 55%, var(--accent-2) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero p.sub{
+    margin:28px auto 0;
+    max-width:56ch;
+    color:var(--ink-3);
+    font-size:clamp(16px, 1.6vw, 19px);
+    line-height:1.55;
+  }
+  .cta-row{
+    margin-top:38px;
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    padding:14px 26px;border-radius:999px;
+    font-size:15px;font-weight:500;
+    transition:transform .2s, box-shadow .2s, background .2s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(30,27,75,0.35)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--bg-soft);border-color:#bdb4a0}
+  .btn .arrow{transition:transform .2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* ============ HERO SHOWCASE — composition ============ */
+  .hero-showcase{
+    position:relative;
+    margin:70px auto 0;
+    max-width:1100px;
+    height:clamp(420px, 56vw, 620px);
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+    box-shadow:0 50px 100px -40px rgba(20,20,20,0.30), 0 0 0 1px rgba(255,255,255,0.4) inset;
+    background:
+      radial-gradient(ellipse at 22% 28%, #FDBA74 0%, transparent 42%),
+      radial-gradient(ellipse at 78% 22%, #C7D2FE 0%, transparent 40%),
+      radial-gradient(ellipse at 58% 82%, #FDE68A 0%, transparent 48%),
+      radial-gradient(ellipse at 12% 82%, #FCA5A5 0%, transparent 40%),
+      linear-gradient(135deg, #FFE4CC 0%, #DDE0FF 100%);
+  }
+  .hero-showcase::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(20,20,20,0.07) 1px, transparent 0);
+    background-size:26px 26px;
+    mix-blend-mode:multiply;
+    opacity:.45;
+    pointer-events:none;
+  }
+  .hero-showcase::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 70%, rgba(243,238,228,0.4) 100%);
+    pointer-events:none;
+  }
+
+  /* Center hub — a CRM-like dashboard mockup */
+  .hub{
+    position:absolute;
+    left:50%;top:50%;
+    transform:translate(-50%,-50%) rotate(-1deg);
+    width:min(620px, 70%);
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 40px 80px -28px rgba(20,20,20,0.32);
+    display:grid;
+    grid-template-columns:60px 1fr;
+    transition:transform .5s ease;
+  }
+  .hub:hover{transform:translate(-50%,-50%) rotate(0)}
+  .hub-side{
+    background:#0B0B12;
+    padding:14px 0;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .hub-side .h-logo{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    margin-bottom:6px;
+  }
+  .hub-side .h-i{
+    width:30px;height:30px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.4);font-size:13px;
+  }
+  .hub-side .h-i.on{background:rgba(99,102,241,0.18);color:#A5B4FC}
+  .hub-main{padding:16px 18px}
+  .hub-top{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:14px;
+  }
+  .hub-title{
+    font-family:'Bricolage Grotesque',serif;
+    font-size:15px;font-weight:600;
+    color:var(--ink);
+  }
+  .hub-pill{
+    font-family:'Geist Mono',monospace;font-size:10px;
+    padding:3px 9px;border-radius:999px;
+    background:rgba(16,185,129,0.12);color:var(--green);
+    font-weight:500;
+  }
+  .hub-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;
+  }
+  .hub-stat{
+    background:var(--bg);border-radius:10px;padding:9px 10px;
+  }
+  .hub-stat .l{font-size:8.5px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
+  .hub-stat .v{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600;margin-top:2px}
+  .hub-stat .d{font-size:9px;color:var(--green);font-weight:500;margin-top:1px}
+  .hub-chart{
+    height:90px;background:linear-gradient(180deg, #F8F4EA, #fff);
+    border-radius:12px;padding:8px;
+    border:1px solid var(--line-2);
+  }
+  .hub-chart svg{width:100%;height:100%}
+  .hub-rows{margin-top:10px}
+  .hub-row{
+    display:flex;align-items:center;gap:8px;
+    padding:6px 0;border-top:1px solid var(--bg-soft);
+    font-size:10px;
+  }
+  .hub-row:first-child{border-top:none}
+  .hub-row .av{
+    width:18px;height:18px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    flex-shrink:0;
+  }
+  .hub-row .nm{flex:1;font-weight:500;color:var(--ink)}
+  .hub-row .tg{
+    font-family:'Geist Mono',monospace;font-size:8.5px;
+    padding:2px 6px;border-radius:999px;
+  }
+  .tg-hot{background:rgba(234,88,12,0.12);color:var(--accent)}
+  .tg-new{background:rgba(16,185,129,0.12);color:var(--green)}
+  .tg-prio{background:rgba(99,102,241,0.14);color:var(--primary-2)}
+
+  /* Floating phone (left) */
+  .float-phone{
+    position:absolute;
+    left:3%;bottom:8%;
+    width:148px;
+    aspect-ratio:9/19;
+    background:#0E0E14;
+    border-radius:30px;
+    padding:8px;
+    box-shadow:0 30px 60px -22px rgba(20,20,20,0.4);
+    transform:rotate(-7deg);
+    animation:float 8s ease-in-out infinite;
+  }
+  .float-phone .ph-screen{
+    width:100%;height:100%;
+    border-radius:22px;
+    background:linear-gradient(180deg,#FECACA,#fff 38%);
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .ph-top{padding:14px 12px 8px}
+  .ph-greet{font-family:'Geist Mono',monospace;font-size:8px;color:var(--ink-4);letter-spacing:0.08em}
+  .ph-name{font-family:'Bricolage Grotesque',serif;font-size:14px;font-weight:600;line-height:1;margin-top:2px}
+  .ph-card{
+    margin:8px 10px 0;padding:9px 10px;background:#fff;border-radius:10px;
+    box-shadow:0 4px 10px -4px rgba(0,0,0,0.08);
+  }
+  .ph-card .l{font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-4);font-family:'Geist Mono',monospace}
+  .ph-card .v{
+    font-family:'Bricolage Grotesque',serif;font-size:18px;font-weight:600;margin-top:2px;
+    background:linear-gradient(90deg,var(--primary),var(--rose));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .ph-bars{margin:9px 10px 0;display:flex;gap:3px;align-items:flex-end;height:38px}
+  .ph-bars span{flex:1;border-radius:2px 2px 0 0;background:var(--primary);opacity:.85}
+  .ph-bars span:nth-child(1){height:35%}
+  .ph-bars span:nth-child(2){height:65%}
+  .ph-bars span:nth-child(3){height:50%;background:var(--accent);opacity:1}
+  .ph-bars span:nth-child(4){height:80%}
+  .ph-bars span:nth-child(5){height:42%}
+  .ph-bars span:nth-child(6){height:60%}
+  .ph-nav{margin-top:auto;display:flex;justify-content:space-around;padding:8px 0 12px;border-top:1px solid rgba(0,0,0,0.05)}
+  .ph-nav span{width:4px;height:4px;border-radius:50%;background:var(--ink-4)}
+  .ph-nav span:nth-child(2){background:var(--accent);width:14px;border-radius:3px}
+
+  /* Floating browser preview (right) */
+  .float-browser{
+    position:absolute;
+    right:4%;top:9%;
+    width:min(290px, 32%);
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -22px rgba(20,20,20,0.32);
+    transform:rotate(4deg);
+    animation:float 9s ease-in-out infinite;
+    animation-delay:-2s;
+  }
+  .fb-bar{
+    display:flex;align-items:center;gap:5px;padding:8px 10px;
+    background:#F1ECDF;border-bottom:1px solid var(--line-2);
+  }
+  .fb-bar .d{width:7px;height:7px;border-radius:50%}
+  .fb-bar .d:nth-child(1){background:#FCA5A5}
+  .fb-bar .d:nth-child(2){background:#FCD34D}
+  .fb-bar .d:nth-child(3){background:#86EFAC}
+  .fb-bar .url{
+    margin-left:8px;flex:1;background:#fff;border-radius:5px;
+    font-family:'Geist Mono',monospace;font-size:8.5px;color:var(--ink-3);
+    padding:3px 8px;border:1px solid var(--line-2);
+  }
+  .fb-body{padding:16px 14px 18px}
+  .fb-h{font-family:'Bricolage Grotesque',serif;font-size:15px;font-weight:600;line-height:1.1}
+  .fb-h em{font-style:normal;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .fb-sub{font-size:8.5px;color:var(--ink-3);margin-top:5px}
+  .fb-cards{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
+  .fb-cards div{aspect-ratio:16/10;border-radius:7px}
+  .fb-cards div:nth-child(1){background:linear-gradient(135deg,#A5B4FC,#6366F1)}
+  .fb-cards div:nth-child(2){background:linear-gradient(135deg,#FCA5A5,#F43F5E)}
+
+  /* Floating notification (top-left) */
+  .float-notif{
+    position:absolute;
+    left:5%;top:11%;
+    width:230px;
+    background:#fff;
+    border-radius:14px;
+    padding:12px 14px;
+    box-shadow:0 20px 40px -15px rgba(20,20,20,0.25);
+    display:flex;align-items:center;gap:10px;
+    animation:float 7s ease-in-out infinite;
+    animation-delay:-4s;
+    transform:rotate(-3deg);
+  }
+  .float-notif .n-ico{
+    width:34px;height:34px;border-radius:10px;flex-shrink:0;
+    background:linear-gradient(135deg, var(--mint), #14B8A6);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-family:'Geist Mono',monospace;
+  }
+  .float-notif .n-title{font-size:12px;font-weight:500;color:var(--ink);line-height:1.2}
+  .float-notif .n-sub{font-size:10px;color:var(--ink-3);margin-top:2px}
+
+  /* Floating stat (bottom right) */
+  .float-stat{
+    position:absolute;
+    right:5%;bottom:10%;
+    width:200px;
+    background:#fff;
+    border-radius:14px;
+    padding:14px 16px;
+    box-shadow:0 20px 40px -15px rgba(20,20,20,0.25);
+    transform:rotate(3deg);
+    animation:float 7s ease-in-out infinite;
+    animation-delay:-1.5s;
+  }
+  .float-stat .s-l{font-family:'Geist Mono',monospace;font-size:9.5px;text-transform:uppercase;color:var(--ink-4);letter-spacing:0.1em}
+  .float-stat .s-v{font-family:'Bricolage Grotesque',serif;font-size:26px;font-weight:600;line-height:1;margin-top:4px}
+  .float-stat .s-spark{margin-top:8px;height:30px}
+
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(var(--rot, 0deg))}
+    50%{transform:translateY(-14px) rotate(var(--rot, 0deg))}
+  }
+  .float-phone{--rot:-7deg}
+  .float-browser{--rot:4deg}
+  .float-notif{--rot:-3deg}
+  .float-stat{--rot:3deg}
+
+  @media(max-width:780px){
+    .hero-showcase{height:clamp(380px, 70vw, 480px)}
+    .hub{width:78%}
+    .float-browser, .float-notif, .float-stat{display:none}
+    .float-phone{left:auto;right:-3%;bottom:-2%;width:120px}
+  }
+
+  /* ============ TRUSTED BY ============ */
+  .logos-strip{
+    padding:30px 0 50px;
+    text-align:center;
+  }
+  .logos-strip p{
+    color:var(--ink-4);
+    font-size:13px;letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin:0 0 24px;
+  }
+  .logos-row{
+    display:flex;justify-content:center;align-items:center;
+    gap:clamp(24px,5vw,64px);
+    flex-wrap:wrap;
+    opacity:.75;
+  }
+  .logos-row span{
+    font-family:'Bricolage Grotesque', serif;
+    font-weight:600;
+    font-size:22px;
+    letter-spacing:-0.02em;
+    color:var(--ink-3);
+  }
+  .logos-row span:nth-child(2){font-family:'Geist Mono', monospace;font-weight:500;font-size:18px}
+  .logos-row span:nth-child(3){font-style:italic}
+  .logos-row span:nth-child(5){letter-spacing:0.3em;font-weight:400}
+
+  /* ============ SECTIONS ============ */
+  section.block{padding:clamp(70px,11vw,130px) 0}
+  .section-head{
+    max-width:760px;margin:0 auto clamp(48px,6vw,80px);
+    text-align:center;
+  }
+  .section-head .kicker{
+    display:inline-block;
+    font-family:'Geist Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .section-head h2{
+    font-size:clamp(36px, 5.5vw, 68px);
+    font-weight:500;
+  }
+  .section-head h2 em{
+    font-style:italic;
+    font-family:'Bricolage Grotesque', serif;
+    color:var(--accent);
+  }
+  .section-head p{
+    margin-top:22px;color:var(--ink-3);
+    font-size:clamp(16px,1.4vw,18px);
+    max-width:56ch;
+    margin-left:auto;margin-right:auto;
+  }
+
+  /* ============ SERVICE BLOCKS (alternating) ============ */
+  .service{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:clamp(30px,6vw,80px);
+    align-items:center;
+    margin-bottom:clamp(60px,8vw,120px);
+  }
+  .service:last-child{margin-bottom:0}
+  .service.reverse{grid-template-columns:1.1fr 1fr}
+  .service.reverse .service-text{order:2}
+  .service.reverse .service-visual{order:1}
+  @media(max-width:860px){
+    .service, .service.reverse{
+      grid-template-columns:1fr;
+    }
+    .service.reverse .service-text{order:1}
+    .service.reverse .service-visual{order:2}
+  }
+
+  .service-text .num{
+    display:inline-block;
+    font-family:'Geist Mono', monospace;
+    font-size:13px;color:var(--ink-4);
+    margin-bottom:14px;letter-spacing:0.1em;
+  }
+  .service-text h3{
+    font-size:clamp(30px,4vw,48px);
+    font-weight:500;
+    max-width:14ch;
+  }
+  .service-text p{
+    margin-top:20px;
+    color:var(--ink-3);
+    font-size:17px;
+    max-width:50ch;
+  }
+  .chip-list{
+    margin-top:28px;
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .chip{
+    padding:7px 14px;border-radius:999px;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    font-size:13px;font-weight:500;
+    color:var(--ink-2);
+  }
+
+  .service-visual{
+    aspect-ratio: 4/3;
+    border-radius:var(--radius-lg);
+    position:relative;
+    overflow:hidden;
+    padding:clamp(20px,3vw,40px);
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Generic screenshot frame (used for real product captures) */
+  .shot-frame{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.04);
+    overflow:hidden;
+    transition:transform .4s ease;
+    position:relative;
+  }
+  .shot-frame img{
+    display:block;width:100%;height:auto;
+  }
+  .shot-body{
+    padding:0 !important;background:#000;
+    display:flex;align-items:stretch;
+  }
+  .shot-body img{
+    width:100%;height:auto;display:block;object-fit:cover;
+  }
+
+  /* Stacked shot containers (two screenshots layered) */
+  .shot-stack{
+    position:relative;
+    width:100%;
+    aspect-ratio:4/3;
+    max-width:560px;
+  }
+
+  /* === CRM stack === */
+  .shot-crm-stack .shot-frame{
+    position:absolute;
+    width:78%;
+    transition:transform .5s ease;
+  }
+  .shot-crm-back{
+    right:0;bottom:0;
+    transform:rotate(3deg) translateY(8px);
+    filter:saturate(0.85);
+    z-index:1;
+    box-shadow:0 18px 38px -16px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.04) !important;
+  }
+  .shot-crm-front{
+    left:0;top:0;
+    transform:rotate(-2deg);
+    z-index:2;
+  }
+  .shot-crm-stack:hover .shot-crm-front{transform:rotate(-1deg) translate(-8px,-6px)}
+  .shot-crm-stack:hover .shot-crm-back{transform:rotate(2deg) translate(10px,4px)}
+
+  /* === Sites web stack (two browser windows) === */
+  .shot-sites-stack .browser-mockup{
+    position:absolute;
+    width:80%;
+    max-width:none;
+    margin:0;
+    transition:transform .5s ease;
+  }
+  .browser-back{
+    right:0;bottom:0;
+    transform:rotate(3deg);
+    filter:saturate(0.85) brightness(0.95);
+    z-index:1;
+    box-shadow:0 16px 36px -14px rgba(0,0,0,0.22) !important;
+  }
+  .browser-front{
+    left:0;top:0;
+    transform:rotate(-2deg);
+    z-index:2;
+  }
+  .shot-sites-stack:hover .browser-front{transform:rotate(-1deg) translate(-10px,-6px)}
+  .shot-sites-stack:hover .browser-back{transform:rotate(2deg) translate(10px,6px)}
+
+  /* === iPhone frames for Padel === */
+  .phones-real{
+    display:flex;gap:18px;align-items:center;justify-content:center;
+    transform:rotate(-3deg);
+    transition:transform .4s ease;
+  }
+  .phones-real:hover{transform:rotate(0)}
+  .iphone{
+    width:150px;aspect-ratio:9/19.5;
+    background:#0A0A0A;
+    border-radius:30px;
+    padding:6px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,255,255,0.05);
+    overflow:hidden;
+    flex-shrink:0;
+    position:relative;
+  }
+  .iphone img{
+    width:100%;height:100%;display:block;
+    object-fit:cover;object-position:top;
+    border-radius:24px;
+  }
+  .iphone-back{
+    transform:translateY(28px) rotate(8deg);
+    opacity:.92;
+  }
+  .iphone-front{
+    transform:rotate(-3deg);
+    z-index:2;
+  }
+  @media(max-width:640px){
+    .iphone{width:130px}
+  }
+
+  /* Service 1 — Sites web */
+  .v-sites{background:linear-gradient(135deg, #FED7AA 0%, #FBBF24 100%)}
+  .v-sites::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 75% 20%, rgba(255,255,255,0.6), transparent 50%);
+    pointer-events:none;
+  }
+  .browser-mockup{
+    width:100%;max-width:480px;
+    background:#fff;border-radius:20px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
+    overflow:hidden;
+    transform:rotate(-2deg);
+    transition:transform .4s ease;
+  }
+  .browser-mockup:hover{transform:rotate(0deg) scale(1.02)}
+  .browser-bar{
+    display:flex;align-items:center;gap:6px;
+    padding:12px 14px;border-bottom:1px solid var(--line);
+    background:var(--bg-soft);
+  }
+  .browser-bar .d{width:10px;height:10px;border-radius:50%}
+  .browser-bar .d:nth-child(1){background:#FCA5A5}
+  .browser-bar .d:nth-child(2){background:#FCD34D}
+  .browser-bar .d:nth-child(3){background:#86EFAC}
+  .browser-bar .url{
+    margin-left:14px;flex:1;background:#fff;border-radius:6px;
+    font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);
+    padding:5px 10px;border:1px solid var(--line);
+  }
+  .browser-body{padding:28px 26px 32px;background:#fff}
+  .bm-hero{
+    font-family:'Bricolage Grotesque',serif;
+    font-size:22px;font-weight:600;line-height:1.1;margin-bottom:10px;color:var(--ink);
+  }
+  .bm-hero em{
+    font-style:normal;
+    background:linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .bm-sub{font-size:11px;color:var(--ink-3);margin-bottom:14px}
+  .bm-btn{
+    display:inline-block;padding:7px 14px;border-radius:999px;
+    background:var(--ink);color:#fff;font-size:11px;font-weight:500;
+  }
+  .bm-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+  .bm-cards div{aspect-ratio:16/10;border-radius:10px;background:var(--bg-soft)}
+  .bm-cards div:nth-child(1){background:linear-gradient(135deg,#A5B4FC,#6366F1)}
+  .bm-cards div:nth-child(2){background:linear-gradient(135deg,#FCA5A5,#EF4444)}
+
+  /* Service 2 — CRM */
+  .v-crm{background:linear-gradient(135deg, #DBEAFE 0%, #818CF8 100%)}
+  .dashboard{
+    width:100%;max-width:500px;
+    background:#fff;border-radius:20px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
+    padding:20px;
+    transform:rotate(1.5deg);
+    transition:transform .4s ease;
+  }
+  .dashboard:hover{transform:rotate(0deg) scale(1.02)}
+  .db-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .db-title{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600}
+  .db-pill{
+    font-size:10px;padding:3px 8px;border-radius:999px;
+    background:rgba(13,148,136,0.12);color:var(--mint);
+    font-weight:500;font-family:'Geist Mono',monospace;
+  }
+  .db-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+  .db-stat{background:var(--bg);border-radius:12px;padding:10px}
+  .db-stat .lab{font-size:9px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em}
+  .db-stat .val{font-family:'Bricolage Grotesque',serif;font-size:18px;font-weight:600;margin-top:2px}
+  .db-stat .delta{font-size:10px;color:var(--mint);font-weight:500}
+  .db-chart{height:90px;background:var(--bg);border-radius:12px;padding:12px;position:relative;overflow:hidden}
+  .db-chart svg{width:100%;height:100%}
+  .db-list{margin-top:12px}
+  .db-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bg-soft)}
+  .db-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));flex-shrink:0}
+  .db-row div{flex:1}
+  .db-row .n{font-size:11px;font-weight:500}
+  .db-row .c{font-size:9px;color:var(--ink-4)}
+  .db-row .amt{font-family:'Geist Mono',monospace;font-size:11px;font-weight:500}
+
+  /* Service 3 — SaaS */
+  .v-saas{background:linear-gradient(135deg, #CCFBF1 0%, #14B8A6 100%)}
+  .saas-app{
+    width:100%;max-width:520px;
+    background:#fff;border-radius:20px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
+    display:grid;grid-template-columns:70px 1fr;
+    min-height:300px;overflow:hidden;
+    transform:rotate(-1.5deg);
+    transition:transform .4s ease;
+  }
+  .saas-app:hover{transform:rotate(0) scale(1.02)}
+  .saas-side{
+    background:var(--ink);padding:16px 10px;
+    display:flex;flex-direction:column;gap:14px;align-items:center;
+  }
+  .saas-side .logo-s{
+    width:32px;height:32px;border-radius:8px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+  .saas-side .ic{
+    width:28px;height:28px;border-radius:8px;
+    background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.5);font-size:13px;
+  }
+  .saas-side .ic.active{background:rgba(234,88,12,0.2);color:var(--accent)}
+  .saas-main{padding:20px}
+  .saas-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .saas-head h4{font-size:15px;font-weight:600}
+  .saas-search{
+    background:var(--bg);border-radius:8px;padding:5px 10px;
+    font-size:10px;color:var(--ink-4);font-family:'Geist Mono',monospace;
+  }
+  .saas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .saas-card{background:var(--bg);border-radius:14px;padding:14px}
+  .saas-card .tag{
+    display:inline-block;font-size:9px;padding:2px 8px;border-radius:999px;
+    font-family:'Geist Mono',monospace;font-weight:500;margin-bottom:8px;
+  }
+  .saas-card.a .tag{background:rgba(30,27,75,0.1);color:var(--primary)}
+  .saas-card.b .tag{background:rgba(234,88,12,0.12);color:var(--accent)}
+  .saas-card.c .tag{background:rgba(13,148,136,0.12);color:var(--mint)}
+  .saas-card.d .tag{background:rgba(225,29,72,0.12);color:var(--rose)}
+  .saas-card h5{font-family:'Bricolage Grotesque',serif;font-size:13px;font-weight:500;margin-bottom:6px;line-height:1.2}
+  .saas-card .prog{height:4px;border-radius:2px;background:#fff;overflow:hidden;margin-top:8px}
+  .saas-card .prog span{display:block;height:100%;border-radius:2px;background:currentColor}
+  .saas-card.a .prog span{background:var(--primary);width:70%}
+  .saas-card.b .prog span{background:var(--accent);width:45%}
+  .saas-card.c .prog span{background:var(--mint);width:90%}
+  .saas-card.d .prog span{background:var(--rose);width:30%}
+
+  /* Service 4 — Apps */
+  .v-apps{background:linear-gradient(135deg, #FECDD3 0%, #F43F5E 100%)}
+  .phones{
+    display:flex;gap:18px;align-items:center;justify-content:center;
+    transform:rotate(-3deg);
+    transition:transform .4s ease;
+  }
+  .phones:hover{transform:rotate(0)}
+  .phone{
+    width:140px;aspect-ratio:9/19;
+    background:#111;border-radius:28px;padding:10px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.35);
+    flex-shrink:0;
+  }
+  .phone.back{transform:translateY(20px) rotate(6deg);opacity:.85}
+  .phone-screen{
+    width:100%;height:100%;border-radius:20px;
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .phone-screen.a{background:linear-gradient(180deg, #FECACA, #fff 40%)}
+  .phone-screen.b{background:linear-gradient(180deg, #E0E7FF, #fff 40%)}
+  .ps-top{padding:16px 14px 10px}
+  .ps-greet{font-size:9px;color:var(--ink-4);font-family:'Geist Mono',monospace}
+  .ps-name{font-family:'Bricolage Grotesque',serif;font-size:15px;font-weight:600;line-height:1;margin-top:2px}
+  .ps-card{
+    margin:12px 12px 0;padding:10px;background:#fff;border-radius:12px;
+    box-shadow:0 4px 12px -4px rgba(0,0,0,0.08);
+  }
+  .ps-card .ps-lab{font-size:8px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em}
+  .ps-card .ps-big{
+    font-family:'Bricolage Grotesque',serif;font-size:20px;font-weight:600;margin-top:2px;
+    background:linear-gradient(90deg,var(--primary),var(--rose));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .ps-bars{margin:12px 12px 0;display:flex;gap:4px;align-items:flex-end;height:60px}
+  .ps-bars span{flex:1;border-radius:3px 3px 0 0;background:var(--primary);opacity:.8}
+  .ps-bars span:nth-child(1){height:40%}
+  .ps-bars span:nth-child(2){height:70%}
+  .ps-bars span:nth-child(3){height:55%;background:var(--accent);opacity:1}
+  .ps-bars span:nth-child(4){height:85%}
+  .ps-bars span:nth-child(5){height:45%}
+  .ps-bars span:nth-child(6){height:65%}
+  .ps-nav{margin-top:auto;display:flex;justify-content:space-around;padding:10px 0 14px;border-top:1px solid rgba(0,0,0,0.05)}
+  .ps-nav span{width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
+  .ps-nav span:nth-child(2){background:var(--accent);width:18px;border-radius:3px}
+
+  /* Service 5 — Outils sur mesure */
+  .v-tools{background:linear-gradient(135deg, #E9D5FF 0%, #A855F7 100%)}
+  .tools-canvas{
+    position:relative;width:100%;max-width:500px;aspect-ratio:4/3;
+    transform:rotate(1deg);transition:transform .4s ease;
+  }
+  .tools-canvas:hover{transform:rotate(0)}
+  .node{
+    position:absolute;background:#fff;border-radius:14px;
+    padding:10px 14px;box-shadow:0 15px 30px -10px rgba(0,0,0,0.25);
+    font-size:12px;font-weight:500;display:flex;align-items:center;gap:8px;
+  }
+  .node .ico{
+    width:26px;height:26px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Geist Mono',monospace;font-weight:700;font-size:11px;color:#fff;
+  }
+  .node.n1{top:8%;left:4%}
+  .node.n1 .ico{background:var(--primary)}
+  .node.n2{top:5%;right:8%}
+  .node.n2 .ico{background:var(--accent)}
+  .node.n3{top:48%;left:35%;background:var(--ink);color:#fff}
+  .node.n3 .ico{background:var(--accent-2);color:var(--ink)}
+  .node.n4{bottom:8%;left:10%}
+  .node.n4 .ico{background:var(--mint)}
+  .node.n5{bottom:12%;right:4%}
+  .node.n5 .ico{background:var(--rose)}
+  .tools-lines{position:absolute;inset:0;pointer-events:none}
+  .tools-lines path{stroke:rgba(255,255,255,0.6);stroke-width:2;fill:none;stroke-dasharray:6 6}
+
+  /* ============ PORTFOLIO ============ */
+  .portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:20px;
+  }
+  @media(max-width:960px){
+    .portfolio-grid{grid-template-columns:repeat(4, 1fr)}
+  }
+  @media(max-width:640px){
+    .portfolio-grid{grid-template-columns:repeat(2, 1fr)}
+  }
+  .project{
+    grid-column:span 2;
+    border-radius:var(--radius);
+    aspect-ratio:4/3;
+    position:relative;overflow:hidden;
+    padding:26px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .project:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 60px -20px rgba(20,20,20,0.32);
+  }
+  .project.wide{grid-column:span 4}
+  .project.tall{grid-column:span 3;aspect-ratio:3/4}
+  @media(max-width:960px){
+    .project.wide{grid-column:span 4}
+    .project.tall{grid-column:span 2;aspect-ratio:4/3}
+  }
+  @media(max-width:640px){
+    .project, .project.wide, .project.tall{grid-column:span 2;aspect-ratio:4/3}
+  }
+  .project .tag{
+    font-family:'Geist Mono',monospace;
+    font-size:11px;letter-spacing:0.08em;text-transform:uppercase;opacity:.8;
+    position:relative;z-index:3;
+  }
+  .project h4{
+    font-size:clamp(20px,2.3vw,28px);
+    font-weight:500;max-width:18ch;
+    position:relative;z-index:3;
+  }
+
+  /* === Project: CRMLit (CRM hôtellerie) === */
+  .project-crmlit{background:#0B0B12;color:#fff;padding:0;overflow:hidden}
+  .project-crmlit .crm-mock{
+    position:absolute;
+    left:30px;top:30px;right:30px;bottom:90px;
+    background:#fff;border-radius:14px;
+    display:grid;grid-template-columns:90px 1fr;
+    overflow:hidden;
+    box-shadow:0 25px 50px -20px rgba(0,0,0,0.5);
+  }
+  .project-crmlit .cm-side{
+    background:#0F0F18;padding:16px 8px;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .project-crmlit .cm-side .cm-logo{
+    font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:14px;
+    color:#fff;padding:4px 10px;display:flex;align-items:center;gap:6px;
+    margin-bottom:10px;
+  }
+  .project-crmlit .cm-side .cm-logo::before{
+    content:"";width:10px;height:10px;border-radius:3px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  }
+  .project-crmlit .cm-side .cm-i{
+    padding:6px 10px;font-size:10px;color:rgba(255,255,255,0.55);
+    border-radius:6px;display:flex;align-items:center;gap:6px;
+  }
+  .project-crmlit .cm-side .cm-i.on{background:var(--primary-3);color:#fff;font-weight:500}
+  .project-crmlit .cm-side .cm-i::before{
+    content:"";width:8px;height:8px;border-radius:2px;
+    background:rgba(255,255,255,0.3);
+  }
+  .project-crmlit .cm-side .cm-i.on::before{background:#fff}
+  .project-crmlit .cm-main{padding:14px 16px;background:#fff;color:var(--ink)}
+  .project-crmlit .cm-h{font-family:'Bricolage Grotesque',serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px}
+  .project-crmlit .cm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+  .project-crmlit .cm-stat{background:#F8F4EA;border-radius:8px;padding:6px 8px}
+  .project-crmlit .cm-stat .l{font-size:7px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
+  .project-crmlit .cm-stat .v{font-family:'Bricolage Grotesque',serif;font-size:14px;font-weight:600;color:var(--ink);margin-top:1px}
+  .project-crmlit .cm-rows{display:flex;flex-direction:column;gap:4px}
+  .project-crmlit .cm-row{
+    display:flex;align-items:center;gap:6px;
+    background:#F8F4EA;border-radius:6px;padding:5px 8px;
+    font-size:9px;color:var(--ink);
+  }
+  .project-crmlit .cm-row .nm{flex:1;font-weight:500}
+  .project-crmlit .cm-row .pill{
+    font-family:'Geist Mono',monospace;font-size:7.5px;
+    padding:1px 5px;border-radius:999px;
+  }
+  .project-crmlit .cm-row .p-hot{background:rgba(234,88,12,0.15);color:var(--accent)}
+  .project-crmlit .cm-row .p-new{background:rgba(16,185,129,0.15);color:var(--green)}
+  .project-crmlit .cm-row .p-prio{background:rgba(99,102,241,0.18);color:var(--primary-2)}
+  .project-crmlit .crm-content{
+    position:absolute;left:30px;right:30px;bottom:22px;z-index:3;
+  }
+
+  /* === Project: SimplifyPro (SaaS trading) === */
+  .project-simplify{background:#000;color:#fff;padding:0;overflow:hidden}
+  .project-simplify .sp-shot{
+    position:absolute;inset:0;
+    overflow:hidden;
+  }
+  .project-simplify .sp-shot img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    display:block;
+    filter:saturate(1.05);
+  }
+  .project-simplify .sp-shot::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 75% 30%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.85) 100%),
+      linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+    pointer-events:none;
+  }
+  .project-simplify .sp-logo{
+    position:absolute;top:32px;left:34px;z-index:3;
+    display:flex;align-items:center;gap:10px;
+    font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;color:#fff;
+  }
+  .project-simplify .sp-logo .sp-mark{
+    width:22px;height:22px;border-radius:6px;
+    background:linear-gradient(135deg,#10B981 0%,#059669 100%);
+    display:grid;place-items:center;color:#000;font-weight:800;font-size:13px;
+    box-shadow:0 6px 14px -4px rgba(16,185,129,0.5);
+  }
+  .project-simplify .sp-badge{
+    position:absolute;top:34px;right:34px;z-index:3;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:5px 11px;border-radius:999px;
+    background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.5);
+    color:#10B981;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.08em;
+    backdrop-filter:blur(6px);
+  }
+  .project-simplify .sp-badge::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:#10B981;
+    box-shadow:0 0 0 3px rgba(16,185,129,0.25);
+    animation:sp-pulse 2s ease-in-out infinite;
+  }
+  @keyframes sp-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .project-simplify .sp-stats{
+    position:absolute;left:34px;top:78px;z-index:3;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    width:min(440px, calc(100% - 68px));
+  }
+  .project-simplify .sp-stat{
+    background:rgba(10,15,26,0.55);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;padding:7px 11px;
+  }
+  .project-simplify .sp-stat .l{font-size:9px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
+  .project-simplify .sp-stat .v{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600;color:#fff;margin-top:2px;letter-spacing:-0.01em}
+  .project-simplify .sp-stat .v.up{color:#10B981}
+  .project-simplify .sp-content{position:absolute;left:34px;right:34px;bottom:30px;z-index:3}
+  .project-simplify .sp-content h4{font-size:clamp(20px, 2.1vw, 26px);line-height:1.1}
+
+  /* === Project: Padel Club === */
+  .project-padel{background:linear-gradient(140deg,#FFF1DC 0%,#FFD9A8 100%);color:var(--ink);overflow:hidden}
+  .project-padel .pd-card{
+    flex:1;
+    margin:10px 0 14px;
+    border-radius:12px;
+    box-shadow:0 16px 36px -14px rgba(120,60,0,0.3), 0 0 0 1px rgba(0,0,0,0.04);
+    overflow:hidden;
+    background:#fff;
+    min-height:0;
+  }
+  .project-padel .pd-card img{
+    width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  }
+  .project-padel h4{font-size:clamp(15px, 1.35vw, 18px);line-height:1.2;max-width:22ch}
+
+  /* === Project: Volta (app coaching) === */
+  .project-volta{background:linear-gradient(135deg,#FECDD3 0%,#F43F5E 100%);color:#fff;overflow:hidden}
+  .project-volta .mini-phone{
+    position:absolute;right:22px;top:22px;
+    width:110px;aspect-ratio:9/19;
+    background:#111;border-radius:18px;padding:6px;
+    box-shadow:0 20px 40px -12px rgba(0,0,0,0.4);
+    transform:rotate(6deg);
+  }
+  .project-volta .mini-phone-screen{
+    width:100%;height:100%;border-radius:12px;
+    background:linear-gradient(180deg,#FECACA,#fff 50%);
+    padding:10px 8px;display:flex;flex-direction:column;gap:4px;
+  }
+  .project-volta .mp-lab{font-size:6px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
+  .project-volta .mp-big{font-family:'Bricolage Grotesque',serif;font-size:12px;font-weight:600;color:var(--ink);line-height:1}
+  .project-volta .mp-card{background:#fff;border-radius:8px;padding:5px 6px;box-shadow:0 2px 6px -2px rgba(0,0,0,0.15)}
+
+  /* === Project: Maison Belle (vitrine hôtellerie) === */
+  .project-maisonbelle{background:linear-gradient(135deg,#FED7AA 0%,#EA580C 100%);color:#1A0F00;overflow:hidden}
+  .project-maisonbelle .mb-mock{
+    position:absolute;right:-30px;bottom:-20px;width:78%;
+    background:#fff;border-radius:14px 0 0 14px;
+    padding:10px 12px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.25);
+    transform:rotate(-4deg);
+  }
+  .project-maisonbelle .mb-title{
+    font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:14px;line-height:1.1;
+    color:var(--ink);
+  }
+  .project-maisonbelle .mb-sub{font-size:10px;color:var(--ink-3);margin-top:3px}
+  .project-maisonbelle .mb-img{
+    margin-top:8px;height:50px;border-radius:8px;
+    background:linear-gradient(135deg,#FBBF24,#F59E0B);
+  }
+
+  /* === Project: Atelier 9 (e-commerce) === */
+  .project-atelier9{background:linear-gradient(135deg,#F3EEE4 0%,#D8D0BE 100%);color:var(--ink);overflow:hidden}
+  .project-atelier9 .a9-tiles{
+    position:absolute;inset:auto 16px 16px 16px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  }
+  .project-atelier9 .a9-tiles div{
+    aspect-ratio:3/4;border-radius:8px;background:#fff;
+    box-shadow:0 4px 10px -4px rgba(0,0,0,0.1);
+    position:relative;overflow:hidden;
+  }
+  .project-atelier9 .a9-tiles div:nth-child(1){background:linear-gradient(135deg,#1E1B4B,#3730A3)}
+  .project-atelier9 .a9-tiles div:nth-child(2){background:linear-gradient(135deg,#EA580C,#F59E0B)}
+  .project-atelier9 .a9-tiles div:nth-child(3){background:linear-gradient(135deg,#0D9488,#14B8A6)}
+
+  /* === Project: Devis === */
+  .project-devis{background:linear-gradient(135deg,#FEF3C7 0%,#F59E0B 100%);color:#1A0F00;overflow:hidden}
+  .project-devis .devis-mock{
+    position:absolute;right:30px;top:30px;bottom:30px;width:45%;
+    background:#fff;border-radius:14px;padding:16px 18px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.22);
+    transform:rotate(2deg);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .project-devis .dv-title{font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:13px;color:var(--ink)}
+  .project-devis .dv-bar{height:6px;border-radius:3px;background:var(--bg-soft)}
+  .project-devis .dv-bar.a{width:80%;background:linear-gradient(90deg,var(--ink),#444)}
+  .project-devis .dv-bar.b{width:60%}
+  .project-devis .dv-bar.c{width:90%}
+  .project-devis .dv-total{margin-top:auto;font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:18px;color:var(--ink)}
+
+  /* === Project: Campagne === */
+  .project-campagne{background:linear-gradient(135deg,#1E1B4B 0%,#312E81 100%);color:#fff;overflow:hidden}
+  .project-campagne .cmp-badge{
+    position:absolute;top:24px;right:24px;
+    font-family:'Geist Mono',monospace;font-size:28px;font-weight:600;
+    padding:12px 20px;border-radius:14px;
+    background:var(--accent);color:#fff;
+    transform:rotate(-6deg);
+    box-shadow:0 14px 30px -10px rgba(234,88,12,0.45);
+  }
+  .project-campagne .cmp-kpis{
+    position:absolute;left:26px;right:26px;bottom:70px;
+    display:flex;gap:10px;
+  }
+  .project-campagne .cmp-kpi{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px;padding:8px 12px;
+    font-family:'Geist Mono',monospace;font-size:11px;color:rgba(255,255,255,0.8);
+  }
+  .project-campagne .cmp-kpi strong{
+    display:block;font-family:'Bricolage Grotesque',serif;
+    font-size:18px;font-weight:600;color:#fff;margin-top:2px;
+  }
+
+  /* === Project: BTP planning === */
+  .project-btp{background:linear-gradient(135deg,#DBEAFE 0%,#3B82F6 100%);color:#fff;overflow:hidden}
+  .project-btp .btp-mock{
+    position:absolute;left:24px;right:24px;top:30px;bottom:80px;
+    background:#fff;border-radius:12px;
+    padding:12px 14px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.3);
+    transform:rotate(-1.5deg);
+  }
+  .project-btp .btp-h{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .project-btp .btp-row{
+    display:grid;grid-template-columns:60px 1fr;align-items:center;gap:8px;
+    margin-bottom:5px;font-size:8px;color:var(--ink-3);font-family:'Geist Mono',monospace;
+  }
+  .project-btp .btp-bar{
+    height:8px;border-radius:4px;background:#F1ECDF;position:relative;overflow:hidden;
+  }
+  .project-btp .btp-bar span{
+    position:absolute;top:0;bottom:0;border-radius:4px;
+  }
+  .project-btp .btp-row.r1 .btp-bar span{left:0;width:55%;background:var(--primary)}
+  .project-btp .btp-row.r2 .btp-bar span{left:20%;width:45%;background:var(--accent)}
+  .project-btp .btp-row.r3 .btp-bar span{left:40%;width:50%;background:var(--mint)}
+  .project-btp .btp-row.r4 .btp-bar span{left:55%;width:40%;background:var(--rose)}
+  .project-btp .btp-row.r5 .btp-bar span{left:70%;width:25%;background:var(--primary-3)}
+
+  /* === Project: Booking salon === */
+  .project-salon{background:linear-gradient(135deg,#FCE7F3 0%,#EC4899 100%);color:#fff;overflow:hidden}
+  .project-salon .sa-browser{
+    position:absolute;left:24px;top:24px;right:90px;bottom:80px;
+    background:#fff;border-radius:12px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.25);
+    transform:rotate(-1.5deg);
+    overflow:hidden;
+  }
+  .project-salon .sa-bar{
+    background:#F1ECDF;padding:6px 8px;display:flex;align-items:center;gap:4px;
+    border-bottom:1px solid var(--line-2);
+  }
+  .project-salon .sa-bar .d{width:6px;height:6px;border-radius:50%}
+  .project-salon .sa-bar .d:nth-child(1){background:#FCA5A5}
+  .project-salon .sa-bar .d:nth-child(2){background:#FCD34D}
+  .project-salon .sa-bar .d:nth-child(3){background:#86EFAC}
+  .project-salon .sa-body{padding:12px 14px}
+  .project-salon .sa-title{font-family:'Bricolage Grotesque',serif;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .project-salon .sa-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+  .project-salon .sa-slots span{
+    text-align:center;padding:5px 0;border-radius:6px;
+    background:#F8F4EA;font-family:'Geist Mono',monospace;font-size:8.5px;color:var(--ink-3);
+  }
+  .project-salon .sa-slots span.on{background:var(--ink);color:#fff}
+  .project-salon .sa-cta{
+    margin-top:9px;text-align:center;padding:6px 0;border-radius:8px;
+    background:linear-gradient(90deg,var(--rose),#EC4899);color:#fff;
+    font-size:9px;font-weight:600;font-family:'Bricolage Grotesque',serif;
+  }
+  .project-salon .sa-fab{
+    position:absolute;right:24px;bottom:90px;
+    width:50px;height:50px;border-radius:14px;
+    background:#fff;color:var(--rose);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bricolage Grotesque',serif;font-size:22px;font-weight:600;
+    box-shadow:0 14px 28px -10px rgba(0,0,0,0.25);
+    transform:rotate(6deg);
+  }
+
+  /* === Project: Food delivery === */
+  .project-food{background:linear-gradient(135deg,#D1FAE5 0%,#059669 100%);color:#fff;overflow:hidden}
+  .project-food .fd-phone{
+    position:absolute;right:30px;top:24px;bottom:80px;
+    width:46%;
+    background:#0F0F18;border-radius:24px;padding:6px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.4);
+    transform:rotate(4deg);
+  }
+  .project-food .fd-screen{
+    width:100%;height:100%;border-radius:18px;background:#fff;
+    padding:10px 8px;
+    display:flex;flex-direction:column;gap:5px;
+    overflow:hidden;
+  }
+  .project-food .fd-greet{font-size:7px;color:var(--ink-4);font-family:'Geist Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
+  .project-food .fd-q{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:600;line-height:1;color:var(--ink)}
+  .project-food .fd-search{
+    background:#F8F4EA;border-radius:8px;padding:5px 8px;
+    font-size:7px;color:var(--ink-4);font-family:'Geist Mono',monospace;
+    margin-top:3px;
+  }
+  .project-food .fd-card{
+    background:#F8F4EA;border-radius:8px;padding:6px 8px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:8px;color:var(--ink);
+  }
+  .project-food .fd-card .nm{font-weight:500;flex:1}
+  .project-food .fd-card .pr{font-family:'Geist Mono',monospace;color:var(--green);font-weight:600}
+  .project-food .fd-card.alt{background:linear-gradient(135deg,#FEF3C7,#FBBF24);color:var(--ink)}
+  .project-food .fd-card.alt .pr{color:var(--ink)}
+
+  /* === Project: Portal client === */
+  .project-portal{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);color:#fff;overflow:hidden}
+  .project-portal .po-mock{
+    position:absolute;inset:24px 24px 80px;
+    background:#fff;border-radius:12px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.5);
+    overflow:hidden;
+    display:grid;grid-template-rows:auto 1fr;
+    transform:rotate(-1deg);
+  }
+  .project-portal .po-h{
+    background:#F8F4EA;border-bottom:1px solid var(--line-2);
+    padding:8px 12px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .project-portal .po-logo{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:700;color:var(--ink)}
+  .project-portal .po-av{
+    width:18px;height:18px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+  }
+  .project-portal .po-body{padding:10px 12px;color:var(--ink)}
+  .project-portal .po-tabs{display:flex;gap:4px;margin-bottom:8px}
+  .project-portal .po-tabs span{
+    padding:3px 8px;border-radius:999px;
+    font-size:8px;font-family:'Geist Mono',monospace;
+    background:#F8F4EA;color:var(--ink-3);
+  }
+  .project-portal .po-tabs span.on{background:var(--primary);color:#fff}
+  .project-portal .po-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:5px 0;border-top:1px solid var(--bg-soft);
+    font-size:9px;color:var(--ink);
+  }
+  .project-portal .po-row:first-of-type{border-top:none}
+  .project-portal .po-row .st{
+    font-family:'Geist Mono',monospace;font-size:7.5px;
+    padding:1px 6px;border-radius:999px;
+  }
+  .project-portal .po-row .st.ok{background:rgba(16,185,129,0.15);color:var(--green)}
+  .project-portal .po-row .st.wait{background:rgba(234,88,12,0.15);color:var(--accent)}
+  .project-portal .po-row .st.done{background:rgba(99,102,241,0.18);color:var(--primary-2)}
+
+  /* ============ INDUSTRIES ============ */
+  .industries{
+    background:var(--bg-soft);
+    padding:clamp(60px,8vw,100px) 0;
+    margin-top:clamp(40px,5vw,60px);
+  }
+  .industries-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
+    margin-top:clamp(40px,6vw,60px);
+  }
+  @media(max-width:980px){.industries-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:540px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
+  .ind-card{
+    background:#fff;border-radius:18px;
+    padding:24px 20px;
+    border:1px solid var(--line-2);
+    transition:transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .ind-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--accent);
+    box-shadow:0 16px 30px -16px rgba(20,20,20,0.18);
+  }
+  .ind-card .ind-ico{
+    width:36px;height:36px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Geist Mono',monospace;font-weight:700;font-size:14px;color:#fff;
+    margin-bottom:14px;
+  }
+  .ind-card h5{font-size:15px;font-weight:500;margin-bottom:6px}
+  .ind-card p{font-size:13px;color:var(--ink-3);margin:0;line-height:1.45}
+  .ind-card.c1 .ind-ico{background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+  .ind-card.c2 .ind-ico{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+  .ind-card.c3 .ind-ico{background:linear-gradient(135deg,var(--mint),#14B8A6)}
+  .ind-card.c4 .ind-ico{background:linear-gradient(135deg,var(--rose),#EC4899)}
+  .ind-card.c5 .ind-ico{background:linear-gradient(135deg,#3B82F6,var(--sky))}
+  .ind-card.c6 .ind-ico{background:linear-gradient(135deg,#A855F7,#7C3AED)}
+
+  /* ============ PROCESS ============ */
+  .process-section{
+    background:var(--ink);
+    color:#fff;
+    border-radius:var(--radius-xl);
+    padding:clamp(60px,8vw,100px) clamp(30px,5vw,80px);
+    margin:0 var(--pad);
+  }
+  @media(max-width:700px){
+    .process-section{margin:0;border-radius:0}
+  }
+  .process-section h2{color:#fff}
+  .process-section .section-head p{color:rgba(255,255,255,0.65)}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:24px;margin-top:60px;
+  }
+  @media(max-width:960px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.steps{grid-template-columns:1fr}}
+  .step{
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:24px;padding:28px 26px;
+    position:relative;
+    transition:border-color .3s, background .3s;
+  }
+  .step:hover{border-color:var(--accent);background:rgba(234,88,12,0.04)}
+  .step .step-num{
+    font-family:'Geist Mono',monospace;
+    font-size:13px;color:var(--accent);
+    letter-spacing:0.1em;margin-bottom:40px;display:block;
+  }
+  .step h4{font-size:22px;font-weight:500;color:#fff;margin-bottom:12px}
+  .step p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.55;margin:0}
+
+  /* ============ TÉMOIGNAGES ============ */
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  @media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+  .testi{
+    background:#fff;border:1px solid var(--line-2);
+    border-radius:24px;padding:32px;
+    display:flex;flex-direction:column;gap:24px;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .testi:hover{transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(20,20,20,0.18)}
+  .testi blockquote{
+    font-family:'Bricolage Grotesque',serif;
+    font-size:19px;line-height:1.4;font-weight:500;
+    margin:0;color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .testi blockquote::before{
+    content:""; display:block;
+    font-family:'Bricolage Grotesque',serif;
+    font-size:50px;line-height:0.6;color:var(--accent);
+    margin-bottom:14px;
+    content:"\201C";
+  }
+  .testi-foot{
+    margin-top:auto;display:flex;align-items:center;gap:12px;
+    padding-top:18px;border-top:1px solid var(--bg-soft);
+  }
+  .testi-av{
+    width:42px;height:42px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+  }
+  .testi.t2 .testi-av{background:linear-gradient(135deg,var(--mint),#14B8A6)}
+  .testi.t3 .testi-av{background:linear-gradient(135deg,var(--rose),#EC4899)}
+  .testi-foot .nm{font-size:14px;font-weight:500;color:var(--ink)}
+  .testi-foot .ro{font-size:12px;color:var(--ink-4);margin-top:2px}
+
+  /* ============ FAQ ============ */
+  .faq-grid{max-width:820px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:26px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  details summary{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Bricolage Grotesque',serif;
+    font-size:clamp(18px,2vw,22px);
+    font-weight:500;color:var(--ink);
+    list-style:none;cursor:pointer;gap:16px;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary .plus{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--bg-soft);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;transition:transform .3s, background .3s;
+    font-weight:400;
+  }
+  details[open] summary .plus{transform:rotate(45deg);background:var(--accent);color:#fff}
+  details .answer{
+    margin-top:18px;color:var(--ink-3);
+    max-width:62ch;font-size:16px;line-height:1.6;
+  }
+
+  /* ============ CTA BANNER ============ */
+  .cta-banner{
+    border-radius:var(--radius-xl);
+    margin:clamp(60px,8vw,100px) var(--pad) 0;
+    padding:clamp(50px,8vw,100px) clamp(30px,5vw,80px);
+    background:
+      radial-gradient(circle at 80% 10%, rgba(245,158,11,0.3) 0%, transparent 40%),
+      radial-gradient(circle at 10% 90%, rgba(234,88,12,0.2) 0%, transparent 40%),
+      linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+    color:#fff;text-align:center;position:relative;overflow:hidden;
+  }
+  @media(max-width:700px){.cta-banner{margin:60px 0 0;border-radius:0}}
+  .cta-banner h2{color:#fff;font-size:clamp(34px,5vw,58px);max-width:20ch;margin:0 auto}
+  .cta-banner p{margin:24px auto 0;max-width:50ch;color:rgba(255,255,255,0.7);font-size:17px}
+  .cta-banner .cta-row{margin-top:40px}
+  .cta-banner .btn-primary{background:#fff;color:var(--ink)}
+  .cta-banner .btn-primary:hover{background:var(--accent);color:#fff}
+  .cta-banner .btn-ghost{border-color:rgba(255,255,255,0.2);color:#fff}
+  .cta-banner .btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.4)}
+
+  /* ============ FOOTER ============ */
+  footer{padding:60px 0 40px;font-size:14px;color:var(--ink-3)}
+  .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;
+    border-top:1px solid var(--line);padding-top:32px;
+  }
+  .foot-links{display:flex;gap:28px;flex-wrap:wrap}
+  .foot-links a:hover{color:var(--accent)}
+
+  /* Reveal */
+  .reveal{
+    opacity:0;transform:translateY(30px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="Aevio One — Accueil">
+      <img class="logo-mark" src="images/logo-aevio-one-clean.png" alt="Aevio One" />
+      Aevio One
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#processus">Processus</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Parlons-en →</a>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Studio digital · France</div>
+    <h1>Des solutions digitales<br/><em>qui marquent.</em></h1>
+    <p class="sub">Sites vitrines, plateformes SaaS, CRM métier, applications web et mobile, outils sur mesure. On dessine, on code, on déploie — de l'idée au produit vivant.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Démarrer un projet <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+    </div>
+
+    <!-- Hero showcase composition -->
+    <div class="hero-showcase">
+
+      <!-- Center hub — dashboard mockup -->
+      <div class="hub">
+        <div class="hub-side">
+          <div class="h-logo"></div>
+          <div class="h-i on">▦</div>
+          <div class="h-i">◎</div>
+          <div class="h-i">☰</div>
+          <div class="h-i">◐</div>
+          <div class="h-i">⚙</div>
+        </div>
+        <div class="hub-main">
+          <div class="hub-top">
+            <div class="hub-title">Tableau de bord · Q4</div>
+            <div class="hub-pill">+ 18% · 30j</div>
+          </div>
+          <div class="hub-stats">
+            <div class="hub-stat">
+              <div class="l">Revenus</div>
+              <div class="v">€ 184k</div>
+              <div class="d">+12,4%</div>
+            </div>
+            <div class="hub-stat">
+              <div class="l">Clients</div>
+              <div class="v">2 410</div>
+              <div class="d">+143</div>
+            </div>
+            <div class="hub-stat">
+              <div class="l">Taux conv.</div>
+              <div class="v">3,8%</div>
+              <div class="d">+0,6pt</div>
+            </div>
+            <div class="hub-stat">
+              <div class="l">NPS</div>
+              <div class="v">62</div>
+              <div class="d">+5</div>
+            </div>
+          </div>
+          <div class="hub-chart">
+            <svg viewBox="0 0 280 70" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3730A3" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#3730A3" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,55 L30,48 L60,52 L90,38 L120,42 L150,30 L180,34 L210,22 L240,26 L280,12 L280,70 L0,70 Z" fill="url(#hg)"/>
+              <path d="M0,55 L30,48 L60,52 L90,38 L120,42 L150,30 L180,34 L210,22 L240,26 L280,12" stroke="#1E1B4B" stroke-width="2" fill="none"/>
+              <circle cx="280" cy="12" r="3" fill="#EA580C"/>
+            </svg>
+          </div>
+          <div class="hub-rows">
+            <div class="hub-row">
+              <div class="av"></div>
+              <div class="nm">Maison Belle · Provence</div>
+              <span class="tg tg-hot">Chaud</span>
+            </div>
+            <div class="hub-row">
+              <div class="av" style="background:linear-gradient(135deg,var(--mint),#14B8A6)"></div>
+              <div class="nm">Atelier 9 · Marseille</div>
+              <span class="tg tg-new">Nouveau</span>
+            </div>
+            <div class="hub-row">
+              <div class="av" style="background:linear-gradient(135deg,var(--rose),#EC4899)"></div>
+              <div class="nm">Volta · Lyon</div>
+              <span class="tg tg-prio">Prioritaire</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating phone -->
+      <div class="float-phone">
+        <div class="ph-screen">
+          <div class="ph-top">
+            <div class="ph-greet">LUNDI · 09:42</div>
+            <div class="ph-name">Bonjour,<br/>Léa</div>
+          </div>
+          <div class="ph-card">
+            <div class="l">Ce mois</div>
+            <div class="v">€ 4 820</div>
+          </div>
+          <div class="ph-bars">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="ph-nav">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating browser preview -->
+      <div class="float-browser">
+        <div class="fb-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="url">maisonbelle.fr</span>
+        </div>
+        <div class="fb-body">
+          <div class="fb-h">L'art de vivre <em>raffiné.</em></div>
+          <div class="fb-sub">Maison d'hôtes · Provence</div>
+          <div class="fb-cards">
+            <div></div><div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating notification -->
+      <div class="float-notif">
+        <div class="n-ico">+</div>
+        <div>
+          <div class="n-title">Nouveau lead qualifié</div>
+          <div class="n-sub">Atelier 9 · il y a 2 min</div>
+        </div>
+      </div>
+
+      <!-- Floating stat card -->
+      <div class="float-stat">
+        <div class="s-l">Conversion</div>
+        <div class="s-v">7,2%</div>
+        <svg class="s-spark" viewBox="0 0 80 30" preserveAspectRatio="none">
+          <path d="M0,22 L10,18 L20,20 L30,12 L40,15 L50,8 L60,10 L70,4 L80,6" stroke="#10B981" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============== SERVICES ============== -->
+<section class="block" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Ce qu'on fait</span>
+      <h2>Un partenaire. <em>Tous les métiers du digital.</em></h2>
+      <p>On prend en charge vos projets de bout en bout — design, développement, intégration, déploiement, maintenance. Voici ce qu'on fait le mieux.</p>
+    </div>
+
+    <!-- Service 1 : Sites web -->
+    <div class="service reveal">
+      <div class="service-text">
+        <span class="num">01 · SITES WEB</span>
+        <h3>Sites vitrines & e-commerce qui convertissent.</h3>
+        <p>Du site sur-mesure à fort impact visuel à la boutique en ligne optimisée pour la vente. Design unique, performances au top, référencement naturel soigné et contenu qui raconte votre histoire.</p>
+        <div class="chip-list">
+          <span class="chip">Site vitrine</span>
+          <span class="chip">E-commerce</span>
+          <span class="chip">Landing page</span>
+          <span class="chip">SEO technique</span>
+          <span class="chip">Headless CMS</span>
+        </div>
+      </div>
+      <div class="service-visual v-sites">
+        <div class="shot-stack shot-sites-stack">
+          <div class="browser-mockup browser-back">
+            <div class="browser-bar">
+              <span class="d"></span><span class="d"></span><span class="d"></span>
+              <span class="url">simplify-pro.com/alertes</span>
+            </div>
+            <div class="browser-body shot-body">
+              <img src="images/simplifypro-alerts.png" alt="SimplifyPro — page alertes en temps réel" loading="lazy" />
+            </div>
+          </div>
+          <div class="browser-mockup browser-front">
+            <div class="browser-bar">
+              <span class="d"></span><span class="d"></span><span class="d"></span>
+              <span class="url">simplify-pro.com</span>
+            </div>
+            <div class="browser-body shot-body">
+              <img src="images/simplifypro-landing.png" alt="SimplifyPro — page d'accueil" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 2 : CRM -->
+    <div class="service reverse reveal">
+      <div class="service-text">
+        <span class="num">02 · CRM</span>
+        <h3>Un CRM taillé pour votre métier.</h3>
+        <p>Stop aux tableurs et aux outils génériques. On bâtit des CRM pensés pour votre cycle de vente, vos équipes, vos indicateurs. Import de l'existant, automatisations, reporting — tout est prévu.</p>
+        <div class="chip-list">
+          <span class="chip">Gestion contacts</span>
+          <span class="chip">Pipeline commercial</span>
+          <span class="chip">Automatisations</span>
+          <span class="chip">Reporting</span>
+          <span class="chip">Intégrations email</span>
+        </div>
+      </div>
+      <div class="service-visual v-crm">
+        <div class="shot-stack shot-crm-stack">
+          <div class="shot-frame shot-crm-back">
+            <img src="images/crmlit-emails.png" alt="CRMLit — campagnes email" loading="lazy" />
+          </div>
+          <div class="shot-frame shot-crm-front">
+            <img src="images/crmlit-dashboard.png" alt="CRMLit — tableau de bord du CRM hôtellerie literie" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 3 : SaaS -->
+    <div class="service reveal">
+      <div class="service-text">
+        <span class="num">03 · SAAS</span>
+        <h3>Votre plateforme SaaS, de zéro à la production.</h3>
+        <p>Une idée de produit ? On construit l'ensemble : architecture, base de données, authentification, facturation, tableau de bord. Stack moderne, code propre, prêt à scaler.</p>
+        <div class="chip-list">
+          <span class="chip">Auth & permissions</span>
+          <span class="chip">Facturation Stripe</span>
+          <span class="chip">Multi-tenant</span>
+          <span class="chip">API REST / GraphQL</span>
+          <span class="chip">Hébergement cloud</span>
+        </div>
+      </div>
+      <div class="service-visual v-saas">
+        <div class="saas-app">
+          <div class="saas-side">
+            <div class="logo-s"></div>
+            <div class="ic active">▦</div>
+            <div class="ic">◎</div>
+            <div class="ic">☰</div>
+            <div class="ic">◐</div>
+          </div>
+          <div class="saas-main">
+            <div class="saas-head">
+              <h4>Mes projets</h4>
+              <div class="saas-search">⌕ Rechercher</div>
+            </div>
+            <div class="saas-grid">
+              <div class="saas-card a"><span class="tag">ACTIF</span><h5>Refonte site vitrine</h5><div class="prog"><span></span></div></div>
+              <div class="saas-card b"><span class="tag">EN COURS</span><h5>Module facturation</h5><div class="prog"><span></span></div></div>
+              <div class="saas-card c"><span class="tag">LIVRÉ</span><h5>App mobile V2</h5><div class="prog"><span></span></div></div>
+              <div class="saas-card d"><span class="tag">TODO</span><h5>Automatisation CRM</h5><div class="prog"><span></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 4 : Apps -->
+    <div class="service reverse reveal">
+      <div class="service-text">
+        <span class="num">04 · APPS</span>
+        <h3>Applications web & mobile.</h3>
+        <p>Une app pour vos clients, pour vos équipes, pour votre communauté. On conçoit des expériences fluides, rapides et belles — iOS, Android, web, avec une base de code unique quand c'est pertinent.</p>
+        <div class="chip-list">
+          <span class="chip">iOS & Android</span>
+          <span class="chip">React Native</span>
+          <span class="chip">PWA</span>
+          <span class="chip">Notifications push</span>
+          <span class="chip">Mode hors-ligne</span>
+        </div>
+      </div>
+      <div class="service-visual v-apps">
+        <div class="phones phones-real">
+          <div class="iphone iphone-back">
+            <img src="images/padel-phone-2.png" alt="Padel Club — partie créée, partager via WhatsApp" loading="lazy" />
+          </div>
+          <div class="iphone iphone-front">
+            <img src="images/padel-phone-1.png" alt="Padel Club — vue des parties à venir" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 5 : Outils sur mesure -->
+    <div class="service reveal">
+      <div class="service-text">
+        <span class="num">05 · OUTILS SUR MESURE</span>
+        <h3>Des outils internes qui font gagner du temps.</h3>
+        <p>Générateurs de devis, plannings d'équipe, portails clients, automatisations entre vos logiciels existants. Si ça n'existe pas — ou que ça existe mal — on le crée exactement pour vous.</p>
+        <div class="chip-list">
+          <span class="chip">Générateurs de devis</span>
+          <span class="chip">Portails clients</span>
+          <span class="chip">Automatisations</span>
+          <span class="chip">Intégrations API</span>
+          <span class="chip">Back-offices</span>
+        </div>
+      </div>
+      <div class="service-visual v-tools">
+        <div class="tools-canvas">
+          <svg class="tools-lines" viewBox="0 0 500 375" preserveAspectRatio="none">
+            <path d="M 90 50 Q 200 80 240 170" />
+            <path d="M 410 45 Q 320 90 260 170" />
+            <path d="M 250 220 Q 200 280 120 310" />
+            <path d="M 260 220 Q 370 280 430 310" />
+          </svg>
+          <div class="node n1"><span class="ico">F</span>Formulaire</div>
+          <div class="node n2"><span class="ico">@</span>Email</div>
+          <div class="node n3"><span class="ico">⚙</span>Automatisation</div>
+          <div class="node n4"><span class="ico">DB</span>Base de données</div>
+          <div class="node n5"><span class="ico">$</span>Facturation</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== INDUSTRIES ============== -->
+<section class="industries">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:0">
+      <span class="kicker">Pour qui</span>
+      <h2>Des secteurs <em>très différents.</em><br/>Une même rigueur.</h2>
+      <p>On accompagne des indépendants, des PME et des scale-ups. Ce qui compte : un projet ambitieux et une équipe prête à faire bouger les choses.</p>
+    </div>
+    <div class="industries-grid reveal">
+      <div class="ind-card c1">
+        <div class="ind-ico">H</div>
+        <h5>Hôtellerie</h5>
+        <p>Sites de réservation, CRM commerciaux, plateformes de gestion multi-établissements.</p>
+      </div>
+      <div class="ind-card c2">
+        <div class="ind-ico">R</div>
+        <h5>Restaurants</h5>
+        <p>Sites vitrines, click & collect, applications de fidélité, gestion de menus.</p>
+      </div>
+      <div class="ind-card c3">
+        <div class="ind-ico">S</div>
+        <h5>Santé & bien-être</h5>
+        <p>Prise de rendez-vous, dossiers patients, suivis, applications coach et thérapeutes.</p>
+      </div>
+      <div class="ind-card c4">
+        <div class="ind-ico">B</div>
+        <h5>BTP & artisans</h5>
+        <p>Plannings de chantier, devis automatisés, suivi équipes, vitrines portfolios.</p>
+      </div>
+      <div class="ind-card c5">
+        <div class="ind-ico">F</div>
+        <h5>FinTech</h5>
+        <p>Plateformes SaaS, outils d'analyse, dashboards temps réel, intégrations bancaires.</p>
+      </div>
+      <div class="ind-card c6">
+        <div class="ind-ico">E</div>
+        <h5>E-commerce & marques</h5>
+        <p>Boutiques en ligne, headless commerce, automatisations marketing, fidélisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROCESS ============== -->
+<section class="block" id="processus">
+  <div class="process-section">
+    <div class="section-head reveal">
+      <span class="kicker" style="color:var(--accent-2)">Méthode</span>
+      <h2>De l'idée au produit vivant. <em style="color:var(--accent-2)">En 4 temps.</em></h2>
+      <p>Une méthode simple, transparente, qui nous évite les mauvaises surprises et vous donne de la visibilité à chaque étape.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step-num">01 / CADRAGE</span>
+        <h4>On écoute.</h4>
+        <p>Un ou deux ateliers pour comprendre vos enjeux, vos utilisateurs, votre existant. On repart avec un brief clair et un périmètre net.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">02 / DESIGN</span>
+        <h4>On dessine.</h4>
+        <p>Wireframes, maquettes haute fidélité, prototype cliquable. Vous validez l'expérience avant qu'une ligne de code ne soit écrite.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">03 / BUILD</span>
+        <h4>On construit.</h4>
+        <p>Sprints courts, démos régulières, accès permanent à l'avancement. Code propre, testé, documenté.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">04 / LIVE</span>
+        <h4>On met en ligne.</h4>
+        <p>Déploiement, formation de vos équipes, suivi post-lancement. On reste à vos côtés pour faire évoluer le produit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TÉMOIGNAGES ============== -->
+<section class="block">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Ils en parlent</span>
+      <h2>Ce que nos clients <em>retiennent.</em></h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi t1">
+        <blockquote>Aevio One a remplacé un patchwork d'outils par un CRM unique. Trois mois plus tard, l'équipe commerciale a doublé son taux de conversion.</blockquote>
+        <div class="testi-foot">
+          <div class="testi-av"></div>
+          <div>
+            <div class="nm">Thomas D.</div>
+            <div class="ro">Directeur commercial · Spécialiste literie hôtellerie</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi t2">
+        <blockquote>On est arrivé avec une idée. Ils sont partis avec, l'ont dessinée, codée, mise en ligne. Notre SaaS tourne en production depuis six mois sans accroc.</blockquote>
+        <div class="testi-foot">
+          <div class="testi-av"></div>
+          <div>
+            <div class="nm">Sophie R.</div>
+            <div class="ro">Co-fondatrice · Plateforme FinTech</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi t3">
+        <blockquote>Site vitrine en quatre semaines, refonte complète de l'identité, et un trafic qui a triplé en un trimestre. On recommande sans hésiter.</blockquote>
+        <div class="testi-foot">
+          <div class="testi-av"></div>
+          <div>
+            <div class="nm">Camille V.</div>
+            <div class="ro">Fondatrice · Maison d'hôtes en Provence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="block" id="faq" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Questions <em>fréquentes.</em></h2>
+      <p>Tout ce qu'on vous répond le plus souvent avant de démarrer un projet ensemble.</p>
+    </div>
+    <div class="faq-grid reveal">
+      <details>
+        <summary>Combien coûte un projet avec Aevio One ?<span class="plus">+</span></summary>
+        <div class="answer">Chaque projet est sur mesure, donc les budgets varient : un site vitrine démarre autour de 3 500 €, un CRM métier ou une application autour de 15 000 €, et les plateformes SaaS plus complexes se chiffrent au cas par cas. On vous remet un devis précis après le premier échange de cadrage, sans engagement.</div>
+      </details>
+      <details>
+        <summary>Quels sont les délais moyens ?<span class="plus">+</span></summary>
+        <div class="answer">Comptez 3 à 5 semaines pour un site vitrine, 6 à 10 semaines pour un CRM ou un outil interne, et 3 à 6 mois pour un SaaS ou une application mobile aboutie. On construit un planning précis au moment du devis et on tient les échéances.</div>
+      </details>
+      <details>
+        <summary>Proposez-vous de la maintenance après la mise en ligne ?<span class="plus">+</span></summary>
+        <div class="answer">Oui. Contrat de maintenance mensuel, forfaits d'évolution, ou intervention à la demande — on s'adapte à votre usage. La plupart de nos clients préfèrent un contrat mensuel qui couvre corrections, mises à jour de sécurité et petites évolutions.</div>
+      </details>
+      <details>
+        <summary>Avec quelles technologies travaillez-vous ?<span class="plus">+</span></summary>
+        <div class="answer">Côté web : Next.js, React, Astro, Webflow selon les besoins. Côté mobile : React Native ou natif. Côté back : Node.js, Python, PostgreSQL, Supabase, Stripe. On choisit la stack la plus adaptée à votre projet et à votre équipe — pas l'inverse.</div>
+      </details>
+      <details>
+        <summary>Peut-on reprendre un projet déjà commencé ?<span class="plus">+</span></summary>
+        <div class="answer">Absolument. On audite le code existant, on vous remet un diagnostic honnête (ce qu'on garde, ce qu'on refait), puis on vous propose un plan d'action clair. Beaucoup de nos clients arrivent comme ça.</div>
+      </details>
+      <details>
+        <summary>Qui est propriétaire du code et des comptes ?<span class="plus">+</span></summary>
+        <div class="answer">Vous. Tout le code est livré sur votre dépôt Git, les comptes d'hébergement et les services tiers sont à votre nom. Aucune dépendance à Aevio One pour faire vivre votre projet.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section id="contact">
+  <div class="cta-banner reveal">
+    <h2>Prêt à donner vie à votre projet ?</h2>
+    <p>Un premier échange de 30 minutes, sans engagement. On comprend votre besoin, on vous dit ce qu'on peut faire, et à combien.</p>
+    <div class="cta-row">
+      <a href="mailto:yoann@aevio-one.com" class="btn btn-primary">Écrire à Aevio One <span class="arrow">→</span></a>
+      <a href="#" class="btn btn-ghost">Prendre rendez-vous</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container foot-inner">
+    <div>© 2026 Aevio One · Solutions digitales sur mesure</div>
+    <div class="foot-links">
+      <a href="#services">Services</a>
+      <a href="#processus">Processus</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:yoann@aevio-one.com">Contact</a>
+      <a href="#">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
