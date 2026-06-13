@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Assistant Commercial</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMjciIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iIzJGNjJGRiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTMyIDE3IEwyMSA0NyBNMzIgMTcgTDQzIDQ3IE0yNC41IDM5IEwzOS41IDM5IiBmaWxsPSJub25lIiBzdHJva2U9IiMyRjYyRkYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2F62FF;
+    --blue-dark:#2350E6;
+    --blue-tint:#EAF0FF;
+    --ink:#111A37;
+    --muted:#5B6B85;
+    --bg:#FFFFFF;
+    --card:#FFFFFF;
+    --line:#E9ECF3;
+    --field:#F5F7FB;
+    --success:#1FA463;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:
+      radial-gradient(900px 380px at 50% -8%, rgba(47,98,255,.07), transparent 70%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+    min-height:100vh;
+    padding:32px 20px 64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;}
+
+  header.top{text-align:center;margin:8px 0 30px;}
+  .logo{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:14px;
+    background:linear-gradient(180deg,#3A6BFF,#2350E6);
+    color:#fff;margin-bottom:18px;
+    box-shadow:0 10px 22px -8px rgba(47,98,255,.6);
+  }
+  .logo svg{width:24px;height:24px;}
+  h1{
+    font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.08;
+    letter-spacing:-.02em;margin:0 auto 14px;max-width:15ch;color:var(--ink);
+  }
+  h1 .hl{color:var(--blue);}
+  .lede{color:var(--muted);font-size:16px;margin:0 auto;max-width:52ch;font-weight:500;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:0 1px 2px rgba(17,26,55,.04), 0 24px 48px -32px rgba(17,26,55,.28);
+    padding:24px;
+    margin-top:20px;
+  }
+  .card h2{
+    font-size:15px;font-weight:700;letter-spacing:-.01em;
+    color:var(--ink);margin:0 0 16px;
+  }
+
+  /* tabs */
+  .switch{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+    background:var(--field);border:1px solid var(--line);
+    border-radius:14px;padding:8px;
+  }
+  .switch button{
+    appearance:none;border:1px solid transparent;cursor:pointer;
+    font-family:inherit;font-size:14px;font-weight:600;
+    color:var(--muted);background:transparent;
+    padding:14px 10px;border-radius:11px;text-align:center;
+    transition:background .18s,color .18s,box-shadow .18s,border-color .18s;
+    line-height:1.25;
+  }
+  .switch button .ic{display:block;font-size:20px;margin-bottom:6px;}
+  .switch button:hover{color:var(--ink);}
+  .switch button[aria-pressed="true"]{
+    background:var(--blue-tint);color:var(--blue);
+    border-color:rgba(47,98,255,.18);
+    box-shadow:0 6px 16px -10px rgba(47,98,255,.5);
+  }
+  .switch button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+  /* fields */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field.full{grid-column:1 / -1;}
+  label{font-size:13px;font-weight:600;color:var(--ink);}
+  label .hint{font-weight:400;color:var(--muted);}
+  input,select{
+    font-family:inherit;font-size:14.5px;color:var(--ink);
+    background:var(--field);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px;width:100%;
+    transition:border-color .15s,box-shadow .15s,background .15s;
+  }
+  input::placeholder{color:#9AA6BC;}
+  input:focus,select:focus{
+    outline:none;border-color:var(--blue);background:#fff;
+    box-shadow:0 0 0 4px rgba(47,98,255,.13);
+  }
+  select{cursor:pointer;}
+
+  /* toggle (matin/soir) */
+  .toggle{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .toggle label{
+    cursor:pointer;border:1.5px solid var(--line);border-radius:14px;
+    background:var(--field);padding:16px 18px;display:flex;flex-direction:column;gap:3px;
+    transition:border-color .15s,background .15s,box-shadow .15s;
+  }
+  .toggle input{position:absolute;opacity:0;pointer-events:none;width:0;height:0;}
+  .toggle .t-title{font-weight:700;font-size:16px;}
+  .toggle .t-sub{font-size:13px;color:var(--muted);}
+  .toggle label:has(input:checked){
+    border-color:var(--blue);background:var(--blue-tint);
+    box-shadow:0 0 0 4px rgba(47,98,255,.10);
+  }
+  .toggle label:has(input:checked) .t-title{color:var(--blue);}
+  .toggle label:focus-within{outline:2px solid var(--blue);outline-offset:2px;}
+
+  .note{
+    font-size:13px;color:var(--muted);margin:16px 0 0;
+    padding:12px 14px;background:var(--field);border-radius:12px;
+  }
+
+  /* prompt output */
+  .out-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+  .out-head h2{margin:0;}
+  textarea{
+    width:100%;min-height:240px;resize:vertical;
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.65;
+    color:#2A3550;background:var(--field);
+    border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    white-space:pre-wrap;
+  }
+  textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,98,255,.13);}
+
+  .copy{
+    appearance:none;border:0;cursor:pointer;
+    font-family:inherit;font-size:14.5px;font-weight:700;color:#fff;
+    background:var(--blue);border-radius:12px;padding:12px 20px;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 8px 18px -8px rgba(47,98,255,.55);
+    transition:background .15s,transform .08s,box-shadow .15s;
+    white-space:nowrap;
+  }
+  .copy:hover{background:var(--blue-dark);box-shadow:0 10px 22px -8px rgba(47,98,255,.6);}
+  .copy:active{transform:translateY(1px);}
+  .copy:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .copy.done{background:var(--success);box-shadow:0 8px 18px -8px rgba(31,164,99,.5);}
+  .copy svg{width:16px;height:16px;}
+
+  footer{margin-top:26px;text-align:center;color:var(--muted);font-size:12.5px;}
+
+  @media (max-width:560px){
+    body{padding:24px 14px 48px;}
+    .grid{grid-template-columns:1fr;}
+    .switch button{font-size:13px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>Mon Assistant <span class="hl">Commercial</span></h1>
+    <p class="lede">Choisis une tâche, renseigne la variable, copie le prompt et colle-le dans Claude (navigateur).</p>
+  </header>
+
+  <!-- Skill selector -->
+  <div class="card">
+    <h2>1 · Tâche</h2>
+    <div class="switch" role="group" aria-label="Choix de la tâche">
+      <button type="button" data-skill="pointage" aria-pressed="true">
+        <span class="ic" aria-hidden="true">⏱</span>Pointage quotidien
+      </button>
+      <button type="button" data-skill="compte" aria-pressed="false">
+        <span class="ic" aria-hidden="true">🏨</span>Création de compte
+      </button>
+      <button type="button" data-skill="rapport" aria-pressed="false">
+        <span class="ic" aria-hidden="true">📊</span>Rapport commissions &amp; bonus
+      </button>
+      <button type="button" data-skill="visite" aria-pressed="false">
+        <span class="ic" aria-hidden="true">📝</span>Clôture Visites de la semaine
+      </button>
+    </div>
+  </div>
+
+  <!-- Variables -->
+  <div class="card">
+    <h2>2 · Variable<span id="varPlural">s</span></h2>
+
+    <!-- POINTAGE -->
+    <div id="form-pointage" class="form">
+      <div class="toggle">
+        <label>
+          <input type="radio" name="moment" value="matin" checked>
+          <span class="t-title">Matin</span>
+          <span class="t-sub">Pointage d'arrivée · « Work time »</span>
+        </label>
+        <label>
+          <input type="radio" name="moment" value="soir">
+          <span class="t-title">Soir</span>
+          <span class="t-sub">Fin de journée · « Stop »</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- RAPPORT -->
+    <div id="form-rapport" class="form" hidden>
+      <div class="grid">
+        <div class="field full">
+          <label for="r-emp">Nom et numéro de l'employé</label>
+          <input id="r-emp" type="text" value="VARLOUD Yoann - 41">
+        </div>
+        <div class="field">
+          <label for="r-year">Année souhaitée</label>
+          <input id="r-year" type="text" value="2026" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPTE -->
+    <div id="form-compte" class="form" hidden>
+      <div class="grid">
+        <div class="field full">
+          <label for="c-nom">Nom du compte</label>
+          <input id="c-nom" type="text" placeholder="ex. Hôtel du Cap-Eden-Roc">
+        </div>
+        <div class="field full">
+          <label for="c-cat">Catégorie business <span class="hint">(Sub-Classification)</span></label>
+          <input id="c-cat" type="text" placeholder="ex. Co-living, Developer, Facility Management company">
+        </div>
+        <div class="field full">
+          <label for="c-rue">Adresse <span class="hint">(Street)</span></label>
+          <input id="c-rue" type="text" placeholder="ex. Boulevard John Fitzgerald Kennedy">
+        </div>
+        <div class="field">
+          <label for="c-cp">Code postal <span class="hint">(Zip)</span></label>
+          <input id="c-cp" type="text" placeholder="ex. 06160">
+        </div>
+        <div class="field">
+          <label for="c-ville">Ville <span class="hint">(City/Suburb)</span></label>
+          <input id="c-ville" type="text" placeholder="ex. Antibes">
+        </div>
+        <div class="field">
+          <label for="c-prenom">Prénom du contact</label>
+          <input id="c-prenom" type="text">
+        </div>
+        <div class="field">
+          <label for="c-nomc">Nom du contact</label>
+          <input id="c-nomc" type="text">
+        </div>
+        <div class="field">
+          <label for="c-genre">Genre</label>
+          <select id="c-genre">
+            <option value="">,</option>
+            <option>Homme</option>
+            <option>Femme</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-fonction">Fonction <span class="hint">(Job Title)</span></label>
+          <input id="c-fonction" type="text" placeholder="ex. Directeur du spa">
+        </div>
+        <div class="field">
+          <label for="c-mobile">Téléphone mobile</label>
+          <input id="c-mobile" type="tel" placeholder="ex. 06 12 34 56 78">
+        </div>
+        <div class="field">
+          <label for="c-email">Adresse e-mail</label>
+          <input id="c-email" type="email" placeholder="ex. contact@hotel.com">
+        </div>
+        <div class="field full">
+          <label for="c-notifs">Préférences de notification</label>
+          <input id="c-notifs" type="text" placeholder="ex. Surveys for satisfaction, CC Delivery Note without price">
+        </div>
+        <div class="field">
+          <label for="c-etoiles">Classement étoiles</label>
+          <select id="c-etoiles">
+            <option value="">,</option>
+            <option>3-Midscale</option>
+            <option>4-Upper/Upscale</option>
+            <option>5-Lux</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-gym">Dimension de la salle de sport</label>
+          <input id="c-gym" type="text" placeholder="ex. catégorie Gym Dimension">
+        </div>
+      </div>
+      <p class="note">Pays réglé sur « France » par défaut. L'enregistrement final se fait après confirmation dans Salesforce.</p>
+    </div>
+    <!-- VISITE -->
+    <div id="form-visite" class="form" hidden>
+      <div class="field full">
+        <label for="v-semaine">Semaine à traiter <span class="hint">(lundi à vendredi)</span></label>
+        <select id="v-semaine"></select>
+      </div>
+      <p class="note">Toutes les autres valeurs du rapport sont fixes et reportées à l'identique d'une visite à l'autre. Le rapport n'est pas enregistré automatiquement.</p>
+    </div>
+
+  </div>
+
+  <!-- Output -->
+  <div class="card">
+    <div class="out-head">
+      <h2>3 · Prompt à copier</h2>
+      <button id="copyBtn" class="copy" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="copyLabel">Copier</span>
+      </button>
+    </div>
+    <textarea id="output" readonly spellcheck="false"></textarea>
+  </div>
+
+  <footer>Outil interne · Yoann Varloud · les variables ne sont jamais transmises tant que tu ne copies pas le texte.</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var SF_URL = "https://performancemanager5.successfactors.eu/sf/home?bplte_company=technogymsP&_s.crb=Rk%2foP4N8UGgnzMKF5rSEwpCWx7z%2f%2f%2fOF5tHc6ZYggzg%3d";
+  var TOOLS = "Utilise get_page_text, read_page et javascript_tool autant que possible. N'utilise computer (screenshot) qu'en dernier recours.";
+
+  var MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function currentWeekLabel(){
+    var d = new Date();
+    var day = d.getDay(); // 0 dimanche .. 6 samedi
+    var toMon = (day === 0 ? -6 : 1 - day);
+    var mon = new Date(d); mon.setDate(d.getDate() + toMon);
+    var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+    var dM = mon.getDate(), dS = sun.getDate();
+    var mM = mon.getMonth(), mS = sun.getMonth();
+    var yM = mon.getFullYear(), yS = sun.getFullYear();
+    if (mM === mS && yM === yS) {
+      return "Semaine du " + dM + " au " + dS + " " + MONTHS_FR[mM] + " " + yS;
+    }
+    var head = (yM !== yS) ? (dM + " " + MONTHS_FR[mM] + " " + yM) : (dM + " " + MONTHS_FR[mM]);
+    return "Semaine du " + head + " au " + dS + " " + MONTHS_FR[mS] + " " + yS;
+  }
+
+  // --- Semaines ISO (lundi-dimanche), années 2026 à 2030 ---
+  function isoWeeksInYear(y){
+    function pp(yy){ return (yy + Math.floor(yy/4) - Math.floor(yy/100) + Math.floor(yy/400)) % 7; }
+    return (pp(y) === 4 || pp(y-1) === 3) ? 53 : 52;
+  }
+  function isoWeekMonday(y, w){
+    var jan4 = new Date(Date.UTC(y, 0, 4));
+    var dow = jan4.getUTCDay() || 7;
+    var mon = new Date(jan4);
+    mon.setUTCDate(jan4.getUTCDate() - (dow - 1) + (w - 1) * 7);
+    return mon;
+  }
+  function fmtRange(mon, sun){
+    var dM=mon.getUTCDate(), dS=sun.getUTCDate(), mM=mon.getUTCMonth(), mS=sun.getUTCMonth(), yM=mon.getUTCFullYear(), yS=sun.getUTCFullYear();
+    if(mM===mS && yM===yS) return dM + " au " + dS + " " + MONTHS_FR[mM] + " " + yS;
+    var head = (yM!==yS) ? (dM + " " + MONTHS_FR[mM] + " " + yM) : (dM + " " + MONTHS_FR[mM]);
+    return head + " au " + dS + " " + MONTHS_FR[mS] + " " + yS;
+  }
+  function populateWeeks(select){
+    var now = new Date();
+    var curMon = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+    var cd = curMon.getUTCDay() || 7;
+    curMon.setUTCDate(curMon.getUTCDate() - (cd - 1));
+    var curTime = curMon.getTime();
+    for(var y=2026; y<=2030; y++){
+      var og = document.createElement('optgroup');
+      og.label = String(y);
+      var n = isoWeeksInYear(y);
+      for(var w=1; w<=n; w++){
+        var mon = isoWeekMonday(y, w);
+        var sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+        var range = fmtRange(mon, sun);
+        var opt = document.createElement('option');
+        opt.value = "semaine " + w + " (du " + range + ")";
+        opt.textContent = "Semaine " + w + " \u00B7 " + range;
+        if(mon.getTime() === curTime) opt.selected = true;
+        og.appendChild(opt);
+      }
+      select.appendChild(og);
+    }
+  }
+
+  var current = "pointage";
+  var output = document.getElementById('output');
+
+  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+  function line(label, v){ return "- " + label + " : " + (v || ""); }
+
+  function buildPointage(){
+    var moment = (document.querySelector('input[name="moment"]:checked')||{}).value || "matin";
+    var action = moment === "soir" ? "Stop" : "Work time";
+    return "Va sur le site « SuccessFactors : Accueil » qui est en favori dont l'adresse est " + SF_URL +
+      ", dans « Actions rapides » cliques sur « Mes horaires », puis clique « Horaire » qui est en menu déroulant et choisit « " + action + " ».\n" +
+      TOOLS;
+  }
+
+  function buildRapport(){
+    var emp = val('r-emp') || "VARLOUD Yoann - 41";
+    var year = val('r-year') || "2026";
+    return [
+      "Dans SAP BusinessObjects BI, génère le rapport « 1. Reporting Summary » des commissions et bonus.",
+      "",
+      "Accès : va sur https://tgweb.technogym.com/BOE/BI (username yvarloud à pré-remplir s'il est absent ; le mot de passe est saisi par moi). Si une session est déjà active, ne te reconnecte pas.",
+      "",
+      "Navigation : My Documents, Folders, Public Folders ; ouvre le dossier « @FL800 Sales Incentives », puis le sous-dossier « @FL805 SI », et ouvre le rapport « Reporting Summary » (1. Reporting Summary).",
+      "",
+      "Paramétrage (fenêtre Prompts) : ferme la fenêtre via Cancel, puis dans « User Prompt Input » :",
+      line("Company", "clique sur « (--Show List Of Values--) », attends le chargement, puis choisis « TG France »"),
+      line("Employee", "remplace « ALL » par « " + emp + " »"),
+      line("Year", year),
+      "Valide avec Entrée et attends. Quand la fenêtre « Retrieving Data » apparaît, clique sur « OK ». Garde les paramètres par défaut : Show Hidden Models? = No, Show other to liquidate? = Historical.",
+      "",
+      "Méthode : privilégie get_page_text, read_page et javascript_tool. Les champs sont dans des iframes imbriquées (Company = select#PV1List, Employee = input#PV2, Year = input#PV5, Show other to liquidate = select#PV4List) ; définis les valeurs via JavaScript en déclenchant l'événement change (pour Company, sélectionne d'abord « Show List Of Values » et déclenche change pour charger la liste, puis « TG France »). N'utilise computer (screenshot) qu'en dernier recours, notamment pour les boutons Flash (Cancel, OK)."
+    ].join("\n");
+  }
+
+  function buildCompte(){
+    return [
+      "Dans le système Salesforce de Technogym (https://technogym.lightning.force.com), crée un nouveau compte hospitality (hôtellerie) avec les données ci-dessous.",
+      "",
+      "Données du compte",
+      line("Nom du compte", val('c-nom')),
+      line("Catégorie business (Sub-Classification)", val('c-cat')),
+      line("Adresse (Street)", val('c-rue')),
+      line("Code postal (Zip/Postal Code)", val('c-cp')),
+      line("Ville (City/Suburb)", val('c-ville')),
+      line("Pays (Country)", "France"),
+      "",
+      "Contact principal",
+      line("Prénom (First Name)", val('c-prenom')),
+      line("Nom (Last Name)", val('c-nomc')),
+      line("Genre", val('c-genre')),
+      line("Fonction (Job Title)", val('c-fonction')),
+      line("Téléphone mobile", val('c-mobile')),
+      line("E-mail", val('c-email')),
+      "",
+      "Paramètres additionnels",
+      line("Préférences de notification", val('c-notifs')),
+      line("Classement étoiles", val('c-etoiles')),
+      line("Dimension de la salle de sport (Gym Dimension)", val('c-gym')),
+      "",
+      "Workflow",
+      "1. Va dans la section Comptes (Accounts) depuis le dashboard.",
+      "2. Clique sur « Nouveau » (New).",
+      "3. Sélectionne l'onglet « Account » dans le sélecteur de type de profil.",
+      "4. Définis Macro LOB sur « HOSPITALITE' ».",
+      "5. Définis Ligne Business sur « 210 - RESIDENTIAL ».",
+      "6. Saisis le Nom du compte.",
+      "7. Dans la section Sub-Classification, déplace la catégorie business de « Available » vers « Chosen » avec le bouton flèche.",
+      "8. Clique sur « Suivant » (Next) pour passer à l'adresse.",
+      "9. Renseigne Street, Zip/Postal Code, City/Suburb (Country doit déjà être « France »).",
+      "10. Clique sur « Suivant » (Next) pour passer au contact principal.",
+      "11. Renseigne l'identité et les coordonnées du contact, puis les préférences de notification, le classement étoiles et la dimension de la salle de sport.",
+      "12. Arrête-toi avant l'enregistrement final pour me demander confirmation, puis enregistre le compte.",
+      "",
+      TOOLS
+    ].join("\n");
+  }
+
+  function buildVisite(){
+    var semaine = val('v-semaine') || currentWeekLabel();
+    return [
+      "Dans Salesforce Technogym (https://technogym.lightning.force.com), remplis le « Visit Report » de toutes les visites client planifiées de la " + semaine + ", un rapport par visite.",
+      "",
+      "Périmètre",
+      "- Traite chaque visite planifiée de la semaine (du lundi au vendredi), un rapport par visite, sans en oublier ni en doubler.",
+      "- Si un rapport est déjà complété, laisse-le tel quel et passe à la visite suivante.",
+      "- Une visite le samedi ou le dimanche : signale-le et demande confirmation avant de la traiter.",
+      "",
+      "Date et heure (seul élément propre à chaque visite)",
+      "- La date et l'heure sont déjà fixées dans le rendez-vous : ne les modifie jamais.",
+      "- La visite dure toujours 30 minutes.",
+      "- Actual Arrival Time : heure de début du rendez-vous.",
+      "- Actual End Time : heure de début + 30 minutes.",
+      "",
+      "Valeurs fixes (identiques pour chaque visite)",
+      "- Check-in Not Completed Due to : « Mobile phone not working ».",
+      "- Check-out Not Completed Due to : « Mobile phone not working ».",
+      "- Checklist : coche Present Technogym, Provide brochures, Understand customer, Define customer needs, Assess financial situation.",
+      "- Sub-Classification : « Other » + « Boutique Hotel ».",
+      "- Available Services : déplace « None » vers la colonne sélectionnée.",
+      "- Available Training Experience : déplace « None » vers la colonne sélectionnée.",
+      "- Fitness center supervision : « Not Supervised for guests/residents only ».",
+      "- Suites / Penthouse available : « No ».",
+      "- Concurrent principal Cardio : déplace « None » vers la colonne sélectionnée.",
+      "- Concurrent principal Strength : déplace « None » vers la colonne sélectionnée.",
+      "- Training / Assessment software : déplace « None » vers la colonne sélectionnée.",
+      "- Management software : déplace « None » vers la colonne sélectionnée.",
+      "- Overall Account Rating : « 1 ».",
+      "",
+      "Procédure",
+      "1. Va dans le calendrier Salesforce et liste toutes les visites planifiées de la semaine (lundi à vendredi).",
+      "2. Pour chaque visite, ouvre le rendez-vous à sa date et son heure prédéfinies (sans les modifier), puis clique sur « Visit Report ».",
+      "3. Check-in : Actual Arrival Time = heure de début ; Check-in Not Completed Due to = « Mobile phone not working ».",
+      "4. Check-out : Actual End Time = heure de début + 30 minutes ; Check-out Not Completed Due to = « Mobile phone not working ».",
+      "5. Coche la checklist de visite (les 5 items ci-dessus).",
+      "6. Marketing Attributes : renseigne les valeurs fixes ci-dessus. Pour les dual-listbox, sélectionne l'item dans la colonne de gauche puis clique la flèche pour le déplacer vers la colonne sélectionnée à droite.",
+      "7. Overall Account Rating : « 1 ». Relis tous les champs, puis enregistre / soumets le rapport (il n'est pas enregistré automatiquement) et passe à la visite suivante.",
+      "",
+      TOOLS
+    ].join("\n");
+  }
+
+  function render(){
+    var text = "";
+    if(current === "pointage") text = buildPointage();
+    else if(current === "rapport") text = buildRapport();
+    else if(current === "visite") text = buildVisite();
+    else text = buildCompte();
+    output.value = text;
+  }
+
+  // skill switcher
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.switch button'));
+  var forms = { pointage:document.getElementById('form-pointage'), compte:document.getElementById('form-compte'), rapport:document.getElementById('form-rapport'), visite:document.getElementById('form-visite') };
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      current = btn.getAttribute('data-skill');
+      buttons.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      Object.keys(forms).forEach(function(k){ forms[k].hidden = (k !== current); });
+      document.getElementById('varPlural').textContent = (current === "pointage" || current === "visite") ? "" : "s";
+      render();
+    });
+  });
+
+  // live update on any input
+  document.addEventListener('input', render);
+  document.addEventListener('change', render);
+
+  // copy
+  var copyBtn = document.getElementById('copyBtn');
+  var copyLabel = document.getElementById('copyLabel');
+  var resetTimer = null;
+
+  function flashDone(){
+    copyBtn.classList.add('done');
+    copyLabel.textContent = 'Copié !';
+    if(resetTimer) clearTimeout(resetTimer);
+    resetTimer = setTimeout(function(){
+      copyBtn.classList.remove('done');
+      copyLabel.textContent = 'Copier';
+    }, 1600);
+  }
+
+  function legacyCopy(){
+    output.removeAttribute('readonly');
+    output.focus();
+    output.select();
+    try { document.execCommand('copy'); flashDone(); } catch(e){ alert("Copie impossible, sélectionne le texte et copie-le manuellement."); }
+    output.setAttribute('readonly','readonly');
+    window.getSelection && window.getSelection().removeAllRanges();
+  }
+
+  copyBtn.addEventListener('click', function(){
+    var text = output.value;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(flashDone, legacyCopy);
+    } else {
+      legacyCopy();
+    }
+  });
+
+  // remplit la liste des semaines (2026-2030) et sélectionne la semaine courante
+  var semaineSelect = document.getElementById('v-semaine');
+  if(semaineSelect) populateWeeks(semaineSelect);
+
+  render();
+})();
+</script>
+</body>
+</html>

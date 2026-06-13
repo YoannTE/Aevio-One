@@ -7,5 +7,6 @@ COPY index.html /srv/
 COPY robots.txt /srv/
 COPY sitemap.xml /srv/
 COPY images/ /srv/images/
+COPY assistant-commercial/ /srv/assistant-commercial/
 
 EXPOSE 80
