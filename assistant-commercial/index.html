@@ -88,6 +88,7 @@
     box-shadow:0 6px 16px -10px rgba(47,98,255,.5);
   }
   .switch button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .switch button:nth-child(odd):last-child{grid-column:1 / -1;}
 
   /* fields */
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -190,6 +191,9 @@
       </button>
       <button type="button" data-skill="visite" aria-pressed="false">
         <span class="ic" aria-hidden="true">📝</span>Clôture Visites de la semaine
+      </button>
+      <button type="button" data-skill="planif" aria-pressed="false">
+        <span class="ic" aria-hidden="true">📅</span>Planification visites (jour)
       </button>
     </div>
   </div>
@@ -309,6 +313,21 @@
       <p class="note">Toutes les autres valeurs du rapport sont fixes et reportées à l'identique d'une visite à l'autre. Le rapport n'est pas enregistré automatiquement.</p>
     </div>
 
+    <!-- PLANIFICATION -->
+    <div id="form-planif" class="form" hidden>
+      <div class="grid">
+        <div class="field">
+          <label for="p-ville">Ville</label>
+          <input id="p-ville" type="text" placeholder="ex. Nice">
+        </div>
+        <div class="field">
+          <label for="p-date">Jour à planifier</label>
+          <input id="p-date" type="date">
+        </div>
+      </div>
+      <p class="note">5 visites « Découverte » dans un rayon de 60 km, échelonnées à 09:00, 11:00, 14:00, 16:00 et 18:00 sur la même journée. Toutes les autres valeurs sont fixes.</p>
+    </div>
+
   </div>
 
   <!-- Output -->
@@ -335,6 +354,22 @@
   var TOOLS = "Utilise get_page_text, read_page et javascript_tool autant que possible. N'utilise computer (screenshot) qu'en dernier recours.";
 
   var MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var DAYS_FR = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  function frDateFromISO(iso){
+    if(!iso) return "";
+    var p = iso.split('-');
+    if(p.length !== 3) return iso;
+    var y = +p[0], m = +p[1] - 1, d = +p[2];
+    var dt = new Date(y, m, d);
+    return DAYS_FR[dt.getDay()] + " " + d + " " + MONTHS_FR[m] + " " + y;
+  }
+  function isoIsWeekend(iso){
+    if(!iso) return false;
+    var p = iso.split('-');
+    if(p.length !== 3) return false;
+    var g = new Date(+p[0], +p[1] - 1, +p[2]).getDay();
+    return g === 0 || g === 6;
+  }
   function currentWeekLabel(){
     var d = new Date();
     var day = d.getDay(); // 0 dimanche .. 6 samedi
@@ -514,18 +549,56 @@
     ].join("\n");
   }
 
+  function buildPlanif(){
+    var ville = val('p-ville') || "[ville]";
+    var iso = val('p-date');
+    var dateLabel = frDateFromISO(iso) || "[date]";
+    var lines = [
+      "Dans Salesforce Technogym, va sur le module « Visit Management » (URL exacte, à ne pas modifier : https://technogym.lightning.force.com/lightning/n/Visit_Management) et laisse la page charger entièrement (Lightning charge de façon asynchrone).",
+      "",
+      "Recherche et sélection",
+      "1. Applique les filtres pour rechercher les sites de la ville de " + ville + ", avec un rayon de recherche de 60 km.",
+      "2. Une fois la carte chargée avec les sites correspondants, replie la vue carte (« collapse map »).",
+      "3. Coche les cases des 5 premiers sites de la liste filtrée (exactement 5, ni plus ni moins).",
+      "4. Clique sur « Manage Visits » pour lancer la planification des visites des sites sélectionnés.",
+      "",
+      "Configuration des 5 visites (toutes le " + dateLabel + ")",
+      "Pour chacun des 5 sites, renseigne :",
+      "- Activity Type : « Appointment at site/home (A0003) »",
+      "- Reason : « Discovery (M0302) »",
+      "- Subject : « visite »",
+      "- Campagne marketing : recherche et sélectionne « Personal network »",
+      "- Date de la visite : " + dateLabel,
+      "- Heure de début : échelonnée selon le rang du site, site 1 = 09:00, site 2 = 11:00, site 3 = 14:00, site 4 = 16:00, site 5 = 18:00.",
+      "",
+      "Validation",
+      "Une fois les 5 visites configurées avec leurs heures échelonnées sur la même date, clique sur « Confirm Planning » une seule fois à la fin pour finaliser et enregistrer. Ne valide pas visite par visite.",
+      ""
+    ];
+    if(isoIsWeekend(iso)){
+      lines.push("Attention : la date choisie (" + dateLabel + ") tombe un week-end. Signale-le-moi et demande confirmation avant de planifier.");
+      lines.push("");
+    }
+    lines.push("Connexion : si une page de login ou de SSO Technogym apparaît, arrête-toi et attends que je me connecte moi-même dans Chrome avant de reprendre. Ne saisis jamais d'identifiant ni de mot de passe.");
+    lines.push("");
+    lines.push("Composants Lightning : si un clic via libellé échoue (cases à cocher, menus Activity Type / Reason / Campagne, champs Date et Heure), passe par javascript_tool en inspectant le DOM.");
+    lines.push(TOOLS);
+    return lines.join("\n");
+  }
+
   function render(){
     var text = "";
     if(current === "pointage") text = buildPointage();
     else if(current === "rapport") text = buildRapport();
     else if(current === "visite") text = buildVisite();
+    else if(current === "planif") text = buildPlanif();
     else text = buildCompte();
     output.value = text;
   }
 
   // skill switcher
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.switch button'));
-  var forms = { pointage:document.getElementById('form-pointage'), compte:document.getElementById('form-compte'), rapport:document.getElementById('form-rapport'), visite:document.getElementById('form-visite') };
+  var forms = { pointage:document.getElementById('form-pointage'), compte:document.getElementById('form-compte'), rapport:document.getElementById('form-rapport'), visite:document.getElementById('form-visite'), planif:document.getElementById('form-planif') };
   buttons.forEach(function(btn){
     btn.addEventListener('click', function(){
       current = btn.getAttribute('data-skill');
