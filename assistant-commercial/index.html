@@ -68,7 +68,7 @@
 
   /* tabs */
   .switch{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+    display:flex;flex-direction:column;gap:8px;
     background:var(--field);border:1px solid var(--line);
     border-radius:14px;padding:8px;
   }
@@ -76,11 +76,12 @@
     appearance:none;border:1px solid transparent;cursor:pointer;
     font-family:inherit;font-size:14px;font-weight:600;
     color:var(--muted);background:transparent;
-    padding:14px 10px;border-radius:11px;text-align:center;
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:13px 14px;border-radius:11px;text-align:left;
     transition:background .18s,color .18s,box-shadow .18s,border-color .18s;
     line-height:1.25;
   }
-  .switch button .ic{display:block;font-size:20px;margin-bottom:6px;}
+  .switch button .ic{font-size:20px;flex:0 0 auto;}
   .switch button:hover{color:var(--ink);}
   .switch button[aria-pressed="true"]{
     background:var(--blue-tint);color:var(--blue);
@@ -88,7 +89,6 @@
     box-shadow:0 6px 16px -10px rgba(47,98,255,.5);
   }
   .switch button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
-  .switch button:nth-child(odd):last-child{grid-column:1 / -1;}
 
   /* fields */
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
