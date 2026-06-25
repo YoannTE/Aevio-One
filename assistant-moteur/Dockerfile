@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:22-alpine AS app
 
 # Chromium + polices (pour le rendu PDF et les accents francais)
 RUN apk add --no-cache \
