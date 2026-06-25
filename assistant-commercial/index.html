@@ -176,6 +176,88 @@
     <p class="lede">Choisis une tâche, renseigne la variable, copie le prompt et colle-le dans Claude (navigateur).</p>
   </header>
 
+  <!-- Fiche projet automatique (Technogym) -->
+  <style>
+    .fp-card{border:1.5px solid rgba(47,98,255,.35);box-shadow:0 1px 2px rgba(17,26,55,.04),0 24px 48px -28px rgba(47,98,255,.45);}
+    .fp-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--blue);border-radius:999px;padding:3px 10px;margin-bottom:12px;}
+    .fp-desc{font-size:14px;color:var(--muted);margin:0 0 16px;}
+    .fp-drop{border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;cursor:pointer;background:var(--field);transition:.15s;margin-bottom:14px;}
+    .fp-drop:hover,.fp-drop.over{border-color:var(--blue);background:#fff;}
+    .fp-drop .fp-big{font-size:14.5px;font-weight:700;color:var(--blue);}
+    .fp-drop .fp-small{font-size:12.5px;color:var(--muted);margin-top:3px;}
+    .fp-files{font-size:12.5px;color:var(--blue);margin:-6px 0 14px;line-height:1.5;}
+    #fpBtn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--blue);border-radius:12px;padding:14px;width:100%;box-shadow:0 8px 18px -8px rgba(47,98,255,.55);transition:background .15s;}
+    #fpBtn:hover{background:var(--blue-dark);}
+    #fpBtn:disabled{background:#9DB0D8;cursor:default;box-shadow:none;}
+    .fp-msg{font-size:13.5px;margin-top:13px;min-height:18px;}
+    .fp-msg.err{color:#C0392B;}
+    .fp-msg.ok{color:var(--success);}
+    .fp-spin{display:inline-block;width:13px;height:13px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:fpspin .7s linear infinite;vertical-align:-2px;margin-right:7px;}
+    @keyframes fpspin{to{transform:rotate(360deg);}}
+    .fp-hidden{display:none;}
+  </style>
+  <div class="card fp-card">
+    <span class="fp-badge">★ NOUVEAU</span>
+    <h2 style="margin-bottom:6px">Fiche projet automatique</h2>
+    <p class="fp-desc">Charge le <b>devis PDF</b> et les <b>screenshots du plan 3D</b> : je génère la fiche projet complète (visuels &amp; descriptions des équipements, plans 3D, tableau de financement). Aucune saisie, tout est lu dans le devis.</p>
+
+    <div class="fp-drop" id="fpDropDevis" onclick="fpDevis.click()">
+      <div class="fp-big" id="fpDevisLabel">1 · Cliquer ou déposer le devis (PDF)</div>
+      <div class="fp-small">un seul fichier .pdf</div>
+    </div>
+    <input type="file" id="fpDevis" accept="application/pdf" class="fp-hidden">
+
+    <div class="fp-drop" id="fpDropPlans" onclick="fpPlans.click()">
+      <div class="fp-big" id="fpPlansLabel">2 · Cliquer ou déposer les plans 3D (images)</div>
+      <div class="fp-small">plusieurs images .png / .jpg</div>
+    </div>
+    <input type="file" id="fpPlans" accept="image/*" multiple class="fp-hidden">
+    <div class="fp-files" id="fpFiles"></div>
+
+    <div class="field full" style="margin-bottom:4px">
+      <label for="fpCode">Mot de passe d'accès</label>
+      <input type="password" id="fpCode" placeholder="Code d'accès" autocomplete="off">
+    </div>
+
+    <button id="fpBtn" onclick="fpGo()" disabled style="margin-top:16px">Générer la fiche projet</button>
+    <div class="fp-msg" id="fpMsg"></div>
+  </div>
+  <script>
+    const FP_API = "https://assistant-moteur.116-203-233-204.sslip.io/api/fiche";
+    let fpDevisFile = null, fpPlanFiles = [];
+    function fpRefresh(){
+      document.getElementById('fpDevisLabel').textContent = fpDevisFile ? '📄 ' + fpDevisFile.name : '1 · Cliquer ou déposer le devis (PDF)';
+      document.getElementById('fpPlansLabel').textContent = fpPlanFiles.length ? '🖼️ ' + fpPlanFiles.length + ' image(s)' : '2 · Cliquer ou déposer les plans 3D (images)';
+      document.getElementById('fpFiles').innerHTML = fpPlanFiles.map(f=>'• '+f.name).join('<br>');
+      document.getElementById('fpBtn').disabled = !fpDevisFile;
+    }
+    fpDevis.onchange = e => { fpDevisFile = e.target.files[0]||null; fpRefresh(); };
+    fpPlans.onchange = e => { fpPlanFiles = [...e.target.files]; fpRefresh(); };
+    function fpDnd(id, cb){
+      const el = document.getElementById(id);
+      ['dragover','dragenter'].forEach(ev=>el.addEventListener(ev,e=>{e.preventDefault();el.classList.add('over');}));
+      ['dragleave','drop'].forEach(ev=>el.addEventListener(ev,e=>{e.preventDefault();el.classList.remove('over');}));
+      el.addEventListener('drop',e=>cb([...e.dataTransfer.files]));
+    }
+    fpDnd('fpDropDevis', f=>{const p=f.find(x=>x.type==='application/pdf'); if(p){fpDevisFile=p;fpRefresh();}});
+    fpDnd('fpDropPlans', f=>{fpPlanFiles=f.filter(x=>x.type.startsWith('image/')); fpRefresh();});
+    async function fpGo(){
+      const msg=document.getElementById('fpMsg'), btn=document.getElementById('fpBtn');
+      msg.className='fp-msg'; msg.innerHTML='<span class="fp-spin"></span>Lecture du devis et génération… (30-60 s)';
+      btn.disabled=true;
+      const fd=new FormData(); fd.append('devis',fpDevisFile); fpPlanFiles.forEach(f=>fd.append('plans',f));
+      try{
+        const r=await fetch(FP_API,{method:'POST',headers:{'X-Access-Code':document.getElementById('fpCode').value},body:fd});
+        if(!r.ok){const j=await r.json().catch(()=>({})); throw new Error(j.error||'Erreur '+r.status);}
+        const blob=await r.blob(), url=URL.createObjectURL(blob);
+        let name='fiche_projet.pdf'; const cd=r.headers.get('Content-Disposition'); const m=cd&&cd.match(/filename="?([^"]+)"?/); if(m) name=m[1];
+        const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+        msg.className='fp-msg ok'; msg.innerHTML='✅ Fiche projet générée et téléchargée ! <a href="'+url+'" download="'+name+'" style="color:var(--blue);font-weight:700">la récupérer</a>';
+      }catch(e){ msg.className='fp-msg err'; msg.textContent='❌ '+e.message; }
+      finally{ btn.disabled=false; }
+    }
+  </script>
+
   <!-- Skill selector -->
   <div class="card">
     <h2>1 · Tâche</h2>
