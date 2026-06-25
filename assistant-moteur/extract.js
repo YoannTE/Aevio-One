@@ -27,7 +27,7 @@ const SCHEMA = {
           quantite: { type: "integer", description: "Quantite" },
           categorie: { type: "string", enum: ["cardio", "musculation", "accessoires"], description: "Categorie" },
           specs: { type: "string", description: "Specs cles condensees (console, coloris, puissance, finition)" },
-          description: { type: "string", description: "Description marketing en francais, 2-3 phrases, fidele aux specs du devis, ton premium hotellerie" },
+          description: { type: "string", description: "Description marketing en francais, 2 phrases courtes maximum, fidele aux specs du devis, ton premium hotellerie" },
         },
         required: ["nom", "code", "quantite", "categorie", "specs", "description"],
       },
@@ -40,7 +40,7 @@ const PROMPT = `Tu es l'assistant commercial de Yoann VARLOUD (Technogym, Key Ac
 On te fournit un DEVIS Technogym en PDF. Extrais fidelement :
 - le nom du client, le numero de devis (Q-...), le code client (AC-...), la ville, la gamme cardio, le total TTC ;
 - la liste de TOUS les equipements (ignore les lignes "Livraison & Installation", "Total", "TVA").
-Pour chaque equipement : nom, CODE exact, quantite, categorie (cardio / musculation / accessoires), specs condensees, et une description marketing en francais (2-3 phrases, ton premium hotellerie, fidele aux specs du devis : console, coloris, puissance, finition...).
+Pour chaque equipement : nom, CODE exact, quantite, categorie (cardio / musculation / accessoires), specs condensees, et une description marketing en francais (2 phrases courtes MAXIMUM, ton premium hotellerie, fidele aux specs du devis : console, coloris, puissance, finition...).
 Regroupe les halteres (Dumbbell) en UNE seule entree "Haltères — set" avec la plage de poids dans le nom et la quantite totale de paires.
 Reponds uniquement via l'outil de sortie structuree.`;
 

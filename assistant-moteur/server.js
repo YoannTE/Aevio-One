@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import sharp from "sharp";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { computeFinancement } from "./leasing.js";
@@ -60,9 +61,15 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
       p.img = path ? dataUri(path) : devisImageFor(devisImgMap, p.code);
     }
 
-    // 3) Plans 3D uploades -> data URIs
-    const plans = (req.files?.plans || []).map((f) =>
-      `data:${f.mimetype};base64,${f.buffer.toString("base64")}`);
+    // 3) Plans 3D uploades -> compresses (max 1200px, JPEG q72) puis data URIs
+    const plans = await Promise.all((req.files?.plans || []).map(async (f) => {
+      try {
+        const buf = await sharp(f.buffer).rotate().resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 72 }).toBuffer();
+        return "data:image/jpeg;base64," + buf.toString("base64");
+      } catch {
+        return `data:${f.mimetype};base64,${f.buffer.toString("base64")}`; // secours : image d'origine
+      }
+    }));
 
     // 4) Financement + 5) rendu PDF
     const fin = computeFinancement(d.total_ttc);
