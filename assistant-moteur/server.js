@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 import { computeFinancement } from "./leasing.js";
 import { extractDevis } from "./extract.js";
 import { resolveAsset } from "./assets.js";
+import { extractDevisImages, devisImageFor } from "./devisImages.js";
 import { ficheHTML, dataUri } from "./fiche.js";
 import { htmlToPdf } from "./pdf.js";
 
@@ -47,10 +48,16 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
     const d = await extractDevis(devisFile.buffer);
     if (!d.total_ttc) return res.status(422).json({ error: "Montant TTC introuvable dans le devis." });
 
-    // 2) Visuels produits (par CODE / mots-cles)
+    // 2) Visuels produits : bibliotheque en priorite, sinon vignette extraite du devis (secours)
+    let devisImgMap = null;
+    try {
+      devisImgMap = await extractDevisImages(devisFile.buffer, d.produits.map((p) => p.code));
+    } catch (e) {
+      console.warn("Extraction images devis ignorée:", e.message);
+    }
     for (const p of d.produits) {
       const path = resolveAsset({ code: p.code, name: p.nom });
-      p.img = path ? dataUri(path) : null;
+      p.img = path ? dataUri(path) : devisImageFor(devisImgMap, p.code);
     }
 
     // 3) Plans 3D uploades -> data URIs
