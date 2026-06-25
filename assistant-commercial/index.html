@@ -225,6 +225,21 @@
   <script>
     const FP_API = "https://assistant-moteur.116-203-233-204.sslip.io/api/fiche";
     let fpDevisFile = null, fpPlanFiles = [];
+    // Compresse une image dans le navigateur (max 1200px, JPEG 72%) avant l'envoi.
+    function fpCompress(file){
+      return new Promise(resolve=>{
+        const img=new Image(), url=URL.createObjectURL(file);
+        img.onload=()=>{
+          let w=img.width, h=img.height; const max=1200;
+          if(w>max){ h=Math.round(h*max/w); w=max; }
+          const c=document.createElement('canvas'); c.width=w; c.height=h;
+          c.getContext('2d').drawImage(img,0,0,w,h);
+          c.toBlob(b=>{ URL.revokeObjectURL(url); resolve(b||file); },'image/jpeg',0.72);
+        };
+        img.onerror=()=>{ URL.revokeObjectURL(url); resolve(file); };
+        img.src=url;
+      });
+    }
     function fpRefresh(){
       document.getElementById('fpDevisLabel').textContent = fpDevisFile ? '📄 ' + fpDevisFile.name : '1 · Cliquer ou déposer le devis (PDF)';
       document.getElementById('fpPlansLabel').textContent = fpPlanFiles.length ? '🖼️ ' + fpPlanFiles.length + ' image(s)' : '2 · Cliquer ou déposer les plans 3D (images)';
@@ -245,7 +260,8 @@
       const msg=document.getElementById('fpMsg'), btn=document.getElementById('fpBtn');
       msg.className='fp-msg'; msg.innerHTML='<span class="fp-spin"></span>Lecture du devis et génération… (30-60 s)';
       btn.disabled=true;
-      const fd=new FormData(); fd.append('devis',fpDevisFile); fpPlanFiles.forEach(f=>fd.append('plans',f));
+      const fd=new FormData(); fd.append('devis',fpDevisFile);
+      for(const f of fpPlanFiles){ const b=await fpCompress(f); fd.append('plans', b, f.name.replace(/\.\w+$/,'')+'.jpg'); }
       try{
         const r=await fetch(FP_API,{method:'POST',headers:{'X-Access-Code':document.getElementById('fpCode').value},body:fd});
         if(!r.ok){const j=await r.json().catch(()=>({})); throw new Error(j.error||'Erreur '+r.status);}

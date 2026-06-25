@@ -55,6 +55,7 @@
 const devisInput = document.getElementById('devisInput');
 const plansInput = document.getElementById('plansInput');
 let devisFile = null, planFiles = [];
+function compress(file){return new Promise(res=>{const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{let w=img.width,h=img.height;const m=1200;if(w>m){h=Math.round(h*m/w);w=m;}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);c.toBlob(b=>{URL.revokeObjectURL(u);res(b||file);},'image/jpeg',0.72);};img.onerror=()=>{URL.revokeObjectURL(u);res(file);};img.src=u;});}
 
 function refresh() {
   document.getElementById('devisLabel').textContent = devisFile ? '📄 ' + devisFile.name : 'Cliquer ou déposer le devis PDF';
@@ -81,7 +82,7 @@ async function go() {
   btn.disabled = true;
   const fd = new FormData();
   fd.append('devis', devisFile);
-  planFiles.forEach(f => fd.append('plans', f));
+  for (const f of planFiles) { const b = await compress(f); fd.append('plans', b, f.name.replace(/\.\w+$/, '') + '.jpg'); }
   try {
     const r = await fetch('/api/fiche', { method: 'POST', body: fd });
     if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'Erreur ' + r.status); }

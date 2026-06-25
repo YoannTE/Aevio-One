@@ -1,22 +1,6 @@
 import express from "express";
 import multer from "multer";
-import sharp from "sharp";
-sharp.concurrency(1);  // evite la saturation du conteneur (libvips multi-thread)
-sharp.cache(false);
-
-// Compresse une image avec un garde-fou : si sharp depasse le delai, on garde l'original.
-async function compressPlan(file) {
-  const fallback = () => `data:${file.mimetype};base64,${file.buffer.toString("base64")}`;
-  try {
-    const work = sharp(file.buffer).rotate().resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 72 }).toBuffer();
-    const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("sharp timeout")), 12000));
-    const buf = await Promise.race([work, timeout]);
-    return "data:image/jpeg;base64," + buf.toString("base64");
-  } catch (e) {
-    console.warn("Compression image ignorée:", e.message);
-    return fallback();
-  }
-}
+// Les plans 3D sont compressés côté navigateur avant l'envoi ; le serveur se contente de les intégrer.
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { computeFinancement } from "./leasing.js";
@@ -77,9 +61,9 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
       p.img = path ? dataUri(path) : devisImageFor(devisImgMap, p.code);
     }
 
-    // 3) Plans 3D uploades -> compresses SEQUENTIELLEMENT (max 1200px, JPEG q72) puis data URIs
-    const plans = [];
-    for (const f of (req.files?.plans || [])) plans.push(await compressPlan(f));
+    // 3) Plans 3D uploades (deja compresses cote navigateur) -> data URIs
+    const plans = (req.files?.plans || []).map((f) =>
+      `data:${f.mimetype};base64,${f.buffer.toString("base64")}`);
 
     // 4) Financement + 5) rendu PDF
     const fin = computeFinancement(d.total_ttc);
