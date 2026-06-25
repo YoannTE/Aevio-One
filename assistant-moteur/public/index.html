@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistant commercial — Fiche projet</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; background: #eef2f7; color: #1d1d1d; max-width: 680px; margin: 40px auto; padding: 0 20px; }
+  h1 { font-size: 23px; }
+  .accent { width: 56px; height: 5px; background: #f4d000; border-radius: 2px; margin: 6px 0 18px; }
+  .card { background: #fff; border: 1px solid #d9e2ec; border-radius: 12px; padding: 24px; box-shadow: 0 4px 18px rgba(20,54,85,.06); }
+  .drop { border: 2px dashed #bcd0e3; border-radius: 10px; padding: 22px; text-align: center; cursor: pointer; transition: .15s; background: #fbfdff; margin-top: 8px; }
+  .drop:hover, .drop.over { border-color: #2f6fb0; background: #f4f9ff; }
+  .drop .big { font-size: 15px; font-weight: 700; color: #1f4e79; }
+  .drop .small { font-size: 12px; color: #8a9bb0; margin-top: 4px; }
+  label.section { display: block; font-size: 13px; font-weight: 700; color: #5b7088; margin: 22px 0 2px; }
+  .files { font-size: 12.5px; color: #2f6fb0; margin-top: 8px; line-height: 1.5; }
+  button { margin-top: 26px; width: 100%; font-size: 16px; font-weight: 700; color: #fff; background: #1f4e79; border: none; border-radius: 9px; padding: 14px; cursor: pointer; }
+  button:hover { background: #143655; }
+  button:disabled { background: #9db3c8; cursor: default; }
+  .msg { font-size: 13.5px; margin-top: 14px; min-height: 20px; }
+  .msg.err { color: #b00020; }
+  .msg.ok { color: #1a7f37; }
+  .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: s .7s linear infinite; vertical-align: -2px; margin-right: 8px; }
+  @keyframes s { to { transform: rotate(360deg); } }
+  input[type=file] { display: none; }
+</style>
+</head>
+<body>
+  <h1>Assistant commercial — Fiche projet</h1>
+  <div class="accent"></div>
+  <div class="card">
+    <p style="font-size:13.5px;color:#5b7088;margin-bottom:6px">Charge le <b>devis PDF</b> et les <b>screenshots du plan 3D</b>. Je m'occupe du reste : extraction du client, visuels &amp; descriptions des équipements, plans 3D et tableau de financement.</p>
+
+    <label class="section">1 · Devis (PDF)</label>
+    <div class="drop" id="dropDevis" onclick="devisInput.click()">
+      <div class="big" id="devisLabel">Cliquer ou déposer le devis PDF</div>
+      <div class="small">un seul fichier .pdf</div>
+    </div>
+    <input type="file" id="devisInput" accept="application/pdf">
+
+    <label class="section">2 · Plans 3D (images)</label>
+    <div class="drop" id="dropPlans" onclick="plansInput.click()">
+      <div class="big" id="plansLabel">Cliquer ou déposer les screenshots</div>
+      <div class="small">plusieurs images .png / .jpg acceptées</div>
+    </div>
+    <input type="file" id="plansInput" accept="image/*" multiple>
+    <div class="files" id="filesList"></div>
+
+    <button id="btn" onclick="go()" disabled>Générer la fiche projet</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+<script>
+const devisInput = document.getElementById('devisInput');
+const plansInput = document.getElementById('plansInput');
+let devisFile = null, planFiles = [];
+
+function refresh() {
+  document.getElementById('devisLabel').textContent = devisFile ? '📄 ' + devisFile.name : 'Cliquer ou déposer le devis PDF';
+  document.getElementById('plansLabel').textContent = planFiles.length ? `🖼️ ${planFiles.length} image(s) sélectionnée(s)` : 'Cliquer ou déposer les screenshots';
+  document.getElementById('filesList').innerHTML = planFiles.map(f => '• ' + f.name).join('<br>');
+  document.getElementById('btn').disabled = !devisFile;
+}
+devisInput.onchange = e => { devisFile = e.target.files[0] || null; refresh(); };
+plansInput.onchange = e => { planFiles = [...e.target.files]; refresh(); };
+
+// drag & drop
+function dnd(zone, cb) {
+  const el = document.getElementById(zone);
+  ['dragover','dragenter'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); el.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); el.classList.remove('over'); }));
+  el.addEventListener('drop', e => cb([...e.dataTransfer.files]));
+}
+dnd('dropDevis', files => { const p = files.find(f => f.type === 'application/pdf'); if (p) { devisFile = p; refresh(); } });
+dnd('dropPlans', files => { planFiles = files.filter(f => f.type.startsWith('image/')); refresh(); });
+
+async function go() {
+  const msg = document.getElementById('msg'), btn = document.getElementById('btn');
+  msg.className = 'msg'; msg.innerHTML = '<span class="spin"></span>Lecture du devis et génération en cours… (15–30 s)';
+  btn.disabled = true;
+  const fd = new FormData();
+  fd.append('devis', devisFile);
+  planFiles.forEach(f => fd.append('plans', f));
+  try {
+    const r = await fetch('/api/fiche', { method: 'POST', body: fd });
+    if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'Erreur ' + r.status); }
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    // Nom de fichier depuis l'entete, sinon defaut
+    let name = 'fiche_projet.pdf';
+    const cd = r.headers.get('Content-Disposition');
+    const m = cd && cd.match(/filename="?([^"]+)"?/);
+    if (m) name = m[1];
+    // Telechargement direct (pas de popup bloquee)
+    const a = document.createElement('a');
+    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    msg.className = 'msg ok';
+    msg.innerHTML = '✅ Fiche projet générée et téléchargée !<br>' +
+      'Si le téléchargement ne démarre pas, <a href="' + url + '" download="' + name + '" style="color:#1f4e79;font-weight:700">clique ici pour la récupérer</a>.';
+  } catch (e) {
+    msg.className = 'msg err'; msg.textContent = '❌ ' + e.message;
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
