@@ -1,6 +1,7 @@
 // Construit le HTML complet de la fiche projet : pages produits + page(s) plans 3D + page financement.
 import { readFileSync } from "node:fs";
-import { extname } from "node:path";
+import { extname, dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { eur } from "./leasing.js";
 
 function dataUri(path) {
@@ -8,6 +9,11 @@ function dataUri(path) {
   const mime = ext === ".png" ? "image/png" : ext === ".jpg" || ext === ".jpeg" ? "image/jpeg" : "application/octet-stream";
   return `data:${mime};base64,${readFileSync(path).toString("base64")}`;
 }
+
+// Logo Technogym pour la page de couverture (embarque en data URI).
+const __dir = dirname(fileURLToPath(import.meta.url));
+let LOGO_URI = "";
+try { LOGO_URI = dataUri(join(__dir, "assets", "tg-logo.png")); } catch { LOGO_URI = ""; }
 
 const STYLE = `
   @page { size: A4; margin: 0; }
@@ -53,6 +59,14 @@ const STYLE = `
   table.fin tr:nth-child(even) td { background: #fafbfc; }
   .fin-note { font-size: 9.5px; color: #aaa; margin-top: 10px; font-style: italic; line-height: 1.4; }
   .footer { margin-top: auto; padding-top: 14px; border-top: 1px solid #ececec; display: flex; justify-content: space-between; font-size: 10px; color: #aaa; }
+  /* page de couverture */
+  .cover-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0; }
+  .cover-logo { width: 260px; max-width: 60%; height: auto; margin-bottom: 64px; }
+  .cover-pour { font-size: 20px; color: #8a8a8a; font-weight: 400; }
+  .cover-client { font-size: 34px; font-weight: 700; color: #6b6b6b; letter-spacing: .3px; margin-top: 22px; text-transform: uppercase; }
+  .cover-line { width: 200px; border: none; border-top: 1px solid #cfcfcf; margin: 40px 0; }
+  .cover-real { font-size: 20px; color: #8a8a8a; font-weight: 400; }
+  .cover-name { font-size: 24px; font-weight: 700; color: #6b6b6b; margin-top: 8px; }
 `;
 
 const FOOTER = "Yoann VARLOUD · Solution Key Account Manager Hospitality &amp; Residential · yvarloud@technogym.com";
@@ -92,6 +106,22 @@ function card(p) {
 export function ficheHTML(d, plans, fin) {
   const sub = `<div class="subtitle">Préparée pour ${d.client}${d.ville ? " · " + d.ville : ""}</div>`;
   const pages = [];
+
+  // 0) Page de couverture
+  pages.push(`
+    <div class="page">
+      <div class="header"><div class="logo">TECHNOGYM</div>${metaBlock(d)}</div>
+      <hr class="rule">
+      <div class="cover-body">
+        ${LOGO_URI ? `<img class="cover-logo" src="${LOGO_URI}" alt="Technogym">` : ""}
+        <div class="cover-pour">Technogym pour</div>
+        <div class="cover-client">${d.client || ""}</div>
+        <hr class="cover-line">
+        <div class="cover-real">Réalisé par</div>
+        <div class="cover-name">Yoann VARLOUD</div>
+      </div>
+      <div class="footer"><span>${FOOTER}</span><span class="pg"></span></div>
+    </div>`);
 
   // 1) Pages produits, par categorie, 5 cartes/page
   for (const cat of ["cardio", "musculation", "accessoires"]) {
