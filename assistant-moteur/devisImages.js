@@ -99,7 +99,13 @@ export async function extractDevisImages(pdfBuffer, knownCodes = []) {
         // ignore le logo (haut de page)
         if (y > pageH - 90) continue;
         let obj = null;
-        try { obj = await new Promise((res) => page.objs.get(name, res)); } catch { obj = null; }
+        try {
+          // garde-fou : certaines images ne "repondent" jamais -> on abandonne apres 3 s
+          obj = await Promise.race([
+            new Promise((res) => page.objs.get(name, res)),
+            new Promise((res) => setTimeout(() => res(null), 3000)),
+          ]);
+        } catch { obj = null; }
         const buf = obj ? imgToPngBuffer(obj) : null;
         if (buf) images.push({ page: p, y, h, w, buf });
       }

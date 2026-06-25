@@ -52,7 +52,11 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
     // 2) Visuels produits : bibliotheque en priorite, sinon vignette extraite du devis (secours)
     let devisImgMap = null;
     try {
-      devisImgMap = await extractDevisImages(devisFile.buffer, d.produits.map((p) => p.code));
+      // delai maximum 30 s : si l'extraction des vignettes traine, on continue sans (jamais de blocage)
+      devisImgMap = await Promise.race([
+        extractDevisImages(devisFile.buffer, d.produits.map((p) => p.code)),
+        new Promise((res) => setTimeout(() => res(null), 30000)),
+      ]);
     } catch (e) {
       console.warn("Extraction images devis ignorée:", e.message);
     }

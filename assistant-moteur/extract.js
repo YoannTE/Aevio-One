@@ -2,6 +2,7 @@
 // Lit le PDF directement (vision/document) et renvoie un JSON structure :
 // client, n° devis, code client, total TTC, et la liste des produits avec description marketing.
 import Anthropic from "@anthropic-ai/sdk";
+import { trimToProductPages } from "./pdfTrim.js";
 
 const client = new Anthropic(); // lit ANTHROPIC_API_KEY dans l'environnement
 
@@ -45,7 +46,9 @@ Regroupe les halteres (Dumbbell) en UNE seule entree "Haltères — set" avec la
 Reponds uniquement via l'outil de sortie structuree.`;
 
 export async function extractDevis(pdfBuffer) {
-  const b64 = pdfBuffer.toString("base64");
+  // Reduit le PDF aux pages produits (les devis "B2B with RC" ont ~15 pages juridiques qui ralentissent l'IA)
+  const trimmed = await trimToProductPages(pdfBuffer);
+  const b64 = trimmed.toString("base64");
   const resp = await client.messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: 8000,
@@ -57,7 +60,7 @@ export async function extractDevis(pdfBuffer) {
         { type: "text", text: PROMPT },
       ],
     }],
-  });
+  }, { timeout: 180000 }); // 3 min max pour l'appel IA
   const textBlock = resp.content.find((b) => b.type === "text");
   if (!textBlock) throw new Error("Reponse API sans contenu texte.");
   return JSON.parse(textBlock.text);
