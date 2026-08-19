@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aevio Agents, maquette de présentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F9; --surface:#FFFFFF; --field:#F5F7FB;
+  --ink:#111A37; --muted:#5B6B85;
+  --blue:#2F62FF; --blue-dark:#2350E6; --blue-tint:#EAF0FF;
+  --line:#E9ECF3; --success:#1FA463; --danger:#C0392B;
+  --teal:#0E9F8A; --amber:#D98324; --rose:#C4508A;
+  --grad:linear-gradient(180deg,#3A6BFF,#2350E6);
+  --radius:18px;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:var(--sans); background:var(--bg); color:var(--ink);
+  line-height:1.55; font-size:15px;
+}
+img,svg{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+section{padding:34px 0}
+
+.badge{
+  display:inline-block;font-size:11px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:#fff;background:var(--blue);
+  border-radius:999px;padding:6px 14px;
+}
+.sec-head{max-width:720px;margin-bottom:26px}
+.sec-head h2{font-size:30px;font-weight:800;letter-spacing:-.025em;line-height:1.12;margin:12px 0 8px}
+.sec-head h2 .accent{color:var(--blue)}
+.sec-head p{color:var(--muted);font-weight:500}
+
+/* ================= HERO ================= */
+.hero{position:relative;overflow:hidden;padding:64px 0 30px}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:7px;background:var(--grad);
+}
+.hero::after{
+  content:'';position:absolute;right:-260px;top:-140px;width:640px;height:640px;
+  border-radius:50%;background:var(--blue-tint);opacity:.7;z-index:0;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-brand{display:flex;align-items:center;gap:11px;margin-bottom:34px}
+.mark{
+  width:40px;height:40px;border-radius:12px;background:var(--grad);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px;
+  box-shadow:0 8px 18px -8px rgba(35,80,230,.55);
+}
+.hero-brand b{font-size:17px;font-weight:800;letter-spacing:-.01em;display:block}
+.hero-brand small{font-size:12px;color:var(--muted);font-weight:600;display:block;margin-top:-2px}
+.hero h1{
+  font-size:56px;line-height:1.03;font-weight:800;letter-spacing:-.033em;
+  max-width:760px;margin:18px 0 0;
+}
+.hero h1 .accent{color:var(--blue)}
+.hero .lede{
+  font-size:18px;color:var(--muted);font-weight:500;max-width:620px;margin:18px 0 26px;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{
+  font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:-.01em;
+  padding:12px 22px;border-radius:12px;cursor:pointer;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);text-decoration:none;display:inline-block;
+}
+.btn.primary{background:var(--grad);border:none;color:#fff;box-shadow:0 10px 22px -10px rgba(35,80,230,.6)}
+.btn:hover{border-color:var(--blue)}
+.btn.primary:hover{filter:brightness(1.06)}
+.hero-proof{
+  display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;padding-top:20px;
+  border-top:1.5px solid var(--line);max-width:760px;
+}
+.proof{flex:1;min-width:130px}
+.proof b{font-size:21px;font-weight:800;letter-spacing:-.02em;display:block;color:var(--blue-dark)}
+.proof span{font-size:12px;color:var(--muted);font-weight:600}
+
+/* ================= FENÊTRE ================= */
+.window{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:0 30px 70px -32px rgba(17,26,55,.35);
+}
+.chrome{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  background:var(--field);border-bottom:1px solid var(--line);
+}
+.dots{display:flex;gap:6px}
+.dots i{width:10px;height:10px;border-radius:50%;background:#D4DBE8;display:block}
+.url{
+  flex:1;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.app{display:grid;grid-template-columns:250px 1fr 282px;min-height:680px}
+
+/* --- rail gauche --- */
+.rail{background:var(--field);border-right:1px solid var(--line);padding:18px 15px;display:flex;flex-direction:column;gap:18px}
+.rail .brand{display:flex;align-items:center;gap:10px}
+.rail .mark{width:36px;height:36px;border-radius:11px;font-size:15px;box-shadow:none}
+.rail .brand b{font-size:14.5px;font-weight:800;display:block}
+.rail .brand small{font-size:11.5px;color:var(--muted);font-weight:600;display:block}
+.new-request{
+  display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 12px;
+  background:var(--grad);color:#fff;border:none;border-radius:11px;
+  font-family:var(--sans);font-size:13.5px;font-weight:700;cursor:pointer;
+  box-shadow:0 8px 18px -9px rgba(35,80,230,.55);
+}
+.group h3{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;padding-left:2px;font-weight:500;
+}
+.agent{
+  display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#3D4A66;
+  padding:8px 10px;border-radius:9px;cursor:pointer;
+}
+.agent:hover{background:#E7ECF6}
+.agent.active{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(17,26,55,.08)}
+.agent i{width:8px;height:8px;border-radius:50%;flex:none}
+.a-blue{background:var(--blue)} .a-teal{background:var(--teal)}
+.a-amber{background:var(--amber)} .a-rose{background:var(--rose)}
+.thread{
+  font-size:12.5px;color:#3D4A66;padding:7px 10px;border-radius:8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;
+}
+.thread:hover{background:#E7ECF6}
+.connected{margin-top:auto;border-top:1px solid var(--line);padding-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{
+  font-family:var(--mono);font-size:10.5px;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:4px 10px 4px 8px;display:flex;align-items:center;gap:6px;color:#3D4A66;
+}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--success);display:block;flex:none}
+.chip.off i{background:#C9D2E2}
+.who{display:flex;align-items:center;gap:10px;margin-top:15px}
+.avatar{
+  width:30px;height:30px;border-radius:50%;flex:none;background:var(--blue-tint);
+  display:grid;place-items:center;font-size:11px;font-weight:800;color:var(--blue-dark);
+}
+.who b{font-size:12.5px;font-weight:700;display:block}
+.who small{font-size:11px;color:var(--muted)}
+
+/* --- centre --- */
+.main{display:flex;flex-direction:column;background:var(--surface);border-right:1px solid var(--line)}
+.topbar{
+  padding:14px 24px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.topbar h4{font-size:15px;font-weight:800;letter-spacing:-.01em}
+.topbar em{font-family:var(--mono);font-size:11px;font-style:normal;color:var(--muted)}
+.stream{padding:24px;display:flex;flex-direction:column;gap:20px;flex:1}
+.msg-user{align-self:flex-end;max-width:78%}
+.msg-user .bubble{
+  background:var(--grad);color:#fff;border-radius:16px 16px 5px 16px;
+  padding:13px 16px;font-size:14px;font-weight:500;
+  box-shadow:0 10px 22px -12px rgba(35,80,230,.55);
+}
+.stamp{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:6px;text-align:right}
+.msg-bot{max-width:92%;display:flex;flex-direction:column;gap:14px}
+.msg-bot .line{font-size:14.5px}
+.trail{border-left:2px solid var(--blue-tint);padding-left:16px;display:flex;flex-direction:column;gap:11px}
+.step{position:relative;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.step::before{
+  content:'';position:absolute;left:-21.5px;top:5px;width:9px;height:9px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--blue);
+}
+.step .what{font-size:13px;color:#3D4A66}
+.step .what b{font-weight:700;color:var(--ink)}
+.step .src{
+  font-family:var(--mono);font-size:10px;color:var(--blue-dark);background:var(--blue-tint);
+  border-radius:5px;padding:2px 7px;white-space:nowrap;
+}
+.doc{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.doc-head{
+  padding:12px 16px;background:var(--field);border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.doc-head b{font-size:13.5px;font-weight:800}
+.doc-head span{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.doc-body{padding:14px 16px;display:flex;flex-wrap:wrap;gap:22px}
+.fld dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fld dd{font-size:14px;font-weight:700;margin-top:3px}
+.fld dd.amount{color:var(--blue-dark);font-weight:800}
+.doc-foot{padding:12px 16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sbtn{
+  font-family:var(--sans);font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px;
+  cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+}
+.sbtn.primary{background:var(--grad);color:#fff;border:none}
+.sbtn:hover{border-color:var(--blue)}
+.guard{font-size:12px;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:6px;font-weight:600}
+.guard::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--success)}
+.compose{border-top:1px solid var(--line);padding:14px 24px 18px}
+.quick{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px}
+.quick button{
+  font-family:var(--sans);font-size:12.5px;font-weight:600;color:#3D4A66;
+  background:var(--field);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;
+}
+.quick button:hover{border-color:var(--blue);color:var(--blue-dark)}
+.field-row{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:13px;padding:12px 14px}
+.field-row:hover{border-color:#C6D4F7}
+.field-row p{flex:1;font-size:14px;color:#9AA6BC}
+.send{
+  width:36px;height:36px;flex:none;border-radius:10px;border:none;
+  background:var(--grad);color:#fff;cursor:pointer;font-size:15px;
+}
+.ai-note{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center;margin-top:9px}
+
+/* --- rail droit --- */
+.side{background:var(--field);padding:18px 15px;display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.panel h3{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:9px;font-weight:500;
+}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin-bottom:8px}
+.pcard b{font-size:13px;font-weight:700;display:block;letter-spacing:-.01em}
+.pcard p{font-size:12px;color:var(--muted);margin-top:2px}
+.when{font-family:var(--mono);font-size:9.5px;color:var(--blue-dark);background:var(--blue-tint);border-radius:5px;padding:2px 7px;margin-top:7px;display:inline-block}
+.vrow{display:flex;gap:6px;margin-top:9px}
+.vrow button{
+  flex:1;font-family:var(--sans);font-size:12px;font-weight:700;padding:7px;border-radius:8px;
+  cursor:pointer;border:1px solid var(--line);background:var(--field);color:var(--ink);
+}
+.vrow button.ok{background:var(--grad);color:#fff;border:none}
+.count{
+  display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:999px;
+  background:var(--blue);color:#fff;font-size:10.5px;font-weight:800;margin-left:6px;padding:0 5px;
+}
+.legal{margin-top:auto;border-top:1px solid var(--line);padding-top:13px;font-size:11.5px;color:var(--muted)}
+.legal b{display:block;font-size:12px;color:var(--ink);font-weight:700;margin-bottom:3px}
+.export-log{
+  display:inline-block;margin-top:9px;font-family:var(--sans);font-size:11.5px;font-weight:700;
+  padding:6px 12px;border-radius:8px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+}
+.export-log:hover{border-color:var(--blue)}
+
+/* ================= DASHBOARD ================= */
+.dash{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:0 22px 55px -30px rgba(17,26,55,.28);
+}
+.dash-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.dash-top h3{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.dash-top span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.tile{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.tile label{font-size:12px;color:var(--muted);font-weight:600;display:block}
+.tile .val{font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-top:4px;display:flex;align-items:baseline;gap:8px}
+.delta{font-size:11.5px;font-weight:700}
+.delta.up{color:var(--success)} .delta.down{color:var(--success)}
+.spark{display:flex;align-items:flex-end;gap:2px;height:26px;margin-top:9px}
+.spark i{flex:1;background:#C6D4F7;border-radius:2px 2px 0 0;display:block}
+.spark i.cur{background:var(--blue)}
+.charts{display:grid;grid-template-columns:1.6fr 1fr;gap:12px}
+.chart{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.chart h4{font-size:13.5px;font-weight:800;letter-spacing:-.01em}
+.chart .sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:1px;margin-bottom:14px}
+.bars{display:flex;align-items:stretch;gap:0;height:150px;position:relative}
+.grid-lines{position:absolute;inset:0 0 18px 30px}
+.grid-lines i{position:absolute;left:0;right:0;height:1px;background:#E2E7F2;display:block}
+.ticks{position:absolute;left:0;top:0;bottom:18px;width:26px}
+.ticks span{position:absolute;right:0;transform:translateY(-50%);font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+.cols{position:absolute;inset:0 0 18px 30px;display:flex;align-items:flex-end;gap:10px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
+.col i{width:100%;max-width:22px;background:var(--blue);border-radius:4px 4px 0 0;display:block;position:relative}
+.col:hover i{background:var(--blue-dark)}
+.col .v{
+  position:absolute;top:-17px;font-size:10.5px;font-weight:700;color:var(--ink);
+  font-family:var(--mono);white-space:nowrap;
+}
+.xlab{position:absolute;left:30px;right:0;bottom:0;display:flex;gap:10px}
+.xlab span{flex:1;text-align:center;font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+.hbars{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.hb label{font-size:12px;font-weight:600;color:#3D4A66;display:flex;justify-content:space-between;margin-bottom:4px}
+.hb label b{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink)}
+.track{height:12px;background:#E2E7F2;border-radius:6px;overflow:hidden}
+.fill{height:100%;border-radius:6px 4px 4px 6px;display:block}
+.f-blue{background:var(--blue)} .f-teal{background:var(--teal)}
+.f-amber{background:var(--amber)} .f-rose{background:var(--rose)}
+
+/* ================= MODULES ================= */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mod{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;gap:9px;
+}
+.mod:hover{border-color:#C6D4F7;box-shadow:0 14px 34px -20px rgba(17,26,55,.3)}
+.ico{
+  width:42px;height:42px;border-radius:12px;background:var(--blue-tint);
+  display:grid;place-items:center;color:var(--blue-dark);
+}
+.mod h4{font-size:16px;font-weight:800;letter-spacing:-.015em}
+.mod p{font-size:13px;color:var(--muted);font-weight:500;flex:1}
+.mod .price{
+  font-family:var(--mono);font-size:11px;color:var(--blue-dark);
+  border-top:1px dashed var(--line);padding-top:10px;
+}
+.tagp{
+  align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue-dark);background:var(--blue-tint);border-radius:999px;padding:3px 10px;
+}
+
+/* ================= ÉTAPES ================= */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.st{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+}
+.st-n{
+  width:44px;height:44px;border-radius:50%;background:var(--blue-tint);color:var(--blue-dark);
+  font-size:18px;font-weight:800;display:grid;place-items:center;margin-bottom:12px;
+}
+.st b{font-size:16px;font-weight:800;letter-spacing:-.015em;display:block;margin-bottom:5px}
+.st p{font-size:13px;color:var(--muted);font-weight:500}
+.st .dur{font-family:var(--mono);font-size:10.5px;color:var(--blue-dark);background:var(--blue-tint);border-radius:5px;padding:3px 8px;display:inline-block;margin-top:11px}
+
+/* ================= FOOTER ================= */
+.foot-band{background:var(--ink);color:#fff;border-radius:var(--radius);padding:34px;position:relative;overflow:hidden}
+.foot-band::after{
+  content:'';position:absolute;right:-140px;bottom:-180px;width:400px;height:400px;
+  border-radius:50%;background:rgba(58,107,255,.22);
+}
+.foot-band .wrap2{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between}
+.foot-band h3{font-size:23px;font-weight:800;letter-spacing:-.02em;max-width:430px}
+.foot-band h3 .accent{color:#8FAAFF}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.fchip{
+  font-family:var(--mono);font-size:10.5px;color:#C7D3F2;border:1px solid rgba(199,211,242,.28);
+  border-radius:999px;padding:5px 11px;display:flex;align-items:center;gap:6px;
+}
+.fchip::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ADE80}
+.credit{
+  text-align:center;font-size:12px;color:var(--muted);font-weight:600;padding:22px 0 30px;
+}
+.credit b{color:var(--ink)}
+
+@media (max-width:1080px){
+  .app{grid-template-columns:224px 1fr}
+  .side{grid-column:1/-1;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:20px}
+  .side .panel{flex:1;min-width:220px}
+  .legal{margin-top:0;border-top:none;padding-top:0;flex-basis:100%}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .charts{grid-template-columns:1fr}
+  .mods,.steps3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .hero h1{font-size:38px}
+  .app{grid-template-columns:1fr}
+  .rail{border-right:none;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;align-items:center}
+  .rail .group{display:none}
+  .new-request{width:auto;margin-left:auto}
+  .connected{margin:0;border-top:none;padding-top:0;flex-basis:100%}
+  .who{display:none}
+  .main{border-right:none}
+  .mods,.steps3,.tiles{grid-template-columns:1fr}
+  .msg-user,.msg-bot{max-width:100%}
+}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body data-palette="#2F62FF,#0E9F8A,#D98324,#C4508A">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-brand">
+      <div class="mark">A</div>
+      <div>
+        <b>Aevio Agents</b>
+        <small>Assistants IA pour TPE et PME</small>
+      </div>
+    </div>
+
+    <span class="badge">Démonstration produit</span>
+    <h1>Une équipe d'agents IA<br>au service de<br><span class="accent">votre entreprise</span></h1>
+    <p class="lede">
+      Vos employés délèguent les tâches répétitives, gardent la main sur tout ce qui part,
+      et voient chaque action dans un journal. Devis, relances, mails, RH : tout depuis une seule interface, à vos couleurs.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn primary" href="#demo">Voir l'interface</a>
+      <a class="btn" href="#modules">Le catalogue de modules</a>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof"><b data-count="38">38 h</b><span>rendues à l'équipe chaque mois</span></div>
+      <div class="proof"><b>92 %</b><span>des actions validées sans retouche</span></div>
+      <div class="proof"><b>100 %</b><span>des envois relus par un humain</span></div>
+      <div class="proof"><b>UE</b><span>hébergement des données</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= FENÊTRE APP ================= -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="badge">L'interface au quotidien</span>
+      <h2>Ce que voit l'employé, <span class="accent">tous les jours</span></h2>
+      <p>Exemple chez une menuiserie : Sophie, assistante de direction, demande un devis et le mail qui l'accompagne. L'assistant travaille, elle valide.</p>
+    </div>
+
+    <div class="window" id="app-window">
+      <div class="chrome">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url">assistant.duval-menuiserie.fr</div>
+      </div>
+
+      <div class="app">
+
+        <!-- gauche -->
+        <aside class="rail">
+          <div class="brand">
+            <div class="mark">D</div>
+            <div><b>Assistant Duval</b><small>Menuiserie Duval &amp; Fils</small></div>
+          </div>
+          <button class="new-request">+ Nouvelle demande</button>
+
+          <div class="group">
+            <h3>Agents</h3>
+            <div class="agent active"><i class="a-blue"></i> Devis &amp; commandes</div>
+            <div class="agent"><i class="a-teal"></i> Relances &amp; trésorerie</div>
+            <div class="agent"><i class="a-amber"></i> Questions RH</div>
+            <div class="agent"><i class="a-rose"></i> Fiches chantier</div>
+          </div>
+
+          <div class="group">
+            <h3>Aujourd'hui</h3>
+            <div class="thread">Devis hall, Bertrand SA</div>
+            <div class="thread">Résumé des mails du matin</div>
+            <div class="thread">Congés de Karim, solde ?</div>
+          </div>
+
+          <div class="connected">
+            <h3>Connecté à</h3>
+            <div class="chips">
+              <span class="chip"><i></i> Boîte mail</span>
+              <span class="chip"><i></i> Documents</span>
+              <span class="chip"><i></i> Facturation</span>
+              <span class="chip"><i></i> Agenda</span>
+              <span class="chip"><i></i> CRM</span>
+              <span class="chip off"><i></i> Compta</span>
+            </div>
+            <div class="who">
+              <div class="avatar">SM</div>
+              <div><b>Sophie Merlin</b><small>Assistante · accès complet</small></div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- centre -->
+        <main class="main">
+          <div class="topbar">
+            <h4>Devis hall d'accueil, Bertrand SA</h4>
+            <em>4 actions · 2,4 s</em>
+          </div>
+
+          <div class="stream">
+            <div class="msg-user">
+              <div class="bubble">Prépare le devis pour la réfection du hall chez Bertrand SA, mêmes conditions qu'en mars, et le mail pour Claire Bertrand.</div>
+              <div class="stamp">09:12</div>
+            </div>
+
+            <div class="msg-bot">
+              <p class="line">C'est prêt. J'ai repris la grille de mars et ajusté les quantités au métré du hall. Le mail attend votre relecture.</p>
+              <div class="trail">
+                <div class="step"><span class="what">Retrouvé le <b>devis 2026-034</b> de mars</span><span class="src">Documents</span></div>
+                <div class="step"><span class="what">Repris la remise de <b>6 %</b> accordée au client</span><span class="src">Facturation</span></div>
+                <div class="step"><span class="what">Créé le <b>devis 2026-081</b></span><span class="src">Facturation</span></div>
+                <div class="step"><span class="what">Rédigé le mail pour <b>Claire Bertrand</b>, non envoyé</span><span class="src">Boîte mail</span></div>
+              </div>
+              <div class="doc">
+                <div class="doc-head"><b>Devis 2026-081, réfection du hall</b><span>PDF · 2 pages</span></div>
+                <div class="doc-body">
+                  <dl class="fld"><dt>Client</dt><dd>Bertrand SA</dd></dl>
+                  <dl class="fld"><dt>Montant HT</dt><dd class="amount">8 940 €</dd></dl>
+                  <dl class="fld"><dt>Pose</dt><dd>3 semaines</dd></dl>
+                  <dl class="fld"><dt>Validité</dt><dd>30 jours</dd></dl>
+                </div>
+                <div class="doc-foot">
+                  <button class="sbtn primary">Relire le mail</button>
+                  <button class="sbtn">Ouvrir le devis</button>
+                  <span class="guard">Rien n'est envoyé sans vous</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="msg-user">
+              <div class="bubble">Parfait, le mail est bon, tu peux l'envoyer.</div>
+              <div class="stamp">09:16</div>
+            </div>
+
+            <div class="msg-bot">
+              <p class="line">Envoyé à Claire Bertrand à 9 h 16, avec le devis en pièce jointe. Je vous préviens dès qu'elle répond, et je relancerai poliment dans 8 jours sans réponse.</p>
+              <div class="trail">
+                <div class="step"><span class="what">Mail envoyé après <b>votre validation</b></span><span class="src">Boîte mail</span></div>
+                <div class="step"><span class="what">Rappel de relance posé au <b>27 août</b></span><span class="src">Agenda</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="compose">
+            <div class="quick">
+              <button>Résumer mes mails</button>
+              <button>Préparer un devis</button>
+              <button>Relancer un impayé</button>
+              <button>Fiche chantier</button>
+            </div>
+            <div class="field-row">
+              <p>Écrivez votre demande…</p>
+              <button class="send" aria-label="Envoyer">↑</button>
+            </div>
+            <p class="ai-note">Vous échangez avec un assistant IA. Chaque action est journalisée et consultable.</p>
+          </div>
+        </main>
+
+        <!-- droite -->
+        <aside class="side">
+          <div class="panel">
+            <h3>Tourne tout seul</h3>
+            <div class="pcard">
+              <b>Relance des factures échues</b>
+              <p>Choisit le palier, adapte le ton, escalade au patron au-dessus de 5 000 €.</p>
+              <span class="when">Chaque matin · 7 h 30</span>
+            </div>
+            <div class="pcard">
+              <b>Devis sans réponse depuis 8 jours</b>
+              <p>Prépare une relance commerciale au ton du client.</p>
+              <span class="when">Lundi et jeudi</span>
+            </div>
+            <div class="pcard">
+              <b>Nouvelle demande sur le site</b>
+              <p>Qualifie, crée la fiche CRM, prévient l'atelier.</p>
+              <span class="when">À chaque formulaire</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>À valider <span class="count">2</span></h3>
+            <div class="pcard">
+              <b>Mail à Claire Bertrand</b>
+              <p>Devis 2026-081 en pièce jointe.</p>
+              <div class="vrow"><button class="ok">Envoyer</button><button>Modifier</button></div>
+            </div>
+            <div class="pcard">
+              <b>Relance Sogimo, 2 340 €</b>
+              <p>Facture échue depuis 12 jours, 2ᵉ palier.</p>
+              <div class="vrow"><button class="ok">Envoyer</button><button>Modifier</button></div>
+            </div>
+          </div>
+
+          <div class="legal">
+            <b>Journal &amp; conformité</b>
+            Chaque action est horodatée et exportable. Données hébergées dans l'UE, accès limités par salarié.
+            <br><button class="export-log">Exporter le journal</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section id="pilotage">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="badge">Côté dirigeant</span>
+      <h2>Le tableau de bord qui <span class="accent">justifie l'abonnement</span></h2>
+      <p>Chaque mois, le dirigeant voit ce que l'assistant a réellement produit : les heures rendues, les tâches traitées, et ce que ça a coûté.</p>
+    </div>
+
+    <div class="dash">
+      <div class="dash-top">
+        <h3>Activité du mois, Menuiserie Duval &amp; Fils</h3>
+        <span>Août 2026 · 6 utilisateurs</span>
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <label>Heures rendues à l'équipe</label>
+          <div class="val">38 h <span class="delta up">+12 % vs juillet</span></div>
+          <div class="spark" aria-hidden="true">
+            <i style="height:32%"></i><i style="height:38%"></i><i style="height:35%"></i><i style="height:46%"></i>
+            <i style="height:42%"></i><i style="height:55%"></i><i style="height:52%"></i><i style="height:60%"></i>
+            <i style="height:57%"></i><i style="height:68%"></i><i style="height:74%"></i><i class="cur" style="height:84%"></i>
+          </div>
+        </div>
+        <div class="tile">
+          <label>Tâches traitées</label>
+          <div class="val">112 <span class="delta up">+9 %</span></div>
+        </div>
+        <div class="tile">
+          <label>Validées sans retouche</label>
+          <div class="val">92 % <span class="delta up">+3 pts</span></div>
+        </div>
+        <div class="tile">
+          <label>Coût IA du mois</label>
+          <div class="val">386 € <span class="delta down">−8 %</span></div>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart">
+          <h4>Tâches traitées par semaine</h4>
+          <p class="sub">Huit dernières semaines</p>
+          <div class="bars">
+            <div class="ticks"><span style="top:0">100</span><span style="top:50%">50</span><span style="bottom:-4px;transform:none">0</span></div>
+            <div class="grid-lines"><i style="top:0"></i><i style="top:50%"></i><i style="bottom:0"></i></div>
+            <div class="cols">
+              <div class="col" title="Semaine 27 : 58 tâches"><i style="height:44%"></i></div>
+              <div class="col" title="Semaine 28 : 66 tâches"><i style="height:50%"></i></div>
+              <div class="col" title="Semaine 29 : 74 tâches"><i style="height:56%"></i></div>
+              <div class="col" title="Semaine 30 : 71 tâches"><i style="height:54%"></i></div>
+              <div class="col" title="Semaine 31 : 83 tâches"><i style="height:63%"></i></div>
+              <div class="col" title="Semaine 32 : 90 tâches"><i style="height:68%"></i></div>
+              <div class="col" title="Semaine 33 : 86 tâches"><i style="height:65%"></i></div>
+              <div class="col" title="Semaine 34 : 104 tâches"><span class="v">104</span><i style="height:79%"></i></div>
+            </div>
+            <div class="xlab">
+              <span>S27</span><span>S28</span><span>S29</span><span>S30</span><span>S31</span><span>S32</span><span>S33</span><span>S34</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart">
+          <h4>Répartition par agent</h4>
+          <p class="sub">Part des tâches du mois</p>
+          <div class="hbars">
+            <div class="hb">
+              <label>Devis &amp; commandes <b>34 %</b></label>
+              <div class="track"><span class="fill f-blue" style="width:34%"></span></div>
+            </div>
+            <div class="hb">
+              <label>Relances &amp; trésorerie <b>28 %</b></label>
+              <div class="track"><span class="fill f-teal" style="width:28%"></span></div>
+            </div>
+            <div class="hb">
+              <label>Questions RH <b>22 %</b></label>
+              <div class="track"><span class="fill f-amber" style="width:22%"></span></div>
+            </div>
+            <div class="hb">
+              <label>Fiches chantier <b>16 %</b></label>
+              <div class="track"><span class="fill f-rose" style="width:16%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODULES ================= -->
+<section id="modules">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="badge">Le catalogue</span>
+      <h2>Des modules qui se branchent <span class="accent">selon vos besoins</span></h2>
+      <p>On démarre avec un socle, on ajoute un module quand le besoin apparaît. Chaque module a un prix clair, sans engagement de durée.</p>
+    </div>
+
+    <div class="mods">
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+        <span class="tagp">Socle</span>
+        <h4>Mémoire d'entreprise</h4>
+        <p>Devis passés, contrats, procédures, catalogues. L'assistant répond en citant le document d'origine, jamais de mémoire.</p>
+        <span class="price">Inclus dans l'abonnement</span>
+      </article>
+
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <span class="tagp">Trésorerie</span>
+        <h4>Relance des impayés</h4>
+        <p>Lit les échéances chaque matin, choisit le palier, adapte le ton, s'arrête dès qu'un paiement tombe. Le retour sur investissement le plus rapide.</p>
+        <span class="price">80 à 250 € / mois</span>
+      </article>
+
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <span class="tagp">Commerce</span>
+        <h4>Devis &amp; relance commerciale</h4>
+        <p>Assemble les brouillons à partir de vos briques tarifaires, relance les devis restés sans réponse. Vous validez, il expédie.</p>
+        <span class="price">150 à 600 € / mois</span>
+      </article>
+
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
+        <span class="tagp">Quotidien</span>
+        <h4>Boîte mail triée</h4>
+        <p>Chaque matin : l'urgent, l'important, le reste. Les réponses types sont prêtes, les pièces jointes classées au bon endroit.</p>
+        <span class="price">Inclus dans l'abonnement</span>
+      </article>
+
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="tagp">RH</span>
+        <h4>Questions internes</h4>
+        <p>Convention collective, solde de congés, procédure d'arrivée : les salariés demandent à l'assistant plutôt qu'au dirigeant.</p>
+        <span class="price">à partir de 60 € / mois</span>
+      </article>
+
+      <article class="mod">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <span class="tagp">Canaux</span>
+        <h4>Accueil téléphonique</h4>
+        <p>Répond aux appels, qualifie la demande, prend le rendez-vous et transfère avec le contexte déjà résumé. Sur votre numéro actuel.</p>
+        <span class="price">à partir de 49 € / mois</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÉTAPES ================= -->
+<section id="etapes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="badge">La mise en place</span>
+      <h2>Opérationnel en <span class="accent">trois semaines</span></h2>
+      <p>Pas de projet informatique interminable : un audit, un branchement, une formation. Vos outils actuels restent en place.</p>
+    </div>
+
+    <div class="steps3">
+      <div class="st">
+        <div class="st-n">1</div>
+        <b>L'audit</b>
+        <p>Une matinée avec vos équipes pour lister les tâches répétitives et repérer les trois qui rapportent le plus à automatiser.</p>
+        <span class="dur">Semaine 1 · une demi-journée</span>
+      </div>
+      <div class="st">
+        <div class="st-n">2</div>
+        <b>Le branchement</b>
+        <p>Connexion de la boîte mail, des documents et de la facturation. Configuration des agents et des règles de validation, à vos couleurs.</p>
+        <span class="dur">Semaines 1 et 2</span>
+      </div>
+      <div class="st">
+        <div class="st-n">3</div>
+        <b>La formation et le suivi</b>
+        <p>Deux heures avec les utilisateurs, une heure avec le dirigeant, puis 30 jours d'ajustements avec un point chaque semaine.</p>
+        <span class="dur">Semaine 3, puis 30 jours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<section>
+  <div class="wrap">
+    <div class="foot-band">
+      <div class="wrap2">
+        <div>
+          <h3>Un assistant qui travaille, <span class="accent">un humain qui décide.</span></h3>
+          <div class="fchips">
+            <span class="fchip">Conforme AI Act</span>
+            <span class="fchip">Données hébergées en UE</span>
+            <span class="fchip">Journal exportable</span>
+            <span class="fchip">Accès par salarié</span>
+          </div>
+        </div>
+        <a class="btn primary" href="#">Demander une démonstration</a>
+      </div>
+    </div>
+  </div>
+  <p class="credit">Maquette de présentation · <b>Aevio Agents</b> · Client fictif : Menuiserie Duval &amp; Fils</p>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+(function(){
+  var mShot = location.search.match(/shot=(\w+)/);
+  if (mShot){
+    var map = {app:'#app-window', dash:'.dash', mods:'.mods', steps:'.steps3', foot:'.foot-band'};
+    var el = document.querySelector(map[mShot[1]]);
+    if (el){
+      Array.prototype.forEach.call(document.body.children, function(n){
+        if (n.tagName !== 'SCRIPT') n.style.display = 'none';
+      });
+      var holder = document.createElement('div');
+      holder.style.cssText = 'padding:26px;background:#EEF2F9;width:1248px';
+      el.style.display = '';
+      holder.appendChild(el);
+      document.body.appendChild(holder);
+      document.body.style.background = '#EEF2F9';
+    }
+    return;
+  }
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isStatic = location.search.indexOf('static') !== -1;
+  if (reduced || isStatic || !window.gsap) return;
+
+  // Au chargement : héro puis fenêtre
+  gsap.from('.hero-brand, .hero .badge, .hero h1, .hero .lede, .hero-ctas, .hero-proof',
+    {y: 18, opacity: 0, duration: .6, ease: 'power2.out', stagger: .09});
+
+  // À l'apparition de chaque section
+  function onEnter(sel, fn){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ fn(); obs.disconnect(); }
+      });
+    }, {threshold: .18}).observe(el);
+  }
+
+  onEnter('#app-window', function(){
+    gsap.from('#app-window', {y: 26, opacity: 0, duration: .6, ease: 'power2.out'});
+    gsap.from('.stream > *', {y: 14, opacity: 0, duration: .5, ease: 'power2.out', stagger: .14, delay: .25});
+    gsap.from('.trail .step', {x: -10, opacity: 0, duration: .4, ease: 'power2.out', stagger: .09, delay: .55});
+    gsap.from('.side .panel, .side .legal', {y: 12, opacity: 0, duration: .5, ease: 'power2.out', stagger: .12, delay: .35});
+  });
+
+  onEnter('.dash', function(){
+    gsap.from('.tile', {y: 14, opacity: 0, duration: .5, ease: 'power2.out', stagger: .08});
+    gsap.from('.cols .col i', {scaleY: 0, transformOrigin: 'bottom', duration: .6, ease: 'power2.out', stagger: .05, delay: .25});
+    gsap.from('.hbars .fill', {scaleX: 0, transformOrigin: 'left', duration: .6, ease: 'power2.out', stagger: .09, delay: .35});
+    gsap.from('.spark i', {scaleY: 0, transformOrigin: 'bottom', duration: .4, ease: 'power2.out', stagger: .03, delay: .3});
+  });
+
+  onEnter('.mods', function(){
+    gsap.from('.mod', {y: 16, opacity: 0, duration: .5, ease: 'power2.out', stagger: .07});
+  });
+  onEnter('.steps3', function(){
+    gsap.from('.st', {y: 16, opacity: 0, duration: .5, ease: 'power2.out', stagger: .1});
+  });
+  onEnter('.foot-band', function(){
+    gsap.from('.foot-band', {y: 18, opacity: 0, duration: .6, ease: 'power2.out'});
+  });
+})();
+</script>
+</body>
+</html>

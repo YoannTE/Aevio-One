@@ -1,1467 +1,573 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="no-js">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aevio One, Solutions digitales sur mesure</title>
-<meta name="description" content="Aevio One conçoit des sites vitrines, plateformes SaaS, CRM, applications web et mobile sur mesure pour les entreprises ambitieuses." />
-<meta name="google-site-verification" content="HJ4VBx9iwvQuz6eXmMSbBBLBwJ7w9i6oNt2mU5vipts" />
-<link rel="canonical" href="https://aevio-one.com/" />
-<link rel="icon" type="image/png" sizes="512x512" href="images/logo-a1-new.png" />
-<link rel="icon" type="image/png" sizes="96x96" href="images/favicon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
-<link rel="apple-touch-icon" href="images/favicon.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aevio One — Solutions digitales &amp; agents IA sur mesure</title>
+<meta name="description" content="Aevio One conçoit des agents IA pour TPE et PME, des sites, des plateformes SaaS, des CRM métier et des applications web et mobile sur mesure. De l'idée au produit vivant.">
+<meta name="google-site-verification" content="HJ4VBx9iwvQuz6eXmMSbBBLBwJ7w9i6oNt2mU5vipts">
+<link rel="canonical" href="https://aevio-one.com/">
 
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://aevio-one.com/" />
-<meta property="og:site_name" content="Aevio One" />
-<meta property="og:title" content="Aevio One, Solutions digitales sur mesure" />
-<meta property="og:description" content="Sites vitrines, SaaS, CRM métier, applications web et mobile. Studio digital français, de l'idée au produit vivant." />
-<meta property="og:image" content="https://aevio-one.com/images/og-cover.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Aevio One, Des solutions digitales qui marquent." />
-<meta property="og:locale" content="fr_FR" />
+<link rel="icon" type="image/png" sizes="512x512" href="images/logo-a1-new.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Aevio One, Solutions digitales sur mesure" />
-<meta name="twitter:description" content="Sites vitrines, SaaS, CRM métier, applications web et mobile. Studio digital français." />
-<meta name="twitter:image" content="https://aevio-one.com/images/og-cover.png" />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aevio-one.com/">
+<meta property="og:site_name" content="Aevio One">
+<meta property="og:title" content="Aevio One — Solutions digitales &amp; agents IA sur mesure">
+<meta property="og:description" content="Agents IA pour TPE/PME, sites, SaaS, CRM métier, applications web et mobile. Studio digital français, de l'idée au produit vivant.">
+<meta property="og:image" content="https://aevio-one.com/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aevio One, des solutions digitales qui marquent.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aevio One — Solutions digitales &amp; agents IA sur mesure">
+<meta name="twitter:description" content="Agents IA pour TPE/PME, sites, SaaS, CRM métier, applications web et mobile.">
+<meta name="twitter:image" content="https://aevio-one.com/images/og-cover.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.replace('no-js','js');</script>
+
 <style>
-  :root{
-    --bg: #F3EEE4;
-    --bg-soft: #ECE5D7;
-    --bg-card: #FFFFFF;
-    --ink: #141414;
-    --ink-2: #2A2A2A;
-    --ink-3: #5A564E;
-    --ink-4: #8A8578;
-    --line: #D8D0BE;
-    --line-2: #E8E1D0;
-    --primary: #1E1B4B;
-    --primary-2: #3730A3;
-    --primary-3: #6366F1;
-    --accent: #EA580C;
-    --accent-2: #F59E0B;
-    --mint: #0D9488;
-    --rose: #E11D48;
-    --sky:  #0EA5E9;
-    --green: #10B981;
-    --radius: 28px;
-    --radius-lg: 40px;
-    --radius-xl: 56px;
-    --max: 1240px;
-    --pad: clamp(20px, 4vw, 40px);
-  }
+/* ==================== TOKENS ==================== */
+:root{
+  --bg:#FFFFFF; --field:#F5F7FB;
+  --ink:#111A37; --muted:#5B6B85;
+  --blue:#2F62FF; --blue-dark:#2350E6; --blue-tint:#EAF0FF;
+  --line:#E9ECF3; --success:#1FA463; --danger:#C0392B;
+  --grad:linear-gradient(180deg,#3A6BFF,#2350E6);
+  --radius:18px;
+  /* thème sombre (sections data-theme="dark") */
+  --dk-bg:#0B1129; --dk-card:rgba(255,255,255,.045); --dk-card-2:rgba(255,255,255,.07);
+  --dk-line:rgba(255,255,255,.1); --dk-ink:#F2F5FF; --dk-muted:#9AA8CC;
+  --dk-accent:#7C9BFF; --dk-tint:rgba(124,155,255,.14);
+  --nav-h:72px; --wrap:1200px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  color:var(--ink);background:var(--bg);
+  font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--ink);color:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
 
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Geist', system-ui, sans-serif;
-    font-weight:400;
-    font-size:17px;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,h4,h5{
-    font-family:'Bricolage Grotesque', serif;
-    font-weight:500;
-    letter-spacing:-0.02em;
-    line-height:1.05;
-    margin:0;
-    color:var(--ink);
-  }
-  a{color:inherit;text-decoration:none}
-  img,svg{display:block;max-width:100%}
-  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+/* fond crossfade : deux calques fixes, les sections sont transparentes en mode js */
+#bg-light,#bg-dark{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#bg-light{background:var(--bg)}
+#bg-dark{background:
+  radial-gradient(1000px 600px at 85% -5%, rgba(58,107,255,.16), transparent 60%),
+  radial-gradient(800px 500px at -10% 40%, rgba(58,107,255,.08), transparent 55%),
+  var(--dk-bg);
+  opacity:0}
+.js section[data-theme]{background:transparent}
+.no-js section[data-theme="dark"], html.no-js [data-theme="dark"]{background:var(--dk-bg)}
 
-  .container{
-    max-width:var(--max);
-    margin:0 auto;
-    padding-left:var(--pad);
-    padding-right:var(--pad);
-  }
+section{position:relative;padding:clamp(76px,9vw,128px) 0}
+section[data-theme="dark"]{color:var(--dk-ink)}
 
-  /* ============ NAV ============ */
-  .nav{
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter:saturate(140%) blur(14px);
-    -webkit-backdrop-filter:saturate(140%) blur(14px);
-    background:rgba(243,238,228,0.78);
-    border-bottom:1px solid rgba(216,208,190,0.45);
-  }
-  .nav-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    height:68px;
-  }
-  .logo{
-    font-family:'Bricolage Grotesque', serif;
-    font-weight:700;
-    font-size:22px;
-    letter-spacing:-0.04em;
-    display:flex;align-items:center;gap:10px;
-    color:var(--ink);
-  }
-  .logo-mark{
-    width:38px;height:38px;
-    flex-shrink:0;
-    transition:transform .3s;
-  }
-  .logo:hover .logo-mark{transform:scale(1.05)}
-  .nav-links{display:flex;gap:34px;align-items:center;font-size:15px;color:var(--ink-2);font-weight:500}
-  .nav-links a{transition:color .2s}
-  .nav-links a:hover{color:var(--accent)}
-  .nav-cta{
-    background:var(--ink);color:#fff;
-    padding:10px 18px;border-radius:999px;
-    font-size:14px;font-weight:500;
-    transition:transform .2s, background .2s;
-  }
-  .nav-cta:hover{background:var(--primary);transform:translateY(-1px)}
-  @media(max-width:840px){
-    .nav-links{display:none}
-  }
+/* ==================== NAV ==================== */
+.nav-wrap{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  transition:background-color .65s var(--ease),border-color .65s var(--ease);
+}
+body.is-dark .nav-wrap{background:rgba(11,17,41,.82);border-bottom-color:rgba(255,255,255,.08)}
+.nav{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,56px);
+  height:var(--nav-h);display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:36px;height:36px;border-radius:11px;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:16px;letter-spacing:-.02em;
+  box-shadow:0 6px 18px rgba(47,98,255,.32)}
+.brand-name{font-weight:800;font-size:16.5px;letter-spacing:-.01em;transition:color .65s var(--ease)}
+body.is-dark .brand-name{color:var(--dk-ink)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font-size:14px;font-weight:600;color:var(--muted);transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+body.is-dark .nav-links a{color:var(--dk-muted)}
+body.is-dark .nav-links a:hover{color:#fff}
+.nav-cta{margin-left:6px;flex-shrink:0}
+/* barre de progression sous la nav */
+.progress{position:absolute;left:0;bottom:-1px;height:2.5px;width:100%;
+  background:var(--grad);transform:scaleX(0);transform-origin:left}
+.burger{display:none;margin-left:auto;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s var(--ease)}
+body.is-dark .burger span{background:#fff}
+.mobile-menu{display:none}
 
-  /* ============ HERO ============ */
-  .hero{
-    padding:clamp(60px,10vw,120px) 0 clamp(40px,7vw,80px);
-    text-align:center;
-    position:relative;
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:8px 16px;border-radius:999px;
-    background:rgba(30,27,75,0.06);
-    color:var(--primary);
-    font-size:13px;font-weight:500;
-    letter-spacing:0.01em;
-    margin-bottom:28px;
-  }
-  .eyebrow::before{
-    content:"";width:6px;height:6px;border-radius:50%;
-    background:var(--accent);
-    animation:pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:.5;transform:scale(1.3)}
-  }
-  .hero h1{
-    font-size:clamp(44px, 8vw, 96px);
-    font-weight:500;
-    max-width:18ch;
-    margin:0 auto;
-  }
-  .hero h1 em{
-    font-style:normal;
-    font-family:'Bricolage Grotesque', serif;
-    background:linear-gradient(105deg, var(--primary) 0%, var(--accent) 55%, var(--accent-2) 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-  .hero p.sub{
-    margin:28px auto 0;
-    max-width:56ch;
-    color:var(--ink-3);
-    font-size:clamp(16px, 1.6vw, 19px);
-    line-height:1.55;
-  }
-  .cta-row{
-    margin-top:38px;
-    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-  }
-  .btn{
-    padding:14px 26px;border-radius:999px;
-    font-size:15px;font-weight:500;
-    transition:transform .2s, box-shadow .2s, background .2s;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(30,27,75,0.35)}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn-ghost:hover{background:var(--bg-soft);border-color:#bdb4a0}
-  .btn .arrow{transition:transform .2s}
-  .btn:hover .arrow{transform:translateX(3px)}
+/* ==================== BOUTONS / PILLS ==================== */
+.btn{display:inline-flex;align-items:center;gap:9px;
+  border-radius:999px;padding:13px 24px;font-size:14.5px;font-weight:700;
+  letter-spacing:-.01em;cursor:pointer;border:1px solid transparent;
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease),background-color .2s,border-color .2s,color .2s;
+  white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(47,98,255,.32)}
+.btn.primary:hover{box-shadow:0 12px 30px rgba(47,98,255,.42)}
+.btn.ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue)}
+section[data-theme="dark"] .btn.ghost{border-color:var(--dk-line);color:var(--dk-ink)}
+section[data-theme="dark"] .btn.ghost:hover{border-color:var(--dk-accent);color:var(--dk-accent)}
+.btn.small{padding:10px 18px;font-size:13.5px}
+.btn .arr{transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
 
-  /* ============ HERO SHOWCASE — composition ============ */
-  .hero-showcase{
-    position:relative;
-    margin:70px auto 0;
-    max-width:1100px;
-    height:clamp(420px, 56vw, 620px);
-    border-radius:var(--radius-xl);
-    overflow:hidden;
-    box-shadow:0 50px 100px -40px rgba(20,20,20,0.30), 0 0 0 1px rgba(255,255,255,0.4) inset;
-    background:
-      radial-gradient(ellipse at 22% 28%, #FDBA74 0%, transparent 42%),
-      radial-gradient(ellipse at 78% 22%, #C7D2FE 0%, transparent 40%),
-      radial-gradient(ellipse at 58% 82%, #FDE68A 0%, transparent 48%),
-      radial-gradient(ellipse at 12% 82%, #FCA5A5 0%, transparent 40%),
-      linear-gradient(135deg, #FFE4CC 0%, #DDE0FF 100%);
-  }
-  .hero-showcase::before{
-    content:"";position:absolute;inset:0;
-    background-image:radial-gradient(circle at 1px 1px, rgba(20,20,20,0.07) 1px, transparent 0);
-    background-size:26px 26px;
-    mix-blend-mode:multiply;
-    opacity:.45;
-    pointer-events:none;
-  }
-  .hero-showcase::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, transparent 70%, rgba(243,238,228,0.4) 100%);
-    pointer-events:none;
-  }
+.kicker{display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--blue);border-radius:999px;padding:6px 15px;margin-bottom:20px}
+.kicker .dot{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.85}
+.kicker.soft{background:var(--blue-tint);color:var(--blue-dark)}
+.kicker.soft .dot{background:var(--blue)}
+section[data-theme="dark"] .kicker.soft{background:var(--dk-tint);color:#B9C9FF}
+section[data-theme="dark"] .kicker.soft .dot{background:var(--dk-accent)}
 
-  /* Center hub — a CRM-like dashboard mockup */
-  .hub{
-    position:absolute;
-    left:50%;top:50%;
-    transform:translate(-50%,-50%) rotate(-1deg);
-    width:min(620px, 70%);
-    background:#fff;
-    border-radius:22px;
-    overflow:hidden;
-    box-shadow:0 40px 80px -28px rgba(20,20,20,0.32);
-    display:grid;
-    grid-template-columns:60px 1fr;
-    transition:transform .5s ease;
-  }
-  .hub:hover{transform:translate(-50%,-50%) rotate(0)}
-  .hub-side{
-    background:#0B0B12;
-    padding:14px 0;
-    display:flex;flex-direction:column;align-items:center;gap:10px;
-  }
-  .hub-side .h-logo{
-    width:30px;height:30px;border-radius:8px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    margin-bottom:6px;
-  }
-  .hub-side .h-i{
-    width:30px;height:30px;border-radius:8px;
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(255,255,255,0.4);font-size:13px;
-  }
-  .hub-side .h-i.on{background:rgba(99,102,241,0.18);color:#A5B4FC}
-  .hub-main{padding:16px 18px}
-  .hub-top{
-    display:flex;justify-content:space-between;align-items:center;
-    margin-bottom:14px;
-  }
-  .hub-title{
-    font-family:'Bricolage Grotesque',serif;
-    font-size:15px;font-weight:600;
-    color:var(--ink);
-  }
-  .hub-pill{
-    font-family:'Geist Mono',monospace;font-size:10px;
-    padding:3px 9px;border-radius:999px;
-    background:rgba(16,185,129,0.12);color:var(--green);
-    font-weight:500;
-  }
-  .hub-stats{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;
-  }
-  .hub-stat{
-    background:var(--bg);border-radius:10px;padding:9px 10px;
-  }
-  .hub-stat .l{font-size:8.5px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
-  .hub-stat .v{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600;margin-top:2px}
-  .hub-stat .d{font-size:9px;color:var(--green);font-weight:500;margin-top:1px}
-  .hub-chart{
-    height:90px;background:linear-gradient(180deg, #F8F4EA, #fff);
-    border-radius:12px;padding:8px;
-    border:1px solid var(--line-2);
-  }
-  .hub-chart svg{width:100%;height:100%}
-  .hub-rows{margin-top:10px}
-  .hub-row{
-    display:flex;align-items:center;gap:8px;
-    padding:6px 0;border-top:1px solid var(--bg-soft);
-    font-size:10px;
-  }
-  .hub-row:first-child{border-top:none}
-  .hub-row .av{
-    width:18px;height:18px;border-radius:50%;
-    background:linear-gradient(135deg,var(--primary),var(--accent));
-    flex-shrink:0;
-  }
-  .hub-row .nm{flex:1;font-weight:500;color:var(--ink)}
-  .hub-row .tg{
-    font-family:'Geist Mono',monospace;font-size:8.5px;
-    padding:2px 6px;border-radius:999px;
-  }
-  .tg-hot{background:rgba(234,88,12,0.12);color:var(--accent)}
-  .tg-new{background:rgba(16,185,129,0.12);color:var(--green)}
-  .tg-prio{background:rgba(99,102,241,0.14);color:var(--primary-2)}
+.mono{font-family:'JetBrains Mono',monospace}
+.chip{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;font-weight:500;color:var(--blue-dark);background:var(--blue-tint);
+  border-radius:999px;padding:5px 13px;white-space:nowrap}
+section[data-theme="dark"] .chip{background:var(--dk-tint);color:#B9C9FF}
 
-  /* Floating phone (left) */
-  .float-phone{
-    position:absolute;
-    left:3%;bottom:8%;
-    width:148px;
-    aspect-ratio:9/19;
-    background:#0E0E14;
-    border-radius:30px;
-    padding:8px;
-    box-shadow:0 30px 60px -22px rgba(20,20,20,0.4);
-    transform:rotate(-7deg);
-    animation:float 8s ease-in-out infinite;
-  }
-  .float-phone .ph-screen{
-    width:100%;height:100%;
-    border-radius:22px;
-    background:linear-gradient(180deg,#FECACA,#fff 38%);
-    display:flex;flex-direction:column;
-    overflow:hidden;
-  }
-  .ph-top{padding:14px 12px 8px}
-  .ph-greet{font-family:'Geist Mono',monospace;font-size:8px;color:var(--ink-4);letter-spacing:0.08em}
-  .ph-name{font-family:'Bricolage Grotesque',serif;font-size:14px;font-weight:600;line-height:1;margin-top:2px}
-  .ph-card{
-    margin:8px 10px 0;padding:9px 10px;background:#fff;border-radius:10px;
-    box-shadow:0 4px 10px -4px rgba(0,0,0,0.08);
-  }
-  .ph-card .l{font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-4);font-family:'Geist Mono',monospace}
-  .ph-card .v{
-    font-family:'Bricolage Grotesque',serif;font-size:18px;font-weight:600;margin-top:2px;
-    background:linear-gradient(90deg,var(--primary),var(--rose));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .ph-bars{margin:9px 10px 0;display:flex;gap:3px;align-items:flex-end;height:38px}
-  .ph-bars span{flex:1;border-radius:2px 2px 0 0;background:var(--primary);opacity:.85}
-  .ph-bars span:nth-child(1){height:35%}
-  .ph-bars span:nth-child(2){height:65%}
-  .ph-bars span:nth-child(3){height:50%;background:var(--accent);opacity:1}
-  .ph-bars span:nth-child(4){height:80%}
-  .ph-bars span:nth-child(5){height:42%}
-  .ph-bars span:nth-child(6){height:60%}
-  .ph-nav{margin-top:auto;display:flex;justify-content:space-around;padding:8px 0 12px;border-top:1px solid rgba(0,0,0,0.05)}
-  .ph-nav span{width:4px;height:4px;border-radius:50%;background:var(--ink-4)}
-  .ph-nav span:nth-child(2){background:var(--accent);width:14px;border-radius:3px}
+/* ==================== TITRES ==================== */
+.h1{font-size:clamp(38px,4.3vw,64px);line-height:1.04;font-weight:800;letter-spacing:-.033em}
+@media (max-width:900px){.h1{font-size:clamp(38px,7.6vw,58px)}}
+.h2{font-size:clamp(32px,4.4vw,56px);line-height:1.06;font-weight:800;letter-spacing:-.03em}
+.h3{font-size:clamp(23px,2.6vw,32px);line-height:1.15;font-weight:800;letter-spacing:-.022em}
+.accent{color:var(--blue)}
+section[data-theme="dark"] .accent{color:var(--dk-accent)}
+.lede{font-size:clamp(16px,1.5vw,18.5px);color:var(--muted);font-weight:500;line-height:1.6;max-width:640px}
+section[data-theme="dark"] .lede{color:var(--dk-muted)}
+.sec-head{max-width:860px;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head .lede{margin-top:18px}
+.js [data-split] .wi{display:inline-block;will-change:transform,opacity,filter}
 
-  /* Floating browser preview (right) */
-  .float-browser{
-    position:absolute;
-    right:4%;top:9%;
-    width:min(290px, 32%);
-    background:#fff;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 30px 60px -22px rgba(20,20,20,0.32);
-    transform:rotate(4deg);
-    animation:float 9s ease-in-out infinite;
-    animation-delay:-2s;
-  }
-  .fb-bar{
-    display:flex;align-items:center;gap:5px;padding:8px 10px;
-    background:#F1ECDF;border-bottom:1px solid var(--line-2);
-  }
-  .fb-bar .d{width:7px;height:7px;border-radius:50%}
-  .fb-bar .d:nth-child(1){background:#FCA5A5}
-  .fb-bar .d:nth-child(2){background:#FCD34D}
-  .fb-bar .d:nth-child(3){background:#86EFAC}
-  .fb-bar .url{
-    margin-left:8px;flex:1;background:#fff;border-radius:5px;
-    font-family:'Geist Mono',monospace;font-size:8.5px;color:var(--ink-3);
-    padding:3px 8px;border:1px solid var(--line-2);
-  }
-  .fb-body{padding:16px 14px 18px}
-  .fb-h{font-family:'Bricolage Grotesque',serif;font-size:15px;font-weight:600;line-height:1.1}
-  .fb-h em{font-style:normal;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .fb-sub{font-size:8.5px;color:var(--ink-3);margin-top:5px}
-  .fb-cards{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
-  .fb-cards div{aspect-ratio:16/10;border-radius:7px}
-  .fb-cards div:nth-child(1){background:linear-gradient(135deg,#A5B4FC,#6366F1)}
-  .fb-cards div:nth-child(2){background:linear-gradient(135deg,#FCA5A5,#F43F5E)}
+/* ==================== HERO ==================== */
+.hero{padding:calc(var(--nav-h) + clamp(64px,8vw,110px)) 0 clamp(70px,8vw,110px);overflow:hidden}
+.hero::after{content:'';position:absolute;right:-14vw;top:-6vw;width:44vw;height:44vw;min-width:420px;min-height:420px;
+  border-radius:50%;background:var(--blue-tint);opacity:.55;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,4vw,64px);align-items:center}
+.hero-grid > *{min-width:0}
+.hero .lede{margin:24px 0 32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-proof{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.hero-proof span{font-size:13px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.hero-proof i{width:6px;height:6px;border-radius:50%;background:var(--success);flex-shrink:0}
 
-  /* Floating notification (top-left) */
-  .float-notif{
-    position:absolute;
-    left:5%;top:11%;
-    width:230px;
-    background:#fff;
-    border-radius:14px;
-    padding:12px 14px;
-    box-shadow:0 20px 40px -15px rgba(20,20,20,0.25);
-    display:flex;align-items:center;gap:10px;
-    animation:float 7s ease-in-out infinite;
-    animation-delay:-4s;
-    transform:rotate(-3deg);
-  }
-  .float-notif .n-ico{
-    width:34px;height:34px;border-radius:10px;flex-shrink:0;
-    background:linear-gradient(135deg, var(--mint), #14B8A6);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-weight:700;font-family:'Geist Mono',monospace;
-  }
-  .float-notif .n-title{font-size:12px;font-weight:500;color:var(--ink);line-height:1.2}
-  .float-notif .n-sub{font-size:10px;color:var(--ink-3);margin-top:2px}
+/* composition visuelle */
+.hv{position:relative;min-height:460px}
+.hv-browser{position:relative;z-index:2;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);background:#fff;
+  box-shadow:0 30px 80px rgba(17,26,55,.16)}
+.b-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line);background:#FBFCFE}
+.b-bar i{width:9px;height:9px;border-radius:50%;background:#E3E8F2}
+.b-bar i:first-child{background:#F6C8C3}.b-bar i:nth-child(2){background:#F5E3B8}.b-bar i:nth-child(3){background:#C8E8D4}
+.b-url{flex:1;min-width:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);
+  background:var(--field);border-radius:999px;padding:4px 12px;margin:0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hv-card{position:absolute;z-index:3;background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:14px 17px;box-shadow:0 18px 44px rgba(17,26,55,.14)}
+.hv-kpi{left:-34px;bottom:66px}
+.hv-kpi b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;color:var(--blue-dark);line-height:1.1}
+.hv-kpi > span{display:block;font-size:11.5px;color:var(--muted);font-weight:600}
+.hv-notif{right:-26px;top:-24px;display:flex;gap:11px;align-items:center;max-width:290px}
+.hv-notif .ic{width:34px;height:34px;border-radius:10px;background:var(--blue-tint);color:var(--blue-dark);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.hv-notif b{display:block;font-size:12.5px;font-weight:700;line-height:1.3}
+.hv-notif span{font-size:11px;color:var(--success);font-weight:600}
+.hv-pill{position:absolute;z-index:3;left:24px;bottom:-14px}
 
-  /* Floating stat (bottom right) */
-  .float-stat{
-    position:absolute;
-    right:5%;bottom:10%;
-    width:200px;
-    background:#fff;
-    border-radius:14px;
-    padding:14px 16px;
-    box-shadow:0 20px 40px -15px rgba(20,20,20,0.25);
-    transform:rotate(3deg);
-    animation:float 7s ease-in-out infinite;
-    animation-delay:-1.5s;
-  }
-  .float-stat .s-l{font-family:'Geist Mono',monospace;font-size:9.5px;text-transform:uppercase;color:var(--ink-4);letter-spacing:0.1em}
-  .float-stat .s-v{font-family:'Bricolage Grotesque',serif;font-size:26px;font-weight:600;line-height:1;margin-top:4px}
-  .float-stat .s-spark{margin-top:8px;height:30px}
+/* ==================== MARQUEE ==================== */
+.ticker{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.ticker-track{overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}
+.ticker-inner{display:flex;align-items:center;gap:0;width:max-content}
+.ticker-inner span{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 26px;white-space:nowrap}
+.ticker-inner em{font-style:normal;color:var(--blue);padding:0 0}
+.ticker.dark-t{border-color:var(--dk-line)}
+.ticker.dark-t .ticker-inner span{color:var(--dk-muted)}
+.ticker.dark-t .ticker-inner em{color:var(--dk-accent)}
 
-  @keyframes float{
-    0%,100%{transform:translateY(0) rotate(var(--rot, 0deg))}
-    50%{transform:translateY(-14px) rotate(var(--rot, 0deg))}
-  }
-  .float-phone{--rot:-7deg}
-  .float-browser{--rot:4deg}
-  .float-notif{--rot:-3deg}
-  .float-stat{--rot:3deg}
+/* ==================== CADRES ÉCRANS ==================== */
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;
+  box-shadow:0 26px 70px rgba(17,26,55,.14)}
+section[data-theme="dark"] .shot{border-color:rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.shot img{width:100%}
+.caption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:14px;text-align:center}
+section[data-theme="dark"] .caption{color:var(--dk-muted)}
 
-  @media(max-width:780px){
-    .hero-showcase{height:clamp(380px, 70vw, 480px)}
-    .hub{width:78%}
-    .float-browser, .float-notif, .float-stat{display:none}
-    .float-phone{left:auto;right:-3%;bottom:-2%;width:120px}
-  }
+.phone{width:min(250px,60vw);border-radius:34px;padding:10px;background:#0E1430;
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(17,26,55,.28);position:relative}
+.phone::before{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  width:74px;height:16px;border-radius:999px;background:#0E1430;z-index:2}
+.phone img{border-radius:25px;width:100%}
 
-  /* ============ TRUSTED BY ============ */
-  .logos-strip{
-    padding:30px 0 50px;
-    text-align:center;
-  }
-  .logos-strip p{
-    color:var(--ink-4);
-    font-size:13px;letter-spacing:0.12em;
-    text-transform:uppercase;
-    margin:0 0 24px;
-  }
-  .logos-row{
-    display:flex;justify-content:center;align-items:center;
-    gap:clamp(24px,5vw,64px);
-    flex-wrap:wrap;
-    opacity:.75;
-  }
-  .logos-row span{
-    font-family:'Bricolage Grotesque', serif;
-    font-weight:600;
-    font-size:22px;
-    letter-spacing:-0.02em;
-    color:var(--ink-3);
-  }
-  .logos-row span:nth-child(2){font-family:'Geist Mono', monospace;font-weight:500;font-size:18px}
-  .logos-row span:nth-child(3){font-style:italic}
-  .logos-row span:nth-child(5){letter-spacing:0.3em;font-weight:400}
+/* ==================== SECTION AGENTS ==================== */
+#agents .sec-head{max-width:900px}
+.ag-hero{display:grid;grid-template-columns:1fr;gap:26px;margin-bottom:clamp(44px,5vw,70px)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:clamp(40px,5vw,60px) 0}
+.kpi{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:22px 24px}
+.kpi b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1.05;color:#fff}
+.kpi b em{font-style:normal;color:var(--dk-accent)}
+.kpi > span{display:block;font-size:13px;color:var(--dk-muted);font-weight:600;margin-top:7px;line-height:1.45}
+.kpi-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dk-muted);opacity:.75;margin-top:-28px;margin-bottom:48px}
 
-  /* ============ SECTIONS ============ */
-  section.block{padding:clamp(70px,11vw,130px) 0}
-  .section-head{
-    max-width:760px;margin:0 auto clamp(48px,6vw,80px);
-    text-align:center;
-  }
-  .section-head .kicker{
-    display:inline-block;
-    font-family:'Geist Mono',monospace;
-    font-size:12px;
-    color:var(--accent);
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    margin-bottom:18px;
-  }
-  .section-head h2{
-    font-size:clamp(36px, 5.5vw, 68px);
-    font-weight:500;
-  }
-  .section-head h2 em{
-    font-style:italic;
-    font-family:'Bricolage Grotesque', serif;
-    color:var(--accent);
-  }
-  .section-head p{
-    margin-top:22px;color:var(--ink-3);
-    font-size:clamp(16px,1.4vw,18px);
-    max-width:56ch;
-    margin-left:auto;margin-right:auto;
-  }
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mod{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);
+  padding:22px 23px;transition:transform .25s var(--ease),border-color .25s,background-color .25s;position:relative}
+.mod:hover{transform:translateY(-4px);border-color:rgba(124,155,255,.45);background:var(--dk-card-2)}
+.mod .cat{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dk-muted)}
+.mod b{display:block;font-size:17px;font-weight:800;letter-spacing:-.015em;margin:9px 0 7px;color:#fff}
+.mod p{font-size:13.5px;color:var(--dk-muted);line-height:1.55;margin-bottom:14px}
+.mod .price{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:#B9C9FF;background:var(--dk-tint);border-radius:999px;padding:4px 12px}
+.mod .flag{position:absolute;top:18px;right:18px;font-size:10px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:#0B1129;background:#9EF0C3;border-radius:999px;padding:3px 10px}
 
-  /* ============ SERVICE BLOCKS (alternating) ============ */
-  .service{
-    display:grid;
-    grid-template-columns:1fr 1.1fr;
-    gap:clamp(30px,6vw,80px);
-    align-items:center;
-    margin-bottom:clamp(60px,8vw,120px);
-  }
-  .service:last-child{margin-bottom:0}
-  .service.reverse{grid-template-columns:1.1fr 1fr}
-  .service.reverse .service-text{order:2}
-  .service.reverse .service-visual{order:1}
-  @media(max-width:860px){
-    .service, .service.reverse{
-      grid-template-columns:1fr;
-    }
-    .service.reverse .service-text{order:1}
-    .service.reverse .service-visual{order:2}
-  }
+.ag-sub{font-size:clamp(21px,2.2vw,27px);font-weight:800;letter-spacing:-.02em;margin:clamp(52px,6vw,80px) 0 24px;color:#fff}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.st{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:24px}
+.st .n{width:44px;height:44px;border-radius:50%;background:var(--dk-tint);color:#B9C9FF;
+  font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.st b{display:block;font-size:16.5px;font-weight:800;margin-bottom:6px;color:#fff}
+.st span{font-size:13.5px;color:var(--dk-muted);line-height:1.55;display:block}
+.st .when{font-family:'JetBrains Mono',monospace;font-size:11px;color:#B9C9FF;margin-top:12px;display:inline-block;background:var(--dk-tint);border-radius:999px;padding:3px 11px}
 
-  .service-text .num{
-    display:inline-block;
-    font-family:'Geist Mono', monospace;
-    font-size:13px;color:var(--ink-4);
-    margin-bottom:14px;letter-spacing:0.1em;
-  }
-  .service-text h3{
-    font-size:clamp(30px,4vw,48px);
-    font-weight:500;
-    max-width:14ch;
-  }
-  .service-text p{
-    margin-top:20px;
-    color:var(--ink-3);
-    font-size:17px;
-    max-width:50ch;
-  }
-  .chip-list{
-    margin-top:28px;
-    display:flex;flex-wrap:wrap;gap:8px;
-  }
-  .chip{
-    padding:7px 14px;border-radius:999px;
-    background:var(--bg-card);
-    border:1px solid var(--line);
-    font-size:13px;font-weight:500;
-    color:var(--ink-2);
-  }
+.offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.offer{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:30px;position:relative;
+  transition:transform .25s var(--ease),border-color .25s}
+.offer:hover{transform:translateY(-4px);border-color:rgba(124,155,255,.45)}
+.offer.star{background:linear-gradient(160deg,rgba(58,107,255,.16),rgba(35,80,230,.06));border-color:rgba(124,155,255,.35)}
+.offer .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#B9C9FF}
+.offer h4{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:10px 0 4px;color:#fff}
+.offer .for{font-size:13.5px;color:var(--dk-muted);margin-bottom:18px}
+.offer .price{font-size:clamp(28px,3vw,36px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.1}
+.offer .price small{display:block;font-size:14px;font-weight:600;color:var(--dk-muted);letter-spacing:0;margin-top:5px}
+.offer ul{list-style:none;margin:20px 0 24px}
+.offer li{position:relative;padding-left:24px;font-size:14px;color:#C7D2EE;margin-bottom:9px;line-height:1.5}
+.offer li::before{content:'';position:absolute;left:2px;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--dk-accent)}
+.offer .avail{position:absolute;top:26px;right:26px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;background:#9EF0C3;color:#0B1129}
+.offer .avail.later{background:var(--dk-tint);color:#B9C9FF}
+.fchips{display:flex;gap:10px;flex-wrap:wrap;margin:clamp(40px,4vw,56px) 0 30px}
+.ag-ctas{display:flex;gap:14px;flex-wrap:wrap}
 
-  .service-visual{
-    aspect-ratio: 4/3;
-    border-radius:var(--radius-lg);
-    position:relative;
-    overflow:hidden;
-    padding:clamp(20px,3vw,40px);
-    display:flex;align-items:center;justify-content:center;
-  }
+/* ==================== RÉALISATIONS ==================== */
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;
+  padding:clamp(44px,5vw,72px) 0;border-top:1px solid var(--line)}
+.proj > *{min-width:0}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj-media{position:relative}
+.proj.flip .proj-media{order:2}
+.proj-body .chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+.proj-body h3{margin-bottom:6px}
+.proj-body .name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:16px;display:block}
+a.name:hover{color:var(--blue);text-decoration:underline}
+.proj-links{display:flex;gap:12px;flex-wrap:wrap}
+.proj-body p{color:var(--muted);font-size:15.5px;line-height:1.65;margin-bottom:16px;max-width:520px}
+.feat{list-style:none;margin:0 0 22px}
+.feat li{position:relative;padding-left:24px;margin-bottom:8px;font-size:14.5px;color:var(--ink);font-weight:500}
+.feat li::before{content:'';position:absolute;left:2px;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.feat li span{color:var(--muted);font-weight:400}
+.mini-kpis{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.mini-kpi{background:var(--field);border:1px solid var(--line);border-radius:13px;padding:12px 17px}
+.mini-kpi b{display:block;font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--blue-dark);line-height:1.1}
+.mini-kpi span{font-size:11px;color:var(--muted);font-weight:600}
+.float-shot{position:absolute;z-index:3;width:46%;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 20px 50px rgba(17,26,55,.2);right:-16px;bottom:-30px;background:#fff}
+.float-shot img{width:100%}
+.phones-duo{display:flex;gap:22px;justify-content:center;align-items:flex-start}
+.phones-duo .phone:nth-child(2){margin-top:52px}
 
-  /* Generic screenshot frame (used for real product captures) */
-  .shot-frame{
-    background:#fff;
-    border-radius:18px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.04);
-    overflow:hidden;
-    transition:transform .4s ease;
-    position:relative;
-  }
-  .shot-frame img{
-    display:block;width:100%;height:auto;
-  }
-  .shot-body{
-    padding:0 !important;background:#000;
-    display:flex;align-items:stretch;
-  }
-  .shot-body img{
-    width:100%;height:auto;display:block;object-fit:cover;
-  }
+/* ===== Mockups MyDay (reconstruits en CSS, données fictives) ===== */
+.proj.myday{display:block}
+.myday-top{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,4vw,60px);align-items:center}
+.myday-top > *{min-width:0}
+.myday-desk{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(24px,3vw,44px);
+  align-items:center;margin-top:clamp(44px,5vw,64px)}
+.myday-desk > *{min-width:0}
 
-  /* Stacked shot containers (two screenshots layered) */
-  .shot-stack{
-    position:relative;
-    width:100%;
-    aspect-ratio:4/3;
-    max-width:560px;
-  }
+/* barre de section bleue, signature de l'app */
+.ab{display:flex;align-items:center;gap:.5em;background:linear-gradient(90deg,#3A6BFF,#2350E6);
+  color:#fff;border-radius:.8em;padding:.5em .9em;font-weight:800;font-size:.92em;
+  letter-spacing:.06em;margin:1em 0 .7em}
+.ab:first-child{margin-top:0}
+.ab i{font-style:normal;width:1.5em;height:1.5em;border-radius:50%;background:#fff;color:var(--blue-dark);
+  display:flex;align-items:center;justify-content:center;font-size:.9em;font-weight:800;flex-shrink:0}
+.ab .sp{flex:1}
+.ab .g{opacity:.7;font-weight:400;font-size:1em}
+/* événement planning */
+.ev2{border:1px solid #D9E2FA;background:var(--blue-tint);border-radius:.7em;
+  padding:.55em .8em;margin-bottom:.5em}
+.ev2 .evt{display:block;font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--blue-dark);margin-bottom:.15em}
+.ev2 b{font-size:.95em;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:.5em}
+.ev2 .m{margin-left:auto;width:1.4em;height:1.4em;border-radius:50%;background:var(--blue);color:#fff;
+  font-size:.7em;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* ligne tâche */
+.trow{display:flex;align-items:center;gap:.6em;border-bottom:1px solid var(--line);padding:.55em .2em}
+.trow:last-child{border-bottom:0}
+.trow .c{width:1.15em;height:1.15em;border-radius:50%;border:.14em solid #B9C7EE;flex-shrink:0}
+.trow b{font-size:.92em;font-weight:600;letter-spacing:-.01em;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tpill{font-family:'JetBrains Mono',monospace;font-size:.68em;background:var(--field);
+  border-radius:999px;padding:.25em .8em;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.tpill i{font-style:normal;color:var(--blue)}
+.tpill.p2 i{color:#1FA463}
+.tday{font-family:'JetBrains Mono',monospace;font-size:.68em;color:var(--muted);letter-spacing:.06em;flex-shrink:0}
+/* note */
+.nrow{border-bottom:1px solid var(--line);padding:.55em .2em}
+.nrow:last-child{border-bottom:0}
+.nrow .nt{display:flex;align-items:center;gap:.6em}
+.nrow b{font-size:.92em;font-weight:700;flex:1}
+.nrow .meta{display:flex;gap:.5em;margin-top:.3em;align-items:center}
+/* météo */
+.meteo{display:flex;align-items:center;gap:.7em;background:var(--field);border:1px solid var(--line);
+  border-radius:.7em;padding:.6em .8em}
+.meteo .t{font-size:1.5em;font-weight:800;letter-spacing:-.03em}
+.meteo .d{font-size:.8em;color:var(--muted);line-height:1.35}
+.meteo .ic{font-size:1.4em}
+/* budget */
+.bud .lab{font-family:'JetBrains Mono',monospace;font-size:.72em;letter-spacing:.08em;color:var(--muted)}
+.bud .big{font-size:1.7em;font-weight:800;letter-spacing:-.03em;color:var(--blue-dark);line-height:1.1;margin:.1em 0 .3em}
+.bud .bar{height:.5em;border-radius:999px;background:#E4EAF6;overflow:hidden;margin-bottom:.6em}
+.bud .bar i{display:block;height:100%;width:62%;border-radius:999px;background:var(--grad)}
+.bud .mini{display:flex;gap:1em}
+.bud .mini div{flex:1}
+.bud .mini b{display:block;font-size:.95em;font-weight:800}
+.bud .mini span{font-size:.7em;color:var(--muted)}
+/* onglets + date planning */
+.ptabs{display:flex;align-items:center;gap:.4em;margin-bottom:.6em;font-family:'JetBrains Mono',monospace;font-size:.72em}
+.ptabs b{background:var(--blue);color:#fff;border-radius:999px;padding:.3em 1em;font-weight:700}
+.ptabs span{color:var(--muted);padding:.3em .5em}
+.pdate{font-family:'JetBrains Mono',monospace;font-size:.72em;color:var(--blue);letter-spacing:.08em;margin:.2em 0 .6em}
 
-  /* === CRM stack === */
-  .shot-crm-stack .shot-frame{
-    position:absolute;
-    width:78%;
-    transition:transform .5s ease;
-  }
-  .shot-crm-back{
-    right:0;bottom:0;
-    transform:rotate(3deg) translateY(8px);
-    filter:saturate(0.85);
-    z-index:1;
-    box-shadow:0 18px 38px -16px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.04) !important;
-  }
-  .shot-crm-front{
-    left:0;top:0;
-    transform:rotate(-2deg);
-    z-index:2;
-  }
-  .shot-crm-stack:hover .shot-crm-front{transform:rotate(-1deg) translate(-8px,-6px)}
-  .shot-crm-stack:hover .shot-crm-back{transform:rotate(2deg) translate(10px,4px)}
+/* --- duo d'iPhones --- */
+.myday-phones{display:flex;gap:18px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.myday-phones .iph:nth-child(2){margin-top:44px}
+/* --- iPhone --- */
+.iph{width:min(250px,78vw);border-radius:30px;padding:9px;background:#0E1430;flex-shrink:0;
+  border:1px solid rgba(255,255,255,.15);box-shadow:0 26px 60px rgba(17,26,55,.28);position:relative}
+.iph::before{content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);
+  width:64px;height:14px;border-radius:999px;background:#0E1430;z-index:3}
+.iph-scr{border-radius:22px;overflow:hidden;background:#fff;font-size:8.6px;padding:2.4em 1em 1em;color:var(--ink)}
+.iph-head{display:flex;align-items:center;gap:.5em;margin-bottom:.7em}
+.iph-head .lg{width:2.2em;height:2.2em;border-radius:.7em;background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85em;flex-shrink:0}
+.iph-head b{font-size:1.05em;font-weight:800;letter-spacing:-.01em;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iph-head .rd{width:1.9em;height:1.9em;border-radius:50%;background:var(--field);color:var(--muted);
+  display:flex;align-items:center;justify-content:center;font-size:.85em;flex-shrink:0}
+.iph-head .av{background:var(--blue-tint);color:var(--blue-dark);font-weight:800}
+.iph-ask{display:flex;align-items:center;gap:.5em;background:var(--field);border:1px solid var(--line);
+  border-radius:999px;padding:.5em .8em;color:var(--muted);font-size:.85em;margin-bottom:.9em;
+  white-space:nowrap;overflow:hidden}
+.iph-ask i{font-style:normal;width:1.7em;height:1.7em;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* iPhone sombre */
+.iph.dark .iph-scr{background:#0A0B10;color:#ECEFF8}
+.iph.dark .iph-head .rd{background:#181B26;color:#8E9AB8}
+.iph.dark .iph-head .av{background:#2F62FF;color:#fff}
+.iph.dark .iph-ask{background:#12141D;border-color:rgba(255,255,255,.1);color:#8E9AB8}
+.iph.dark .trow{border-color:rgba(255,255,255,.08)}
+/* chat assistant (thème sombre) */
+.chat-card{background:#12141D;border:1px solid rgba(255,255,255,.09);border-top:.35em solid var(--blue);
+  border-radius:1em;padding:1em .9em}
+.chat-card .clab{display:flex;gap:.5em;margin-bottom:.9em}
+.chat-card .clab span{font-family:'JetBrains Mono',monospace;font-size:.75em;letter-spacing:.08em;
+  color:#9FB4E8;background:rgba(124,155,255,.14);border-radius:999px;padding:.3em 1em}
+.bub-u{background:var(--grad);color:#fff;border-radius:1em 1em .3em 1em;padding:.7em .9em;
+  font-size:.95em;line-height:1.45;font-weight:600;margin:0 0 .7em 1.6em}
+.bub-a{color:#C9D3EC;font-size:.95em;line-height:1.5;margin-bottom:.6em}
+.okc{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.7em;letter-spacing:.04em;
+  color:#5CE0A1;background:rgba(31,164,99,.16);border-radius:999px;padding:.35em .9em;margin:0 .3em .9em 0}
+/* --- MacBook Pro --- */
+.mac{position:relative}
+.mac-screen{background:#101216;border-radius:1.2em 1.2em 0 0;padding:1.6em .9em .9em;position:relative;
+  border:1px solid #2A2E36;border-bottom:0;box-shadow:0 30px 80px rgba(17,26,55,.22)}
+.mac-screen::before{content:'';position:absolute;top:.55em;left:50%;transform:translateX(-50%);
+  width:.5em;height:.5em;border-radius:50%;background:#2E3340}
+.mac-display{background:#F5F7FB;border-radius:.5em;overflow:hidden;font-size:clamp(6.6px,.72vw,10px);color:var(--ink)}
+.mac-base{height:1.1em;background:linear-gradient(180deg,#E6EAF1,#C7CDD8);border-radius:0 0 1em 1em;
+  position:relative;font-size:clamp(8px,1vw,14px);box-shadow:0 10px 30px rgba(17,26,55,.18)}
+.mac-base::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:9em;height:.55em;border-radius:0 0 .8em .8em;background:#AEB6C4}
+.mdk-top{display:flex;align-items:center;gap:.7em;padding:.7em 1em;background:#fff;border-bottom:1px solid var(--line)}
+.mdk-top .lg{width:2.1em;height:2.1em;border-radius:.65em;background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9em;flex-shrink:0}
+.mdk-top > b{font-size:1.1em;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+.mdk-ask{flex:1;min-width:0;display:flex;align-items:center;gap:.5em;background:var(--field);
+  border:1px solid var(--line);border-radius:999px;padding:.45em .8em;color:var(--muted);
+  font-size:.85em;white-space:nowrap;overflow:hidden}
+.mdk-ask i{font-style:normal;width:1.7em;height:1.7em;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mdk-ic{font-family:'JetBrains Mono',monospace;font-size:.8em;color:var(--muted);flex-shrink:0}
+.mdk-av{width:2em;height:2em;border-radius:50%;background:var(--blue-tint);color:var(--blue-dark);
+  font-weight:800;font-size:.85em;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mdk-cols{display:grid;grid-template-columns:1.25fr 1fr;gap:1em;padding:1em}
+.mdk-cols > *{min-width:0}
+.mdk-card{background:#fff;border:1px solid var(--line);border-radius:.8em;padding:.7em .8em;margin-bottom:.7em}
+.mdk-card:last-child{margin-bottom:0}
+/* --- carte brief quotidien --- */
+.brief-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);
+  border-radius:var(--radius);padding:22px 24px;box-shadow:0 22px 60px rgba(17,26,55,.12);font-size:13px}
+.brief-card .clab{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.brief-card .clab span{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;
+  color:var(--blue-dark);background:var(--blue-tint);border-radius:999px;padding:4px 11px}
+.brief-card h4{font-size:16.5px;font-weight:800;letter-spacing:-.015em;margin-bottom:12px}
+.brief-card .bit{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
+.brief-card .bit i{font-style:normal;width:19px;height:19px;border-radius:50%;background:var(--blue);color:#fff;
+  font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.brief-card .bit span{font-size:12.5px;line-height:1.45;font-weight:600}
+.brief-card .bsec{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-top:8px}
+.brief-card .bsec b{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;
+  letter-spacing:.1em;color:var(--muted);margin-bottom:2px}
+.brief-card .bsec span{font-size:12px;color:var(--ink)}
+.brief-card .balert{display:flex;gap:9px;align-items:flex-start;background:var(--blue-tint);
+  border-radius:10px;padding:8px 12px;margin-top:8px}
+.brief-card .balert b{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.1em;color:var(--blue-dark);margin-top:2px;flex-shrink:0}
+.brief-card .balert span{font-size:11.5px;line-height:1.45;color:var(--ink)}
 
-  /* === Sites web stack (two browser windows) === */
-  .shot-sites-stack .browser-mockup{
-    position:absolute;
-    width:80%;
-    max-width:none;
-    margin:0;
-    transition:transform .5s ease;
-  }
-  .browser-back{
-    right:0;bottom:0;
-    transform:rotate(3deg);
-    filter:saturate(0.85) brightness(0.95);
-    z-index:1;
-    box-shadow:0 16px 36px -14px rgba(0,0,0,0.22) !important;
-  }
-  .browser-front{
-    left:0;top:0;
-    transform:rotate(-2deg);
-    z-index:2;
-  }
-  .shot-sites-stack:hover .browser-front{transform:rotate(-1deg) translate(-10px,-6px)}
-  .shot-sites-stack:hover .browser-back{transform:rotate(2deg) translate(10px,6px)}
+/* ==================== SERVICES ==================== */
+.svc-rows{display:flex;flex-direction:column;gap:12px}
+.svc{display:grid;grid-template-columns:72px 1fr auto;gap:22px;align-items:center;
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;background:#fff;
+  transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.svc:hover{transform:translateY(-3px);border-color:rgba(47,98,255,.4);box-shadow:0 16px 40px rgba(17,26,55,.08)}
+.svc .n{width:54px;height:54px;border-radius:50%;background:var(--blue-tint);color:var(--blue-dark);
+  font-size:19px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.svc b{display:block;font-size:clamp(17px,1.8vw,21px);font-weight:800;letter-spacing:-.015em;margin-bottom:3px}
+.svc p{font-size:14px;color:var(--muted);line-height:1.55}
+.svc .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:360px}
+.svc .chips .chip{font-size:10.5px;padding:4px 11px}
 
-  /* === iPhone frames for Padel === */
-  .phones-real{
-    display:flex;gap:18px;align-items:center;justify-content:center;
-    transform:rotate(-3deg);
-    transition:transform .4s ease;
-  }
-  .phones-real:hover{transform:rotate(0)}
-  .iphone{
-    width:150px;aspect-ratio:9/19.5;
-    background:#0A0A0A;
-    border-radius:30px;
-    padding:6px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,255,255,0.05);
-    overflow:hidden;
-    flex-shrink:0;
-    position:relative;
-  }
-  .iphone img{
-    width:100%;height:100%;display:block;
-    object-fit:cover;object-position:top;
-    border-radius:24px;
-  }
-  .iphone-back{
-    transform:translateY(28px) rotate(8deg);
-    opacity:.92;
-  }
-  .iphone-front{
-    transform:rotate(-3deg);
-    z-index:2;
-  }
-  @media(max-width:640px){
-    .iphone{width:130px}
-  }
+/* ==================== MÉTHODE ==================== */
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.step4{position:relative;padding-top:26px}
+.step4 .line{position:absolute;top:0;left:0;height:2.5px;width:100%;background:var(--grad);transform-origin:left;border-radius:2px}
+.step4 .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:#B9C9FF;letter-spacing:.1em;margin-bottom:14px;display:block}
+.step4 b{display:block;font-size:21px;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
+.step4 p{font-size:14px;color:var(--dk-muted);line-height:1.6}
 
-  /* Service 1 — Sites web */
-  .v-sites{background:linear-gradient(135deg, #FED7AA 0%, #FBBF24 100%)}
-  .v-sites::after{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 75% 20%, rgba(255,255,255,0.6), transparent 50%);
-    pointer-events:none;
-  }
-  .browser-mockup{
-    width:100%;max-width:480px;
-    background:#fff;border-radius:20px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
-    overflow:hidden;
-    transform:rotate(-2deg);
-    transition:transform .4s ease;
-  }
-  .browser-mockup:hover{transform:rotate(0deg) scale(1.02)}
-  .browser-bar{
-    display:flex;align-items:center;gap:6px;
-    padding:12px 14px;border-bottom:1px solid var(--line);
-    background:var(--bg-soft);
-  }
-  .browser-bar .d{width:10px;height:10px;border-radius:50%}
-  .browser-bar .d:nth-child(1){background:#FCA5A5}
-  .browser-bar .d:nth-child(2){background:#FCD34D}
-  .browser-bar .d:nth-child(3){background:#86EFAC}
-  .browser-bar .url{
-    margin-left:14px;flex:1;background:#fff;border-radius:6px;
-    font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink-3);
-    padding:5px 10px;border:1px solid var(--line);
-  }
-  .browser-body{padding:28px 26px 32px;background:#fff}
-  .bm-hero{
-    font-family:'Bricolage Grotesque',serif;
-    font-size:22px;font-weight:600;line-height:1.1;margin-bottom:10px;color:var(--ink);
-  }
-  .bm-hero em{
-    font-style:normal;
-    background:linear-gradient(90deg, var(--primary), var(--accent));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .bm-sub{font-size:11px;color:var(--ink-3);margin-bottom:14px}
-  .bm-btn{
-    display:inline-block;padding:7px 14px;border-radius:999px;
-    background:var(--ink);color:#fff;font-size:11px;font-weight:500;
-  }
-  .bm-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
-  .bm-cards div{aspect-ratio:16/10;border-radius:10px;background:var(--bg-soft)}
-  .bm-cards div:nth-child(1){background:linear-gradient(135deg,#A5B4FC,#6366F1)}
-  .bm-cards div:nth-child(2){background:linear-gradient(135deg,#FCA5A5,#EF4444)}
+/* ==================== TÉMOIGNAGES ==================== */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.quote:hover{transform:translateY(-4px);border-color:rgba(47,98,255,.35);box-shadow:0 16px 40px rgba(17,26,55,.08)}
+.quote .stars{color:var(--blue);letter-spacing:3px;font-size:13px;margin-bottom:16px}
+.quote p{font-size:15px;line-height:1.65;color:var(--ink);margin-bottom:22px}
+.quote .who{display:flex;gap:12px;align-items:center}
+.quote .who i{width:40px;height:40px;border-radius:50%;background:var(--blue-tint);color:var(--blue-dark);
+  font-style:normal;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.quote .who b{display:block;font-size:13.5px;font-weight:800}
+.quote .who span{font-size:12px;color:var(--muted)}
 
-  /* Service 2 — CRM */
-  .v-crm{background:linear-gradient(135deg, #DBEAFE 0%, #818CF8 100%)}
-  .dashboard{
-    width:100%;max-width:500px;
-    background:#fff;border-radius:20px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
-    padding:20px;
-    transform:rotate(1.5deg);
-    transition:transform .4s ease;
-  }
-  .dashboard:hover{transform:rotate(0deg) scale(1.02)}
-  .db-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-  .db-title{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600}
-  .db-pill{
-    font-size:10px;padding:3px 8px;border-radius:999px;
-    background:rgba(13,148,136,0.12);color:var(--mint);
-    font-weight:500;font-family:'Geist Mono',monospace;
-  }
-  .db-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-  .db-stat{background:var(--bg);border-radius:12px;padding:10px}
-  .db-stat .lab{font-size:9px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em}
-  .db-stat .val{font-family:'Bricolage Grotesque',serif;font-size:18px;font-weight:600;margin-top:2px}
-  .db-stat .delta{font-size:10px;color:var(--mint);font-weight:500}
-  .db-chart{height:90px;background:var(--bg);border-radius:12px;padding:12px;position:relative;overflow:hidden}
-  .db-chart svg{width:100%;height:100%}
-  .db-list{margin-top:12px}
-  .db-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bg-soft)}
-  .db-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));flex-shrink:0}
-  .db-row div{flex:1}
-  .db-row .n{font-size:11px;font-weight:500}
-  .db-row .c{font-size:9px;color:var(--ink-4)}
-  .db-row .amt{font-family:'Geist Mono',monospace;font-size:11px;font-weight:500}
+/* ==================== FAQ ==================== */
+.faq-list{max-width:860px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list details:last-child{border-bottom:0}
+.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  gap:18px;padding:22px 26px;font-size:16px;font-weight:700;letter-spacing:-.01em;transition:background-color .25s}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:hover{background:var(--field)}
+.faq-list summary .chev{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue-tint);
+  color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+  transition:transform .3s var(--ease)}
+.faq-list details[open] summary .chev{transform:rotate(45deg)}
+.faq-list details[open]{background:#FBFCFE}
+.faq-a{padding:0 26px 24px;font-size:14.5px;color:var(--muted);line-height:1.7;max-width:740px}
+.faq-a b{color:var(--ink);font-weight:700}
 
-  /* Service 3 — SaaS */
-  .v-saas{background:linear-gradient(135deg, #CCFBF1 0%, #14B8A6 100%)}
-  .saas-app{
-    width:100%;max-width:520px;
-    background:#fff;border-radius:20px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
-    display:grid;grid-template-columns:70px 1fr;
-    min-height:300px;overflow:hidden;
-    transform:rotate(-1.5deg);
-    transition:transform .4s ease;
-  }
-  .saas-app:hover{transform:rotate(0) scale(1.02)}
-  .saas-side{
-    background:var(--ink);padding:16px 10px;
-    display:flex;flex-direction:column;gap:14px;align-items:center;
-  }
-  .saas-side .logo-s{
-    width:32px;height:32px;border-radius:8px;
-    background:linear-gradient(135deg, var(--accent), var(--accent-2));
-  }
-  .saas-side .ic{
-    width:28px;height:28px;border-radius:8px;
-    background:rgba(255,255,255,0.08);
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(255,255,255,0.5);font-size:13px;
-  }
-  .saas-side .ic.active{background:rgba(234,88,12,0.2);color:var(--accent)}
-  .saas-main{padding:20px}
-  .saas-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-  .saas-head h4{font-size:15px;font-weight:600}
-  .saas-search{
-    background:var(--bg);border-radius:8px;padding:5px 10px;
-    font-size:10px;color:var(--ink-4);font-family:'Geist Mono',monospace;
-  }
-  .saas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .saas-card{background:var(--bg);border-radius:14px;padding:14px}
-  .saas-card .tag{
-    display:inline-block;font-size:9px;padding:2px 8px;border-radius:999px;
-    font-family:'Geist Mono',monospace;font-weight:500;margin-bottom:8px;
-  }
-  .saas-card.a .tag{background:rgba(30,27,75,0.1);color:var(--primary)}
-  .saas-card.b .tag{background:rgba(234,88,12,0.12);color:var(--accent)}
-  .saas-card.c .tag{background:rgba(13,148,136,0.12);color:var(--mint)}
-  .saas-card.d .tag{background:rgba(225,29,72,0.12);color:var(--rose)}
-  .saas-card h5{font-family:'Bricolage Grotesque',serif;font-size:13px;font-weight:500;margin-bottom:6px;line-height:1.2}
-  .saas-card .prog{height:4px;border-radius:2px;background:#fff;overflow:hidden;margin-top:8px}
-  .saas-card .prog span{display:block;height:100%;border-radius:2px;background:currentColor}
-  .saas-card.a .prog span{background:var(--primary);width:70%}
-  .saas-card.b .prog span{background:var(--accent);width:45%}
-  .saas-card.c .prog span{background:var(--mint);width:90%}
-  .saas-card.d .prog span{background:var(--rose);width:30%}
+/* ==================== CTA FINAL / FOOTER ==================== */
+.cta-end{text-align:center}
+.cta-end .h2{margin-bottom:18px}
+.cta-end .lede{margin:0 auto 36px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn.glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.btn.glass:hover{background:rgba(255,255,255,.14)}
+footer{position:relative;color:var(--dk-ink)}
+.js footer{background:transparent}
+.no-js footer{background:var(--dk-bg)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;
+  padding:clamp(48px,5vw,70px) 0 44px;border-top:1px solid var(--dk-line)}
+.foot-grid .about p{font-size:13.5px;color:var(--dk-muted);line-height:1.65;margin-top:14px;max-width:300px}
+.foot-grid h5{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B9C9FF;margin-bottom:16px}
+.foot-grid ul{list-style:none}
+.foot-grid li{margin-bottom:10px}
+.foot-grid a{font-size:14px;color:var(--dk-muted);transition:color .25s}
+.foot-grid a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:22px 0 30px;border-top:1px solid var(--dk-line);font-size:12.5px;color:var(--dk-muted)}
+footer .brand-name{color:#fff}
 
-  /* Service 4 — Apps */
-  .v-apps{background:linear-gradient(135deg, #FECDD3 0%, #F43F5E 100%)}
-  .phones{
-    display:flex;gap:18px;align-items:center;justify-content:center;
-    transform:rotate(-3deg);
-    transition:transform .4s ease;
-  }
-  .phones:hover{transform:rotate(0)}
-  .phone{
-    width:140px;aspect-ratio:9/19;
-    background:#111;border-radius:28px;padding:10px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.35);
-    flex-shrink:0;
-  }
-  .phone.back{transform:translateY(20px) rotate(6deg);opacity:.85}
-  .phone-screen{
-    width:100%;height:100%;border-radius:20px;
-    overflow:hidden;display:flex;flex-direction:column;
-  }
-  .phone-screen.a{background:linear-gradient(180deg, #FECACA, #fff 40%)}
-  .phone-screen.b{background:linear-gradient(180deg, #E0E7FF, #fff 40%)}
-  .ps-top{padding:16px 14px 10px}
-  .ps-greet{font-size:9px;color:var(--ink-4);font-family:'Geist Mono',monospace}
-  .ps-name{font-family:'Bricolage Grotesque',serif;font-size:15px;font-weight:600;line-height:1;margin-top:2px}
-  .ps-card{
-    margin:12px 12px 0;padding:10px;background:#fff;border-radius:12px;
-    box-shadow:0 4px 12px -4px rgba(0,0,0,0.08);
-  }
-  .ps-card .ps-lab{font-size:8px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em}
-  .ps-card .ps-big{
-    font-family:'Bricolage Grotesque',serif;font-size:20px;font-weight:600;margin-top:2px;
-    background:linear-gradient(90deg,var(--primary),var(--rose));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .ps-bars{margin:12px 12px 0;display:flex;gap:4px;align-items:flex-end;height:60px}
-  .ps-bars span{flex:1;border-radius:3px 3px 0 0;background:var(--primary);opacity:.8}
-  .ps-bars span:nth-child(1){height:40%}
-  .ps-bars span:nth-child(2){height:70%}
-  .ps-bars span:nth-child(3){height:55%;background:var(--accent);opacity:1}
-  .ps-bars span:nth-child(4){height:85%}
-  .ps-bars span:nth-child(5){height:45%}
-  .ps-bars span:nth-child(6){height:65%}
-  .ps-nav{margin-top:auto;display:flex;justify-content:space-around;padding:10px 0 14px;border-top:1px solid rgba(0,0,0,0.05)}
-  .ps-nav span{width:5px;height:5px;border-radius:50%;background:var(--ink-4)}
-  .ps-nav span:nth-child(2){background:var(--accent);width:18px;border-radius:3px}
+/* CTA flottant */
+.floating-cta{position:fixed;right:22px;bottom:22px;z-index:90;opacity:0;pointer-events:none;transform:translateY(16px)}
+.floating-cta.on{pointer-events:auto}
 
-  /* Service 5 — Outils sur mesure */
-  .v-tools{background:linear-gradient(135deg, #E9D5FF 0%, #A855F7 100%)}
-  .tools-canvas{
-    position:relative;width:100%;max-width:500px;aspect-ratio:4/3;
-    transform:rotate(1deg);transition:transform .4s ease;
-  }
-  .tools-canvas:hover{transform:rotate(0)}
-  .node{
-    position:absolute;background:#fff;border-radius:14px;
-    padding:10px 14px;box-shadow:0 15px 30px -10px rgba(0,0,0,0.25);
-    font-size:12px;font-weight:500;display:flex;align-items:center;gap:8px;
-  }
-  .node .ico{
-    width:26px;height:26px;border-radius:8px;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Geist Mono',monospace;font-weight:700;font-size:11px;color:#fff;
-  }
-  .node.n1{top:8%;left:4%}
-  .node.n1 .ico{background:var(--primary)}
-  .node.n2{top:5%;right:8%}
-  .node.n2 .ico{background:var(--accent)}
-  .node.n3{top:48%;left:35%;background:var(--ink);color:#fff}
-  .node.n3 .ico{background:var(--accent-2);color:var(--ink)}
-  .node.n4{bottom:8%;left:10%}
-  .node.n4 .ico{background:var(--mint)}
-  .node.n5{bottom:12%;right:4%}
-  .node.n5 .ico{background:var(--rose)}
-  .tools-lines{position:absolute;inset:0;pointer-events:none}
-  .tools-lines path{stroke:rgba(255,255,255,0.6);stroke-width:2;fill:none;stroke-dasharray:6 6}
-
-  /* ============ PORTFOLIO ============ */
-  .portfolio-grid{
-    display:grid;
-    grid-template-columns:repeat(6, 1fr);
-    gap:20px;
-  }
-  @media(max-width:960px){
-    .portfolio-grid{grid-template-columns:repeat(4, 1fr)}
-  }
-  @media(max-width:640px){
-    .portfolio-grid{grid-template-columns:repeat(2, 1fr)}
-  }
-  .project{
-    grid-column:span 2;
-    border-radius:var(--radius);
-    aspect-ratio:4/3;
-    position:relative;overflow:hidden;
-    padding:26px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-  .project:hover{
-    transform:translateY(-6px);
-    box-shadow:0 30px 60px -20px rgba(20,20,20,0.32);
-  }
-  .project.wide{grid-column:span 4}
-  .project.tall{grid-column:span 3;aspect-ratio:3/4}
-  @media(max-width:960px){
-    .project.wide{grid-column:span 4}
-    .project.tall{grid-column:span 2;aspect-ratio:4/3}
-  }
-  @media(max-width:640px){
-    .project, .project.wide, .project.tall{grid-column:span 2;aspect-ratio:4/3}
-  }
-  .project .tag{
-    font-family:'Geist Mono',monospace;
-    font-size:11px;letter-spacing:0.08em;text-transform:uppercase;opacity:.8;
-    position:relative;z-index:3;
-  }
-  .project h4{
-    font-size:clamp(20px,2.3vw,28px);
-    font-weight:500;max-width:18ch;
-    position:relative;z-index:3;
-  }
-
-  /* === Project: CRMLit (CRM hôtellerie) === */
-  .project-crmlit{background:#0B0B12;color:#fff;padding:0;overflow:hidden}
-  .project-crmlit .crm-mock{
-    position:absolute;
-    left:30px;top:30px;right:30px;bottom:90px;
-    background:#fff;border-radius:14px;
-    display:grid;grid-template-columns:90px 1fr;
-    overflow:hidden;
-    box-shadow:0 25px 50px -20px rgba(0,0,0,0.5);
-  }
-  .project-crmlit .cm-side{
-    background:#0F0F18;padding:16px 8px;
-    display:flex;flex-direction:column;gap:6px;
-  }
-  .project-crmlit .cm-side .cm-logo{
-    font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:14px;
-    color:#fff;padding:4px 10px;display:flex;align-items:center;gap:6px;
-    margin-bottom:10px;
-  }
-  .project-crmlit .cm-side .cm-logo::before{
-    content:"";width:10px;height:10px;border-radius:3px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  }
-  .project-crmlit .cm-side .cm-i{
-    padding:6px 10px;font-size:10px;color:rgba(255,255,255,0.55);
-    border-radius:6px;display:flex;align-items:center;gap:6px;
-  }
-  .project-crmlit .cm-side .cm-i.on{background:var(--primary-3);color:#fff;font-weight:500}
-  .project-crmlit .cm-side .cm-i::before{
-    content:"";width:8px;height:8px;border-radius:2px;
-    background:rgba(255,255,255,0.3);
-  }
-  .project-crmlit .cm-side .cm-i.on::before{background:#fff}
-  .project-crmlit .cm-main{padding:14px 16px;background:#fff;color:var(--ink)}
-  .project-crmlit .cm-h{font-family:'Bricolage Grotesque',serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px}
-  .project-crmlit .cm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-  .project-crmlit .cm-stat{background:#F8F4EA;border-radius:8px;padding:6px 8px}
-  .project-crmlit .cm-stat .l{font-size:7px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
-  .project-crmlit .cm-stat .v{font-family:'Bricolage Grotesque',serif;font-size:14px;font-weight:600;color:var(--ink);margin-top:1px}
-  .project-crmlit .cm-rows{display:flex;flex-direction:column;gap:4px}
-  .project-crmlit .cm-row{
-    display:flex;align-items:center;gap:6px;
-    background:#F8F4EA;border-radius:6px;padding:5px 8px;
-    font-size:9px;color:var(--ink);
-  }
-  .project-crmlit .cm-row .nm{flex:1;font-weight:500}
-  .project-crmlit .cm-row .pill{
-    font-family:'Geist Mono',monospace;font-size:7.5px;
-    padding:1px 5px;border-radius:999px;
-  }
-  .project-crmlit .cm-row .p-hot{background:rgba(234,88,12,0.15);color:var(--accent)}
-  .project-crmlit .cm-row .p-new{background:rgba(16,185,129,0.15);color:var(--green)}
-  .project-crmlit .cm-row .p-prio{background:rgba(99,102,241,0.18);color:var(--primary-2)}
-  .project-crmlit .crm-content{
-    position:absolute;left:30px;right:30px;bottom:22px;z-index:3;
-  }
-
-  /* === Project: SimplifyPro (SaaS trading) === */
-  .project-simplify{background:#000;color:#fff;padding:0;overflow:hidden}
-  .project-simplify .sp-shot{
-    position:absolute;inset:0;
-    overflow:hidden;
-  }
-  .project-simplify .sp-shot img{
-    position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;object-position:center;
-    display:block;
-    filter:saturate(1.05);
-  }
-  .project-simplify .sp-shot::after{
-    content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(ellipse at 75% 30%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.55) 100%),
-      linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.85) 100%),
-      linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
-    pointer-events:none;
-  }
-  .project-simplify .sp-logo{
-    position:absolute;top:32px;left:34px;z-index:3;
-    display:flex;align-items:center;gap:10px;
-    font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;color:#fff;
-  }
-  .project-simplify .sp-logo .sp-mark{
-    width:22px;height:22px;border-radius:6px;
-    background:linear-gradient(135deg,#10B981 0%,#059669 100%);
-    display:grid;place-items:center;color:#000;font-weight:800;font-size:13px;
-    box-shadow:0 6px 14px -4px rgba(16,185,129,0.5);
-  }
-  .project-simplify .sp-badge{
-    position:absolute;top:34px;right:34px;z-index:3;
-    display:inline-flex;align-items:center;gap:8px;
-    padding:5px 11px;border-radius:999px;
-    background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.5);
-    color:#10B981;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.08em;
-    backdrop-filter:blur(6px);
-  }
-  .project-simplify .sp-badge::before{
-    content:"";width:6px;height:6px;border-radius:50%;background:#10B981;
-    box-shadow:0 0 0 3px rgba(16,185,129,0.25);
-    animation:sp-pulse 2s ease-in-out infinite;
-  }
-  @keyframes sp-pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .project-simplify .sp-stats{
-    position:absolute;left:34px;top:78px;z-index:3;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
-    width:min(440px, calc(100% - 68px));
-  }
-  .project-simplify .sp-stat{
-    background:rgba(10,15,26,0.55);backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:10px;padding:7px 11px;
-  }
-  .project-simplify .sp-stat .l{font-size:9px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
-  .project-simplify .sp-stat .v{font-family:'Bricolage Grotesque',serif;font-size:16px;font-weight:600;color:#fff;margin-top:2px;letter-spacing:-0.01em}
-  .project-simplify .sp-stat .v.up{color:#10B981}
-  .project-simplify .sp-content{position:absolute;left:34px;right:34px;bottom:30px;z-index:3}
-  .project-simplify .sp-content h4{font-size:clamp(20px, 2.1vw, 26px);line-height:1.1}
-
-  /* === Project: Padel Club === */
-  .project-padel{background:linear-gradient(140deg,#FFF1DC 0%,#FFD9A8 100%);color:var(--ink);overflow:hidden}
-  .project-padel .pd-card{
-    flex:1;
-    margin:10px 0 14px;
-    border-radius:12px;
-    box-shadow:0 16px 36px -14px rgba(120,60,0,0.3), 0 0 0 1px rgba(0,0,0,0.04);
-    overflow:hidden;
-    background:#fff;
-    min-height:0;
-  }
-  .project-padel .pd-card img{
-    width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
-  }
-  .project-padel h4{font-size:clamp(15px, 1.35vw, 18px);line-height:1.2;max-width:22ch}
-
-  /* === Project: Volta (app coaching) === */
-  .project-volta{background:linear-gradient(135deg,#FECDD3 0%,#F43F5E 100%);color:#fff;overflow:hidden}
-  .project-volta .mini-phone{
-    position:absolute;right:22px;top:22px;
-    width:110px;aspect-ratio:9/19;
-    background:#111;border-radius:18px;padding:6px;
-    box-shadow:0 20px 40px -12px rgba(0,0,0,0.4);
-    transform:rotate(6deg);
-  }
-  .project-volta .mini-phone-screen{
-    width:100%;height:100%;border-radius:12px;
-    background:linear-gradient(180deg,#FECACA,#fff 50%);
-    padding:10px 8px;display:flex;flex-direction:column;gap:4px;
-  }
-  .project-volta .mp-lab{font-size:6px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.08em;font-family:'Geist Mono',monospace}
-  .project-volta .mp-big{font-family:'Bricolage Grotesque',serif;font-size:12px;font-weight:600;color:var(--ink);line-height:1}
-  .project-volta .mp-card{background:#fff;border-radius:8px;padding:5px 6px;box-shadow:0 2px 6px -2px rgba(0,0,0,0.15)}
-
-  /* === Project: Maison Belle (vitrine hôtellerie) === */
-  .project-maisonbelle{background:linear-gradient(135deg,#FED7AA 0%,#EA580C 100%);color:#1A0F00;overflow:hidden}
-  .project-maisonbelle .mb-mock{
-    position:absolute;right:-30px;bottom:-20px;width:78%;
-    background:#fff;border-radius:14px 0 0 14px;
-    padding:10px 12px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.25);
-    transform:rotate(-4deg);
-  }
-  .project-maisonbelle .mb-title{
-    font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:14px;line-height:1.1;
-    color:var(--ink);
-  }
-  .project-maisonbelle .mb-sub{font-size:10px;color:var(--ink-3);margin-top:3px}
-  .project-maisonbelle .mb-img{
-    margin-top:8px;height:50px;border-radius:8px;
-    background:linear-gradient(135deg,#FBBF24,#F59E0B);
-  }
-
-  /* === Project: Atelier 9 (e-commerce) === */
-  .project-atelier9{background:linear-gradient(135deg,#F3EEE4 0%,#D8D0BE 100%);color:var(--ink);overflow:hidden}
-  .project-atelier9 .a9-tiles{
-    position:absolute;inset:auto 16px 16px 16px;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
-  }
-  .project-atelier9 .a9-tiles div{
-    aspect-ratio:3/4;border-radius:8px;background:#fff;
-    box-shadow:0 4px 10px -4px rgba(0,0,0,0.1);
-    position:relative;overflow:hidden;
-  }
-  .project-atelier9 .a9-tiles div:nth-child(1){background:linear-gradient(135deg,#1E1B4B,#3730A3)}
-  .project-atelier9 .a9-tiles div:nth-child(2){background:linear-gradient(135deg,#EA580C,#F59E0B)}
-  .project-atelier9 .a9-tiles div:nth-child(3){background:linear-gradient(135deg,#0D9488,#14B8A6)}
-
-  /* === Project: Devis === */
-  .project-devis{background:linear-gradient(135deg,#FEF3C7 0%,#F59E0B 100%);color:#1A0F00;overflow:hidden}
-  .project-devis .devis-mock{
-    position:absolute;right:30px;top:30px;bottom:30px;width:45%;
-    background:#fff;border-radius:14px;padding:16px 18px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.22);
-    transform:rotate(2deg);
-    display:flex;flex-direction:column;gap:8px;
-  }
-  .project-devis .dv-title{font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:13px;color:var(--ink)}
-  .project-devis .dv-bar{height:6px;border-radius:3px;background:var(--bg-soft)}
-  .project-devis .dv-bar.a{width:80%;background:linear-gradient(90deg,var(--ink),#444)}
-  .project-devis .dv-bar.b{width:60%}
-  .project-devis .dv-bar.c{width:90%}
-  .project-devis .dv-total{margin-top:auto;font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:18px;color:var(--ink)}
-
-  /* === Project: Campagne === */
-  .project-campagne{background:linear-gradient(135deg,#1E1B4B 0%,#312E81 100%);color:#fff;overflow:hidden}
-  .project-campagne .cmp-badge{
-    position:absolute;top:24px;right:24px;
-    font-family:'Geist Mono',monospace;font-size:28px;font-weight:600;
-    padding:12px 20px;border-radius:14px;
-    background:var(--accent);color:#fff;
-    transform:rotate(-6deg);
-    box-shadow:0 14px 30px -10px rgba(234,88,12,0.45);
-  }
-  .project-campagne .cmp-kpis{
-    position:absolute;left:26px;right:26px;bottom:70px;
-    display:flex;gap:10px;
-  }
-  .project-campagne .cmp-kpi{
-    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-    border-radius:10px;padding:8px 12px;
-    font-family:'Geist Mono',monospace;font-size:11px;color:rgba(255,255,255,0.8);
-  }
-  .project-campagne .cmp-kpi strong{
-    display:block;font-family:'Bricolage Grotesque',serif;
-    font-size:18px;font-weight:600;color:#fff;margin-top:2px;
-  }
-
-  /* === Project: BTP planning === */
-  .project-btp{background:linear-gradient(135deg,#DBEAFE 0%,#3B82F6 100%);color:#fff;overflow:hidden}
-  .project-btp .btp-mock{
-    position:absolute;left:24px;right:24px;top:30px;bottom:80px;
-    background:#fff;border-radius:12px;
-    padding:12px 14px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.3);
-    transform:rotate(-1.5deg);
-  }
-  .project-btp .btp-h{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px}
-  .project-btp .btp-row{
-    display:grid;grid-template-columns:60px 1fr;align-items:center;gap:8px;
-    margin-bottom:5px;font-size:8px;color:var(--ink-3);font-family:'Geist Mono',monospace;
-  }
-  .project-btp .btp-bar{
-    height:8px;border-radius:4px;background:#F1ECDF;position:relative;overflow:hidden;
-  }
-  .project-btp .btp-bar span{
-    position:absolute;top:0;bottom:0;border-radius:4px;
-  }
-  .project-btp .btp-row.r1 .btp-bar span{left:0;width:55%;background:var(--primary)}
-  .project-btp .btp-row.r2 .btp-bar span{left:20%;width:45%;background:var(--accent)}
-  .project-btp .btp-row.r3 .btp-bar span{left:40%;width:50%;background:var(--mint)}
-  .project-btp .btp-row.r4 .btp-bar span{left:55%;width:40%;background:var(--rose)}
-  .project-btp .btp-row.r5 .btp-bar span{left:70%;width:25%;background:var(--primary-3)}
-
-  /* === Project: Booking salon === */
-  .project-salon{background:linear-gradient(135deg,#FCE7F3 0%,#EC4899 100%);color:#fff;overflow:hidden}
-  .project-salon .sa-browser{
-    position:absolute;left:24px;top:24px;right:90px;bottom:80px;
-    background:#fff;border-radius:12px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.25);
-    transform:rotate(-1.5deg);
-    overflow:hidden;
-  }
-  .project-salon .sa-bar{
-    background:#F1ECDF;padding:6px 8px;display:flex;align-items:center;gap:4px;
-    border-bottom:1px solid var(--line-2);
-  }
-  .project-salon .sa-bar .d{width:6px;height:6px;border-radius:50%}
-  .project-salon .sa-bar .d:nth-child(1){background:#FCA5A5}
-  .project-salon .sa-bar .d:nth-child(2){background:#FCD34D}
-  .project-salon .sa-bar .d:nth-child(3){background:#86EFAC}
-  .project-salon .sa-body{padding:12px 14px}
-  .project-salon .sa-title{font-family:'Bricolage Grotesque',serif;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:8px}
-  .project-salon .sa-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-  .project-salon .sa-slots span{
-    text-align:center;padding:5px 0;border-radius:6px;
-    background:#F8F4EA;font-family:'Geist Mono',monospace;font-size:8.5px;color:var(--ink-3);
-  }
-  .project-salon .sa-slots span.on{background:var(--ink);color:#fff}
-  .project-salon .sa-cta{
-    margin-top:9px;text-align:center;padding:6px 0;border-radius:8px;
-    background:linear-gradient(90deg,var(--rose),#EC4899);color:#fff;
-    font-size:9px;font-weight:600;font-family:'Bricolage Grotesque',serif;
-  }
-  .project-salon .sa-fab{
-    position:absolute;right:24px;bottom:90px;
-    width:50px;height:50px;border-radius:14px;
-    background:#fff;color:var(--rose);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Bricolage Grotesque',serif;font-size:22px;font-weight:600;
-    box-shadow:0 14px 28px -10px rgba(0,0,0,0.25);
-    transform:rotate(6deg);
-  }
-
-  /* === Project: Food delivery === */
-  .project-food{background:linear-gradient(135deg,#D1FAE5 0%,#059669 100%);color:#fff;overflow:hidden}
-  .project-food .fd-phone{
-    position:absolute;right:30px;top:24px;bottom:80px;
-    width:46%;
-    background:#0F0F18;border-radius:24px;padding:6px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.4);
-    transform:rotate(4deg);
-  }
-  .project-food .fd-screen{
-    width:100%;height:100%;border-radius:18px;background:#fff;
-    padding:10px 8px;
-    display:flex;flex-direction:column;gap:5px;
-    overflow:hidden;
-  }
-  .project-food .fd-greet{font-size:7px;color:var(--ink-4);font-family:'Geist Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
-  .project-food .fd-q{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:600;line-height:1;color:var(--ink)}
-  .project-food .fd-search{
-    background:#F8F4EA;border-radius:8px;padding:5px 8px;
-    font-size:7px;color:var(--ink-4);font-family:'Geist Mono',monospace;
-    margin-top:3px;
-  }
-  .project-food .fd-card{
-    background:#F8F4EA;border-radius:8px;padding:6px 8px;
-    display:flex;justify-content:space-between;align-items:center;
-    font-size:8px;color:var(--ink);
-  }
-  .project-food .fd-card .nm{font-weight:500;flex:1}
-  .project-food .fd-card .pr{font-family:'Geist Mono',monospace;color:var(--green);font-weight:600}
-  .project-food .fd-card.alt{background:linear-gradient(135deg,#FEF3C7,#FBBF24);color:var(--ink)}
-  .project-food .fd-card.alt .pr{color:var(--ink)}
-
-  /* === Project: Portal client === */
-  .project-portal{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);color:#fff;overflow:hidden}
-  .project-portal .po-mock{
-    position:absolute;inset:24px 24px 80px;
-    background:#fff;border-radius:12px;
-    box-shadow:0 20px 40px -16px rgba(0,0,0,0.5);
-    overflow:hidden;
-    display:grid;grid-template-rows:auto 1fr;
-    transform:rotate(-1deg);
-  }
-  .project-portal .po-h{
-    background:#F8F4EA;border-bottom:1px solid var(--line-2);
-    padding:8px 12px;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .project-portal .po-logo{font-family:'Bricolage Grotesque',serif;font-size:11px;font-weight:700;color:var(--ink)}
-  .project-portal .po-av{
-    width:18px;height:18px;border-radius:50%;
-    background:linear-gradient(135deg,var(--primary),var(--accent));
-  }
-  .project-portal .po-body{padding:10px 12px;color:var(--ink)}
-  .project-portal .po-tabs{display:flex;gap:4px;margin-bottom:8px}
-  .project-portal .po-tabs span{
-    padding:3px 8px;border-radius:999px;
-    font-size:8px;font-family:'Geist Mono',monospace;
-    background:#F8F4EA;color:var(--ink-3);
-  }
-  .project-portal .po-tabs span.on{background:var(--primary);color:#fff}
-  .project-portal .po-row{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:5px 0;border-top:1px solid var(--bg-soft);
-    font-size:9px;color:var(--ink);
-  }
-  .project-portal .po-row:first-of-type{border-top:none}
-  .project-portal .po-row .st{
-    font-family:'Geist Mono',monospace;font-size:7.5px;
-    padding:1px 6px;border-radius:999px;
-  }
-  .project-portal .po-row .st.ok{background:rgba(16,185,129,0.15);color:var(--green)}
-  .project-portal .po-row .st.wait{background:rgba(234,88,12,0.15);color:var(--accent)}
-  .project-portal .po-row .st.done{background:rgba(99,102,241,0.18);color:var(--primary-2)}
-
-  /* ============ INDUSTRIES ============ */
-  .industries{
-    background:var(--bg-soft);
-    padding:clamp(60px,8vw,100px) 0;
-    margin-top:clamp(40px,5vw,60px);
-  }
-  .industries-grid{
-    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
-    margin-top:clamp(40px,6vw,60px);
-  }
-  @media(max-width:980px){.industries-grid{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:540px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
-  .ind-card{
-    background:#fff;border-radius:18px;
-    padding:24px 20px;
-    border:1px solid var(--line-2);
-    transition:transform .25s, border-color .25s, box-shadow .25s;
-  }
-  .ind-card:hover{
-    transform:translateY(-3px);
-    border-color:var(--accent);
-    box-shadow:0 16px 30px -16px rgba(20,20,20,0.18);
-  }
-  .ind-card .ind-ico{
-    width:36px;height:36px;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Geist Mono',monospace;font-weight:700;font-size:14px;color:#fff;
-    margin-bottom:14px;
-  }
-  .ind-card h5{font-size:15px;font-weight:500;margin-bottom:6px}
-  .ind-card p{font-size:13px;color:var(--ink-3);margin:0;line-height:1.45}
-  .ind-card.c1 .ind-ico{background:linear-gradient(135deg,var(--primary),var(--primary-2))}
-  .ind-card.c2 .ind-ico{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-  .ind-card.c3 .ind-ico{background:linear-gradient(135deg,var(--mint),#14B8A6)}
-  .ind-card.c4 .ind-ico{background:linear-gradient(135deg,var(--rose),#EC4899)}
-  .ind-card.c5 .ind-ico{background:linear-gradient(135deg,#3B82F6,var(--sky))}
-  .ind-card.c6 .ind-ico{background:linear-gradient(135deg,#A855F7,#7C3AED)}
-
-  /* ============ PROCESS ============ */
-  .process-section{
-    background:var(--ink);
-    color:#fff;
-    border-radius:var(--radius-xl);
-    padding:clamp(60px,8vw,100px) clamp(30px,5vw,80px);
-    margin:0 var(--pad);
-  }
-  @media(max-width:700px){
-    .process-section{margin:0;border-radius:0}
-  }
-  .process-section h2{color:#fff}
-  .process-section .section-head p{color:rgba(255,255,255,0.65)}
-  .steps{
-    display:grid;grid-template-columns:repeat(4,1fr);
-    gap:24px;margin-top:60px;
-  }
-  @media(max-width:960px){.steps{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:540px){.steps{grid-template-columns:1fr}}
-  .step{
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:24px;padding:28px 26px;
-    position:relative;
-    transition:border-color .3s, background .3s;
-  }
-  .step:hover{border-color:var(--accent);background:rgba(234,88,12,0.04)}
-  .step .step-num{
-    font-family:'Geist Mono',monospace;
-    font-size:13px;color:var(--accent);
-    letter-spacing:0.1em;margin-bottom:40px;display:block;
-  }
-  .step h4{font-size:22px;font-weight:500;color:#fff;margin-bottom:12px}
-  .step p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.55;margin:0}
-
-  /* ============ TÉMOIGNAGES ============ */
-  .testi-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-  }
-  @media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
-  .testi{
-    background:#fff;border:1px solid var(--line-2);
-    border-radius:24px;padding:32px;
-    display:flex;flex-direction:column;gap:24px;
-    transition:transform .25s, box-shadow .25s;
-  }
-  .testi:hover{transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(20,20,20,0.18)}
-  .testi blockquote{
-    font-family:'Bricolage Grotesque',serif;
-    font-size:19px;line-height:1.4;font-weight:500;
-    margin:0;color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-  .testi blockquote::before{
-    content:""; display:block;
-    font-family:'Bricolage Grotesque',serif;
-    font-size:50px;line-height:0.6;color:var(--accent);
-    margin-bottom:14px;
-    content:"\201C";
-  }
-  .testi-foot{
-    margin-top:auto;display:flex;align-items:center;gap:12px;
-    padding-top:18px;border-top:1px solid var(--bg-soft);
-  }
-  .testi-av{
-    width:42px;height:42px;border-radius:50%;flex-shrink:0;
-    background:linear-gradient(135deg,var(--primary),var(--accent));
-  }
-  .testi.t2 .testi-av{background:linear-gradient(135deg,var(--mint),#14B8A6)}
-  .testi.t3 .testi-av{background:linear-gradient(135deg,var(--rose),#EC4899)}
-  .testi-foot .nm{font-size:14px;font-weight:500;color:var(--ink)}
-  .testi-foot .ro{font-size:12px;color:var(--ink-4);margin-top:2px}
-
-  /* ============ FAQ ============ */
-  .faq-grid{max-width:820px;margin:0 auto}
-  details{border-bottom:1px solid var(--line);padding:26px 0}
-  details:first-of-type{border-top:1px solid var(--line)}
-  details summary{
-    display:flex;justify-content:space-between;align-items:center;
-    font-family:'Bricolage Grotesque',serif;
-    font-size:clamp(18px,2vw,22px);
-    font-weight:500;color:var(--ink);
-    list-style:none;cursor:pointer;gap:16px;
-  }
-  details summary::-webkit-details-marker{display:none}
-  details summary .plus{
-    width:28px;height:28px;border-radius:50%;
-    background:var(--bg-soft);
-    display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;transition:transform .3s, background .3s;
-    font-weight:400;
-  }
-  details[open] summary .plus{transform:rotate(45deg);background:var(--accent);color:#fff}
-  details .answer{
-    margin-top:18px;color:var(--ink-3);
-    max-width:62ch;font-size:16px;line-height:1.6;
-  }
-
-  /* ============ CTA BANNER ============ */
-  .cta-banner{
-    border-radius:var(--radius-xl);
-    margin:clamp(60px,8vw,100px) var(--pad) 0;
-    padding:clamp(50px,8vw,100px) clamp(30px,5vw,80px);
-    background:
-      radial-gradient(circle at 80% 10%, rgba(245,158,11,0.3) 0%, transparent 40%),
-      radial-gradient(circle at 10% 90%, rgba(234,88,12,0.2) 0%, transparent 40%),
-      linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
-    color:#fff;text-align:center;position:relative;overflow:hidden;
-  }
-  @media(max-width:700px){.cta-banner{margin:60px 0 0;border-radius:0}}
-  .cta-banner h2{color:#fff;font-size:clamp(34px,5vw,58px);max-width:20ch;margin:0 auto}
-  .cta-banner p{margin:24px auto 0;max-width:50ch;color:rgba(255,255,255,0.7);font-size:17px}
-  .cta-banner .cta-row{margin-top:40px}
-  .cta-banner .btn-primary{background:#fff;color:var(--ink)}
-  .cta-banner .btn-primary:hover{background:var(--accent);color:#fff}
-  .cta-banner .btn-ghost{border-color:rgba(255,255,255,0.2);color:#fff}
-  .cta-banner .btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.4)}
-
-  /* ============ FOOTER ============ */
-  footer{padding:60px 0 40px;font-size:14px;color:var(--ink-3)}
-  .foot-inner{
-    display:flex;justify-content:space-between;align-items:center;
-    flex-wrap:wrap;gap:16px;
-    border-top:1px solid var(--line);padding-top:32px;
-  }
-  .foot-links{display:flex;gap:28px;flex-wrap:wrap}
-  .foot-links a:hover{color:var(--accent)}
-
-  /* Reveal */
-  .reveal{
-    opacity:0;transform:translateY(30px);
-    transition:opacity 0.9s ease, transform 0.9s ease;
-  }
-  .reveal.in{opacity:1;transform:translateY(0)}
+/* ==================== RESPONSIVE ==================== */
+@media (max-width:1020px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .mods{grid-template-columns:repeat(2,1fr)}
+  .steps3{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .steps4{grid-template-columns:repeat(2,1fr);row-gap:36px}
+  .svc{grid-template-columns:54px 1fr}
+  .svc .chips{grid-column:2;justify-content:flex-start;max-width:none;margin-top:8px}
+  .svc .n{width:44px;height:44px;font-size:16px}
+}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hv{margin-top:12px}
+  .proj,.proj.flip{grid-template-columns:1fr}
+  .proj.flip .proj-media{order:0}
+  .myday-top,.myday-desk{grid-template-columns:1fr}
+  .myday-phones{margin-top:10px}
+  .offers{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links,.nav .nav-cta{display:none}
+  .burger{display:block}
+  .mobile-menu{display:block;position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;
+    background:#fff;border-bottom:1px solid var(--line);padding:10px 24px 24px;
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:.3s var(--ease)}
+  body.is-dark .mobile-menu{background:var(--dk-bg);border-color:var(--dk-line)}
+  body.menu-open .mobile-menu{transform:none;opacity:1;pointer-events:auto}
+  .mobile-menu a{display:block;padding:13px 0;font-size:16px;font-weight:700;border-bottom:1px solid var(--line)}
+  body.is-dark .mobile-menu a{color:var(--dk-ink);border-color:var(--dk-line)}
+  .mobile-menu .btn{margin-top:18px;justify-content:center;display:flex}
+  body.menu-open .burger span:first-child{transform:translateY(7px) rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:last-child{transform:translateY(-7px) rotate(-45deg)}
+}
+@media (max-width:640px){
+  .kpis,.mods{grid-template-columns:1fr}
+  .steps4{grid-template-columns:1fr}
+  .hv-kpi{left:-6px}
+  .hv-notif{right:-6px;max-width:250px}
+  .float-shot{right:-6px}
+  .myday-phones .iph:nth-child(2){margin-top:0}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .ag-ctas .btn,.cta-btns .btn{width:100%;justify-content:center}
+  .phones-duo{gap:14px}
+  .foot-grid{grid-template-columns:1fr}
+}
+/* réduction de mouvement : tout visible, pas d'animations */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 
-<!-- Structured data: Organization -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1469,7 +575,7 @@
   "name": "Aevio One",
   "url": "https://aevio-one.com",
   "logo": "https://aevio-one.com/images/logo-a1-new.png",
-  "description": "Studio digital français, Sites vitrines, plateformes SaaS, CRM métier, applications web et mobile sur mesure.",
+  "description": "Studio digital français : agents IA pour TPE et PME, sites, plateformes SaaS, CRM métier, applications web et mobile sur mesure.",
   "email": "yoann@aevio-one.com",
   "founder": { "@type": "Person", "name": "Yoann Varloud" },
   "address": { "@type": "PostalAddress", "addressCountry": "FR" }
@@ -1478,527 +584,802 @@
 </head>
 <body>
 
-<!-- ============== NAV ============== -->
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="#" class="logo" aria-label="Aevio One, Accueil">
-      <img class="logo-mark" src="images/logo-a1-new.png" alt="Aevio One" />
-      Aevio One
+<div id="bg-light"></div>
+<div id="bg-dark"></div>
+
+<!-- ==================== NAV ==================== -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a class="brand" href="#top" aria-label="Aevio One, retour en haut">
+      <span class="brand-mark">A</span>
+      <span class="brand-name">Aevio One</span>
     </a>
     <div class="nav-links">
+      <a href="#agents">Agents IA</a>
+      <a href="#realisations">Réalisations</a>
       <a href="#services">Services</a>
-      <a href="#processus">Processus</a>
+      <a href="#methode">Méthode</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a href="#contact" class="nav-cta">Parlons-en →</a>
-  </div>
-</nav>
+    <a class="btn primary small nav-cta" href="#contact">Parlons-en <span class="arr">→</span></a>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="progress"></div>
+  </nav>
+</div>
+<div class="mobile-menu">
+  <a href="#agents">Agents IA</a>
+  <a href="#realisations">Réalisations</a>
+  <a href="#services">Services</a>
+  <a href="#methode">Méthode</a>
+  <a href="#faq">FAQ</a>
+  <a class="btn primary" href="#contact">Parlons-en →</a>
+</div>
 
-<!-- ============== HERO ============== -->
-<header class="hero">
-  <div class="container">
-    <div class="eyebrow">Studio digital · France</div>
-    <h1>Des solutions digitales<br/><em>qui marquent.</em></h1>
-    <p class="sub">Sites vitrines, plateformes SaaS, CRM métier, applications web et mobile, outils sur mesure. On dessine, on code, on déploie, de l'idée au produit vivant.</p>
-    <div class="cta-row">
-      <a href="#contact" class="btn btn-primary">Démarrer un projet <span class="arrow">→</span></a>
-      <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
-    </div>
-
-    <!-- Hero showcase composition -->
-    <div class="hero-showcase">
-
-      <!-- Center hub — dashboard mockup -->
-      <div class="hub">
-        <div class="hub-side">
-          <div class="h-logo"></div>
-          <div class="h-i on">▦</div>
-          <div class="h-i">◎</div>
-          <div class="h-i">☰</div>
-          <div class="h-i">◐</div>
-          <div class="h-i">⚙</div>
-        </div>
-        <div class="hub-main">
-          <div class="hub-top">
-            <div class="hub-title">Tableau de bord · Q4</div>
-            <div class="hub-pill">+ 18% · 30j</div>
-          </div>
-          <div class="hub-stats">
-            <div class="hub-stat">
-              <div class="l">Revenus</div>
-              <div class="v">€ 184k</div>
-              <div class="d">+12,4%</div>
-            </div>
-            <div class="hub-stat">
-              <div class="l">Clients</div>
-              <div class="v">2 410</div>
-              <div class="d">+143</div>
-            </div>
-            <div class="hub-stat">
-              <div class="l">Taux conv.</div>
-              <div class="v">3,8%</div>
-              <div class="d">+0,6pt</div>
-            </div>
-            <div class="hub-stat">
-              <div class="l">NPS</div>
-              <div class="v">62</div>
-              <div class="d">+5</div>
-            </div>
-          </div>
-          <div class="hub-chart">
-            <svg viewBox="0 0 280 70" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3730A3" stop-opacity="0.45"/>
-                  <stop offset="100%" stop-color="#3730A3" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0,55 L30,48 L60,52 L90,38 L120,42 L150,30 L180,34 L210,22 L240,26 L280,12 L280,70 L0,70 Z" fill="url(#hg)"/>
-              <path d="M0,55 L30,48 L60,52 L90,38 L120,42 L150,30 L180,34 L210,22 L240,26 L280,12" stroke="#1E1B4B" stroke-width="2" fill="none"/>
-              <circle cx="280" cy="12" r="3" fill="#EA580C"/>
-            </svg>
-          </div>
-          <div class="hub-rows">
-            <div class="hub-row">
-              <div class="av"></div>
-              <div class="nm">Maison Belle · Provence</div>
-              <span class="tg tg-hot">Chaud</span>
-            </div>
-            <div class="hub-row">
-              <div class="av" style="background:linear-gradient(135deg,var(--mint),#14B8A6)"></div>
-              <div class="nm">Atelier 9 · Marseille</div>
-              <span class="tg tg-new">Nouveau</span>
-            </div>
-            <div class="hub-row">
-              <div class="av" style="background:linear-gradient(135deg,var(--rose),#EC4899)"></div>
-              <div class="nm">Volta · Lyon</div>
-              <span class="tg tg-prio">Prioritaire</span>
-            </div>
-          </div>
-        </div>
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top" data-theme="light">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker" data-anim><span class="dot"></span>Studio digital &amp; agents IA · France</span>
+      <h1 class="h1" data-split>Des solutions<br>et des agents IA<br><span class="accent">qui marquent.</span></h1>
+      <p class="lede" data-anim data-anim-delay="300">Sites, plateformes SaaS, CRM métier, applications web et mobile, et des agents IA qui travaillent pour vous. On dessine, on code, on déploie, de l'idée au produit vivant.</p>
+      <div class="hero-ctas" data-anim data-anim-delay="480">
+        <a class="btn primary" href="#contact">Démarrer un projet <span class="arr">→</span></a>
+        <a class="btn ghost" href="#realisations">Voir les réalisations</a>
       </div>
-
-      <!-- Floating phone -->
-      <div class="float-phone">
-        <div class="ph-screen">
-          <div class="ph-top">
-            <div class="ph-greet">LUNDI · 09:42</div>
-            <div class="ph-name">Bonjour,<br/>Léa</div>
-          </div>
-          <div class="ph-card">
-            <div class="l">Ce mois</div>
-            <div class="v">€ 4 820</div>
-          </div>
-          <div class="ph-bars">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="ph-nav">
-            <span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Floating browser preview -->
-      <div class="float-browser">
-        <div class="fb-bar">
-          <span class="d"></span><span class="d"></span><span class="d"></span>
-          <span class="url">maisonbelle.fr</span>
-        </div>
-        <div class="fb-body">
-          <div class="fb-h">L'art de vivre <em>raffiné.</em></div>
-          <div class="fb-sub">Maison d'hôtes · Provence</div>
-          <div class="fb-cards">
-            <div></div><div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Floating notification -->
-      <div class="float-notif">
-        <div class="n-ico">+</div>
-        <div>
-          <div class="n-title">Nouveau lead qualifié</div>
-          <div class="n-sub">Atelier 9 · il y a 2 min</div>
-        </div>
-      </div>
-
-      <!-- Floating stat card -->
-      <div class="float-stat">
-        <div class="s-l">Conversion</div>
-        <div class="s-v">7,2%</div>
-        <svg class="s-spark" viewBox="0 0 80 30" preserveAspectRatio="none">
-          <path d="M0,22 L10,18 L20,20 L30,12 L40,15 L50,8 L60,10 L70,4 L80,6" stroke="#10B981" stroke-width="2" fill="none"/>
-        </svg>
-      </div>
-
-    </div>
-  </div>
-</header>
-
-<!-- ============== SERVICES ============== -->
-<section class="block" id="services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">Ce qu'on fait</span>
-      <h2>Un partenaire. <em>Tous les métiers du digital.</em></h2>
-      <p>On prend en charge vos projets de bout en bout, design, développement, intégration, déploiement, maintenance. Voici ce qu'on fait le mieux.</p>
-    </div>
-
-    <!-- Service 1 : Sites web -->
-    <div class="service reveal">
-      <div class="service-text">
-        <span class="num">01 · SITES WEB</span>
-        <h3>Sites vitrines & e-commerce qui convertissent.</h3>
-        <p>Du site sur-mesure à fort impact visuel à la boutique en ligne optimisée pour la vente. Design unique, performances au top, référencement naturel soigné et contenu qui raconte votre histoire.</p>
-        <div class="chip-list">
-          <span class="chip">Site vitrine</span>
-          <span class="chip">E-commerce</span>
-          <span class="chip">Landing page</span>
-          <span class="chip">SEO technique</span>
-          <span class="chip">Headless CMS</span>
-        </div>
-      </div>
-      <div class="service-visual v-sites">
-        <div class="shot-stack shot-sites-stack">
-          <div class="browser-mockup browser-back">
-            <div class="browser-bar">
-              <span class="d"></span><span class="d"></span><span class="d"></span>
-              <span class="url">simplify-pro.com/alertes</span>
-            </div>
-            <div class="browser-body shot-body">
-              <img src="images/simplifypro-alerts.png" alt="SimplifyPro, page alertes en temps réel" loading="lazy" />
-            </div>
-          </div>
-          <div class="browser-mockup browser-front">
-            <div class="browser-bar">
-              <span class="d"></span><span class="d"></span><span class="d"></span>
-              <span class="url">simplify-pro.com</span>
-            </div>
-            <div class="browser-body shot-body">
-              <img src="images/simplifypro-landing.png" alt="SimplifyPro, page d'accueil" loading="lazy" />
-            </div>
-          </div>
-        </div>
+      <div class="hero-proof" data-anim data-anim-delay="620">
+        <span><i></i>Basé en France</span>
+        <span><i></i>Réponse sous 24 h</span>
+        <span><i></i>De l'idée au produit vivant</span>
       </div>
     </div>
-
-    <!-- Service 2 : CRM -->
-    <div class="service reverse reveal">
-      <div class="service-text">
-        <span class="num">02 · CRM</span>
-        <h3>Un CRM taillé pour votre métier.</h3>
-        <p>Stop aux tableurs et aux outils génériques. On bâtit des CRM pensés pour votre cycle de vente, vos équipes, vos indicateurs. Import de l'existant, automatisations, reporting, tout est prévu.</p>
-        <div class="chip-list">
-          <span class="chip">Gestion contacts</span>
-          <span class="chip">Pipeline commercial</span>
-          <span class="chip">Automatisations</span>
-          <span class="chip">Reporting</span>
-          <span class="chip">Intégrations email</span>
-        </div>
+    <div class="hv" data-anim="scale" data-anim-delay="250">
+      <span class="chip hv-pill">Conforme AI Act · Hébergé en UE</span>
+      <div class="hv-browser" data-parallax="-4">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">assistant.duval-menuiserie.fr</span></div>
+        <img src="images/agents-app.png" alt="Interface d'un assistant IA Aevio Agents, démonstration" width="1600" height="1298" fetchpriority="high">
       </div>
-      <div class="service-visual v-crm">
-        <div class="shot-stack shot-crm-stack">
-          <div class="shot-frame shot-crm-back">
-            <img src="images/crmlit-emails.png" alt="CRMLit, campagnes email" loading="lazy" />
-          </div>
-          <div class="shot-frame shot-crm-front">
-            <img src="images/crmlit-dashboard.png" alt="CRMLit, tableau de bord du CRM hôtellerie literie" loading="lazy" />
-          </div>
-        </div>
+      <div class="hv-card hv-kpi" data-parallax="8" data-float>
+        <b><span data-counter="38">38</span> h</b>
+        <span>rendues à l'équipe ce mois-ci</span>
       </div>
-    </div>
-
-    <!-- Service 3 : SaaS -->
-    <div class="service reveal">
-      <div class="service-text">
-        <span class="num">03 · SAAS</span>
-        <h3>Votre plateforme SaaS, de zéro à la production.</h3>
-        <p>Une idée de produit ? On construit l'ensemble : architecture, base de données, authentification, facturation, tableau de bord. Stack moderne, code propre, prêt à scaler.</p>
-        <div class="chip-list">
-          <span class="chip">Auth & permissions</span>
-          <span class="chip">Facturation Stripe</span>
-          <span class="chip">Multi-tenant</span>
-          <span class="chip">API REST / GraphQL</span>
-          <span class="chip">Hébergement cloud</span>
-        </div>
-      </div>
-      <div class="service-visual v-saas">
-        <div class="saas-app">
-          <div class="saas-side">
-            <div class="logo-s"></div>
-            <div class="ic active">▦</div>
-            <div class="ic">◎</div>
-            <div class="ic">☰</div>
-            <div class="ic">◐</div>
-          </div>
-          <div class="saas-main">
-            <div class="saas-head">
-              <h4>Mes projets</h4>
-              <div class="saas-search">⌕ Rechercher</div>
-            </div>
-            <div class="saas-grid">
-              <div class="saas-card a"><span class="tag">ACTIF</span><h5>Refonte site vitrine</h5><div class="prog"><span></span></div></div>
-              <div class="saas-card b"><span class="tag">EN COURS</span><h5>Module facturation</h5><div class="prog"><span></span></div></div>
-              <div class="saas-card c"><span class="tag">LIVRÉ</span><h5>App mobile V2</h5><div class="prog"><span></span></div></div>
-              <div class="saas-card d"><span class="tag">TODO</span><h5>Automatisation CRM</h5><div class="prog"><span></span></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 4 : Apps -->
-    <div class="service reverse reveal">
-      <div class="service-text">
-        <span class="num">04 · APPS</span>
-        <h3>Applications web & mobile.</h3>
-        <p>Une app pour vos clients, pour vos équipes, pour votre communauté. On conçoit des expériences fluides, rapides et belles, iOS, Android, web, avec une base de code unique quand c'est pertinent.</p>
-        <div class="chip-list">
-          <span class="chip">iOS & Android</span>
-          <span class="chip">React Native</span>
-          <span class="chip">PWA</span>
-          <span class="chip">Notifications push</span>
-          <span class="chip">Mode hors-ligne</span>
-        </div>
-      </div>
-      <div class="service-visual v-apps">
-        <div class="phones phones-real">
-          <div class="iphone iphone-back">
-            <img src="images/padel-phone-2.png" alt="Padel Club, partie créée, partager via WhatsApp" loading="lazy" />
-          </div>
-          <div class="iphone iphone-front">
-            <img src="images/padel-phone-1.png" alt="Padel Club, vue des parties à venir" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 5 : Outils sur mesure -->
-    <div class="service reveal">
-      <div class="service-text">
-        <span class="num">05 · OUTILS SUR MESURE</span>
-        <h3>Des outils internes qui font gagner du temps.</h3>
-        <p>Générateurs de devis, plannings d'équipe, portails clients, automatisations entre vos logiciels existants. Si ça n'existe pas, ou que ça existe mal, on le crée exactement pour vous.</p>
-        <div class="chip-list">
-          <span class="chip">Générateurs de devis</span>
-          <span class="chip">Portails clients</span>
-          <span class="chip">Automatisations</span>
-          <span class="chip">Intégrations API</span>
-          <span class="chip">Back-offices</span>
-        </div>
-      </div>
-      <div class="service-visual v-tools">
-        <div class="tools-canvas">
-          <svg class="tools-lines" viewBox="0 0 500 375" preserveAspectRatio="none">
-            <path d="M 90 50 Q 200 80 240 170" />
-            <path d="M 410 45 Q 320 90 260 170" />
-            <path d="M 250 220 Q 200 280 120 310" />
-            <path d="M 260 220 Q 370 280 430 310" />
-          </svg>
-          <div class="node n1"><span class="ico">F</span>Formulaire</div>
-          <div class="node n2"><span class="ico">@</span>Email</div>
-          <div class="node n3"><span class="ico">⚙</span>Automatisation</div>
-          <div class="node n4"><span class="ico">DB</span>Base de données</div>
-          <div class="node n5"><span class="ico">$</span>Facturation</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============== INDUSTRIES ============== -->
-<section class="industries">
-  <div class="container">
-    <div class="section-head reveal" style="margin-bottom:0">
-      <span class="kicker">Pour qui</span>
-      <h2>Des secteurs <em>très différents.</em><br/>Une même rigueur.</h2>
-      <p>On accompagne des indépendants, des PME et des scale-ups. Ce qui compte : un projet ambitieux et une équipe prête à faire bouger les choses.</p>
-    </div>
-    <div class="industries-grid reveal">
-      <div class="ind-card c1">
-        <div class="ind-ico">H</div>
-        <h5>Hôtellerie</h5>
-        <p>Sites de réservation, CRM commerciaux, plateformes de gestion multi-établissements.</p>
-      </div>
-      <div class="ind-card c2">
-        <div class="ind-ico">R</div>
-        <h5>Restaurants</h5>
-        <p>Sites vitrines, click & collect, applications de fidélité, gestion de menus.</p>
-      </div>
-      <div class="ind-card c3">
-        <div class="ind-ico">S</div>
-        <h5>Santé & bien-être</h5>
-        <p>Prise de rendez-vous, dossiers patients, suivis, applications coach et thérapeutes.</p>
-      </div>
-      <div class="ind-card c4">
-        <div class="ind-ico">B</div>
-        <h5>BTP & artisans</h5>
-        <p>Plannings de chantier, devis automatisés, suivi équipes, vitrines portfolios.</p>
-      </div>
-      <div class="ind-card c5">
-        <div class="ind-ico">F</div>
-        <h5>FinTech</h5>
-        <p>Plateformes SaaS, outils d'analyse, dashboards temps réel, intégrations bancaires.</p>
-      </div>
-      <div class="ind-card c6">
-        <div class="ind-ico">E</div>
-        <h5>E-commerce & marques</h5>
-        <p>Boutiques en ligne, headless commerce, automatisations marketing, fidélisation.</p>
+      <div class="hv-card hv-notif" data-parallax="12" data-float>
+        <span class="ic">✓</span>
+        <div><b>Mail à Claire Bertrand — envoyé</b><span>Validé par un humain avant départ</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== PROCESS ============== -->
-<section class="block" id="processus">
-  <div class="process-section">
-    <div class="section-head reveal">
-      <span class="kicker" style="color:var(--accent-2)">Méthode</span>
-      <h2>De l'idée au produit vivant. <em style="color:var(--accent-2)">En 4 temps.</em></h2>
-      <p>Une méthode simple, transparente, qui nous évite les mauvaises surprises et vous donne de la visibilité à chaque étape.</p>
+<!-- ==================== MARQUEE 1 ==================== -->
+<div class="ticker" data-theme="light">
+  <div class="ticker-track">
+    <div class="ticker-inner" data-ticker="34">
+      <!-- 3 copies pour une boucle parfaite -->
+      <span>Agents IA <em>·</em></span><span>Claude <em>·</em></span><span>Next.js <em>·</em></span><span>React <em>·</em></span><span>PostgreSQL <em>·</em></span><span>Stripe <em>·</em></span><span>PWA iOS &amp; Android <em>·</em></span><span>Supabase <em>·</em></span><span>Pine Script <em>·</em></span><span>Webhooks <em>·</em></span><span>RAG <em>·</em></span><span>GSAP <em>·</em></span>
+      <span>Agents IA <em>·</em></span><span>Claude <em>·</em></span><span>Next.js <em>·</em></span><span>React <em>·</em></span><span>PostgreSQL <em>·</em></span><span>Stripe <em>·</em></span><span>PWA iOS &amp; Android <em>·</em></span><span>Supabase <em>·</em></span><span>Pine Script <em>·</em></span><span>Webhooks <em>·</em></span><span>RAG <em>·</em></span><span>GSAP <em>·</em></span>
+      <span>Agents IA <em>·</em></span><span>Claude <em>·</em></span><span>Next.js <em>·</em></span><span>React <em>·</em></span><span>PostgreSQL <em>·</em></span><span>Stripe <em>·</em></span><span>PWA iOS &amp; Android <em>·</em></span><span>Supabase <em>·</em></span><span>Pine Script <em>·</em></span><span>Webhooks <em>·</em></span><span>RAG <em>·</em></span><span>GSAP <em>·</em></span>
     </div>
-    <div class="steps">
-      <div class="step reveal">
-        <span class="step-num">01 / CADRAGE</span>
-        <h4>On écoute.</h4>
-        <p>Un ou deux ateliers pour comprendre vos enjeux, vos utilisateurs, votre existant. On repart avec un brief clair et un périmètre net.</p>
+  </div>
+</div>
+
+<!-- ==================== AEVIO AGENTS ==================== -->
+<section id="agents" data-theme="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker soft" data-anim><span class="dot"></span>Aevio Agents</span>
+      <h2 class="h2" data-split>Un assistant qui travaille,<br><span class="accent">un humain qui décide.</span></h2>
+      <p class="lede" data-anim data-anim-delay="200">Aevio Agents met des assistants IA à la marque de votre entreprise entre les mains de vos équipes : devis, relances, mails, questions RH. Rien ne part sans validation humaine, et chaque action est journalisée, horodatée, exportable.</p>
+    </div>
+
+    <div class="ag-hero" data-anim="scale">
+      <div>
+        <div class="shot">
+          <div class="b-bar"><i></i><i></i><i></i><span class="b-url">assistant.duval-menuiserie.fr</span></div>
+          <img src="images/agents-app.png" alt="Interface Aevio Agents : l'assistant prépare un devis, l'employé valide chaque envoi" width="1600" height="1298" loading="lazy">
+        </div>
+        <p class="caption">Interface de démonstration · Client fictif « Menuiserie Duval &amp; Fils »</p>
       </div>
-      <div class="step reveal">
-        <span class="step-num">02 / DESIGN</span>
-        <h4>On dessine.</h4>
-        <p>Wireframes, maquettes haute fidélité, prototype cliquable. Vous validez l'expérience avant qu'une ligne de code ne soit écrite.</p>
+    </div>
+
+    <div class="kpis" data-stagger>
+      <div class="kpi"><b><span data-counter="38">38</span> h</b><span>rendues à l'équipe chaque mois</span></div>
+      <div class="kpi"><b><span data-counter="92">92</span> %</b><span>des tâches validées sans retouche</span></div>
+      <div class="kpi"><b><span data-counter="100">100</span> %</b><span>des envois relus par un humain</span></div>
+      <div class="kpi"><b><span data-counter="3">3</span> <em>sem.</em></b><span>pour être opérationnel</span></div>
+    </div>
+    <p class="kpi-note">Indicateurs du tableau de bord de démonstration.</p>
+
+    <h3 class="ag-sub" data-split>Des modules par métier, <span class="accent">au prix affiché.</span></h3>
+    <div class="mods" data-stagger>
+      <div class="mod"><span class="cat">Socle</span><b>Mémoire d'entreprise</b><p>L'assistant répond à partir de vos documents, en citant sa source.</p><span class="price">Inclus</span></div>
+      <div class="mod"><span class="cat">Quotidien</span><b>Boîte mail triée</b><p>Résumés du matin, brouillons de réponse, rien n'est envoyé sans vous.</p><span class="price">Inclus</span></div>
+      <div class="mod"><span class="flag">ROI le plus rapide</span><span class="cat">Trésorerie</span><b>Relance des impayés</b><p>Choisit le palier, adapte le ton, escalade au patron au-dessus du seuil.</p><span class="price">80 – 250 € / mois</span></div>
+      <div class="mod"><span class="cat">Commerce</span><b>Devis &amp; relance commerciale</b><p>Prépare le devis aux conditions habituelles, relance sans réponse à 8 jours.</p><span class="price">150 – 600 € / mois</span></div>
+      <div class="mod"><span class="cat">RH</span><b>Questions internes RH</b><p>Congés, soldes, procédures : réponses sourcées dans vos règles internes.</p><span class="price">dès 60 € / mois</span></div>
+      <div class="mod"><span class="cat">Canaux</span><b>Accueil téléphonique</b><p>Sur votre numéro existant : qualifie, prend le message, prévient l'équipe.</p><span class="price">dès 49 € / mois</span></div>
+    </div>
+
+    <h3 class="ag-sub" data-split>Opérationnel <span class="accent">en 3 semaines.</span></h3>
+    <div class="steps3" data-stagger>
+      <div class="st"><span class="n">1</span><b>Audit</b><span>Une demi-journée dans vos locaux : on liste les tâches répétitives qui coûtent le plus d'heures.</span><span class="when">Semaine 1</span></div>
+      <div class="st"><span class="n">2</span><b>Branchement</b><span>Mail, documents, facturation, règles de validation : l'assistant arrive configuré, à vos couleurs.</span><span class="when">Semaines 1 – 2</span></div>
+      <div class="st"><span class="n">3</span><b>Formation &amp; suivi</b><span>Vos équipes sont formées, puis 30 jours d'ajustements avec un point chaque semaine.</span><span class="when">Semaine 3 + 30 jours</span></div>
+    </div>
+
+    <h3 class="ag-sub" data-split>Le dirigeant voit ce que <span class="accent">l'assistant produit.</span></h3>
+    <div data-anim="scale">
+      <div class="shot">
+        <img src="images/agents-dash.png" alt="Tableau de bord Aevio Agents : heures rendues, tâches traitées, coût IA du mois" width="1600" height="670" loading="lazy">
       </div>
-      <div class="step reveal">
-        <span class="step-num">03 / BUILD</span>
-        <h4>On construit.</h4>
-        <p>Sprints courts, démos régulières, accès permanent à l'avancement. Code propre, testé, documenté.</p>
+      <p class="caption">Chaque mois : heures rendues, tâches traitées, taux de validation, coût IA réel.</p>
+    </div>
+
+    <h3 class="ag-sub" data-split>Deux offres, <span class="accent">selon votre taille.</span></h3>
+    <div class="offers" data-stagger>
+      <div class="offer star">
+        <span class="avail">Disponible maintenant</span>
+        <span class="tag">Installation · TPE, 1 à 20 salariés</span>
+        <h4>Assistant installé chez vous</h4>
+        <p class="for">Claude configuré sur vos postes, avec des automatisations sur mesure pour vos tâches réelles.</p>
+        <div class="price">dès 1 900 € HT <small>· forfait complet 2 900 € HT</small></div>
+        <ul>
+          <li>Audit d'une demi-journée de vos tâches répétitives</li>
+          <li>3 à 5 automatisations sur mesure (devis, relances, mails…)</li>
+          <li>Formation de vos utilisateurs, gabarits inclus</li>
+          <li>Suivi optionnel : 150 € / mois, une nouvelle automatisation par trimestre</li>
+        </ul>
+        <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Aevio%20Agents%20%E2%80%94%20Offre%20Installation">Demander un audit <span class="arr">→</span></a>
       </div>
-      <div class="step reveal">
-        <span class="step-num">04 / LIVE</span>
-        <h4>On met en ligne.</h4>
-        <p>Déploiement, formation de vos équipes, suivi post-lancement. On reste à vos côtés pour faire évoluer le produit.</p>
+      <div class="offer">
+        <span class="avail later">Sous 4 à 8 semaines</span>
+        <span class="tag">Plateforme · PME, 10 à 50 salariés</span>
+        <h4>Votre plateforme à votre marque</h4>
+        <p class="for">Une interface web multi-utilisateurs à vos couleurs, sur votre domaine, hébergée en UE.</p>
+        <div class="price">39 € HT / utilisateur / mois <small>· mise en place 2 500 à 6 000 € HT</small></div>
+        <ul>
+          <li>Agents par métier : devis, relances, RH, fiches chantier</li>
+          <li>File « À valider » : aucun envoi automatique</li>
+          <li>Journal des actions conforme AI Act, exportable</li>
+          <li>Tableau de bord dirigeant : heures rendues, coût IA du mois</li>
+        </ul>
+        <a class="btn ghost" href="mailto:yoann@aevio-one.com?subject=Aevio%20Agents%20%E2%80%94%20Offre%20Plateforme">Être recontacté <span class="arr">→</span></a>
       </div>
+    </div>
+
+    <div class="fchips" data-stagger>
+      <span class="chip">Conforme AI Act</span>
+      <span class="chip">Données hébergées en UE</span>
+      <span class="chip">Journal exportable</span>
+      <span class="chip">Accès par salarié</span>
+      <span class="chip">Aucun envoi sans validation</span>
+    </div>
+    <div class="ag-ctas" data-anim>
+      <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=D%C3%A9monstration%20Aevio%20Agents">Demander une démonstration <span class="arr">→</span></a>
+      <a class="btn ghost" href="aevio-agents/" target="_blank" rel="noopener">Voir la présentation interactive</a>
+      <a class="btn ghost" href="docs/presentation-aevio-agents.pdf" target="_blank" rel="noopener">Télécharger la présentation (PDF)</a>
     </div>
   </div>
 </section>
 
-<!-- ============== TÉMOIGNAGES ============== -->
-<section class="block">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">Ils en parlent</span>
-      <h2>Ce que nos clients <em>retiennent.</em></h2>
+<!-- ==================== RÉALISATIONS ==================== -->
+<section id="realisations" data-theme="light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-anim><span class="dot"></span>Réalisations</span>
+      <h2 class="h2" data-split>Des produits vivants,<br><span class="accent">utilisés tous les jours.</span></h2>
+      <p class="lede" data-anim data-anim-delay="200">Quatre produits conçus, développés et mis en ligne par Aevio One, du premier croquis à la production.</p>
     </div>
-    <div class="testi-grid reveal">
-      <div class="testi t1">
-        <blockquote>Aevio One a remplacé un patchwork d'outils par un CRM unique. Trois mois plus tard, l'équipe commerciale a doublé son taux de conversion.</blockquote>
-        <div class="testi-foot">
-          <div class="testi-av"></div>
-          <div>
-            <div class="nm">Thomas D.</div>
-            <div class="ro">Directeur commercial · Spécialiste literie hôtellerie</div>
+
+    <!-- MyDay -->
+    <div class="proj myday" id="myday">
+      <div class="myday-top">
+        <div class="proj-body">
+          <div class="chips" data-stagger>
+            <span class="chip">Application web &amp; mobile</span>
+            <span class="chip">PWA installable</span>
+            <span class="chip">Sur invitation</span>
+          </div>
+          <h3 class="h3" data-split>MyDay — toute ta journée, <span class="accent">au même endroit.</span></h3>
+          <a class="name mono" href="https://myday.aevio-one.com" target="_blank" rel="noopener">myday.aevio-one.com ↗</a>
+          <p data-anim>Un cockpit personnel qui réunit météo, planning, tâches, notes et budget dans un seul écran, sur ordinateur comme sur mobile. Chaque matin, un brief IA te dit quoi faire en premier ; le reste de la journée, tu parles à l'assistant et il agit à ta place.</p>
+          <ul class="feat" data-stagger>
+            <li>Assistant IA qui agit <span>— « Cale un déjeuner vendredi » crée l'événement, le partage et pose le rappel</span></li>
+            <li>Budget privé sous code <span>— reste à vivre, récurrents, projets, projection sur 12 mois</span></li>
+            <li>Partage en temps réel <span>— événements, tâches et notes choisis, à deux ou en famille</span></li>
+            <li>Thème clair ou sombre, 5 couleurs <span>— synchronisé entre tous tes appareils</span></li>
+          </ul>
+          <div class="proj-links" data-anim>
+            <a class="btn primary" href="https://myday.aevio-one.com" target="_blank" rel="noopener">Voir le site <span class="arr">→</span></a>
+            <a class="btn ghost" href="docs/presentation-myday.pdf" target="_blank" rel="noopener">Découvrir MyDay (PDF)</a>
+          </div>
+        </div>
+
+        <div class="myday-phones" data-anim="right">
+          <!-- iPhone thème clair : vue d'ensemble -->
+          <div class="iph" data-parallax="-3">
+            <div class="iph-scr">
+              <div class="iph-head">
+                <span class="lg">MD</span><b>Mardi 14 juillet</b>
+                <span class="rd">☾</span><span class="rd av">E</span>
+              </div>
+              <div class="iph-ask"><i>→</i>Dis-moi quoi faire…</div>
+              <div class="ab">MÉTÉO</div>
+              <div class="meteo"><span class="ic">☀️</span><span class="t">24°</span><span class="d">Aix-en-Provence<br>Ensoleillé · vent 12 km/h</span></div>
+              <div class="ab">PLANNING <i>+</i></div>
+              <div class="ptabs"><b>JOUR</b><span>SEMAINE</span><span>MOIS</span></div>
+              <div class="ev2"><span class="evt">▣ Rendez-vous · 09:30 – 10:30</span><b>Point équipe hebdo</b></div>
+              <div class="ev2"><span class="evt">▣ Partagé · 12:30 – 13:30</span><b>Déjeuner avec Manon <span class="m">M</span></b></div>
+              <div class="ab">TÂCHES <i>+</i></div>
+              <div class="trow"><span class="c"></span><b>Finaliser le support client</b><span class="tpill"><i>●</i> TRAVAIL</span></div>
+              <div class="trow"><span class="c"></span><b>Réserver le restaurant</b><span class="tpill p2"><i>●</i> PERSO</span></div>
+              <div class="ab">NOTES <i>+</i></div>
+              <div class="nrow"><div class="nt"><b>Idées vacances d'été</b><span class="tpill">☑ 3/8</span></div></div>
+              <div class="nrow"><div class="nt"><b>Liste de courses</b><span class="tpill">☑ 5/12</span></div></div>
+              <div class="ab">BUDGET</div>
+              <div class="bud">
+                <span class="lab">RESTE À VIVRE · JUILLET</span>
+                <div class="big">744 €</div>
+                <div class="bar"><i></i></div>
+                <div class="mini"><div><b>1 856 €</b><span>Dépenses</span></div><div><b>18 250 €</b><span>Capital</span></div></div>
+              </div>
+            </div>
+          </div>
+          <!-- iPhone thème sombre : l'assistant -->
+          <div class="iph dark" data-parallax="4" data-float>
+            <div class="iph-scr">
+              <div class="iph-head">
+                <span class="lg">MD</span><b>Mardi 14 juillet</b>
+                <span class="rd">☀</span><span class="rd av">E</span>
+              </div>
+              <div class="iph-ask"><i>→</i>Dis-moi quoi faire…</div>
+              <div class="chat-card">
+                <div class="clab"><span>ASSISTANT</span><span>14:02</span></div>
+                <div class="bub-u">Cale un déjeuner avec Manon vendredi à 12 h 30 et préviens-la.</div>
+                <div class="bub-a">C'est fait. J'ai ajouté « Déjeuner avec Manon » vendredi à 12 h 30 et je le lui ai partagé.</div>
+                <span class="okc">✓ ÉVÉNEMENT CRÉÉ</span><span class="okc">✓ PARTAGÉ</span>
+                <div class="bub-u">Ajoute une tâche : préparer le support client, avec un rappel à 13 h.</div>
+                <div class="bub-a">Ajouté à tes tâches en priorité haute, rappel programmé à 13 h aujourd'hui.</div>
+                <span class="okc">✓ TÂCHE CRÉÉE</span><span class="okc">✓ RAPPEL 13:00</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="testi t2">
-        <blockquote>On est arrivé avec une idée. Ils sont partis avec, l'ont dessinée, codée, mise en ligne. Notre SaaS tourne en production depuis six mois sans accroc.</blockquote>
-        <div class="testi-foot">
-          <div class="testi-av"></div>
-          <div>
-            <div class="nm">Sophie R.</div>
-            <div class="ro">Co-fondatrice · Plateforme FinTech</div>
+
+      <!-- MacBook Pro + brief quotidien -->
+      <div class="myday-desk">
+        <div class="mac" data-anim="left" data-parallax="-2">
+          <div class="mac-screen">
+            <div class="mac-display">
+              <div class="mdk-top">
+                <span class="lg">MD</span><b>Mardi 14 juillet</b>
+                <span class="mdk-ask"><i>→</i>Dis-moi quoi faire, par exemple une note, un rendez-vous…</span>
+                <span class="mdk-ic">AIDE</span><span class="mdk-ic">€</span><span class="mdk-ic">☾</span><span class="mdk-av">E</span>
+              </div>
+              <div class="mdk-cols">
+                <div>
+                  <div class="ab">PLANNING <i>+</i><span class="sp"></span><span class="g">⚙</span></div>
+                  <div class="mdk-card">
+                    <div class="ptabs"><b>JOUR</b><span>SEMAINE</span><span>MOIS</span><span>ANNÉE</span></div>
+                    <div class="pdate">MARDI 14 JUILLET 2026 · AUJOURD'HUI</div>
+                    <div class="ev2"><span class="evt">▣ Rendez-vous · 09:30 – 10:30</span><b>Point équipe hebdo</b></div>
+                    <div class="ev2"><span class="evt">▣ Partagé · 12:30 – 13:30</span><b>Déjeuner avec Manon <span class="m">M</span></b></div>
+                    <div class="ev2"><span class="evt">▣ Tâche · 14:00 – 15:00</span><b>Présentation client</b></div>
+                  </div>
+                  <div class="ab">TÂCHES <i>+</i><span class="sp"></span><span class="g">⚙</span></div>
+                  <div class="mdk-card">
+                    <div class="trow"><span class="c"></span><b>Finaliser le support de présentation</b><span class="tpill"><i>●</i> TRAVAIL</span><span class="tday">AUJOURD'HUI</span></div>
+                    <div class="trow"><span class="c"></span><b>Rappeler le comptable</b><span class="tpill"><i>●</i> TRAVAIL</span><span class="tday">AUJOURD'HUI</span></div>
+                    <div class="trow"><span class="c"></span><b>Réserver le restaurant de vendredi</b><span class="tpill p2"><i>●</i> PERSO</span><span class="tday">DEMAIN</span></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="ab">MÉTÉO</div>
+                  <div class="meteo"><span class="ic">☀️</span><span class="t">24°</span><span class="d">Aix-en-Provence<br>Ensoleillé · vent 12 km/h</span></div>
+                  <div class="ab">NOTES <i>+</i></div>
+                  <div class="mdk-card">
+                    <div class="nrow"><div class="nt"><b>Idées vacances d'été</b><span class="tpill p2"><i>●</i> PERSO</span></div><div class="meta"><span class="tpill">☑ 3/8</span><span class="tday">IL Y A 2 J</span></div></div>
+                    <div class="nrow"><div class="nt"><b>Liste de courses</b><span class="tpill p2"><i>●</i> PERSO</span></div><div class="meta"><span class="tpill">☑ 5/12</span><span class="tday">HIER</span></div></div>
+                  </div>
+                  <div class="ab">BUDGET</div>
+                  <div class="mdk-card bud">
+                    <span class="lab">RESTE À VIVRE · JUILLET</span>
+                    <div class="big">744 €</div>
+                    <div class="bar"><i></i></div>
+                    <div class="mini"><div><b>1 856 €</b><span>Dépenses</span></div><div><b>1 240 €</b><span>Récurrents</span></div><div><b>18 250 €</b><span>Capital</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="mac-base"></div>
+        </div>
+
+        <div class="brief-card" data-anim="right">
+          <div class="clab"><span>BRIEF · 07:30</span><span>BRIEF EXPRESS</span></div>
+          <h4>Voici ta journée en un coup d'œil.</h4>
+          <div class="bit"><i>01</i><span>Finaliser le support de présentation avant le rendez-vous de 14 h.</span></div>
+          <div class="bit"><i>02</i><span>Rappeler le comptable avant midi.</span></div>
+          <div class="bsec"><b>PLANNING</b><span>3 rendez-vous, dont la présentation client à 14 h.</span></div>
+          <div class="bsec"><b>TÂCHES</b><span>3 tâches à traiter, 2 prioritaires.</span></div>
+          <div class="balert"><b>ALERTE</b><span>Échéance proche : « Support de présentation » attendue dans moins de 24 h.</span></div>
         </div>
       </div>
-      <div class="testi t3">
-        <blockquote>Site vitrine en quatre semaines, refonte complète de l'identité, et un trafic qui a triplé en un trimestre. On recommande sans hésiter.</blockquote>
-        <div class="testi-foot">
-          <div class="testi-av"></div>
-          <div>
-            <div class="nm">Camille V.</div>
-            <div class="ro">Fondatrice · Maison d'hôtes en Provence</div>
-          </div>
+    </div>
+
+    <!-- SimplifyPro -->
+    <div class="proj flip" id="simplifypro">
+      <div class="proj-media" data-anim="right">
+        <div class="shot" data-parallax="-3">
+          <div class="b-bar"><i></i><i></i><i></i><span class="b-url">simplify-pro.com</span></div>
+          <img src="images/simplifypro-landing.png" alt="SimplifyPro, plateforme de signaux de trading" width="1280" height="800" loading="lazy">
         </div>
+        <div class="float-shot" data-float>
+          <img src="images/simplifypro-alerts.png" alt="Alertes temps réel SimplifyPro" width="640" height="400" loading="lazy">
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="chips" data-stagger>
+          <span class="chip">SaaS FinTech</span>
+          <span class="chip">Produit + site + infra</span>
+          <span class="chip">TradingView</span>
+        </div>
+        <h3 class="h3" data-split>SimplifyPro — un signal, une décision, <span class="accent">zéro hésitation.</span></h3>
+        <a class="name mono" href="https://simplify-pro.com" target="_blank" rel="noopener">simplify-pro.com ↗</a>
+        <p data-anim>Une plateforme de signaux de trading pour TradingView : flèche verte, on achète ; flèche rouge, on vend. Aevio One a conçu le produit, le site, l'onboarding et l'infrastructure d'alertes de bout en bout.</p>
+        <div class="mini-kpis" data-stagger>
+          <div class="mini-kpi"><b>&lt; 60 s</b><span>pour installer l'indicateur</span></div>
+          <div class="mini-kpi"><b>100 %</b><span>non-repaint</span></div>
+          <div class="mini-kpi"><b>6+</b><span>classes d'actifs</span></div>
+        </div>
+        <ul class="feat" data-stagger>
+          <li>Alertes multi-canal en temps réel <span>— push mobile, email, desktop, webhooks</span></li>
+          <li>Tous marchés, tous timeframes <span>— indices, forex, crypto, or, actions</span></li>
+          <li>Performance publiée chaque jour <span>— pertes incluses, en toute transparence</span></li>
+        </ul>
+        <div class="proj-links" data-anim>
+          <a class="btn primary" href="https://simplify-pro.com" target="_blank" rel="noopener">Voir le site <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Padel Club -->
+    <div class="proj" id="padel">
+      <div class="proj-media" data-anim="left">
+        <div class="phones-duo">
+          <div class="phone" data-parallax="-4"><img src="images/padel-app-1.png" alt="Padel Club, écran d'accueil : organise tes parties de padel avec ta team" width="800" height="1734" loading="lazy"></div>
+          <div class="phone" data-parallax="5"><img src="images/padel-app-2.png" alt="Padel Club, parties à venir avec réponses des joueurs en un tap" width="800" height="1734" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="chips" data-stagger>
+          <span class="chip">Web app mobile</span>
+          <span class="chip">Utilisée en club réel</span>
+        </div>
+        <h3 class="h3" data-split>Padel Club — organise tes parties <span class="accent">sans prise de tête.</span></h3>
+        <a class="name mono" href="https://padel-club.duckdns.org/" target="_blank" rel="noopener">padel-club.duckdns.org ↗ · Set Club Aix</a>
+        <p data-anim>Une mini-app qui organise les parties de padel d'un club privé : on propose un créneau, chacun répond en un tap, le compteur de places fait le reste. Pas de compte, pas de mot de passe, zéro friction.</p>
+        <ul class="feat" data-stagger>
+          <li>« J'y vais / Pas dispo » en un tap <span>— compteur de places 1/4 → Complet</span></li>
+          <li>Notifications et ajout au calendrier <span>— chacun choisit d'être averti des nouvelles parties</span></li>
+          <li>Adoptée par un vrai club <span>— utilisée chaque semaine au Set Club d'Aix-en-Provence</span></li>
+        </ul>
+        <div class="proj-links" data-anim>
+          <a class="btn primary" href="https://padel-club.duckdns.org/" target="_blank" rel="noopener">Voir le site <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRMLit -->
+    <div class="proj flip" id="crmlit">
+      <div class="proj-media" data-anim="right">
+        <div class="shot" data-parallax="-3">
+          <div class="b-bar"><i></i><i></i><i></i><span class="b-url">crm — tableau de bord commercial</span></div>
+          <img src="images/crmlit-dashboard.png" alt="CRMLit, tableau de bord du CRM hôtellerie" width="1280" height="800" loading="lazy">
+        </div>
+        <div class="float-shot" data-float>
+          <img src="images/crmlit-map.png" alt="Prospection géolocalisée des hôtels sur carte" width="640" height="400" loading="lazy">
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="chips" data-stagger>
+          <span class="chip">CRM métier sur mesure</span>
+          <span class="chip">Next.js · PostgreSQL</span>
+          <span class="chip">B2B hôtellerie</span>
+        </div>
+        <h3 class="h3" data-split>CRMLit — la prospection hôtelière, <span class="accent">sans friction.</span></h3>
+        <span class="name mono">Client confidentiel · literie haut de gamme</span>
+        <p data-anim>Un CRM taillé pour des commerciaux terrain : carte des hôtels, pipeline, campagnes email et reporting dans un seul outil. Il a remplacé cinq fichiers Excel, et l'équipe l'a adopté en deux semaines.</p>
+        <div class="mini-kpis" data-stagger>
+          <div class="mini-kpi"><b>−62 %</b><span>de temps de saisie admin</span></div>
+          <div class="mini-kpi"><b>×2,4</b><span>rendez-vous qualifiés / mois</span></div>
+          <div class="mini-kpi"><b>14 j</b><span>pour une adoption complète</span></div>
+        </div>
+        <ul class="feat" data-stagger>
+          <li>Prospection géolocalisée <span>— filtres étoiles, chambres, statut, itinéraires, mode hors-ligne</span></li>
+          <li>Analyse IA des avis publics <span>— détecte les hôtels dont les clients se plaignent de la literie</span></li>
+          <li>Campagnes email intégrées <span>— segmentation, templates, tracking des ouvertures</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== FAQ ============== -->
-<section class="block" id="faq" style="padding-top:0">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">FAQ</span>
-      <h2>Questions <em>fréquentes.</em></h2>
-      <p>Tout ce qu'on vous répond le plus souvent avant de démarrer un projet ensemble.</p>
+<!-- ==================== SERVICES ==================== -->
+<section id="services" data-theme="light" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-anim><span class="dot"></span>Ce qu'on fait</span>
+      <h2 class="h2" data-split>Un partenaire.<br><span class="accent">Tous les métiers du digital.</span></h2>
     </div>
-    <div class="faq-grid reveal">
-      <details>
-        <summary>Combien coûte un projet avec Aevio One ?<span class="plus">+</span></summary>
-        <div class="answer">Chaque projet est sur mesure, donc les budgets varient : un site vitrine démarre autour de 1 000 - 2 000 €, un CRM métier ou une application autour de 5 000 - 10 000 €, et les plateformes SaaS plus complexes se chiffrent au cas par cas. On vous remet un devis précis après le premier échange de cadrage, sans engagement.</div>
+    <div class="svc-rows" data-stagger>
+      <div class="svc">
+        <span class="n">01</span>
+        <div><b>Agents IA pour TPE &amp; PME</b><p>Des assistants qui rendent des heures à vos équipes, avec validation humaine sur tout ce qui part.</p></div>
+        <div class="chips"><span class="chip">Aevio Agents</span><span class="chip">Automatisations</span><span class="chip">Mémoire d'entreprise</span></div>
+      </div>
+      <div class="svc">
+        <span class="n">02</span>
+        <div><b>Sites vitrines &amp; e-commerce</b><p>Des sites qui convertissent, pensés pour votre métier et votre référencement.</p></div>
+        <div class="chips"><span class="chip">Site vitrine</span><span class="chip">E-commerce</span><span class="chip">SEO technique</span></div>
+      </div>
+      <div class="svc">
+        <span class="n">03</span>
+        <div><b>CRM taillé pour votre métier</b><p>Contacts, pipeline, automatisations et reporting, sans les cases inutiles des CRM génériques.</p></div>
+        <div class="chips"><span class="chip">Pipeline commercial</span><span class="chip">Reporting</span><span class="chip">Intégrations email</span></div>
+      </div>
+      <div class="svc">
+        <span class="n">04</span>
+        <div><b>Plateformes SaaS, de zéro à la production</b><p>Auth, facturation, multi-tenant, API : votre produit complet, hébergé et maintenu.</p></div>
+        <div class="chips"><span class="chip">Auth &amp; permissions</span><span class="chip">Facturation Stripe</span><span class="chip">API</span></div>
+      </div>
+      <div class="svc">
+        <span class="n">05</span>
+        <div><b>Applications web &amp; mobile</b><p>iOS, Android, PWA : des applications rapides, installables, avec notifications.</p></div>
+        <div class="chips"><span class="chip">iOS &amp; Android</span><span class="chip">PWA</span><span class="chip">Notifications push</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MÉTHODE ==================== -->
+<section id="methode" data-theme="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker soft" data-anim><span class="dot"></span>Méthode</span>
+      <h2 class="h2" data-split>De l'idée au produit vivant.<br><span class="accent">En quatre temps.</span></h2>
+    </div>
+    <div class="steps4">
+      <div class="step4"><span class="line" data-line></span><span class="n">01 · CADRAGE</span><b>On écoute</b><p>Votre métier, vos contraintes, vos objectifs. On repart avec un périmètre clair et un devis sans surprise.</p></div>
+      <div class="step4"><span class="line" data-line></span><span class="n">02 · DESIGN</span><b>On dessine</b><p>Maquettes et parcours validés ensemble avant d'écrire la première ligne de code.</p></div>
+      <div class="step4"><span class="line" data-line></span><span class="n">03 · BUILD</span><b>On construit</b><p>Des points d'étape courts et réguliers : vous voyez le produit avancer semaine après semaine.</p></div>
+      <div class="step4"><span class="line" data-line></span><span class="n">04 · LIVE</span><b>On met en ligne</b><p>Déploiement, mesure, ajustements. Un produit vivant, pas un livrable qu'on oublie.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MARQUEE 2 (secteurs) ==================== -->
+<div class="ticker dark-t" data-theme="dark">
+  <div class="ticker-track">
+    <div class="ticker-inner" data-ticker="46">
+      <span>Hôtellerie <em>·</em></span><span>Restaurants <em>·</em></span><span>Santé &amp; bien-être <em>·</em></span><span>BTP &amp; artisans <em>·</em></span><span>FinTech <em>·</em></span><span>E-commerce &amp; marques <em>·</em></span><span>Clubs &amp; sport <em>·</em></span>
+      <span>Hôtellerie <em>·</em></span><span>Restaurants <em>·</em></span><span>Santé &amp; bien-être <em>·</em></span><span>BTP &amp; artisans <em>·</em></span><span>FinTech <em>·</em></span><span>E-commerce &amp; marques <em>·</em></span><span>Clubs &amp; sport <em>·</em></span>
+      <span>Hôtellerie <em>·</em></span><span>Restaurants <em>·</em></span><span>Santé &amp; bien-être <em>·</em></span><span>BTP &amp; artisans <em>·</em></span><span>FinTech <em>·</em></span><span>E-commerce &amp; marques <em>·</em></span><span>Clubs &amp; sport <em>·</em></span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TÉMOIGNAGES ==================== -->
+<section data-theme="light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-anim><span class="dot"></span>Ils nous font confiance</span>
+      <h2 class="h2" data-split>Des secteurs très différents.<br><span class="accent">Une même exigence.</span></h2>
+    </div>
+    <div class="quotes" data-stagger>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>« L'outil a remplacé nos cinq fichiers Excel du jour au lendemain. L'équipe l'a adopté en deux semaines, et on a doublé nos rendez-vous qualifiés. »</p>
+        <div class="who"><i>TD</i><div><b>Thomas D.</b><span>Directeur commercial · Spécialiste literie hôtellerie</span></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>« De l'idée au produit en ligne, tout a été cadré, dessiné et livré comme annoncé. On a lancé notre plateforme sans une seule mauvaise surprise. »</p>
+        <div class="who"><i>SR</i><div><b>Sophie R.</b><span>Co-fondatrice · Plateforme FinTech</span></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>« Un vrai partenaire : disponible, direct, et qui comprend le métier avant de parler technique. Le site a transformé nos demandes de réservation. »</p>
+        <div class="who"><i>CV</i><div><b>Camille V.</b><span>Fondatrice · Maison d'hôtes en Provence</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq" data-theme="light" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-anim><span class="dot"></span>FAQ</span>
+      <h2 class="h2" data-split>Les questions<br><span class="accent">qu'on nous pose.</span></h2>
+    </div>
+    <div class="faq-list" data-anim>
+      <details name="faq" open>
+        <summary>Combien coûte un projet ?<span class="chev">+</span></summary>
+        <div class="faq-a">Un <b>site vitrine</b> se situe entre <b>1 000 et 2 000 €</b>, un <b>CRM métier ou une application</b> entre <b>5 000 et 10 000 €</b>, un SaaS complexe s'étudie au cas par cas. Côté agents IA, l'<b>offre Installation démarre à 1 900 € HT</b> et la plateforme à <b>39 € HT par utilisateur et par mois</b>. Le devis est établi après cadrage, sans engagement.</div>
       </details>
-      <details>
-        <summary>Quels sont les délais moyens ?<span class="plus">+</span></summary>
-        <div class="answer">Comptez 3 à 5 semaines pour un site vitrine, 6 à 10 semaines pour un CRM ou un outil interne, et 3 à 6 mois pour un SaaS ou une application mobile aboutie. On construit un planning précis au moment du devis et on tient les échéances.</div>
+      <details name="faq">
+        <summary>Quels sont les délais ?<span class="chev">+</span></summary>
+        <div class="faq-a">Comptez <b>3 à 5 semaines</b> pour un site vitrine, <b>6 à 10 semaines</b> pour un CRM ou un outil métier, <b>3 à 6 mois</b> pour un SaaS ou une application mobile. Un assistant Aevio Agents est <b>opérationnel en 3 semaines</b>.</div>
       </details>
-      <details>
-        <summary>Proposez-vous de la maintenance après la mise en ligne ?<span class="plus">+</span></summary>
-        <div class="answer">Oui. Contrat de maintenance mensuel, forfaits d'évolution, ou intervention à la demande, on s'adapte à votre usage. La plupart de nos clients préfèrent un contrat mensuel qui couvre corrections, mises à jour de sécurité et petites évolutions.</div>
+      <details name="faq">
+        <summary>Comment fonctionnent les agents IA, concrètement ?<span class="chev">+</span></summary>
+        <div class="faq-a">Vos équipes délèguent les tâches répétitives (devis, relances, mails, RH) à un assistant qui connaît vos documents et vos règles. <b>Rien ne part sans validation humaine</b> : chaque envoi passe par une file « À valider », et chaque action est journalisée, horodatée et exportable, conformément à l'AI Act. Les données sont hébergées en UE.</div>
       </details>
-      <details>
-        <summary>Avec quelles technologies travaillez-vous ?<span class="plus">+</span></summary>
-        <div class="answer">Côté web : Next.js, React, Astro, Webflow selon les besoins. Côté mobile : React Native ou natif. Côté back : Node.js, Python, PostgreSQL, Supabase, Stripe. On choisit la stack la plus adaptée à votre projet et à votre équipe, pas l'inverse.</div>
+      <details name="faq">
+        <summary>Et après la mise en ligne ?<span class="chev">+</span></summary>
+        <div class="faq-a">Trois formules : un <b>contrat de maintenance mensuel</b>, des <b>forfaits d'évolution</b>, ou des interventions <b>à la demande</b>. Pour les agents IA, le suivi à 150 € / mois inclut une visio mensuelle et une nouvelle automatisation par trimestre.</div>
       </details>
-      <details>
-        <summary>Peut-on reprendre un projet déjà commencé ?<span class="plus">+</span></summary>
-        <div class="answer">Absolument. On audite le code existant, on vous remet un diagnostic honnête (ce qu'on garde, ce qu'on refait), puis on vous propose un plan d'action clair. Beaucoup de nos clients arrivent comme ça.</div>
+      <details name="faq">
+        <summary>Avec quelles technologies travaillez-vous ?<span class="chev">+</span></summary>
+        <div class="faq-a">Next.js, React et Astro côté web ; React Native ou natif pour le mobile ; Node.js, Python, PostgreSQL, Supabase et Stripe côté back. Pour l'IA : les modèles <b>Claude</b> d'Anthropic, avec mémoire d'entreprise (RAG) citant ses sources.</div>
       </details>
-      <details>
-        <summary>Qui est propriétaire du code et des comptes ?<span class="plus">+</span></summary>
-        <div class="answer">Vous. Tout le code est livré sur votre dépôt Git, les comptes d'hébergement et les services tiers sont à votre nom. Aucune dépendance à Aevio One pour faire vivre votre projet.</div>
+      <details name="faq">
+        <summary>Pouvez-vous reprendre un projet existant ?<span class="chev">+</span></summary>
+        <div class="faq-a">Oui. On commence par un <b>audit technique</b> pour évaluer l'existant, puis on propose un plan de reprise clair : ce qu'on garde, ce qu'on refait, ce que ça coûte.</div>
+      </details>
+      <details name="faq">
+        <summary>À qui appartient le code ?<span class="chev">+</span></summary>
+        <div class="faq-a">À vous. Le code est livré sur <b>votre dépôt Git</b>, les comptes d'hébergement et de services sont ouverts <b>à votre nom</b>. Aucune dépendance cachée.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============== CTA ============== -->
-<section id="contact">
-  <div class="cta-banner reveal">
-    <h2>Prêt à donner vie à votre projet ?</h2>
-    <p>Un premier échange de 30 minutes, sans engagement. On comprend votre besoin, on vous dit ce qu'on peut faire, et à combien.</p>
-    <div class="cta-row">
-      <a href="mailto:yoann@aevio-one.com" class="btn btn-primary">Écrire à Aevio One <span class="arrow">→</span></a>
-      <a href="tel:+33642692872" class="btn btn-ghost">Appeler · 06 42 69 28 72</a>
+<!-- ==================== CTA FINAL ==================== -->
+<section id="contact" data-theme="dark" style="padding-bottom:40px">
+  <div class="wrap cta-end">
+    <span class="kicker soft" data-anim><span class="dot"></span>Contact</span>
+    <h2 class="h2" data-split>Prêt à donner vie<br><span class="accent">à votre projet ?</span></h2>
+    <p class="lede" data-anim data-anim-delay="150" style="max-width:520px">Un premier échange de 30 minutes, sans engagement. On parle de votre métier, pas de technique.</p>
+    <div class="cta-btns" data-anim data-anim-delay="300">
+      <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Projet%20%E2%80%94%20Aevio%20One">yoann@aevio-one.com <span class="arr">→</span></a>
+      <a class="btn glass" href="tel:+33642692872">06 42 69 28 72</a>
     </div>
   </div>
 </section>
 
-<!-- ============== FOOTER ============== -->
-<footer>
-  <div class="container foot-inner">
-    <div>© 2026 Aevio One · Solutions digitales sur mesure</div>
-    <div class="foot-links">
-      <a href="#services">Services</a>
-      <a href="#processus">Processus</a>
-      <a href="#faq">FAQ</a>
-      <a href="mailto:yoann@aevio-one.com">Contact</a>
-      <a href="#">Mentions légales</a>
+<!-- ==================== FOOTER ==================== -->
+<footer data-theme="dark">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="about">
+        <a class="brand" href="#top"><span class="brand-mark">A</span><span class="brand-name">Aevio One</span></a>
+        <p>Studio digital français. Agents IA, sites, SaaS, CRM métier et applications sur mesure, de l'idée au produit vivant.</p>
+      </div>
+      <div>
+        <h5>Explorer</h5>
+        <ul>
+          <li><a href="#agents">Aevio Agents</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#methode">Méthode</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Réalisations</h5>
+        <ul>
+          <li><a href="#myday">MyDay</a></li>
+          <li><a href="#simplifypro">SimplifyPro</a></li>
+          <li><a href="#padel">Padel Club</a></li>
+          <li><a href="#crmlit">CRMLit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:yoann@aevio-one.com">yoann@aevio-one.com</a></li>
+          <li><a href="tel:+33642692872">06 42 69 28 72</a></li>
+          <li><a href="docs/presentation-aevio-agents.pdf" target="_blank" rel="noopener">Présentation Aevio Agents (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Aevio One · Solutions digitales &amp; agents IA sur mesure</span>
+      <span>Fait en France, avec soin.</span>
     </div>
   </div>
 </footer>
 
+<!-- CTA flottant -->
+<a class="btn primary floating-cta" href="#contact">Parlons-en <span class="arr">→</span></a>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
 <script>
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
+(function(){
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isStatic = /(\?|&)static/.test(location.search);
+  var hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+
+  /* ---------- Menu mobile (toujours actif) ---------- */
+  var burger = document.querySelector('.burger');
+  if (burger){
+    burger.addEventListener('click', function(){
+      var open = document.body.classList.toggle('menu-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(function(a){
+      a.addEventListener('click', function(){ document.body.classList.remove('menu-open'); });
+    });
+  }
+
+  if (!hasGsap || reduced || isStatic){
+    /* Sans animation : on rebascule en mode no-js pour que les sections
+       sombres portent leur propre fond. */
+    document.documentElement.classList.remove('js');
+    document.documentElement.classList.add('no-js');
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({ease:'power2.out'});
+
+  /* ---------- Crossfade clair / sombre ----------
+     Le thème affiché est celui de la section qui se trouve sous le
+     milieu de l'écran : aucune zone morte, même pour les sections courtes. */
+  var bgDark = document.getElementById('bg-dark');
+  var themed = Array.prototype.slice.call(document.querySelectorAll('[data-theme]'));
+  var curDark = null;
+  function themeUpdate(){
+    var mid = window.innerHeight / 2;
+    var best = null, bd = Infinity;
+    for (var i = 0; i < themed.length; i++){
+      var r = themed[i].getBoundingClientRect();
+      var dist = r.top > mid ? r.top - mid : (r.bottom < mid ? mid - r.bottom : 0);
+      if (dist < bd){ bd = dist; best = themed[i]; }
+    }
+    var dark = !!best && best.getAttribute('data-theme') === 'dark';
+    if (dark === curDark) return;
+    curDark = dark;
+    document.body.classList.toggle('is-dark', dark);
+    gsap.to(bgDark, {opacity: dark ? 1 : 0, duration:.65, ease:'power2.inOut', overwrite:'auto'});
+  }
+  ScrollTrigger.create({start:0, end:'max', onUpdate: themeUpdate, onRefresh: themeUpdate});
+  window.addEventListener('resize', themeUpdate);
+  themeUpdate();
+
+  /* ---------- Barre de progression ---------- */
+  gsap.to('.progress', {
+    scaleX:1, ease:'none',
+    scrollTrigger:{trigger:document.body, start:'top top', end:'max', scrub:.3}
+  });
+
+  /* ---------- Split text : mots + blur ---------- */
+  function splitWords(el){
+    Array.prototype.slice.call(el.childNodes).forEach(function(node){
+      if (node.nodeType === 3){
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function(part){
+          if (!part) return;
+          if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(' ')); }
+          else {
+            var s = document.createElement('span');
+            s.className = 'wi'; s.textContent = part;
+            frag.appendChild(s);
+          }
+        });
+        el.replaceChild(frag, node);
+      } else if (node.nodeType === 1 && node.tagName !== 'BR'){
+        splitWords(node);
       }
     });
-  },{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+  }
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    splitWords(el);
+    var words = el.querySelectorAll('.wi');
+    gsap.set(words, {opacity:0, x:-18, filter:'blur(8px)'});
+    ScrollTrigger.create({
+      trigger: el, start:'top 86%', once:true,
+      onEnter: function(){
+        gsap.to(words, {opacity:1, x:0, filter:'blur(0px)', duration:.55, stagger:.055, overwrite:'auto'});
+      }
+    });
+  });
 
+  /* ---------- Apparitions génériques ---------- */
+  document.querySelectorAll('[data-anim]').forEach(function(el){
+    var kind = el.getAttribute('data-anim');
+    var delay = parseInt(el.getAttribute('data-anim-delay') || '0', 10) / 1000;
+    var from = {opacity:0, y:28};
+    if (kind === 'left')  from = {opacity:0, x:-32};
+    if (kind === 'right') from = {opacity:0, x:32};
+    if (kind === 'scale') from = {opacity:0, scale:.94, y:16};
+    gsap.set(el, from);
+    ScrollTrigger.create({
+      trigger: el, start:'top 88%', once:true,
+      onEnter: function(){
+        gsap.to(el, {opacity:1, x:0, y:0, scale:1, duration:.7, delay:delay, overwrite:'auto'});
+      }
+    });
+  });
+
+  /* ---------- Stagger de grilles ---------- */
+  document.querySelectorAll('[data-stagger]').forEach(function(grid){
+    var kids = Array.prototype.slice.call(grid.children);
+    gsap.set(kids, {opacity:0, y:24});
+    ScrollTrigger.create({
+      trigger: grid, start:'top 86%', once:true,
+      onEnter: function(){
+        gsap.to(kids, {opacity:1, y:0, duration:.55, stagger:.11, overwrite:'auto'});
+      }
+    });
+  });
+
+  /* ---------- Compteurs ---------- */
+  document.querySelectorAll('[data-counter]').forEach(function(el){
+    var target = parseFloat(el.getAttribute('data-counter'));
+    var obj = {v:0};
+    el.textContent = '0';
+    ScrollTrigger.create({
+      trigger: el, start:'top 88%', once:true,
+      onEnter: function(){
+        gsap.to(obj, {v:target, duration:1.6, ease:'power3.out', onUpdate:function(){
+          el.textContent = Math.round(obj.v);
+        }});
+      }
+    });
+  });
+
+  /* ---------- Traits qui se déploient ---------- */
+  document.querySelectorAll('[data-line]').forEach(function(el){
+    gsap.set(el, {scaleX:0});
+    ScrollTrigger.create({
+      trigger: el, start:'top 88%', once:true,
+      onEnter: function(){ gsap.to(el, {scaleX:1, duration:.9, ease:'power2.inOut'}); }
+    });
+  });
+
+  /* ---------- Marquees ---------- */
+  document.querySelectorAll('[data-ticker]').forEach(function(el){
+    var dur = parseFloat(el.getAttribute('data-ticker')) || 30;
+    var tween = gsap.to(el, {xPercent:-33.333, duration:dur, ease:'none', repeat:-1});
+    el.parentElement.addEventListener('mouseenter', function(){ gsap.to(tween, {timeScale:.25, duration:.4}); });
+    el.parentElement.addEventListener('mouseleave', function(){ gsap.to(tween, {timeScale:1, duration:.4}); });
+  });
+
+  /* ---------- Parallax doux ---------- */
+  document.querySelectorAll('[data-parallax]').forEach(function(el){
+    var amt = parseFloat(el.getAttribute('data-parallax')) || 5;
+    gsap.to(el, {
+      yPercent: amt, ease:'none',
+      scrollTrigger:{trigger: el, start:'top bottom', end:'bottom top', scrub:.6}
+    });
+  });
+
+  /* ---------- Flottement continu des cartes ---------- */
+  document.querySelectorAll('[data-float]').forEach(function(el, i){
+    gsap.to(el, {y:'-=9', duration:2.2 + (i % 3) * .4, ease:'sine.inOut', yoyo:true, repeat:-1, delay:i * .3});
+  });
+
+  /* ---------- CTA flottant ---------- */
+  var fcta = document.querySelector('.floating-cta');
+  var pastHero = false, nearContact = false;
+  function fctaRefresh(){
+    var show = pastHero && !nearContact;
+    fcta.classList.toggle('on', show);
+    gsap.to(fcta, {opacity: show ? 1 : 0, y: show ? 0 : 16, duration:.4, overwrite:'auto'});
+  }
+  ScrollTrigger.create({
+    start:'top -700', end:'max',
+    onToggle: function(self){ pastHero = self.isActive; fctaRefresh(); }
+  });
+  ScrollTrigger.create({
+    trigger:'#contact', start:'top 85%', end:'max',
+    onToggle: function(self){ nearContact = self.isActive; fctaRefresh(); }
+  });
+})();
+</script>
 </body>
 </html>
