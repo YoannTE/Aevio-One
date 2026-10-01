@@ -3,7 +3,7 @@ import multer from "multer";
 // Les plans 3D sont compressés côté navigateur avant l'envoi ; le serveur se contente de les intégrer.
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { computeFinancement } from "./leasing.js";
+import { computeFinancement, montantFinance } from "./leasing.js";
 import { extractDevis } from "./extract.js";
 import { resolveAsset } from "./assets.js";
 import { extractDevisImages, devisImageFor } from "./devisImages.js";
@@ -47,7 +47,7 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
 
     // 1) Extraction du devis via Claude
     const d = await extractDevis(devisFile.buffer);
-    if (!d.total_ttc) return res.status(422).json({ error: "Montant TTC introuvable dans le devis." });
+    if (!montantFinance(d)) return res.status(422).json({ error: "Montant HT introuvable dans le devis." });
 
     // 2) Visuels produits : bibliotheque en priorite, sinon vignette extraite du devis (secours)
     let devisImgMap = null;
@@ -70,7 +70,7 @@ app.post("/api/fiche", upload.fields([{ name: "devis", maxCount: 1 }, { name: "p
       `data:${f.mimetype};base64,${f.buffer.toString("base64")}`);
 
     // 4) Financement + 5) rendu PDF
-    const fin = computeFinancement(d.total_ttc);
+    const fin = computeFinancement(montantFinance(d));
     const html = ficheHTML(d, plans, fin);
     const pdf = await htmlToPdf(html);
 

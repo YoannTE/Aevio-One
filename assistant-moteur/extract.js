@@ -15,7 +15,8 @@ const SCHEMA = {
     code_client: { type: "string", description: "Code client commencant par AC-" },
     ville: { type: "string", description: "Ville du client si disponible, sinon vide" },
     gamme: { type: "string", description: "Gamme cardio principale (ex. Excite+ Live, Artis), sinon vide" },
-    total_ttc: { type: "number", description: "Montant total TTC du devis, en euros (nombre, ex 57853.64)" },
+    total_ht: { type: "number", description: "Montant total HT du devis : ligne « Total » du bloc PRODUITS de la page « TOTAL DE VOTRE SOLUTION », juste avant la ligne TVA (produits + livraison & installation + DEEE, hors services), en euros (ex 43935.63)" },
+    total_ttc: { type: "number", description: "Montant total TTC du devis, ligne « Total (TVA comprise) » du bloc PRODUITS, en euros (nombre, ex 52387.63)" },
     produits: {
       type: "array",
       description: "Tous les produits/equipements du devis (hors lignes livraison/installation/total).",
@@ -34,12 +35,12 @@ const SCHEMA = {
       },
     },
   },
-  required: ["client", "devis", "code_client", "ville", "gamme", "total_ttc", "produits"],
+  required: ["client", "devis", "code_client", "ville", "gamme", "total_ht", "total_ttc", "produits"],
 };
 
 const PROMPT = `Tu es l'assistant commercial de Yoann VARLOUD (Technogym, Key Account Hospitality & Residential).
 On te fournit un DEVIS Technogym en PDF. Extrais fidelement :
-- le nom du client, le numero de devis (Q-...), le code client (AC-...), la ville, la gamme cardio, le total TTC ;
+- le nom du client, le numero de devis (Q-...), le code client (AC-...), la ville, la gamme cardio, le total HT (ligne « Total » du bloc PRODUITS, juste avant la TVA) et le total TTC (« Total (TVA comprise) ») ;
 - la liste de TOUS les equipements (ignore les lignes "Livraison & Installation", "Total", "TVA").
 Pour chaque equipement : nom, CODE exact, quantite, categorie (cardio / musculation / accessoires), specs condensees, et une description marketing en francais (2 phrases courtes MAXIMUM, ton premium hotellerie, fidele aux specs du devis : console, coloris, puissance, finition...).
 Regroupe les halteres (Dumbbell) en UNE seule entree "Haltères — set" avec la plage de poids dans le nom et la quantite totale de paires.

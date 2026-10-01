@@ -1,7 +1,7 @@
 // Generation du HTML de la page "Simulation de financement" (style fiche projet).
 import { eur } from "./leasing.js";
 
-export function financementHTML({ client, devis, code, ttc, fin }) {
+export function financementHTML({ client, devis, code, fin }) {
   const cb = fin.creditBail, loc = fin.location, p = fin.premiers;
   const row = (r) => `
     <tr>
@@ -61,7 +61,7 @@ export function financementHTML({ client, devis, code, ttc, fin }) {
   <div class="fin-amount">
     <div class="fin-box"><div class="k">Client</div><div class="v">${client || "—"}</div></div>
     <div class="fin-box"><div class="k">Fournisseur</div><div class="v">Technogym</div></div>
-    <div class="fin-box hl"><div class="k">Montant à financer (TTC)</div><div class="v">${eur(ttc)}</div></div>
+    <div class="fin-box hl"><div class="k">Montant à financer (HT)</div><div class="v">${eur(fin.montant)}</div></div>
   </div>
   <div class="fin-section-title">CRÉDIT-BAIL</div>
   <table class="fin"><thead>${head}</thead><tbody>${cb.map(row).join("")}</tbody></table>

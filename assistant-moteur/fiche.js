@@ -102,7 +102,7 @@ function card(p) {
     </div>`;
 }
 
-// d = donnees extraites (+ produits enrichis avec .img dataUri) ; plans = [dataUri] ; fin = computeFinancement(ttc)
+// d = donnees extraites (+ produits enrichis avec .img dataUri) ; plans = [dataUri] ; fin = computeFinancement(montantFinance(d))
 export function ficheHTML(d, plans, fin) {
   const sub = `<div class="subtitle">Préparée pour ${d.client}${d.ville ? " · " + d.ville : ""}</div>`;
   const pages = [];
@@ -178,7 +178,7 @@ export function ficheHTML(d, plans, fin) {
       <div class="fin-amount">
         <div class="fin-box"><div class="k">Client</div><div class="v">${d.client}</div></div>
         <div class="fin-box"><div class="k">Fournisseur</div><div class="v">Technogym</div></div>
-        <div class="fin-box hl"><div class="k">Montant à financer (TTC)</div><div class="v">${eur(d.total_ttc)}</div></div>
+        <div class="fin-box hl"><div class="k">Montant à financer (HT)</div><div class="v">${eur(fin.montant)}</div></div>
       </div>
       <div class="fin-section-title">CRÉDIT-BAIL</div>
       <table class="fin"><thead>${head}</thead><tbody>${cb.map(frow).join("")}</tbody></table>
