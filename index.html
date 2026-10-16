@@ -206,6 +206,20 @@ section[data-theme="dark"] .lede{color:var(--dk-muted)}
   box-shadow:0 26px 70px rgba(17,26,55,.14)}
 section[data-theme="dark"] .shot{border-color:rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .shot img{width:100%}
+/* ---------- Vidéo de présentation ---------- */
+.vid{max-width:1080px;margin:0 auto}
+.vid .shot{position:relative;box-shadow:0 30px 80px rgba(17,26,55,.12)}
+.vid-replay{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;
+  font:inherit;font-size:13px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.94);
+  border:1px solid var(--line);border-radius:999px;padding:9px 16px 9px 12px;cursor:pointer;
+  box-shadow:0 6px 20px rgba(17,26,55,.12)}
+.vid-replay:hover{color:var(--blue-dark);border-color:var(--blue)}
+.vid-replay:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.vid-replay svg{width:16px;height:16px;color:var(--blue)}
+@media (max-width:560px){.vid-replay{right:10px;bottom:10px;padding:8px}.vid-replay span{display:none}}
+.vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#fff}
+#video .sec-head{margin-left:auto;margin-right:auto;text-align:center}
+#video .sec-head .kicker{margin:0 auto}
 .caption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:14px;text-align:center}
 section[data-theme="dark"] .caption{color:var(--dk-muted)}
 
@@ -661,6 +675,29 @@ footer .brand-name{color:#fff}
     </div>
   </div>
 </div>
+
+<!-- ==================== VIDÉO ==================== -->
+<section id="video" data-theme="light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-anim><span class="dot"></span>L'IA en 70 secondes</span>
+      <h2 class="h2" data-split>Ce que l'IA rapporte déjà<br><span class="accent">aux TPE et PME.</span></h2>
+      <p class="lede" data-anim data-anim-delay="200">Les chiffres des études récentes, ce qu'un assistant IA prend en charge, et ce que ça représente en heures et en euros.</p>
+    </div>
+    <div class="vid" data-anim="scale">
+      <div class="shot">
+        <video id="video-ia" src="images/video-ia-pme.mp4" poster="images/video-ia-pme-poster.jpg"
+               muted loop playsinline preload="metadata" width="1920" height="1080"
+               aria-label="Vidéo : l'IA dans votre entreprise, ce qu'elle vous rapporte déjà"></video>
+        <button class="vid-replay" type="button" aria-label="Revoir la vidéo depuis le début">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+          <span>Revoir depuis le début</span>
+        </button>
+      </div>
+      <p class="caption">Sources : France Num, OpenAI / Opinium, BCG, MIT · exemple de calcul illustratif</p>
+    </div>
+  </div>
+</section>
 
 <!-- ==================== AEVIO AGENTS ==================== -->
 <section id="agents" data-theme="dark">
@@ -1214,6 +1251,29 @@ footer .brand-name{color:#fff}
       a.addEventListener('click', function(){ document.body.classList.remove('menu-open'); });
     });
   }
+
+  /* ---------- Vidéo : lecture quand elle est visible ---------- */
+  (function(){
+    var v = document.getElementById('video-ia');
+    if (!v) return;
+    var replay = document.querySelector('.vid-replay');
+    if (replay) replay.addEventListener('click', function(){
+      v.currentTime = 0;
+      var p = v.play(); if (p && p.catch) p.catch(function(){});
+      if (typeof gsap !== 'undefined' && !reduced) {
+        gsap.fromTo(replay.querySelector('svg'), {rotation:0}, {rotation:-360, duration:.6, ease:'power2.out'});
+      }
+    });
+    if (reduced || !('IntersectionObserver' in window)) {
+      v.controls = true; return;
+    }
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); }
+        else v.pause();
+      });
+    }, {threshold:.35}).observe(v);
+  })();
 
   if (!hasGsap || reduced || isStatic){
     /* Sans animation : on rebascule en mode no-js pour que les sections
