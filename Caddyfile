@@ -3,6 +3,18 @@
 	file_server
 	encode gzip zstd
 
+	# Anciens noms des visuels Padel Club (renommés le 16/10/2026) : une page
+	# restée en cache chez un visiteur les réclame encore.
+	rewrite /images/padel-app-1.webp /images/padel-parties.webp
+	rewrite /images/padel-app-2.webp /images/padel-coach.webp
+
+	# Pages HTML : toujours revalidées, sinon Safari garde une vieille version
+	# qui pointe vers des images supprimées.
+	@html {
+		path / *.html */
+	}
+	header @html Cache-Control "no-cache"
+
 	# cache statics 7 days
 	@static {
 		path /images/* *.css *.js *.svg *.png *.jpg *.jpeg *.webp *.ico
