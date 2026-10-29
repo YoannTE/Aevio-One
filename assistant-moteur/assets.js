@@ -21,6 +21,11 @@ const BY_CODE = {
   "A0001521-NB": "dbrack.png",
   "GB04-NRGM": "dumbbells.png", "GB06-NRGM": "dumbbells.png", "GB08-NRGM": "dumbbells.png",
   "GB10-NRGM": "dumbbells.png", "GB12-NRGM": "dumbbells.png", "GB14-NRGM": "dumbbells.png",
+  // Selection 900 et 700 : prefixe du modele (le reste du code varie selon console et coloris)
+  "MNAP": "sel900_legpress.jpg", "MNFP": "sel900_chestpress.jpg",
+  "MNHP": "sel900_lowrow.jpg", "MNZP": "sel900_total_abdominal.jpg",
+  "MNAC": "sel700_legpress.png", "MNFC": "sel700_chestpress.png",
+  "MNOC": "sel700_abdadd.png", "MNMC": "sel700_legcurlext.png",
   // Accessoires
   "A0000550": "powerpack.png",
   "A0001855-KG": "skilltools.png",
