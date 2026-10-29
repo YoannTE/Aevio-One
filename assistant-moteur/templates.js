@@ -57,9 +57,9 @@ export function financementHTML({ client, devis, code, fin }) {
   <hr class="rule"><div class="accent"></div>
   <h1>Simulation de financement</h1>
   <div class="subtitle">Préparée pour ${client || "[CLIENT]"}</div>
-  <p class="fin-intro">Estimation des loyers mensuels pour le financement du projet. Deux formules sont proposées — Crédit-bail et Location — sur des durées de 24 à 60 mois, avec ou sans premier loyer majoré. Loyers exprimés hors taxes, en euros.</p>
+  <p class="fin-intro">Estimation des loyers mensuels pour le financement du projet. Deux formules sont proposées, crédit-bail et location, sur des durées de 24 à 60 mois, avec ou sans premier loyer majoré. Loyers exprimés hors taxes, en euros.</p>
   <div class="fin-amount">
-    <div class="fin-box"><div class="k">Client</div><div class="v">${client || "—"}</div></div>
+    <div class="fin-box"><div class="k">Client</div><div class="v">${client || ""}</div></div>
     <div class="fin-box"><div class="k">Fournisseur</div><div class="v">Technogym</div></div>
     <div class="fin-box hl"><div class="k">Montant à financer (HT)</div><div class="v">${eur(fin.montant)}</div></div>
   </div>

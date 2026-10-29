@@ -43,7 +43,7 @@ On te fournit un DEVIS Technogym en PDF. Extrais fidelement :
 - le nom du client, le numero de devis (Q-...), le code client (AC-...), la ville, la gamme cardio, le total HT (ligne « Total » du bloc PRODUITS, juste avant la TVA) et le total TTC (« Total (TVA comprise) ») ;
 - la liste de TOUS les equipements (ignore les lignes "Livraison & Installation", "Total", "TVA").
 Pour chaque equipement : nom, CODE exact, quantite, categorie (cardio / musculation / accessoires), specs condensees, et une description marketing en francais (2 phrases courtes MAXIMUM, ton premium hotellerie, fidele aux specs du devis : console, coloris, puissance, finition...).
-Regroupe les halteres (Dumbbell) en UNE seule entree "Haltères — set" avec la plage de poids dans le nom et la quantite totale de paires.
+Regroupe les halteres (Dumbbell) en UNE seule entree "Haltères, set" avec la plage de poids dans le nom et la quantite totale de paires.
 Reponds uniquement via l'outil de sortie structuree.`;
 
 export async function extractDevis(pdfBuffer) {

@@ -95,7 +95,7 @@ function card(p) {
       ${thumb}
       <div class="info">
         <h2>${p.nom}</h2>
-        <span class="ref">Réf. ${p.code || "—"}</span><span class="qty">Quantité : ${p.quantite}</span>
+        <span class="ref">Réf. ${p.code || "à préciser"}</span><span class="qty">Quantité : ${p.quantite}</span>
         <p class="desc">${p.description || ""}</p>
         ${p.specs ? `<p class="spec">${p.specs}</p>` : ""}
       </div>
@@ -128,7 +128,7 @@ export function ficheHTML(d, plans, fin) {
     const items = d.produits.filter((p) => p.categorie === cat);
     if (!items.length) continue;
     chunk(items, 5).forEach((group, i, all) => {
-      const titre = CAT_TITLES[cat] + (all.length > 1 ? ` (${i + 1}/${all.length})` : "") + (cat === "cardio" && d.gamme ? ` — ${d.gamme}` : "");
+      const titre = CAT_TITLES[cat] + (all.length > 1 ? ` (${i + 1}/${all.length})` : "") + (cat === "cardio" && d.gamme ? `, ${d.gamme}` : "");
       pages.push(`
         <div class="page">
           <div class="header"><div class="logo">TECHNOGYM</div>${metaBlock(d)}</div>
@@ -144,7 +144,7 @@ export function ficheHTML(d, plans, fin) {
   // 2) Pages plans 3D, grille de 6/page
   if (plans && plans.length) {
     chunk(plans, 6).forEach((group, i, all) => {
-      const titre = "Implantation — Projection 3D" + (all.length > 1 ? ` (${i + 1}/${all.length})` : "");
+      const titre = "Implantation, projection 3D" + (all.length > 1 ? ` (${i + 1}/${all.length})` : "");
       pages.push(`
         <div class="page">
           <div class="header"><div class="logo">TECHNOGYM</div>${metaBlock(d)}</div>
@@ -174,7 +174,7 @@ export function ficheHTML(d, plans, fin) {
       <div class="header"><div class="logo">TECHNOGYM</div>${metaBlock(d)}</div>
       <hr class="rule"><div class="accent"></div>
       <h1>Simulation de financement</h1>${sub}
-      <p class="fin-intro">Estimation des loyers mensuels pour le financement du projet. Deux formules — Crédit-bail et Location — sur des durées de 24 à 60 mois, avec ou sans premier loyer majoré. Loyers HT, en euros.</p>
+      <p class="fin-intro">Estimation des loyers mensuels pour le financement du projet. Deux formules, crédit-bail et location, sur des durées de 24 à 60 mois, avec ou sans premier loyer majoré. Loyers HT, en euros.</p>
       <div class="fin-amount">
         <div class="fin-box"><div class="k">Client</div><div class="v">${d.client}</div></div>
         <div class="fin-box"><div class="k">Fournisseur</div><div class="v">Technogym</div></div>
