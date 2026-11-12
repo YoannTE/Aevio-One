@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aevio One — Solutions digitales &amp; agents IA sur mesure</title>
-<meta name="description" content="Aevio One conçoit des agents IA pour TPE et PME, des sites, des plateformes SaaS, des CRM métier et des applications web et mobile sur mesure. De l'idée au produit vivant.">
+<title>Aevio One · Vos outils IA, construits avec votre équipe</title>
+<meta name="description" content="Aevio One forme votre équipe à Claude et construit avec elle ses propres outils IA : tableaux de bord, suivis, formulaires. Diagnostic gratuit. Sites, SaaS, CRM et applications sur mesure.">
 <meta name="google-site-verification" content="HJ4VBx9iwvQuz6eXmMSbBBLBwJ7w9i6oNt2mU5vipts">
 <link rel="canonical" href="https://aevio-one.com/">
 
@@ -16,16 +16,16 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aevio-one.com/">
 <meta property="og:site_name" content="Aevio One">
-<meta property="og:title" content="Aevio One — Solutions digitales &amp; agents IA sur mesure">
-<meta property="og:description" content="Agents IA pour TPE/PME, sites, SaaS, CRM métier, applications web et mobile. Studio digital français, de l'idée au produit vivant.">
+<meta property="og:title" content="Aevio One · Vos outils IA, construits avec votre équipe">
+<meta property="og:description" content="Votre équipe utilise Claude au quotidien et construit ses propres outils, sans développeur ni logiciel à installer. Diagnostic gratuit de 45 minutes.">
 <meta property="og:image" content="https://aevio-one.com/images/og-cover-v3.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aevio One, des solutions digitales qui marquent.">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Aevio One — Solutions digitales &amp; agents IA sur mesure">
-<meta name="twitter:description" content="Agents IA pour TPE/PME, sites, SaaS, CRM métier, applications web et mobile.">
+<meta name="twitter:title" content="Aevio One · Vos outils IA, construits avec votre équipe">
+<meta name="twitter:description" content="Votre équipe utilise Claude au quotidien et construit ses propres outils. Diagnostic gratuit de 45 minutes.">
 <meta name="twitter:image" content="https://aevio-one.com/images/og-cover-v3.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -229,40 +229,63 @@ section[data-theme="dark"] .caption{color:var(--dk-muted)}
   width:74px;height:16px;border-radius:999px;background:#0E1430;z-index:2}
 .phone img{border-radius:25px;width:100%}
 
-/* ==================== SECTION AGENTS ==================== */
-#agents .sec-head{max-width:900px}
-.ag-hero{display:grid;grid-template-columns:1fr;gap:26px;margin-bottom:clamp(44px,5vw,70px)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:clamp(40px,5vw,60px) 0}
-.kpi{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:22px 24px}
-.kpi b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1.05;color:#fff}
-.kpi b em{font-style:normal;color:var(--dk-accent)}
-.kpi > span{display:block;font-size:13px;color:var(--dk-muted);font-weight:600;margin-top:7px;line-height:1.45}
-.kpi-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dk-muted);opacity:.75;margin-top:-28px;margin-bottom:48px}
+/* maquette d'outil (haut de page, données fictives) */
+.tool{padding:18px 20px 10px}
+.tool-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.tool-h b{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.tool-h span{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}
+.tool-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.tool-stats div{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.tool-stats b{display:block;font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--blue-dark);line-height:1.1}
+.tool-stats span{font-size:11px;color:var(--muted);font-weight:600}
+.tool-row{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:11px 2px;border-top:1px solid var(--line)}
+.tool-row b{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.tool-row small{display:block;font-size:11.5px;color:var(--muted)}
+.tool-row .amt{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+.stp{font-size:10.5px;font-weight:800;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.stp.due{background:#FFF1E0;color:#B45309}
+.stp.wait{background:var(--blue-tint);color:var(--blue-dark)}
+.stp.ok{background:rgba(31,164,99,.12);color:var(--success)}
+.hero .hv-kpi{bottom:-30px}
+.hero .hv-pill{left:auto;right:24px}
 
-.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.mod{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);
-  padding:22px 23px;transition:transform .25s var(--ease),border-color .25s,background-color .25s;position:relative}
-.mod:hover{transform:translateY(-4px);border-color:rgba(124,155,255,.45);background:var(--dk-card-2)}
-.mod .cat{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dk-muted)}
-.mod b{display:block;font-size:17px;font-weight:800;letter-spacing:-.015em;margin:9px 0 7px;color:#fff}
-.mod p{font-size:13.5px;color:var(--dk-muted);line-height:1.55;margin-bottom:14px}
-.mod .price{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
-  color:#B9C9FF;background:var(--dk-tint);border-radius:999px;padding:4px 12px}
-.mod .flag{position:absolute;top:18px;right:18px;font-size:10px;font-weight:800;letter-spacing:.06em;
-  text-transform:uppercase;color:#0B1129;background:#9EF0C3;border-radius:999px;padding:3px 10px}
-
+/* ==================== SECTION OFFRE IA ==================== */
+#offre .sec-head{max-width:900px}
+#offre .sec-head .lede + .lede{margin-top:12px}
 .ag-sub{font-size:clamp(21px,2.2vw,27px);font-weight:800;letter-spacing:-.02em;margin:clamp(52px,6vw,80px) 0 24px;color:#fff}
-.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ag-intro{font-size:clamp(15px,1.4vw,17px);color:var(--dk-muted);max-width:720px;margin:-10px 0 26px;line-height:1.6}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pillar,.why-c,.ex{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);
+  transition:transform .25s var(--ease),border-color .25s,background-color .25s}
+.pillar:hover,.why-c:hover,.ex:hover{transform:translateY(-4px);border-color:rgba(124,155,255,.45);background:var(--dk-card-2)}
+.pillar{padding:24px}
+.pillar .ic{width:42px;height:42px;border-radius:12px;background:var(--dk-tint);color:#B9C9FF;
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pillar .ic svg{width:20px;height:20px}
+.pillar b,.why-c b{display:block;font-size:17px;font-weight:800;letter-spacing:-.015em;color:#fff;margin-bottom:6px}
+.pillar p,.why-c p{font-size:14px;color:var(--dk-muted);line-height:1.55}
+.steps-of{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .st{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:24px}
 .st .n{width:44px;height:44px;border-radius:50%;background:var(--dk-tint);color:#B9C9FF;
   font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 .st b{display:block;font-size:16.5px;font-weight:800;margin-bottom:6px;color:#fff}
 .st span{font-size:13.5px;color:var(--dk-muted);line-height:1.55;display:block}
 .st .when{font-family:'JetBrains Mono',monospace;font-size:11px;color:#B9C9FF;margin-top:12px;display:inline-block;background:var(--dk-tint);border-radius:999px;padding:3px 11px}
+.ex-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.ex{padding:22px 24px}
+.ex .cat{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#B9C9FF}
+.ex .row-b,.ex .row-a{display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.ex .row-b{font-size:13.5px;color:var(--dk-muted);margin:12px 0 10px}
+.ex .row-a{font-size:15px;font-weight:700;color:#fff}
+.ex .lbl{flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;border-radius:999px;padding:3px 9px;margin-top:1px;min-width:62px;text-align:center}
+.ex .row-b .lbl{background:rgba(255,255,255,.07);color:var(--dk-muted)}
+.ex .row-a .lbl{background:#9EF0C3;color:#0B1129}
+.of-note{font-size:14px;color:var(--dk-muted);margin-top:18px;max-width:760px}
 
-.offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
 .offer{background:var(--dk-card);border:1px solid var(--dk-line);border-radius:var(--radius);padding:30px;position:relative;
-  transition:transform .25s var(--ease),border-color .25s}
+  display:flex;flex-direction:column;transition:transform .25s var(--ease),border-color .25s}
 .offer:hover{transform:translateY(-4px);border-color:rgba(124,155,255,.45)}
 .offer.star{background:linear-gradient(160deg,rgba(58,107,255,.16),rgba(35,80,230,.06));border-color:rgba(124,155,255,.35)}
 .offer .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#B9C9FF}
@@ -273,11 +296,19 @@ section[data-theme="dark"] .caption{color:var(--dk-muted)}
 .offer ul{list-style:none;margin:20px 0 24px}
 .offer li{position:relative;padding-left:24px;font-size:14px;color:#C7D2EE;margin-bottom:9px;line-height:1.5}
 .offer li::before{content:'';position:absolute;left:2px;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--dk-accent)}
+.offer .btn{margin-top:auto;align-self:flex-start}
 .offer .avail{position:absolute;top:26px;right:26px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
   border-radius:999px;padding:4px 12px;background:#9EF0C3;color:#0B1129}
-.offer .avail.later{background:var(--dk-tint);color:#B9C9FF}
-.fchips{display:flex;gap:10px;flex-wrap:wrap;margin:clamp(40px,4vw,56px) 0 30px}
-.ag-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.own{display:flex;gap:16px;align-items:flex-start;margin-top:16px;padding:20px 24px;
+  background:rgba(158,240,195,.06);border:1px solid rgba(158,240,195,.24);border-radius:var(--radius)}
+.own .ic{width:38px;height:38px;border-radius:11px;background:rgba(158,240,195,.14);color:#9EF0C3;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.own .ic svg{width:19px;height:19px}
+.own b{display:block;font-size:15.5px;font-weight:800;color:#fff;margin-bottom:3px}
+.own p{font-size:14px;color:var(--dk-muted);line-height:1.55}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.why-c{padding:22px}
+.ag-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(44px,5vw,64px)}
 
 /* ==================== RÉALISATIONS ==================== */
 .proj{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;
@@ -532,9 +563,8 @@ footer .brand-name{color:#fff}
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width:1020px){
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .mods{grid-template-columns:repeat(2,1fr)}
-  .steps3{grid-template-columns:1fr}
+  .steps-of{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:repeat(2,1fr)}
   .quotes{grid-template-columns:1fr}
   .steps4{grid-template-columns:repeat(2,1fr);row-gap:36px}
   .svc{grid-template-columns:54px 1fr}
@@ -548,7 +578,7 @@ footer .brand-name{color:#fff}
   .proj.flip .proj-media{order:0}
   .myday-top,.myday-desk{grid-template-columns:1fr}
   .myday-phones{margin-top:10px}
-  .offers{grid-template-columns:1fr}
+  .offers,.pillars{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
   .nav-links,.nav .nav-cta{display:none}
   .burger{display:block}
@@ -565,7 +595,13 @@ footer .brand-name{color:#fff}
   body.menu-open .burger span:last-child{transform:translateY(-7px) rotate(-45deg)}
 }
 @media (max-width:640px){
-  .kpis,.mods{grid-template-columns:1fr}
+  .steps-of,.why,.ex-grid{grid-template-columns:1fr}
+  .tool-row{grid-template-columns:1fr auto}
+  .tool-row .amt{display:none}
+  .hero .hv-notif{display:none}
+  .hero .hv-pill{position:static;margin-bottom:12px}
+  .hero .hv-kpi{bottom:-56px}
+  .hero .hv{margin-bottom:44px}
   .steps4{grid-template-columns:1fr}
   .hv-kpi{left:-6px}
   .hv-notif{right:-6px;max-width:250px}
@@ -589,7 +625,7 @@ footer .brand-name{color:#fff}
   "name": "Aevio One",
   "url": "https://aevio-one.com",
   "logo": "https://aevio-one.com/images/logo-a1-new.png",
-  "description": "Studio digital français : agents IA pour TPE et PME, sites, plateformes SaaS, CRM métier, applications web et mobile sur mesure.",
+  "description": "Studio digital français : outils IA construits avec votre équipe (Claude), sites, plateformes SaaS, CRM métier, applications web et mobile sur mesure.",
   "email": "yoann@aevio-one.com",
   "founder": { "@type": "Person", "name": "Yoann Varloud" },
   "address": { "@type": "PostalAddress", "addressCountry": "FR" }
@@ -609,7 +645,7 @@ footer .brand-name{color:#fff}
       <span class="brand-name">Aevio One</span>
     </a>
     <div class="nav-links">
-      <a href="#agents">Agents IA</a>
+      <a href="#offre">Offre IA</a>
       <a href="#realisations">Réalisations</a>
       <a href="#services">Services</a>
       <a href="#methode">Méthode</a>
@@ -621,7 +657,7 @@ footer .brand-name{color:#fff}
   </nav>
 </div>
 <div class="mobile-menu">
-  <a href="#agents">Agents IA</a>
+  <a href="#offre">Offre IA</a>
   <a href="#realisations">Réalisations</a>
   <a href="#services">Services</a>
   <a href="#methode">Méthode</a>
@@ -633,32 +669,43 @@ footer .brand-name{color:#fff}
 <section class="hero" id="top" data-theme="light">
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker" data-anim><span class="dot"></span>Studio digital &amp; agents IA · France</span>
-      <h1 class="h1" data-split>Des solutions<br>et des agents IA<br><span class="accent">qui marquent.</span></h1>
-      <p class="lede" data-anim data-anim-delay="300">Sites, plateformes SaaS, CRM métier, applications web et mobile, et des agents IA qui travaillent pour vous. On dessine, on code, on déploie, de l'idée au produit vivant.</p>
+      <span class="kicker" data-anim><span class="dot"></span>Accompagnement IA · TPE et PME</span>
+      <h1 class="h1" data-split>Vos outils IA,<br>construits avec<br><span class="accent">votre équipe.</span></h1>
+      <p class="lede" data-anim data-anim-delay="300">En quelques semaines, votre équipe utilise Claude au quotidien et dispose de ses propres outils : tableaux de bord, suivis, formulaires. Sans développeur, sans logiciel à installer.</p>
       <div class="hero-ctas" data-anim data-anim-delay="480">
-        <a class="btn primary" href="#contact">Démarrer un projet <span class="arr">→</span></a>
-        <a class="btn ghost" href="#realisations">Voir les réalisations</a>
+        <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Diagnostic%20gratuit%20%3A%20outils%20IA">Réserver mon diagnostic gratuit <span class="arr">→</span></a>
+        <a class="btn ghost" href="#offre">Voir l'offre</a>
       </div>
       <div class="hero-proof" data-anim data-anim-delay="620">
+        <span><i></i>Diagnostic offert, 45 min en visio</span>
         <span><i></i>Basé en France</span>
         <span><i></i>Réponse sous 24 h</span>
-        <span><i></i>De l'idée au produit vivant</span>
       </div>
     </div>
     <div class="hv" data-anim="scale" data-anim-delay="250">
-      <span class="chip hv-pill">Conforme AI Act · Hébergé en UE</span>
+      <span class="chip hv-pill">Exemple d'outil · données fictives</span>
       <div class="hv-browser" data-parallax="-4">
-        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">assistant.duval-menuiserie.fr</span></div>
-        <img src="images/agents-app.webp" alt="Interface d'un assistant IA Aevio Agents, démonstration" width="1600" height="1298" fetchpriority="high">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">Suivi des devis · outil de l'équipe</span></div>
+        <div class="tool" role="img" aria-label="Exemple d'outil construit avec une équipe : un tableau de suivi des devis avec les relances du jour">
+          <div class="tool-h"><b>Suivi des devis</b><span>Relances du jour : 2</span></div>
+          <div class="tool-stats">
+            <div><b>12</b><span>en cours</span></div>
+            <div><b>2</b><span>à relancer</span></div>
+            <div><b>5</b><span>signés ce mois</span></div>
+          </div>
+          <div class="tool-row"><div><b>Rénovation salle de bain</b><small>M. Martin · envoyé le 28/10</small></div><span class="amt">6&nbsp;200&nbsp;€</span><span class="stp due">À relancer</span></div>
+          <div class="tool-row"><div><b>Pose de fenêtres</b><small>Mme Lopez · envoyé le 30/10</small></div><span class="amt">3&nbsp;450&nbsp;€</span><span class="stp due">À relancer</span></div>
+          <div class="tool-row"><div><b>Terrasse bois</b><small>SCI Les Pins · envoyé le 06/11</small></div><span class="amt">4&nbsp;900&nbsp;€</span><span class="stp wait">En attente</span></div>
+          <div class="tool-row"><div><b>Cuisine sur mesure</b><small>M. et Mme Roux · signé le 09/11</small></div><span class="amt">12&nbsp;300&nbsp;€</span><span class="stp ok">Signé</span></div>
+        </div>
       </div>
       <div class="hv-card hv-kpi" data-parallax="8" data-float>
-        <b><span data-counter="38">38</span> h</b>
-        <span>rendues à l'équipe ce mois-ci</span>
+        <b><span data-counter="45">45</span> min</b>
+        <span>de diagnostic offert, en visio</span>
       </div>
       <div class="hv-card hv-notif" data-parallax="12" data-float>
         <span class="ic">✓</span>
-        <div><b>Mail à Claire Bertrand — envoyé</b><span>Validé par un humain avant départ</span></div>
+        <div><b>Construit avec votre équipe</b><span>Modifiable en français, sans code</span></div>
       </div>
     </div>
   </div>
@@ -699,101 +746,96 @@ footer .brand-name{color:#fff}
   </div>
 </section>
 
-<!-- ==================== AEVIO AGENTS ==================== -->
-<section id="agents" data-theme="dark">
+<!-- ==================== OFFRE IA ==================== -->
+<section id="offre" data-theme="dark">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker soft" data-anim><span class="dot"></span>Aevio Agents</span>
-      <h2 class="h2" data-split>Un assistant qui travaille,<br><span class="accent">un humain qui décide.</span></h2>
-      <p class="lede" data-anim data-anim-delay="200">Aevio Agents met des assistants IA à la marque de votre entreprise entre les mains de vos équipes : devis, relances, mails, questions RH. Rien ne part sans validation humaine, et chaque action est journalisée, horodatée, exportable.</p>
+      <span class="kicker soft" data-anim><span class="dot"></span>Accompagnement IA</span>
+      <h2 class="h2" data-split>Votre équipe perd des heures<br><span class="accent">sur ce qu'un outil ferait seul.</span></h2>
+      <p class="lede" data-anim data-anim-delay="200">Les demandes clients arrivent par mail, par téléphone, dans un tableur. Les devis à relancer s'oublient. Les chiffres de la semaine se reconstituent à la main le vendredi soir.</p>
+      <p class="lede" data-anim data-anim-delay="280">Vous entendez parler de l'IA partout, mais personne dans l'équipe n'a le temps d'apprendre seul. Et faire développer un logiciel sur mesure coûte cher, prend des mois, et doit être refait à chaque changement.</p>
     </div>
 
-    <div class="ag-hero" data-anim="scale">
-      <div>
-        <div class="shot">
-          <div class="b-bar"><i></i><i></i><i></i><span class="b-url">assistant.duval-menuiserie.fr</span></div>
-          <img src="images/agents-app.webp" alt="Interface Aevio Agents : l'assistant prépare un devis, l'employé valide chaque envoi" width="1600" height="1298" loading="lazy">
-        </div>
-        <p class="caption">Interface de démonstration · Client fictif « Menuiserie Duval &amp; Fils »</p>
-      </div>
+    <h3 class="ag-sub" data-split>Ce que nous <span class="accent">vous proposons.</span></h3>
+    <p class="ag-intro" data-anim>En quelques semaines, votre équipe utilise Claude, l'assistant IA d'Anthropic, au quotidien. Elle dispose aussi de ses propres outils : tableaux de bord, suivis, formulaires. Ils sont construits avec elle, sans développeur ni logiciel à installer.</p>
+    <div class="pillars" data-stagger>
+      <div class="pillar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg></span><b>Une méthode</b><p>On part de vos tâches réelles, pas de la technologie.</p></div>
+      <div class="pillar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4-9-4z"/><path d="M7 10.2V15c0 1.6 2.2 3 5 3s5-1.4 5-3v-4.8"/></svg></span><b>Une formation</b><p>Vos collaborateurs apprennent en construisant leurs propres outils.</p></div>
+      <div class="pillar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Un filet de sécurité</b><p>Un suivi mensuel pour ajuster, débloquer et faire évoluer, pour que personne ne reste seul face à l'outil.</p></div>
     </div>
 
-    <div class="kpis" data-stagger>
-      <div class="kpi"><b><span data-counter="38">38</span> h</b><span>rendues à l'équipe chaque mois</span></div>
-      <div class="kpi"><b><span data-counter="92">92</span> %</b><span>des tâches validées sans retouche</span></div>
-      <div class="kpi"><b><span data-counter="100">100</span> %</b><span>des envois relus par un humain</span></div>
-      <div class="kpi"><b><span data-counter="3">3</span> <em>sem.</em></b><span>pour être opérationnel</span></div>
-    </div>
-    <p class="kpi-note">Indicateurs du tableau de bord de démonstration.</p>
-
-    <h3 class="ag-sub" data-split>Des modules par métier, <span class="accent">au prix affiché.</span></h3>
-    <div class="mods" data-stagger>
-      <div class="mod"><span class="cat">Socle</span><b>Mémoire d'entreprise</b><p>L'assistant répond à partir de vos documents, en citant sa source.</p><span class="price">Inclus</span></div>
-      <div class="mod"><span class="cat">Quotidien</span><b>Boîte mail triée</b><p>Résumés du matin, brouillons de réponse, rien n'est envoyé sans vous.</p><span class="price">Inclus</span></div>
-      <div class="mod"><span class="flag">ROI le plus rapide</span><span class="cat">Trésorerie</span><b>Relance des impayés</b><p>Choisit le palier, adapte le ton, escalade au patron au-dessus du seuil.</p><span class="price">80 – 250 € / mois</span></div>
-      <div class="mod"><span class="cat">Commerce</span><b>Devis &amp; relance commerciale</b><p>Prépare le devis aux conditions habituelles, relance sans réponse à 8 jours.</p><span class="price">150 – 600 € / mois</span></div>
-      <div class="mod"><span class="cat">RH</span><b>Questions internes RH</b><p>Congés, soldes, procédures : réponses sourcées dans vos règles internes.</p><span class="price">dès 60 € / mois</span></div>
-      <div class="mod"><span class="cat">Canaux</span><b>Accueil téléphonique</b><p>Sur votre numéro existant : qualifie, prend le message, prévient l'équipe.</p><span class="price">dès 49 € / mois</span></div>
+    <h3 class="ag-sub" data-split>Comment <span class="accent">ça se passe.</span></h3>
+    <div class="steps-of" data-stagger>
+      <div class="st"><span class="n">1</span><b>Diagnostic</b><span>On repère ensemble les tâches répétitives qui coûtent le plus de temps et on choisit le premier outil à construire.</span><span class="when">Gratuit · 45 min en visio</span></div>
+      <div class="st"><span class="n">2</span><b>Mise en place</b><span>Votre entreprise souscrit son abonnement Claude. Nous configurons les comptes et les connexions utiles (messagerie, agenda, documents).</span></div>
+      <div class="st"><span class="n">3</span><b>Formation-action</b><span>En sessions courtes, votre équipe apprend à utiliser Claude et construit avec nous ses 1 à 2 premiers outils, sur ses vraies données.</span></div>
+      <div class="st"><span class="n">4</span><b>Suivi mensuel</b><span>Une session par mois pour ajuster les outils, en créer de nouveaux et répondre aux questions. Entre deux sessions, une assistance par message.</span></div>
     </div>
 
-    <h3 class="ag-sub" data-split>Opérationnel <span class="accent">en 3 semaines.</span></h3>
-    <div class="steps3" data-stagger>
-      <div class="st"><span class="n">1</span><b>Audit</b><span>Une demi-journée dans vos locaux : on liste les tâches répétitives qui coûtent le plus d'heures.</span><span class="when">Semaine 1</span></div>
-      <div class="st"><span class="n">2</span><b>Branchement</b><span>Mail, documents, facturation, règles de validation : l'assistant arrive configuré, à vos couleurs.</span><span class="when">Semaines 1 – 2</span></div>
-      <div class="st"><span class="n">3</span><b>Formation &amp; suivi</b><span>Vos équipes sont formées, puis 30 jours d'ajustements avec un point chaque semaine.</span><span class="when">Semaine 3 + 30 jours</span></div>
+    <h3 class="ag-sub" data-split>Exemples d'outils <span class="accent">construits avec nos clients.</span></h3>
+    <div class="ex-grid" data-stagger>
+      <div class="ex"><span class="cat">Artisan du bâtiment</span><div class="row-b"><span class="lbl">Avant</span><span>Devis et relances notés sur papier ou dans un tableur</span></div><div class="row-a"><span class="lbl">Avec</span><span>Un tableau de suivi des devis, avec les relances à faire du jour</span></div></div>
+      <div class="ex"><span class="cat">Commerce, restauration</span><div class="row-b"><span class="lbl">Avant</span><span>Chiffres de la semaine recalculés à la main</span></div><div class="row-a"><span class="lbl">Avec</span><span>Un tableau de bord des ventes et des réservations, mis à jour en quelques secondes</span></div></div>
+      <div class="ex"><span class="cat">Service client</span><div class="row-b"><span class="lbl">Avant</span><span>Demandes dispersées entre mails et appels</span></div><div class="row-a"><span class="lbl">Avec</span><span>Une liste unique des demandes, avec qui s'en occupe et depuis combien de temps elles attendent</span></div></div>
+      <div class="ex"><span class="cat">Commercial</span><div class="row-b"><span class="lbl">Avant</span><span>Comptes rendus de rendez-vous rédigés le soir</span></div><div class="row-a"><span class="lbl">Avec</span><span>Un assistant qui prépare le rendez-vous, rédige le compte rendu et le mail de suivi</span></div></div>
     </div>
+    <p class="of-note" data-anim>Ces outils restent dans votre compte Claude. Votre équipe peut les modifier simplement en le demandant à Claude, en français.</p>
 
-    <h3 class="ag-sub" data-split>Le dirigeant voit ce que <span class="accent">l'assistant produit.</span></h3>
-    <div data-anim="scale">
-      <div class="shot">
-        <img src="images/agents-dash.webp" alt="Tableau de bord Aevio Agents : heures rendues, tâches traitées, coût IA du mois" width="1600" height="670" loading="lazy">
-      </div>
-      <p class="caption">Chaque mois : heures rendues, tâches traitées, taux de validation, coût IA réel.</p>
-    </div>
-
-    <h3 class="ag-sub" data-split>Deux offres, <span class="accent">selon votre taille.</span></h3>
+    <h3 class="ag-sub" data-split>Formules <span class="accent">et tarifs.</span></h3>
     <div class="offers" data-stagger>
-      <div class="offer star">
-        <span class="avail">Disponible maintenant</span>
-        <span class="tag">Installation · TPE, 1 à 20 salariés</span>
-        <h4>Assistant installé chez vous</h4>
-        <p class="for">Claude configuré sur vos postes, avec des automatisations sur mesure pour vos tâches réelles.</p>
-        <div class="price">dès 1 900 € HT <small>· forfait complet 2 900 € HT</small></div>
+      <div class="offer">
+        <span class="tag">Pour commencer</span>
+        <h4>Diagnostic</h4>
+        <p class="for">45 min en visio, choix du premier outil.</p>
+        <div class="price">Offert <small>Sans engagement</small></div>
         <ul>
-          <li>Audit d'une demi-journée de vos tâches répétitives</li>
-          <li>3 à 5 automatisations sur mesure (devis, relances, mails…)</li>
-          <li>Formation de vos utilisateurs, gabarits inclus</li>
-          <li>Suivi optionnel : 150 € / mois, une nouvelle automatisation par trimestre</li>
+          <li>Les tâches répétitives qui coûtent le plus de temps</li>
+          <li>Le premier outil à construire, même si vous ne donnez pas suite</li>
         </ul>
-        <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Aevio%20Agents%20%E2%80%94%20Offre%20Installation">Demander un audit <span class="arr">→</span></a>
+        <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Diagnostic%20gratuit%20%3A%20outils%20IA">Réserver <span class="arr">→</span></a>
+      </div>
+      <div class="offer star">
+        <span class="avail">Le cœur de l'offre</span>
+        <span class="tag">Une fois</span>
+        <h4>Démarrage</h4>
+        <p class="for">Votre équipe opérationnelle sur Claude.</p>
+        <div class="price">1&nbsp;900&nbsp;€ HT <small>Payé une seule fois</small></div>
+        <ul>
+          <li>Mise en place des comptes et des connexions</li>
+          <li>Formation-action de 2 à 5 personnes</li>
+          <li>1 à 2 outils construits avec l'équipe</li>
+        </ul>
+        <a class="btn ghost" href="mailto:yoann@aevio-one.com?subject=Offre%20D%C3%A9marrage%20%3A%20outils%20IA">Démarrer <span class="arr">→</span></a>
       </div>
       <div class="offer">
-        <span class="avail later">Sous 4 à 8 semaines</span>
-        <span class="tag">Plateforme · PME, 10 à 50 salariés</span>
-        <h4>Votre plateforme à votre marque</h4>
-        <p class="for">Une interface web multi-utilisateurs à vos couleurs, sur votre domaine, hébergée en UE.</p>
-        <div class="price">39 € HT / utilisateur / mois <small>· mise en place 2 500 à 6 000 € HT</small></div>
+        <span class="tag">Chaque mois</span>
+        <h4>Suivi mensuel</h4>
+        <p class="for">Pour faire évoluer vos outils dans la durée.</p>
+        <div class="price">250&nbsp;€ HT / mois <small>6 mois minimum, puis sans engagement</small></div>
         <ul>
-          <li>Agents par métier : devis, relances, RH, fiches chantier</li>
-          <li>File « À valider » : aucun envoi automatique</li>
-          <li>Journal des actions conforme AI Act, exportable</li>
-          <li>Tableau de bord dirigeant : heures rendues, coût IA du mois</li>
+          <li>1 session par mois et ajustements</li>
+          <li>1 nouvel outil par trimestre</li>
+          <li>Assistance par message entre deux sessions</li>
         </ul>
-        <a class="btn ghost" href="mailto:yoann@aevio-one.com?subject=Aevio%20Agents%20%E2%80%94%20Offre%20Plateforme">Être recontacté <span class="arr">→</span></a>
+        <a class="btn ghost" href="mailto:yoann@aevio-one.com?subject=Suivi%20mensuel%20%3A%20outils%20IA">En parler <span class="arr">→</span></a>
       </div>
     </div>
-
-    <div class="fchips" data-stagger>
-      <span class="chip">Conforme AI Act</span>
-      <span class="chip">Données hébergées en UE</span>
-      <span class="chip">Journal exportable</span>
-      <span class="chip">Accès par salarié</span>
-      <span class="chip">Aucun envoi sans validation</span>
+    <div class="own" data-anim>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M17 6l3 3"/></svg></span>
+      <div><b>Votre abonnement Claude vous appartient</b><p>Il est souscrit et payé directement par votre entreprise auprès d'Anthropic. Vous en gardez la maîtrise, et il vous reste acquis si vous arrêtez le suivi.</p></div>
     </div>
+
+    <h3 class="ag-sub" data-split>Pourquoi <span class="accent">Aevio One.</span></h3>
+    <div class="why" data-stagger>
+      <div class="why-c"><b>Pas de logiciel propriétaire</b><p>Vous n'êtes enfermé dans aucune plateforme maison. Vos outils vivent dans Claude, que vous gardez.</p></div>
+      <div class="why-c"><b>Un coût d'entrée maîtrisé</b><p>Pas d'installation lourde ni de crédits à racheter. Une formation, puis un suivi mensuel clair.</p></div>
+      <div class="why-c"><b>Plus qu'un outil</b><p>Votre équipe gagne aussi un assistant pour rédiger, analyser, résumer et préparer ses mails au quotidien.</p></div>
+      <div class="why-c"><b>Un accompagnement terrain</b><p>Plus de 11 ans de vente B2B auprès de clients exigeants. Nous parlons métier avant de parler technique.</p></div>
+    </div>
+
     <div class="ag-ctas" data-anim>
-      <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=D%C3%A9monstration%20Aevio%20Agents">Demander une démonstration <span class="arr">→</span></a>
-      <a class="btn ghost" href="aevio-agents/" target="_blank" rel="noopener">Voir la présentation interactive</a>
-      <a class="btn ghost" href="docs/presentation-aevio-agents.pdf" target="_blank" rel="noopener">Télécharger la présentation (PDF)</a>
+      <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Diagnostic%20gratuit%20%3A%20outils%20IA">Réserver mon diagnostic gratuit <span class="arr">→</span></a>
+      <a class="btn ghost" href="docs/plaquette-outils-ia.pdf" target="_blank" rel="noopener">Télécharger la plaquette (PDF)</a>
     </div>
   </div>
 </section>
@@ -1054,8 +1096,8 @@ footer .brand-name{color:#fff}
     <div class="svc-rows" data-stagger>
       <div class="svc">
         <span class="n">01</span>
-        <div><b>Agents IA pour TPE &amp; PME</b><p>Des assistants qui rendent des heures à vos équipes, avec validation humaine sur tout ce qui part.</p></div>
-        <div class="chips"><span class="chip">Aevio Agents</span><span class="chip">Automatisations</span><span class="chip">Mémoire d'entreprise</span></div>
+        <div><b>Outils IA construits avec votre équipe</b><p>Votre équipe apprend à utiliser Claude et construit avec nous ses tableaux de bord, suivis et formulaires, sans développeur.</p></div>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Formation-action</span><span class="chip">Suivi mensuel</span></div>
       </div>
       <div class="svc">
         <span class="n">02</span>
@@ -1145,23 +1187,31 @@ footer .brand-name{color:#fff}
     <div class="faq-list" data-anim>
       <details name="faq" open>
         <summary>Combien coûte un projet ?<span class="chev">+</span></summary>
-        <div class="faq-a">Un <b>site vitrine</b> se situe entre <b>1 000 et 2 000 €</b>, un <b>CRM métier ou une application</b> entre <b>5 000 et 10 000 €</b>, un SaaS complexe s'étudie au cas par cas. Côté agents IA, l'<b>offre Installation démarre à 1 900 € HT</b> et la plateforme à <b>39 € HT par utilisateur et par mois</b>. Le devis est établi après cadrage, sans engagement.</div>
+        <div class="faq-a">Un <b>site vitrine</b> se situe entre <b>1 000 et 2 000 €</b>, un <b>CRM métier ou une application</b> entre <b>5 000 et 10 000 €</b>, un SaaS complexe s'étudie au cas par cas. Pour vos <b>outils IA</b>, le <b>diagnostic est offert</b>, le <b>démarrage coûte 1 900 € HT</b> une fois, puis le <b>suivi 250 € HT par mois</b>. Pour un site ou une application, le devis est établi après cadrage, sans engagement.</div>
       </details>
       <details name="faq">
         <summary>Quels sont les délais ?<span class="chev">+</span></summary>
-        <div class="faq-a">Comptez <b>3 à 5 semaines</b> pour un site vitrine, <b>6 à 10 semaines</b> pour un CRM ou un outil métier, <b>3 à 6 mois</b> pour un SaaS ou une application mobile. Un assistant Aevio Agents est <b>opérationnel en 3 semaines</b>.</div>
+        <div class="faq-a">Comptez <b>3 à 5 semaines</b> pour un site vitrine, <b>6 à 10 semaines</b> pour un CRM ou un outil métier, <b>3 à 6 mois</b> pour un SaaS ou une application mobile. Pour vos outils IA, votre équipe utilise Claude et ses premiers outils <b>en quelques semaines</b>.</div>
       </details>
       <details name="faq">
-        <summary>Comment fonctionnent les agents IA, concrètement ?<span class="chev">+</span></summary>
-        <div class="faq-a">Vos équipes délèguent les tâches répétitives (devis, relances, mails, RH) à un assistant qui connaît vos documents et vos règles. <b>Rien ne part sans validation humaine</b> : chaque envoi passe par une file « À valider », et chaque action est journalisée, horodatée et exportable, conformément à l'AI Act. Les données sont hébergées en UE.</div>
+        <summary>Faut-il des compétences techniques pour vos outils IA ?<span class="chev">+</span></summary>
+        <div class="faq-a">Non. On décrit <b>en français</b> ce qu'on veut, et Claude le construit. La formation sert justement à apprendre à bien le demander.</div>
+      </details>
+      <details name="faq">
+        <summary>Que ne peut-on pas faire avec vos outils IA ?<span class="chev">+</span></summary>
+        <div class="faq-a">Certains besoins dépassent ce cadre : standard téléphonique automatisé, envoi de SMS en masse, branchement sur un logiciel métier sans connecteur. <b>Nous vous le disons dès le diagnostic</b>, et nous proposons une solution adaptée si nécessaire.</div>
+      </details>
+      <details name="faq">
+        <summary>Et nos données ?<span class="chev">+</span></summary>
+        <div class="faq-a">Elles restent <b>dans votre compte Claude</b>. Nous vous aidons à fixer les bonnes règles : quels documents partager, qui accède à quoi.</div>
       </details>
       <details name="faq">
         <summary>Et après la mise en ligne ?<span class="chev">+</span></summary>
-        <div class="faq-a">Trois formules : un <b>contrat de maintenance mensuel</b>, des <b>forfaits d'évolution</b>, ou des interventions <b>à la demande</b>. Pour les agents IA, le suivi à 150 € / mois inclut une visio mensuelle et une nouvelle automatisation par trimestre.</div>
+        <div class="faq-a">Trois formules : un <b>contrat de maintenance mensuel</b>, des <b>forfaits d'évolution</b>, ou des interventions <b>à la demande</b>. Pour vos outils IA, le suivi à <b>250 € HT par mois</b> comprend une session mensuelle, une assistance par message et un nouvel outil par trimestre. Il dure <b>6 mois minimum</b>, puis s'arrête quand vous voulez, sans frais.</div>
       </details>
       <details name="faq">
         <summary>Avec quelles technologies travaillez-vous ?<span class="chev">+</span></summary>
-        <div class="faq-a">Next.js, React et Astro côté web ; React Native ou natif pour le mobile ; Node.js, Python, PostgreSQL, Supabase et Stripe côté back. Pour l'IA : les modèles <b>Claude</b> d'Anthropic, avec mémoire d'entreprise (RAG) citant ses sources.</div>
+        <div class="faq-a">Next.js, React et Astro côté web ; React Native ou natif pour le mobile ; Node.js, Python, PostgreSQL, Supabase et Stripe côté back. Pour l'IA : <b>Claude</b> d'Anthropic, dans le compte de votre entreprise.</div>
       </details>
       <details name="faq">
         <summary>Pouvez-vous reprendre un projet existant ?<span class="chev">+</span></summary>
@@ -1169,7 +1219,7 @@ footer .brand-name{color:#fff}
       </details>
       <details name="faq">
         <summary>À qui appartient le code ?<span class="chev">+</span></summary>
-        <div class="faq-a">À vous. Le code est livré sur <b>votre dépôt Git</b>, les comptes d'hébergement et de services sont ouverts <b>à votre nom</b>. Aucune dépendance cachée.</div>
+        <div class="faq-a">À vous. Le code est livré sur <b>votre dépôt Git</b>, les comptes d'hébergement et de services sont ouverts <b>à votre nom</b>. Vos outils IA sont construits dans le compte Claude de votre entreprise, et vous les gardez si vous arrêtez le suivi. Aucune dépendance cachée.</div>
       </details>
     </div>
   </div>
@@ -1180,7 +1230,7 @@ footer .brand-name{color:#fff}
   <div class="wrap cta-end">
     <span class="kicker soft" data-anim><span class="dot"></span>Contact</span>
     <h2 class="h2" data-split>Prêt à donner vie<br><span class="accent">à votre projet ?</span></h2>
-    <p class="lede" data-anim data-anim-delay="150" style="max-width:520px">Un premier échange de 30 minutes, sans engagement. On parle de votre métier, pas de technique.</p>
+    <p class="lede" data-anim data-anim-delay="150" style="max-width:560px">Pour vos outils IA, un diagnostic gratuit de 45 minutes. Pour un site ou une application, un premier échange de 30 minutes. Sans engagement : on parle de votre métier, pas de technique.</p>
     <div class="cta-btns" data-anim data-anim-delay="300">
       <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Projet%20%E2%80%94%20Aevio%20One">yoann@aevio-one.com <span class="arr">→</span></a>
       <a class="btn glass" href="tel:+33642692872">06 42 69 28 72</a>
@@ -1194,12 +1244,12 @@ footer .brand-name{color:#fff}
     <div class="foot-grid">
       <div class="about">
         <a class="brand" href="#top"><span class="brand-mark">AI</span><span class="brand-name">Aevio One</span></a>
-        <p>Studio digital français. Agents IA, sites, SaaS, CRM métier et applications sur mesure, de l'idée au produit vivant.</p>
+        <p>Studio digital français. Outils IA construits avec votre équipe, sites, SaaS, CRM métier et applications sur mesure.</p>
       </div>
       <div>
         <h5>Explorer</h5>
         <ul>
-          <li><a href="#agents">Aevio Agents</a></li>
+          <li><a href="#offre">Offre IA</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#methode">Méthode</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -1219,12 +1269,12 @@ footer .brand-name{color:#fff}
         <ul>
           <li><a href="mailto:yoann@aevio-one.com">yoann@aevio-one.com</a></li>
           <li><a href="tel:+33642692872">06 42 69 28 72</a></li>
-          <li><a href="docs/presentation-aevio-agents.pdf" target="_blank" rel="noopener">Présentation Aevio Agents (PDF)</a></li>
+          <li><a href="docs/plaquette-outils-ia.pdf" target="_blank" rel="noopener">Plaquette outils IA (PDF)</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Aevio One · Solutions digitales &amp; agents IA sur mesure</span>
+      <span>© 2026 Aevio One · Outils IA, sites et applications sur mesure</span>
       <span>Fait en France, avec soin.</span>
     </div>
   </div>

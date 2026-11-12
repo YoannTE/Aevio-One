@@ -9,6 +9,5 @@ COPY sitemap.xml /srv/
 COPY images/ /srv/images/
 COPY js/ /srv/js/
 COPY docs/ /srv/docs/
-COPY aevio-agents/ /srv/aevio-agents/
 
 EXPOSE 80
