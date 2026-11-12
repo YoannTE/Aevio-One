@@ -7,6 +7,8 @@
 	# restée en cache chez un visiteur les réclame encore.
 	rewrite /images/padel-app-1.webp /images/padel-parties.webp
 	rewrite /images/padel-app-2.webp /images/padel-coach.webp
+	# Capture de la démo Garnier refaite le 12/11/2026 (démo retouchée).
+	rewrite /images/garnier-tableau-de-bord.webp /images/garnier-tableau-de-bord-v2.webp
 
 	# Pages HTML : toujours revalidées, sinon Safari garde une vieille version
 	# qui pointe vers des images supprimées.

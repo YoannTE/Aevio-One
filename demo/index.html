@@ -287,7 +287,7 @@ td.r,th.r{text-align:right}
     <div class="brand"><div class="logo">GR</div><div><b>Garnier Rénovation</b><span>Bureau · 8 salariés</span></div></div>
     <nav class="nav" id="nav"></nav>
     <div class="side-foot">
-      <div class="connect"><b>Connecté à</b><div class="dots"><span>Boîte mail</span><span>Agenda</span><span>Facturation</span><span>Téléphone</span><span>Google</span></div></div>
+      <div class="connect"><b>Connecté à</b><div class="dots"><span>Boîte mail</span><span>Agenda</span><span>Facturation</span><span>Google</span></div></div>
       <button type="button" class="theme-btn" data-skin-btn aria-label="Changer de style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.9 1.4-1.8-.3-.9.3-1.7 1.2-1.7H17a4 4 0 0 0 4-4c0-5-4-8.5-9-8.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><span class="skin-lbl">Style : <b data-skin-name>Aevio</b></span></button>
       <button type="button" class="theme-btn" data-theme-btn aria-label="Basculer entre mode clair et mode sombre"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="l-moon">Mode sombre</span><span class="l-sun">Mode clair</span></button>
       <div class="user"><div class="avatar">MG</div><div><b>Marc Garnier</b><span>Dirigeant</span></div></div>
@@ -374,7 +374,7 @@ const S = {
      why:['Aucune réponse depuis l\'envoi du 16/10','Ouvert 3 fois par le client (suivi de lecture)','Créneau libre en semaine 47 dans le planning']},
   ],
   demandes: [
-    {h:'07:42', who:'Mme Petit', what:'Message vocal : fuite sous l\'évier, eau coupée', tag:['Urgent','c-bad'], done:'Rappel proposé à 8 h 15, Karim prévenu par SMS'},
+    {h:'07:42', who:'Mme Petit', what:'Mail : fuite sous l\'évier, eau coupée', tag:['Urgent','c-bad'], done:'Karim prévenu par mail, rappel prévu à 8 h 15'},
     {h:'08:05', who:'Formulaire du site', what:'Rénovation d\'une salle d\'eau, 6 m², Villeurbanne', tag:['Demande de devis','c-acc'], done:'Fiche client créée, visite proposée mardi ou jeudi'},
     {h:'08:14', who:'Claire Lefort', what:'Date de démarrage de la salle de bain ?', tag:['Client','c-info'], done:'Réponse préparée, à valider'},
     {h:'08:31', who:'Fournisseur bois', what:'Facture FA-55821 · 1 284 € HT', tag:['Facture reçue','c-mut'], done:'Classée et transmise au cabinet comptable'},
@@ -400,7 +400,7 @@ const S = {
     {k:'a3', ic:'refresh', t:'Relance des devis à J+7', w:'Lundi et jeudi', mode:1, stat:'5 relances · 2 devis signés après relance'},
     {k:'a4', ic:'euro', t:'Relance des impayés, en trois paliers', w:'Chaque matin · appel conseillé au-delà de 30 jours', mode:1, stat:'4 relances · 3 120 € encaissés'},
     {k:'a5', ic:'folder', t:'Factures fournisseurs vers le comptable', w:'À chaque facture reçue', mode:2, stat:'17 factures transmises · format Factur-X lu'},
-    {k:'a6', ic:'phone', t:'Accueil téléphonique hors horaires', w:'Soirs et week-ends', mode:0, stat:'Nouveau · 6 appels comparés avec Nadia'},
+    {k:'a6', ic:'list', t:'Planning des chantiers de la semaine', w:'Vendredi à 16 h', mode:0, stat:'Nouveau · 2 plannings comparés avec Nadia'},
     {k:'a7', ic:'star', t:'Avis Google après chaque chantier', w:'3 jours après la fin', mode:1, stat:'2 demandes · 1 nouvel avis 5 étoiles'},
     {k:'a8', ic:'chart', t:'Rapport du lundi', w:'Lundi à 7 h', mode:2, stat:'Envoyé à Marc et Nadia'},
   ],
@@ -410,7 +410,7 @@ const S = {
     {h:'08:33', who:'Assistant', t:'Facture FA-55821 transmise au cabinet comptable', c:'c-ok'},
     {h:'08:16', who:'Assistant', t:'Réponse à Mme Lefort préparée, en attente de validation', c:'c-warn'},
     {h:'08:07', who:'Assistant', t:'Fiche client créée pour la demande du site (salle d\'eau)', c:'c-ok'},
-    {h:'07:45', who:'Assistant', t:'SMS à Karim : fuite chez Mme Petit, rappel à 8 h 15', c:'c-ok'},
+    {h:'07:45', who:'Assistant', t:'Mail à Karim : fuite chez Mme Petit, rappel à 8 h 15', c:'c-ok'},
     {h:'07:30', who:'Assistant', t:'Résumé du matin envoyé à Marc : 23 mails, 3 à traiter', c:'c-ok'},
     {h:'Hier 18:40', who:'Validé par Nadia', t:'Relance Boulangerie Roux envoyée (1ᵉʳ palier)', c:'c-info'},
     {h:'Hier 17:12', who:'Validé par Marc', t:'Devis D-2026-111 envoyé au Cabinet Arnaud', c:'c-info'},
@@ -424,7 +424,7 @@ const MODES = ['Observation','Brouillon','Automatique'];
 const VIEWS = [
   {k:'home', l:'Aujourd\'hui', m:'Accueil', ic:'home', sub:'Vendredi 23 octobre 2026'},
   {k:'queue', l:'À valider', m:'Valider', ic:'check', sub:'Préparé par l\'assistant, envoyé seulement après votre accord'},
-  {k:'demandes', l:'Demandes', ic:'inbox', sub:'Mails, appels et formulaires du jour, triés et qualifiés'},
+  {k:'demandes', l:'Demandes', ic:'inbox', sub:'Mails et formulaires du jour, triés et qualifiés'},
   {k:'devis', l:'Devis', ic:'file', sub:'Du brouillon à la signature'},
   {k:'factures', l:'Factures', ic:'euro', sub:'Encaissements et relances'},
   {k:'autos', l:'Automatisations', m:'Auto', ic:'zap', sub:'Ce qui tourne tout seul, et à quel niveau de confiance'},
@@ -519,15 +519,15 @@ queue(){
 demandes(){
   $('#view').innerHTML = `
   <section class="card">
-    <div class="card-h"><h2>Arrivées aujourd'hui</h2><span class="chip c-acc">${S.demandes.length} demandes</span><span class="grow"></span><span class="muted" style="font-size:12.5px">Mails, téléphone, site</span></div>
+    <div class="card-h"><h2>Arrivées aujourd'hui</h2><span class="chip c-acc">${S.demandes.length} demandes</span><span class="grow"></span><span class="muted" style="font-size:12.5px">Mails et formulaire du site</span></div>
     <div class="tw"><table>
       <thead><tr><th>Heure</th><th>De</th><th>Demande</th><th>Catégorie</th><th>Ce que l'assistant a fait</th></tr></thead>
       <tbody>${S.demandes.map(d=>`<tr><td class="mono">${d.h}</td><td><b>${d.who}</b></td><td>${d.what}</td><td><span class="chip ${d.tag[1]}">${d.tag[0]}</span></td><td class="muted">${d.done}</td></tr>`).join('')}</tbody>
     </table></div>
   </section>
   <div class="legend">
-    <div class="card"><b>Rien ne se perd</b><p>Chaque demande, même un message vocal à 7 h, est lue, classée et reliée à la bonne fiche client.</p></div>
-    <div class="card"><b>Les urgences d'abord</b><p>Une fuite passe avant un devis : l'assistant prévient la bonne personne par SMS.</p></div>
+    <div class="card"><b>Rien ne se perd</b><p>Chaque demande, même un mail reçu à 7 h, est lue, classée et reliée à la bonne fiche client.</p></div>
+    <div class="card"><b>Les urgences d'abord</b><p>Une fuite passe avant un devis : l'assistant prévient la bonne personne par mail.</p></div>
     <div class="card"><b>Le reste à votre rythme</b><p>Publicités et sollicitations sont classées sans réponse, consultables à tout moment.</p></div>
   </div>`;
 },
