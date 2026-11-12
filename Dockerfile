@@ -9,5 +9,6 @@ COPY sitemap.xml /srv/
 COPY images/ /srv/images/
 COPY js/ /srv/js/
 COPY docs/ /srv/docs/
+COPY demo/ /srv/demo/
 
 EXPOSE 80

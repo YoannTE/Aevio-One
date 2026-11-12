@@ -307,6 +307,16 @@ section[data-theme="dark"] .caption{color:var(--dk-muted)}
 .own b{display:block;font-size:15.5px;font-weight:800;color:#fff;margin-bottom:3px}
 .own p{font-size:14px;color:var(--dk-muted);line-height:1.55}
 .why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.demo-shot{display:block;position:relative;transition:transform .3s var(--ease)}
+.demo-shot:hover{transform:translateY(-4px)}
+.demo-shot img{display:block;width:100%}
+.demo-play{position:absolute;left:50%;bottom:clamp(14px,3vw,28px);transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+  background:var(--grad);color:#fff;font-size:14.5px;font-weight:700;letter-spacing:-.01em;
+  border-radius:999px;padding:13px 24px;box-shadow:0 12px 32px rgba(17,26,55,.35)}
+.demo-play .arr{transition:transform .25s var(--ease)}
+.demo-shot:hover .demo-play .arr{transform:translateX(3px)}
+.demo-views{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
 .why-c{padding:22px}
 .ag-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(44px,5vw,64px)}
 
@@ -598,6 +608,7 @@ footer .brand-name{color:#fff}
   .steps-of,.why,.ex-grid{grid-template-columns:1fr}
   .tool-row{grid-template-columns:1fr auto}
   .tool-row .amt{display:none}
+  .demo-play{font-size:13px;padding:10px 18px}
   .hero .hv-notif{display:none}
   .hero .hv-pill{position:static;margin-bottom:12px}
   .hero .hv-kpi{bottom:-56px}
@@ -674,7 +685,7 @@ footer .brand-name{color:#fff}
       <p class="lede" data-anim data-anim-delay="300">En quelques semaines, votre équipe utilise Claude au quotidien et dispose de ses propres outils : tableaux de bord, suivis, formulaires. Sans développeur, sans logiciel à installer.</p>
       <div class="hero-ctas" data-anim data-anim-delay="480">
         <a class="btn primary" href="mailto:yoann@aevio-one.com?subject=Diagnostic%20gratuit%20%3A%20outils%20IA">Réserver mon diagnostic gratuit <span class="arr">→</span></a>
-        <a class="btn ghost" href="#offre">Voir l'offre</a>
+        <a class="btn ghost" href="#exemple">Voir un exemple concret</a>
       </div>
       <div class="hero-proof" data-anim data-anim-delay="620">
         <span><i></i>Diagnostic offert, 45 min en visio</span>
@@ -780,6 +791,20 @@ footer .brand-name{color:#fff}
       <div class="ex"><span class="cat">Commercial</span><div class="row-b"><span class="lbl">Avant</span><span>Comptes rendus de rendez-vous rédigés le soir</span></div><div class="row-a"><span class="lbl">Avec</span><span>Un assistant qui prépare le rendez-vous, rédige le compte rendu et le mail de suivi</span></div></div>
     </div>
     <p class="of-note" data-anim>Ces outils restent dans votre compte Claude. Votre équipe peut les modifier simplement en le demandant à Claude, en français.</p>
+
+    <h3 class="ag-sub" id="exemple" data-split>Un exemple complet, <span class="accent">à tester vous-même.</span></h3>
+    <p class="ag-intro" data-anim>Le bureau de Garnier Rénovation, une entreprise de rénovation fictive de 8 salariés : demandes du jour, brouillons à valider, devis, factures et relances, automatisations réglables, journal d'activité. Tout se clique, et rien n'est envoyé sans votre accord.</p>
+    <div data-anim="scale">
+      <a class="shot demo-shot" href="demo/" target="_blank" rel="noopener" aria-label="Ouvrir la démonstration interactive du bureau Garnier Rénovation (nouvel onglet)">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">aevio-one.com/demo · Bureau Garnier Rénovation</span></div>
+        <img src="images/garnier-tableau-de-bord.webp" alt="Tableau de bord de démonstration de Garnier Rénovation : éléments à valider, devis en attente, factures échues, heures rendues à l'équipe, demandes du jour" width="1600" height="1000" loading="lazy">
+        <span class="demo-play">Ouvrir la démo interactive <span class="arr">→</span></span>
+      </a>
+      <p class="caption">Démonstration · entreprise et données fictives</p>
+    </div>
+    <div class="demo-views" data-stagger>
+      <span class="chip">Aujourd'hui</span><span class="chip">À valider</span><span class="chip">Demandes</span><span class="chip">Devis</span><span class="chip">Factures et relances</span><span class="chip">Automatisations</span><span class="chip">Journal</span>
+    </div>
 
     <h3 class="ag-sub" data-split>Formules <span class="accent">et tarifs.</span></h3>
     <div class="offers" data-stagger>

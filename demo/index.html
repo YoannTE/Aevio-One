@@ -1,0 +1,658 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bureau Garnier Rénovation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Mise en page : logiciel de gestion (menu latéral, barre du haut, zone de travail) au thème Aevio de la MIA : bleu Aevio, Plus Jakarta Sans, noir profond en sombre. */
+:root{
+  --bg:#F5F7FB; --surface:#FFFFFF; --surface-2:#F5F7FB; --ink:#111A37; --muted:#5B6B85; --line:#E9ECF3;
+  --accent:#2F62FF; --accent-ink:#FFFFFF; --accent-soft:#EAF0FF; --accent-2:#2350E6;
+  --ok:#1FA463; --ok-soft:rgba(31,164,99,.12); --warn:#A87800; --warn-soft:#FBF1D9; --bad:#C0392B; --bad-soft:rgba(192,57,43,.1); --info:#2350E6; --info-soft:#EAF0FF;
+  --toast-bg:#111A37; --toast-fg:#FFFFFF; --bar:#D6E1FF;
+  --shadow:0 1px 2px rgba(17,26,55,.04);
+  --grad:linear-gradient(180deg,#3A6BFF,#2350E6);
+  --f-ui:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --r:18px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000000; --surface:#121212; --surface-2:#1C1C1E; --ink:#F2F2F2; --muted:#9A9AA3; --line:#2A2A2E;
+  --accent:#4F7CFF; --accent-ink:#FFFFFF; --accent-soft:#1A2340; --accent-2:#8FAAFF;
+  --ok:#3FCB86; --ok-soft:rgba(63,203,134,.16); --warn:#F0C04E; --warn-soft:#33290F; --bad:#F0776A; --bad-soft:rgba(240,119,106,.16); --info:#8FAAFF; --info-soft:#1A2340;
+  --toast-bg:#F2F2F2; --toast-fg:#000000; --bar:#243259;
+  --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#121212; --surface-2:#1C1C1E; --ink:#F2F2F2; --muted:#9A9AA3; --line:#2A2A2E;
+  --accent:#4F7CFF; --accent-ink:#FFFFFF; --accent-soft:#1A2340; --accent-2:#8FAAFF;
+  --ok:#3FCB86; --ok-soft:rgba(63,203,134,.16); --warn:#F0C04E; --warn-soft:#33290F; --bad:#F0776A; --bad-soft:rgba(240,119,106,.16); --info:#8FAAFF; --info-soft:#1A2340;
+  --toast-bg:#F2F2F2; --toast-fg:#000000; --bar:#243259;
+  --shadow:none; color-scheme:dark}
+
+/* Style neutre (« à vos couleurs ») : vert sapin, Figtree, angles plus droits. Activé par le bouton Style. */
+:root[data-skin="neutre"]{
+  --bg:#F3F4F1; --surface:#FFFFFF; --surface-2:#EDF0EC; --ink:#18221F; --muted:#5D6A65; --line:#DCE2DD;
+  --accent:#1F6B57; --accent-soft:#E2EFEA; --accent-2:#174F41; --grad:#1F6B57; --bar:#D3E6DE;
+  --ok:#2C7D52; --ok-soft:#E3F2E9; --warn:#9A6412; --warn-soft:#FBF0DC; --bad:#B63A33; --bad-soft:#FBE6E4; --info:#3A5BA8; --info-soft:#E6ECF8;
+  --toast-bg:#18221F; --toast-fg:#FFFFFF; --shadow:0 1px 2px rgba(24,34,31,.06),0 4px 16px rgba(24,34,31,.05);
+  --f-ui:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; --r:12px}
+@media (prefers-color-scheme:dark){:root[data-skin="neutre"]:not([data-theme="light"]){
+  --bg:#0F1412; --surface:#171E1B; --surface-2:#1F2824; --ink:#E6EDE9; --muted:#9AA9A2; --line:#2A3631;
+  --accent:#3E9C80; --accent-soft:#1C3A30; --accent-2:#86D3B9; --grad:#2F8A6F; --bar:#24433A;
+  --ok:#66C792; --ok-soft:#183427; --warn:#E3AC4E; --warn-soft:#3A2D14; --bad:#EE7C73; --bad-soft:#3D1D1A; --info:#8EA8EC; --info-soft:#1D2742;
+  --toast-bg:#E6EDE9; --toast-fg:#0F1412; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-skin="neutre"][data-theme="dark"]{
+  --bg:#0F1412; --surface:#171E1B; --surface-2:#1F2824; --ink:#E6EDE9; --muted:#9AA9A2; --line:#2A3631;
+  --accent:#3E9C80; --accent-soft:#1C3A30; --accent-2:#86D3B9; --grad:#2F8A6F; --bar:#24433A;
+  --ok:#66C792; --ok-soft:#183427; --warn:#E3AC4E; --warn-soft:#3A2D14; --bad:#EE7C73; --bad-soft:#3D1D1A; --info:#8EA8EC; --info-soft:#1D2742;
+  --toast-bg:#E6EDE9; --toast-fg:#0F1412; --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25); color-scheme:dark}
+:root[data-skin="neutre"] .btn{border-radius:9px;border-width:1px;font-weight:600}
+:root[data-skin="neutre"] .btn.primary{box-shadow:none;font-weight:700}
+:root[data-skin="neutre"] .nav button,:root[data-skin="neutre"] .theme-btn{border-radius:9px;font-weight:600}
+:root[data-skin="neutre"] .nav button:not([aria-current]){color:var(--muted)}
+:root[data-skin="neutre"] .logo{border-radius:9px}
+:root[data-skin="neutre"] .seg{border-radius:9px}
+:root[data-skin="neutre"] .seg button{border-radius:7px}
+:root[data-skin="neutre"] .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+:root[data-skin="neutre"] .why{border-left-width:1px}
+:root[data-skin="neutre"] .toast{border-radius:10px}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14.5px;line-height:1.45;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.01em}
+.mono{font-family:var(--f-mono);font-size:12.5px}
+.muted{color:var(--muted)}
+
+.app{display:grid;grid-template-columns:272px minmax(0,1fr);min-height:100%}
+/* Menu latéral */
+.side{background:var(--surface);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh;height:100dvh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 6px}
+.logo{width:36px;height:36px;border-radius:11px;background:var(--grad);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.brand b{display:block;font-size:14.5px;line-height:1.2;font-weight:800;letter-spacing:-.01em}
+.brand span{font-size:12px;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{display:flex;align-items:center;gap:12px;width:100%;height:44px;border:0;background:none;padding:0 14px;border-radius:12px;color:var(--ink);font-weight:700;text-align:left}
+.nav button:hover{background:var(--surface-2)}
+.nav button[aria-current="page"]{background:var(--accent-soft);color:var(--accent-2)}
+.nav svg{width:18px;height:18px;flex:none}
+.nav .count{margin-left:auto;background:var(--accent-soft);color:var(--accent-2);font-size:11px;font-weight:800;border-radius:20px;padding:1px 8px;min-width:22px;text-align:center}
+.nav .count.warn{background:var(--bad)}
+.side .sep{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 10px;margin-top:4px}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+.connect{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12.5px;color:var(--muted)}
+.connect b{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
+.dots{display:flex;flex-wrap:wrap;gap:5px 10px}
+.dots span{display:inline-flex;align-items:center;gap:5px}
+.dots span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.user{display:flex;align-items:center;gap:10px;padding:6px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-weight:700;font-size:12.5px;color:var(--accent-2);flex:none}
+.user b{display:block;font-size:13.5px}.user span{font-size:12px;color:var(--muted)}
+
+/* Zone principale */
+.main{min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding-block:12px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.top .sub{font-size:12.5px;color:var(--muted)}
+.top .grow{flex:1;min-width:0}
+.pill-demo{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--warn);background:var(--warn-soft);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 15px;font-weight:700;white-space:nowrap}
+.btn:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.btn.primary{background:var(--grad);border-color:transparent;color:#fff;font-weight:800;box-shadow:0 8px 22px rgba(47,98,255,.38),0 2px 6px rgba(35,80,230,.25)}
+.btn.primary:hover{filter:brightness(1.06)}.btn.primary:active{transform:translateY(1px)}
+.btn.ghost{background:none;border-color:transparent;color:var(--muted)}
+.btn.ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn.danger{color:var(--bad)}
+.btn svg{width:16px;height:16px}
+.btn.sm{padding:6px 10px;font-size:13px}
+.content{padding-block:24px 48px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px;max-width:1280px;width:100%}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.card-h h2{font-size:15px;font-weight:800;letter-spacing:-.01em}
+.card-h .grow{flex:1}
+.card-b{padding:16px 18px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kpi{padding:16px 18px;display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow)}
+button.kpi:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.kpi .lbl{font-size:12.5px;font-weight:600;color:var(--muted)}
+.kpi .val{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.kpi .det{font-size:12.5px;color:var(--muted)}
+.kpi .det b{font-weight:600}
+.up{color:var(--ok)}
+
+.grid-2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:20px;align-items:start}
+
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.c-ok{color:var(--ok);background:var(--ok-soft)}
+.c-warn{color:var(--warn);background:var(--warn-soft)}
+.c-bad{color:var(--bad);background:var(--bad-soft)}
+.c-info{color:var(--info);background:var(--info-soft)}
+.c-acc{color:var(--accent-2);background:var(--accent-soft)}
+.c-mut{color:var(--muted);background:var(--surface-2)}
+
+.list{display:flex;flex-direction:column}
+.row{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);min-width:0}
+.row:last-child{border-bottom:0}
+.row .ic{width:36px;height:36px;border-radius:11px;background:var(--accent-soft);color:var(--accent-2);display:grid;place-items:center;flex:none}
+.row .ic svg{width:17px;height:17px}
+.row .txt{flex:1;min-width:0}
+.row .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .s{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .amt{font-weight:700;white-space:nowrap}
+button.row{width:100%;text-align:left;background:none;border-left:0;border-right:0;border-top:0;font:inherit}
+button.row:hover{background:var(--surface-2)}
+
+.timeline{display:flex;flex-direction:column;gap:0;padding:6px 18px 14px}
+.tl{display:grid;grid-template-columns:54px 14px minmax(0,1fr);gap:10px;padding:8px 0;position:relative}
+.tl .h{font-size:12.5px;color:var(--muted);padding-top:1px}
+.tl .d{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:5px;box-shadow:0 0 0 3px var(--accent-soft)}
+.tl .x b{font-weight:600}
+.tl .x span{display:block;font-size:12.5px;color:var(--muted)}
+
+/* Graphique */
+.chart{padding:8px 18px 16px}
+.chart svg{width:100%;height:auto;display:block}
+
+/* À valider */
+.queue{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.25fr);gap:20px;align-items:start}
+.qi{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid var(--line);width:100%;background:none;border-left:3px solid transparent;border-top:0;border-right:0;text-align:left}
+.qi:hover{background:var(--surface-2)}
+.qi[aria-selected="true"]{background:var(--accent-soft);border-left-color:var(--accent)}
+.qi .txt{flex:1;min-width:0}
+.qi .t{font-weight:600}
+.qi .s{font-size:12.5px;color:var(--muted);margin-top:2px}
+.qi .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.detail .card-b{display:flex;flex-direction:column;gap:14px}
+.field{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 12px;font-size:13.5px}
+.field dt{color:var(--muted)}
+.field dd{margin:0;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.draft{width:100%;min-height:190px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface-2);line-height:1.55}
+.draft:focus{outline:2px solid var(--accent);outline-offset:0;background:var(--surface)}
+.why{background:var(--surface-2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:12px 14px;font-size:13px}
+.why b{display:block;margin-bottom:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.why ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.empty{padding:40px 24px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+
+/* Devis */
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:14px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--surface-2);border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.col-h{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:13.5px;padding:2px 4px}
+.col-h span{font-weight:600;color:var(--muted);font-size:12.5px}
+.dv{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.dv .top-l{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.dv .who{font-weight:700}
+.dv .what{font-size:13px;color:var(--muted)}
+.dv .bot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:2px}
+
+/* Tableaux */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+th{text-align:left;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:10px 18px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 18px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+
+/* Automatisations */
+.autos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.au{padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.au-h{display:flex;gap:12px;align-items:flex-start}
+.au-h .ic{width:36px;height:36px;border-radius:11px;background:var(--accent-soft);color:var(--accent-2);display:grid;place-items:center;flex:none}
+.au-h .ic svg{width:18px;height:18px}
+.au-h b{display:block}
+.au-h span{font-size:12.5px;color:var(--muted)}
+.au .stat{font-size:12.5px;color:var(--muted)}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--grad);color:#fff}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.legend .card{padding:14px 16px}
+.legend b{display:block;margin-bottom:3px}
+.legend p{margin:0;font-size:13px;color:var(--muted)}
+
+/* Assistant */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:30;display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(0,0,0,.12);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.drawer-h b{flex:1}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:88%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5}
+.msg.me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:6px}
+.msg.ai{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.ai ul{margin:6px 0 0;padding-left:18px}
+.notice{font-size:12px;color:var(--muted);text-align:center;padding:0 16px 6px}
+.sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
+.sugg button{border:1px solid var(--line);background:var(--surface);color:var(--accent-2);border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700}
+.sugg button:hover{background:var(--accent-soft)}
+.ask{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
+.ask input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface-2)}
+.scrim{position:fixed;inset:0;background:rgba(10,15,13,.35);z-index:25}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--toast-bg);color:var(--toast-fg);padding:10px 18px;border-radius:999px;font-weight:600;z-index:40;display:flex;align-items:center;gap:8px;max-width:calc(100% - 32px)}
+.toast svg{width:16px;height:16px;color:var(--ok)}
+
+.tabs-m{display:none}
+.theme-btn{display:flex;align-items:center;gap:12px;width:100%;height:44px;padding:0 14px;border:0;border-radius:12px;background:none;color:var(--ink);font-weight:700;text-align:left}
+.theme-btn:hover{background:var(--surface-2)}
+.theme-btn svg{width:18px;height:18px;flex:none}
+.theme-btn .sun,.theme-btn .l-sun{display:none}
+:root[data-theme="dark"] .theme-btn .moon,:root[data-theme="dark"] .theme-btn .l-moon{display:none}
+:root[data-theme="dark"] .theme-btn .sun,:root[data-theme="dark"] .theme-btn .l-sun{display:inline}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-btn .moon,:root:not([data-theme="light"]) .theme-btn .l-moon{display:none}:root:not([data-theme="light"]) .theme-btn .sun,:root:not([data-theme="light"]) .theme-btn .l-sun{display:inline}}
+.theme-btn.round{display:none;width:40px;height:40px;padding:0;justify-content:center;border:1px solid var(--line);background:var(--surface);flex:none}
+.theme-btn.round span{display:none!important}
+.skin-lbl b{font-weight:800;color:var(--accent-2)}
+
+@media (max-width:1100px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-2,.queue{grid-template-columns:minmax(0,1fr)}
+  .autos{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .tabs-m{display:flex;justify-content:space-around;position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:6px max(4px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(4px,env(safe-area-inset-left,0px))}
+  .tabs-m button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;padding:6px 2px;font-size:10px;font-weight:700;color:var(--muted);position:relative}
+  .tabs-m button svg{width:20px;height:20px}
+  .tabs-m button[aria-current="page"]{color:var(--accent-2)}
+  .tabs-m .count{position:absolute;top:0;left:calc(50% + 6px);min-width:16px;height:16px;border-radius:999px;padding:0 4px;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .main{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  .theme-btn.round{display:flex}
+  .top,.content{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .top .hide-s{display:none}
+  .legend{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  .kpis{grid-template-columns:minmax(0,1fr)}
+  .field{grid-template-columns:minmax(0,1fr);gap:2px}
+  .field dd{margin-bottom:6px}
+  .pill-demo{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head><body>
+
+<div class="app">
+  <aside class="side" aria-label="Menu principal">
+    <div class="brand"><div class="logo">GR</div><div><b>Garnier Rénovation</b><span>Bureau · 8 salariés</span></div></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <div class="connect"><b>Connecté à</b><div class="dots"><span>Boîte mail</span><span>Agenda</span><span>Facturation</span><span>Téléphone</span><span>Google</span></div></div>
+      <button type="button" class="theme-btn" data-skin-btn aria-label="Changer de style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.9 1.4-1.8-.3-.9.3-1.7 1.2-1.7H17a4 4 0 0 0 4-4c0-5-4-8.5-9-8.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><span class="skin-lbl">Style : <b data-skin-name>Aevio</b></span></button>
+      <button type="button" class="theme-btn" data-theme-btn aria-label="Basculer entre mode clair et mode sombre"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="l-moon">Mode sombre</span><span class="l-sun">Mode clair</span></button>
+      <div class="user"><div class="avatar">MG</div><div><b>Marc Garnier</b><span>Dirigeant</span></div></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <div class="grow"><h1 id="v-title">Aujourd'hui</h1><div class="sub" id="v-sub"></div></div>
+      <span class="pill-demo">Démo · données fictives</span>
+      <button type="button" class="theme-btn round" data-skin-btn aria-label="Changer de style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.9 1.4-1.8-.3-.9.3-1.7 1.2-1.7H17a4 4 0 0 0 4-4c0-5-4-8.5-9-8.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><span>Style</span></button>
+      <button type="button" class="theme-btn round" data-theme-btn aria-label="Basculer entre mode clair et mode sombre"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="l-moon">Mode sombre</span><span class="l-sun">Mode clair</span></button>
+      <button class="btn primary" id="open-ai" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><span class="hide-s">Demander à l'assistant</span></button>
+    </header>
+    <nav class="tabs-m" id="tabs-m" aria-label="Menu"></nav>
+    <main class="content" id="view"></main>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Assistant">
+  <div class="drawer-h"><div class="logo" style="width:30px;height:30px;font-size:11.5px;border-radius:9px">AI</div><b>Assistant de Garnier Rénovation</b><button class="btn ghost sm" id="close-ai" type="button" aria-label="Fermer">✕</button></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="notice">Vous échangez avec un assistant IA. Rien n'est envoyé sans votre validation.</div>
+  <div class="sugg" id="sugg"></div>
+  <form class="ask" id="ask"><input id="ask-in" placeholder="Posez une question…" autocomplete="off"><button class="btn primary" type="submit">Envoyer</button></form>
+</aside>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+const G = window.gsap;
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+const eur = n => n.toLocaleString('fr-FR') + ' €';
+
+const I = {
+  home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+  check:'<path d="M20 6L9 17l-5-5"/>',
+  inbox:'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z"/>',
+  file:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
+  euro:'<path d="M18 6.5A7 7 0 1 0 18 17.5"/><path d="M4 10h10M4 14h10"/>',
+  zap:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+  list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+  truck:'<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+  phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  chart:'<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+  refresh:'<path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>',
+  folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+};
+const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
+
+/* ---------- Données de démonstration (fictives) ---------- */
+const S = {
+  queue: [
+    {id:'q1', type:'Mail', ic:'mail', chip:'c-info', title:'Réponse à Mme Lefort', sub:'Demande de date pour la salle de bain', from:'Boîte mail · reçu 08:14',
+     fields:[['À','Claire Lefort'],['Objet','Re : Date de démarrage salle de bain'],['Chantier','SDB, 14 rue des Acacias']],
+     draft:"Bonjour Madame Lefort,\n\nMerci pour votre message. Le démarrage de votre salle de bain est confirmé pour le lundi 9 novembre à 8 h. Karim sera le chef de chantier ; il vous appellera la veille pour l'accès.\n\nLa durée prévue reste de 8 jours ouvrés.\n\nBien cordialement,\nMarc Garnier\nGarnier Rénovation",
+     why:['Date lue dans le planning (Agenda, semaine 46)','Chef de chantier : Karim, affecté le 20/10','Durée reprise du devis D-2026-097 signé']},
+    {id:'q2', type:'Devis', ic:'file', chip:'c-acc', title:'Devis D-2026-114 · Cuisine Benali', sub:'12 860 € HT · préparé depuis la demande du 22/10', from:'Formulaire du site · métré de Karim',
+     fields:[['Client','M. et Mme Benali'],['Montant','12 860 € HT'],['Délai','3 semaines'],['Validité','30 jours']],
+     draft:"Bonjour Monsieur et Madame Benali,\n\nComme convenu lors de la visite de Karim jeudi, vous trouverez ci-joint notre devis pour la rénovation de votre cuisine (dépose, plomberie, électricité, faïence et pose des meubles fournis).\n\nMontant : 12 860 € HT, soit 14 146 € TTC (TVA 10 %).\nDémarrage possible à partir du 23 novembre.\n\nJe reste disponible pour en parler.\n\nBien cordialement,\nMarc Garnier",
+     why:['Quantités reprises du métré saisi par Karim le 22/10','Prix de la grille 2026 (faïence au m², heures de pose)','TVA 10 % : rénovation d\'un logement de plus de 2 ans']},
+    {id:'q3', type:'Impayé', ic:'euro', chip:'c-bad', title:'Relance SCI Les Tilleuls', sub:'Facture F-2026-087 · 2 340 € · échue depuis 12 jours', from:'Facturation · 2ᵉ palier',
+     fields:[['Client','SCI Les Tilleuls'],['Facture','F-2026-087'],['Montant','2 340 € TTC'],['Échéance','12 octobre 2026']],
+     draft:"Bonjour,\n\nSauf erreur de notre part, la facture F-2026-087 de 2 340 € TTC, échue le 12 octobre, reste à régler. Nous vous avions adressé un premier rappel le 15 octobre.\n\nPourriez-vous nous indiquer la date de règlement prévue ? Vous trouverez la facture et notre RIB en pièce jointe.\n\nBien cordialement,\nNadia Benhamou\nGarnier Rénovation",
+     why:['1ᵉʳ rappel envoyé le 15/10, sans réponse','Ton courtois : client régulier, 6 factures payées en 2026','Au-delà de 30 jours, l\'assistant vous proposera un appel']},
+    {id:'q4', type:'Avis Google', ic:'star', chip:'c-warn', title:'Réponse à l\'avis de Julien R.', sub:'4 étoiles · « Travail soigné, un peu de retard »', from:'Google · publié hier',
+     fields:[['Note','4 sur 5'],['Chantier','Terrasse, octobre 2026']],
+     draft:"Merci Julien pour votre avis et votre confiance. Vous avez raison, nous avons pris deux jours de retard à cause de la pluie, et nous aurions dû vous prévenir plus tôt. Ravi que le résultat vous plaise, et à bientôt pour le garde-corps !\n\nMarc, Garnier Rénovation",
+     why:['Avis publié le 23/10, chantier terminé le 16/10','Le retard est confirmé par le planning (pluie les 8 et 9/10)']},
+    {id:'q5', type:'Commande', ic:'truck', chip:'c-mut', title:'Commande fournisseur · placo', sub:'24 plaques BA13 + 40 rails · stock sous le seuil', from:'Stock · chantier Benali',
+     fields:[['Fournisseur','Négoce matériaux habituel'],['Montant estimé','612 € HT'],['Livraison','Jeudi 29/10, au dépôt']],
+     draft:"Bonjour,\n\nPouvez-vous nous préparer pour jeudi 29 octobre, livraison au dépôt :\n- 24 plaques BA13 standard 250 × 120\n- 40 rails R48\n- 60 montants M48\n\nCompte client : GARNIER-0412.\n\nMerci,\nNadia",
+     why:['Stock actuel : 6 plaques, besoin chantier Benali : 28','Quantités et références de la dernière commande (12/09)']},
+    {id:'q6', type:'Relance devis', ic:'refresh', chip:'c-acc', title:'Relance devis · M. Rossi', sub:'D-2026-102 · 9 400 € · envoyé il y a 8 jours', from:'Devis · relance J+7',
+     fields:[['Client','Paolo Rossi'],['Devis','D-2026-102 · 9 400 € HT'],['Envoyé le','16 octobre']],
+     draft:"Bonjour Monsieur Rossi,\n\nJe me permets de revenir vers vous au sujet de notre devis pour l'isolation de vos combles. Avez-vous eu le temps de le regarder ?\n\nSi cela peut vous aider, nous pouvons démarrer dès la semaine 47, et je peux vous rappeler pour répondre à vos questions.\n\nBien cordialement,\nMarc Garnier",
+     why:['Aucune réponse depuis l\'envoi du 16/10','Ouvert 3 fois par le client (suivi de lecture)','Créneau libre en semaine 47 dans le planning']},
+  ],
+  demandes: [
+    {h:'07:42', who:'Mme Petit', what:'Message vocal : fuite sous l\'évier, eau coupée', tag:['Urgent','c-bad'], done:'Rappel proposé à 8 h 15, Karim prévenu par SMS'},
+    {h:'08:05', who:'Formulaire du site', what:'Rénovation d\'une salle d\'eau, 6 m², Villeurbanne', tag:['Demande de devis','c-acc'], done:'Fiche client créée, visite proposée mardi ou jeudi'},
+    {h:'08:14', who:'Claire Lefort', what:'Date de démarrage de la salle de bain ?', tag:['Client','c-info'], done:'Réponse préparée, à valider'},
+    {h:'08:31', who:'Fournisseur bois', what:'Facture FA-55821 · 1 284 € HT', tag:['Facture reçue','c-mut'], done:'Classée et transmise au cabinet comptable'},
+    {h:'09:02', who:'Agence de pub', what:'Proposition d\'encart dans un annuaire', tag:['Publicité','c-mut'], done:'Classé, pas de réponse'},
+    {h:'09:20', who:'Thomas Girard', what:'Candidature spontanée, plaquiste', tag:['Recrutement','c-warn'], done:'CV rangé, transmis à Marc'},
+  ],
+  devis: {
+    'Brouillon':[{n:'D-2026-114', who:'Benali', what:'Cuisine complète', amt:12860, st:['À valider','c-warn']}],
+    'Envoyé':[{n:'D-2026-109', who:'Martin', what:'Remplacement fenêtres', amt:4320, st:['J+3','c-mut']},{n:'D-2026-111', who:'Cabinet Arnaud', what:'Cloisons bureaux', amt:7950, st:['J+5','c-mut']}],
+    'Relance':[{n:'D-2026-102', who:'Rossi', what:'Isolation combles', amt:9400, st:['J+8 · à valider','c-warn']},{n:'D-2026-098', who:'Dupuis', what:'Peinture séjour', amt:3180, st:['2ᵉ relance envoyée','c-info']}],
+    'Signé ce mois':[{n:'D-2026-095', who:'Mercier', what:'Extension 20 m²', amt:15200, st:['Acompte reçu','c-ok']},{n:'D-2026-099', who:'Lopez', what:'Terrasse bois', amt:2760, st:['Terminé','c-ok']}],
+  },
+  factures: [
+    {n:'F-2026-092', who:'Mercier', what:'Acompte 30 % extension', amt:4560, due:'Payée le 20/10', st:['Payée','c-ok'], next:'—'},
+    {n:'F-2026-090', who:'Lopez', what:'Terrasse bois', amt:2760, due:'31/10/2026', st:['À échéance','c-info'], next:'Rappel courtois le 01/11 si besoin'},
+    {n:'F-2026-087', who:'SCI Les Tilleuls', what:'Ravalement cage d\'escalier', amt:2340, due:'12/10/2026', st:['Échue · J+12','c-bad'], next:'2ᵉ relance à valider'},
+    {n:'F-2026-084', who:'Boulangerie Roux', what:'Faux plafond laboratoire', amt:1180, due:'19/10/2026', st:['Échue · J+5','c-warn'], next:'1ᵉʳ rappel envoyé le 20/10'},
+    {n:'F-2026-081', who:'M. Faure', what:'Salle de bain', amt:2720, due:'23/09/2026', st:['Échue · J+31','c-bad'], next:'Appel du dirigeant conseillé'},
+  ],
+  autos: [
+    {k:'a1', ic:'inbox', t:'Tri des mails et résumé du matin', w:'Chaque jour à 7 h 30', mode:2, stat:'148 mails triés cette semaine · 0 erreur signalée'},
+    {k:'a2', ic:'user', t:'Demandes du site : fiche client et réponse', w:'À chaque formulaire', mode:1, stat:'9 demandes · 8 validées sans retouche'},
+    {k:'a3', ic:'refresh', t:'Relance des devis à J+7', w:'Lundi et jeudi', mode:1, stat:'5 relances · 2 devis signés après relance'},
+    {k:'a4', ic:'euro', t:'Relance des impayés, en trois paliers', w:'Chaque matin · appel conseillé au-delà de 30 jours', mode:1, stat:'4 relances · 3 120 € encaissés'},
+    {k:'a5', ic:'folder', t:'Factures fournisseurs vers le comptable', w:'À chaque facture reçue', mode:2, stat:'17 factures transmises · format Factur-X lu'},
+    {k:'a6', ic:'phone', t:'Accueil téléphonique hors horaires', w:'Soirs et week-ends', mode:0, stat:'Nouveau · 6 appels comparés avec Nadia'},
+    {k:'a7', ic:'star', t:'Avis Google après chaque chantier', w:'3 jours après la fin', mode:1, stat:'2 demandes · 1 nouvel avis 5 étoiles'},
+    {k:'a8', ic:'chart', t:'Rapport du lundi', w:'Lundi à 7 h', mode:2, stat:'Envoyé à Marc et Nadia'},
+  ],
+  journal: [
+    {h:'09:22', who:'Assistant', t:'CV de Thomas Girard rangé dans Recrutement', c:'c-mut'},
+    {h:'09:02', who:'Assistant', t:'Mail publicitaire classé sans réponse', c:'c-mut'},
+    {h:'08:33', who:'Assistant', t:'Facture FA-55821 transmise au cabinet comptable', c:'c-ok'},
+    {h:'08:16', who:'Assistant', t:'Réponse à Mme Lefort préparée, en attente de validation', c:'c-warn'},
+    {h:'08:07', who:'Assistant', t:'Fiche client créée pour la demande du site (salle d\'eau)', c:'c-ok'},
+    {h:'07:45', who:'Assistant', t:'SMS à Karim : fuite chez Mme Petit, rappel à 8 h 15', c:'c-ok'},
+    {h:'07:30', who:'Assistant', t:'Résumé du matin envoyé à Marc : 23 mails, 3 à traiter', c:'c-ok'},
+    {h:'Hier 18:40', who:'Validé par Nadia', t:'Relance Boulangerie Roux envoyée (1ᵉʳ palier)', c:'c-info'},
+    {h:'Hier 17:12', who:'Validé par Marc', t:'Devis D-2026-111 envoyé au Cabinet Arnaud', c:'c-info'},
+  ],
+  hours:[3.5,4,5,5.5,6.5,7,7.5,8],
+  weeks:['S36','S37','S38','S39','S40','S41','S42','S43'],
+  sel:'q1', view:'home', validated:0
+};
+const MODES = ['Observation','Brouillon','Automatique'];
+
+const VIEWS = [
+  {k:'home', l:'Aujourd\'hui', m:'Accueil', ic:'home', sub:'Vendredi 23 octobre 2026'},
+  {k:'queue', l:'À valider', m:'Valider', ic:'check', sub:'Préparé par l\'assistant, envoyé seulement après votre accord'},
+  {k:'demandes', l:'Demandes', ic:'inbox', sub:'Mails, appels et formulaires du jour, triés et qualifiés'},
+  {k:'devis', l:'Devis', ic:'file', sub:'Du brouillon à la signature'},
+  {k:'factures', l:'Factures', ic:'euro', sub:'Encaissements et relances'},
+  {k:'autos', l:'Automatisations', m:'Auto', ic:'zap', sub:'Ce qui tourne tout seul, et à quel niveau de confiance'},
+  {k:'journal', l:'Journal', ic:'list', sub:'Chaque action est tracée : qui, quoi, quand'},
+];
+
+function counts(){ return {queue:S.queue.length} }
+function renderNav(){
+  const c = counts();
+  const item = (v, cls) => `<button type="button" data-v="${v.k}" ${S.view===v.k?'aria-current="page"':''}>${cls?svg(v.ic):''}${v.l}${v.k==='queue'&&c.queue?`<span class="count">${c.queue}</span>`:''}</button>`;
+  $('#nav').innerHTML = VIEWS.slice(0,5).map(v=>item(v,1)).join('') + '<div class="sep">Pilotage</div>' + VIEWS.slice(5).map(v=>item(v,1)).join('');
+  $('#tabs-m').innerHTML = VIEWS.map(v=>`<button type="button" data-v="${v.k}" ${S.view===v.k?'aria-current="page"':''}>${svg(v.ic)}<span>${v.m||v.l}</span>${v.k==='queue'&&c.queue?`<span class="count">${c.queue}</span>`:''}</button>`).join('');
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) go(b.dataset.v); });
+
+function go(v){
+  S.view = v; const meta = VIEWS.find(x=>x.k===v);
+  $('#v-title').textContent = meta.l; $('#v-sub').textContent = meta.sub;
+  renderNav(); RENDER[v]();
+  if (G && !REDUCED) G.from('#view > *', {y:10, opacity:0, duration:.35, stagger:.05, ease:'power2.out', clearProps:'all'});
+  try{ localStorage.setItem('gr-view', v) }catch(_){}
+  window.scrollTo(0,0);
+}
+
+/* ---------- Vues ---------- */
+const RENDER = {
+home(){
+  const enAttente = [...S.devis['Envoyé'],...S.devis['Relance']].reduce((a,d)=>a+d.amt,0);
+  const echues = S.factures.filter(f=>f.st[0].startsWith('Échue'));
+  const totEch = echues.reduce((a,f)=>a+f.amt,0);
+  const h = S.hours.reduce((a,b)=>a+b,0);
+  $('#view').innerHTML = `
+  <section class="kpis" aria-label="En résumé">
+    <button class="kpi" type="button" data-v="queue"><span class="lbl">À valider</span><span class="val">${S.queue.length}</span><span class="det">préparés par l'assistant ce matin</span></button>
+    <button class="kpi" type="button" data-v="devis"><span class="lbl">Devis en attente de réponse</span><span class="val">${eur(enAttente)}</span><span class="det">4 devis · 1 relance à valider</span></button>
+    <button class="kpi" type="button" data-v="factures"><span class="lbl">Factures échues</span><span class="val" style="color:var(--bad)">${eur(totEch)}</span><span class="det">${echues.length} factures · 1 appel conseillé</span></button>
+    <div class="kpi"><span class="lbl">Temps rendu en octobre</span><span class="val">29 h</span><span class="det"><b class="up">contre 18 h</b> en septembre</span></div>
+  </section>
+  <div class="grid-2">
+    <section class="card">
+      <div class="card-h"><h2>À valider</h2><span class="chip c-warn">${S.queue.length} en attente</span><span class="grow"></span><button class="btn sm" type="button" data-v="queue">Tout voir</button></div>
+      <div class="list">${S.queue.slice(0,4).map(q=>`<button class="row" type="button" data-open="${q.id}"><div class="ic">${svg(q.ic)}</div><div class="txt"><div class="t">${q.title}</div><div class="s">${q.sub}</div></div><span class="chip ${q.chip}">${q.type}</span></button>`).join('') || '<div class="empty"><b>Tout est validé</b>Rien n\'attend votre accord.</div>'}</div>
+    </section>
+    <section class="card">
+      <div class="card-h"><h2>Ce que l'assistant a fait ce matin</h2></div>
+      <div class="timeline">${S.journal.filter(j=>j.who==='Assistant').slice(0,5).reverse().map(j=>`<div class="tl"><span class="h">${j.h}</span><span class="d"></span><div class="x"><b>${j.t}</b></div></div>`).join('')}</div>
+    </section>
+  </div>
+  <div class="grid-2">
+    <section class="card">
+      <div class="card-h"><h2>Heures rendues à l'équipe</h2><span class="grow"></span><span class="muted" style="font-size:12.5px">8 dernières semaines · ${h.toLocaleString('fr-FR')} h</span></div>
+      <div class="chart">${chart()}</div>
+    </section>
+    <section class="card">
+      <div class="card-h"><h2>Demandes du jour</h2><span class="grow"></span><button class="btn sm" type="button" data-v="demandes">Tout voir</button></div>
+      <div class="list">${S.demandes.slice(0,4).map(d=>`<div class="row"><div class="txt"><div class="t">${d.who}</div><div class="s">${d.what}</div></div><span class="chip ${d.tag[1]}">${d.tag[0]}</span></div>`).join('')}</div>
+    </section>
+  </div>`;
+  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{S.sel=b.dataset.open; go('queue')}));
+},
+queue(){
+  if (!S.queue.length){ $('#view').innerHTML = `<section class="card"><div class="empty"><b>Tout est validé</b>${S.validated} éléments traités aujourd'hui. L'assistant vous préviendra dès qu'un nouveau brouillon sera prêt.</div></section>`; return; }
+  if (!S.queue.find(q=>q.id===S.sel)) S.sel = S.queue[0].id;
+  const q = S.queue.find(x=>x.id===S.sel);
+  $('#view').innerHTML = `
+  <div class="queue">
+    <section class="card" aria-label="Liste">
+      <div class="card-h"><h2>${S.queue.length} éléments en attente</h2></div>
+      <div role="listbox" aria-label="Éléments à valider">${S.queue.map(x=>`<button type="button" class="qi" role="option" aria-selected="${x.id===S.sel}" data-q="${x.id}"><div class="row" style="padding:0;border:0"><div class="ic">${svg(x.ic)}</div></div><div class="txt"><div class="t">${x.title}</div><div class="s">${x.sub}</div><div class="meta"><span class="chip ${x.chip}">${x.type}</span><span class="chip c-mut">${x.from}</span></div></div></button>`).join('')}</div>
+    </section>
+    <section class="card detail" aria-label="Détail">
+      <div class="card-h"><span class="chip ${q.chip}">${q.type}</span><h2>${q.title}</h2></div>
+      <div class="card-b">
+        <dl class="field">${q.fields.map(f=>`<dt>${f[0]}</dt><dd>${f[1]}</dd>`).join('')}</dl>
+        <label for="draft" class="muted" style="font-size:12.5px;font-weight:600">Brouillon préparé par l'assistant (modifiable)</label>
+        <textarea id="draft" class="draft">${q.draft}</textarea>
+        <div class="why"><b>Sur quoi il s'appuie</b><ul>${q.why.map(w=>`<li>${w}</li>`).join('')}</ul></div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="ok">${svg('check')}Valider et envoyer</button>
+          <button class="btn" type="button" id="later">Plus tard</button>
+          <button class="btn ghost danger" type="button" id="no">Refuser</button>
+        </div>
+      </div>
+    </section>
+  </div>`;
+  document.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>{S.sel=b.dataset.q; RENDER.queue(); if(G&&!REDUCED) G.from('.detail',{opacity:.4,x:8,duration:.25,clearProps:'all'}); if(innerWidth<1100) $('.detail').scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'})}));
+  const edited = () => $('#draft').value.trim() !== q.draft.trim();
+  $('#ok').addEventListener('click',()=>resolve(q, edited() ? 'Validé avec corrections par Marc' : 'Validé par Marc', q.type==='Commande' ? 'Commande envoyée au fournisseur' : 'Envoyé', 'c-info'));
+  $('#no').addEventListener('click',()=>resolve(q,'Refusé par Marc','Refusé, rien n\'a été envoyé','c-mut'));
+  $('#later').addEventListener('click',()=>{ const i=S.queue.indexOf(q); S.queue.push(S.queue.splice(i,1)[0]); S.sel=S.queue[0].id; toast('Remis en fin de liste'); RENDER.queue(); });
+},
+demandes(){
+  $('#view').innerHTML = `
+  <section class="card">
+    <div class="card-h"><h2>Arrivées aujourd'hui</h2><span class="chip c-acc">${S.demandes.length} demandes</span><span class="grow"></span><span class="muted" style="font-size:12.5px">Mails, téléphone, site</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Heure</th><th>De</th><th>Demande</th><th>Catégorie</th><th>Ce que l'assistant a fait</th></tr></thead>
+      <tbody>${S.demandes.map(d=>`<tr><td class="mono">${d.h}</td><td><b>${d.who}</b></td><td>${d.what}</td><td><span class="chip ${d.tag[1]}">${d.tag[0]}</span></td><td class="muted">${d.done}</td></tr>`).join('')}</tbody>
+    </table></div>
+  </section>
+  <div class="legend">
+    <div class="card"><b>Rien ne se perd</b><p>Chaque demande, même un message vocal à 7 h, est lue, classée et reliée à la bonne fiche client.</p></div>
+    <div class="card"><b>Les urgences d'abord</b><p>Une fuite passe avant un devis : l'assistant prévient la bonne personne par SMS.</p></div>
+    <div class="card"><b>Le reste à votre rythme</b><p>Publicités et sollicitations sont classées sans réponse, consultables à tout moment.</p></div>
+  </div>`;
+},
+devis(){
+  const cols = Object.entries(S.devis);
+  $('#view').innerHTML = `
+  <div class="kanban">${cols.map(([k,list])=>`<section class="col" aria-label="${k}"><div class="col-h">${k}<span>${eur(list.reduce((a,d)=>a+d.amt,0))}</span></div>${list.map(d=>`<article class="dv"><div class="top-l"><span class="who">${d.who}</span><span class="mono muted">${d.n}</span></div><div class="what">${d.what}</div><div class="bot"><b>${eur(d.amt)} HT</b><span class="chip ${d.st[1]}">${d.st[0]}</span></div></article>`).join('')}</section>`).join('')}</div>
+  <section class="card"><div class="card-b" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="row" style="padding:0;border:0"><div class="ic">${svg('refresh')}</div></div><div style="flex:1;min-width:220px"><b>Relance automatique à J+7</b><div class="muted" style="font-size:13px">Sans réponse au bout de 7 jours, l'assistant prépare une relance personnalisée. Ce mois-ci, 2 devis ont été signés après une relance.</div></div><button class="btn" type="button" data-v="autos">Régler</button></div></section>`;
+},
+factures(){
+  const tot = S.factures.filter(f=>f.st[0].startsWith('Échue')).reduce((a,f)=>a+f.amt,0);
+  $('#view').innerHTML = `
+  <section class="kpis">
+    <div class="kpi"><span class="lbl">Encaissé en octobre</span><span class="val">18 940 €</span><span class="det">11 factures</span></div>
+    <div class="kpi"><span class="lbl">Échu</span><span class="val" style="color:var(--bad)">${eur(tot)}</span><span class="det">3 factures</span></div>
+    <div class="kpi"><span class="lbl">Délai moyen de paiement</span><span class="val">19 j</span><span class="det"><b class="up">−6 jours</b> depuis les relances</span></div>
+    <div class="kpi"><span class="lbl">Facture électronique</span><span class="val" style="font-size:20px;padding-block:5px">Prête</span><span class="det">Réception via plateforme agréée</span></div>
+  </section>
+  <section class="card">
+    <div class="card-h"><h2>Factures récentes</h2></div>
+    <div class="tw"><table>
+      <thead><tr><th>N°</th><th>Client</th><th>Objet</th><th class="r">Montant TTC</th><th>Échéance</th><th>Statut</th><th>Prochaine étape</th></tr></thead>
+      <tbody>${S.factures.map(f=>`<tr><td class="mono">${f.n}</td><td><b>${f.who}</b></td><td class="muted">${f.what}</td><td class="r"><b>${eur(f.amt)}</b></td><td>${f.due}</td><td><span class="chip ${f.st[1]}">${f.st[0]}</span></td><td class="muted">${f.next}</td></tr>`).join('')}</tbody>
+    </table></div>
+  </section>`;
+},
+autos(){
+  $('#view').innerHTML = `
+  <div class="legend">
+    <div class="card"><b>Observation</b><p>L'assistant travaille en parallèle et n'envoie rien. On compare avec ce que fait l'équipe.</p></div>
+    <div class="card"><b>Brouillon</b><p>Il prépare, une personne valide d'un clic dans « À valider ».</p></div>
+    <div class="card"><b>Automatique</b><p>Seulement pour ce qui a fait ses preuves. Tout reste dans le journal.</p></div>
+  </div>
+  <div class="autos">${S.autos.map(a=>`<section class="card au"><div class="au-h"><div class="ic">${svg(a.ic)}</div><div><b>${a.t}</b><span>${a.w}</span></div></div><div class="seg" role="group" aria-label="Niveau">${MODES.map((m,i)=>`<button type="button" aria-pressed="${a.mode===i}" data-a="${a.k}" data-m="${i}">${m}</button>`).join('')}</div><div class="stat">${a.stat}</div></section>`).join('')}</div>`;
+  document.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{const a=S.autos.find(x=>x.k===b.dataset.a); a.mode=+b.dataset.m; toast(`${a.t} : ${MODES[a.mode].toLowerCase()}`); log('Réglé par Marc', `${a.t} passé en mode ${MODES[a.mode].toLowerCase()}`, 'c-info'); RENDER.autos();}));
+},
+journal(){
+  $('#view').innerHTML = `
+  <section class="card">
+    <div class="card-h"><h2>Journal d'activité</h2><span class="grow"></span><span class="muted" style="font-size:12.5px">Conservé 12 mois · exportable</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Quand</th><th>Qui</th><th>Action</th></tr></thead>
+      <tbody>${S.journal.map(j=>`<tr><td class="mono" style="white-space:nowrap">${j.h}</td><td><span class="chip ${j.c}">${j.who}</span></td><td>${j.t}</td></tr>`).join('')}</tbody>
+    </table></div>
+  </section>`;
+}
+};
+
+function chart(){
+  const W=560,H=200,p={l:34,r:12,t:14,b:28}, max=10, n=S.hours.length, bw=(W-p.l-p.r)/n;
+  const y=v=>p.t+(H-p.t-p.b)*(1-v/max);
+  let g='';
+  [0,5,10].forEach(v=>{g+=`<line x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${p.l-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v} h</text>`});
+  S.hours.forEach((v,i)=>{const x=p.l+i*bw+bw*.2,w=bw*.6,last=i===n-1;
+    g+=`<rect class="bar" x="${x}" y="${y(v)}" width="${w}" height="${y(0)-y(v)}" rx="4" fill="${last?'var(--accent)':'var(--bar)'}"/>`;
+    g+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle" font-size="11" fill="var(--muted)">${S.weeks[i]}</text>`;
+    if(last) g+=`<text x="${x+w/2}" y="${y(v)-6}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${String(v).replace('.',',')} h</text>`;});
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Heures rendues par semaine, de 3,5 h à 8 h">${g}</svg>`;
+}
+
+function log(who,t,c){ const d=new Date(); S.journal.unshift({h:d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}), who, t, c}); }
+function resolve(q, who, msg, c){
+  S.queue = S.queue.filter(x=>x!==q); S.validated++;
+  log(who, `${q.type} · ${q.title}`, c);
+  toast(msg + (who.includes('corrections') ? ', avec vos corrections' : ''));
+  const card = $('.detail');
+  if (G && !REDUCED && card){ G.to(card,{opacity:0,x:16,duration:.2,onComplete:()=>{renderNav();RENDER.queue();G.from('.detail',{opacity:0,y:8,duration:.25,clearProps:'all'})}}) }
+  else { renderNav(); RENDER.queue(); }
+}
+
+let tt;
+function toast(m){
+  const t=$('#toast'); t.innerHTML=svg('check')+m; t.hidden=false; clearTimeout(tt);
+  if (G && !REDUCED) G.fromTo(t,{y:12,opacity:0},{y:0,opacity:1,duration:.25});
+  tt=setTimeout(()=>{ if(G&&!REDUCED) G.to(t,{opacity:0,duration:.2,onComplete:()=>t.hidden=true}); else t.hidden=true; },2600);
+}
+
+/* ---------- Assistant ---------- */
+const QA = [
+  {q:'Quels devis attendent une réponse ?', a:()=>`Quatre devis attendent une réponse, pour ${eur(24850)} HT :<ul><li>Rossi, isolation des combles : 9 400 €, J+8. Une relance est prête dans « À valider ».</li><li>Cabinet Arnaud, cloisons : 7 950 €, J+5.</li><li>Martin, fenêtres : 4 320 €, J+3.</li><li>Dupuis, peinture : 3 180 €, 2ᵉ relance envoyée mardi.</li></ul>`},
+  {q:'Résume ma journée', a:()=>`Ce matin : 23 mails, dont 3 à traiter, et une urgence (fuite chez Mme Petit, Karim la rappelle à 8 h 15).<ul><li>${S.queue.length} éléments attendent votre validation.</li><li>Une nouvelle demande de devis : salle d'eau de 6 m², visite à caler mardi ou jeudi.</li><li>À surveiller : la facture de M. Faure (2 720 €) est échue depuis 31 jours. Je vous conseille de l'appeler.</li></ul>`},
+  {q:'Prépare la relance de M. Faure', a:()=>`C'est le 3ᵉ palier : je vous conseille un appel plutôt qu'un mail. Voici quoi dire :<ul><li>Facture F-2026-081, salle de bain, 2 720 € TTC, échue le 23 septembre.</li><li>Deux rappels sans réponse (2 et 13 octobre).</li><li>Proposer un paiement en deux fois si besoin.</li></ul>Je peux aussi préparer une mise en demeure, à valider avant envoi.`},
+];
+function msg(cls, html){ const m=document.createElement('div'); m.className='msg '+cls; m.innerHTML=html; $('#msgs').appendChild(m); $('#msgs').scrollTop=1e6; if(G&&!REDUCED) G.from(m,{y:8,opacity:0,duration:.25}); }
+function ask(text){
+  msg('me', text.replace(/</g,'&lt;'));
+  const hit = QA.find(x=>x.q.toLowerCase()===text.trim().toLowerCase());
+  setTimeout(()=>msg('ai', hit ? hit.a() : 'Dans cette démonstration, je réponds aux trois questions proposées ci-dessous. Dans le vrai outil, je cherche dans vos mails, vos devis, vos factures et votre planning.'), 450);
+}
+function openAI(){ $('#drawer').hidden=false; $('#scrim').hidden=false; if(G&&!REDUCED) G.from('#drawer',{x:40,opacity:0,duration:.3,ease:'power2.out'}); setTimeout(()=>$('#ask-in').focus(),50); }
+function closeAI(){ $('#drawer').hidden=true; $('#scrim').hidden=true; }
+$('#open-ai').addEventListener('click',openAI); $('#close-ai').addEventListener('click',closeAI); $('#scrim').addEventListener('click',closeAI);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAI(); });
+$('#sugg').innerHTML = QA.map((x,i)=>`<button type="button" data-qa="${i}">${x.q}</button>`).join('');
+$('#sugg').addEventListener('click',e=>{ const b=e.target.closest('[data-qa]'); if(b) ask(QA[+b.dataset.qa].q); });
+$('#ask').addEventListener('submit',e=>{ e.preventDefault(); const v=$('#ask-in').value.trim(); if(v){ ask(v); $('#ask-in').value=''; } });
+msg('ai','Bonjour Marc. Six éléments vous attendent dans « À valider », et la facture de M. Faure mérite un appel aujourd\'hui. Que puis-je faire pour vous ?');
+
+/* ---------- Mode clair / sombre (comme la MIA) ---------- */
+const root=document.documentElement;
+try{ const t=localStorage.getItem('gr-theme'); if(t==='dark'||t==='light') root.setAttribute('data-theme',t); }catch(_){}
+document.querySelectorAll('[data-theme-btn]').forEach(b=>b.addEventListener('click',()=>{
+  const dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme')==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const t = dark ? 'light' : 'dark'; root.setAttribute('data-theme',t);
+  try{ localStorage.setItem('gr-theme',t) }catch(_){}
+}));
+
+/* ---------- Style Aevio / neutre (pour montrer que l'outil prend les couleurs du client) ---------- */
+function setSkin(k, say){
+  if (k==='neutre') root.setAttribute('data-skin','neutre'); else root.removeAttribute('data-skin');
+  document.querySelectorAll('[data-skin-name]').forEach(e=>e.textContent = k==='neutre' ? 'Neutre' : 'Aevio');
+  try{ localStorage.setItem('gr-skin',k) }catch(_){}
+  if (say) toast(k==='neutre' ? 'Style neutre : l\'outil prend les couleurs de votre entreprise' : 'Style Aevio');
+}
+try{ if(localStorage.getItem('gr-skin')==='neutre') setSkin('neutre'); }catch(_){}
+document.querySelectorAll('[data-skin-btn]').forEach(b=>b.addEventListener('click',()=>{
+  const k = root.getAttribute('data-skin')==='neutre' ? 'aevio' : 'neutre';
+  setSkin(k,true);
+  if (G && !REDUCED) G.fromTo('.app',{opacity:.4},{opacity:1,duration:.35,ease:'power1.out',clearProps:'opacity'});
+}));
+
+/* ---------- Démarrage ---------- */
+let start='home'; try{ const v=localStorage.getItem('gr-view'); if(VIEWS.find(x=>x.k===v)) start=v; }catch(_){}
+if (/^#(queue|demandes|devis|factures|autos|journal|home)$/.test(location.hash)) start=location.hash.slice(1);
+S.view=start; const meta=VIEWS.find(x=>x.k===start); $('#v-title').textContent=meta.l; $('#v-sub').textContent=meta.sub; renderNav(); RENDER[start]();
+})();
+</script>
+</body></html>
